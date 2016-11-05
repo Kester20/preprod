@@ -14,6 +14,10 @@ public class Shop {
         this.listOrders = new ListOrders();
     }
 
+    /**
+     *
+     * @return list of orders
+     */
     public ListOrders getListOrders() {
         return listOrders;
     }

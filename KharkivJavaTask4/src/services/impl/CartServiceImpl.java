@@ -40,12 +40,17 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public String printProductsInCart() {
+    public String printProductsInMap(Map map) {
         StringBuilder sb = new StringBuilder();
-        Iterator iterator = cartRepository.getCart().getContainer().keySet().iterator();
-        while (iterator.hasNext()) {
-            int id = (Integer) iterator.next();
-            sb.append(productService.getProductById(id) + ", number: " + cartRepository.getCart().getContainer().get(id) + "\n");
+        if(map.size() == 0){
+            sb.append("Cart is empty!");
+        }else{
+            int index = 0;
+            Iterator iterator = map.keySet().iterator();
+            while (iterator.hasNext()) {
+                int id = (int) iterator.next();
+                sb.append("\t" + ++index + ") " + productService.getProductById(id) + ", number: " + map.get(id) + "\n");
+            }
         }
         return sb.toString();
     }
@@ -56,8 +61,7 @@ public class CartServiceImpl implements CartService {
         Iterator iterator = cartRepository.getCart().getContainer().keySet().iterator();
         while (iterator.hasNext()) {
             int id = (int) iterator.next();
-            int sum = (int) (productService.getProductById(id).getCost() * cartRepository.getCart().getContainer().get(id));
-            amount += sum;
+            amount += (int) (productService.getProductById(id).getCost() * cartRepository.getCart().getContainer().get(id));
         }
         return amount;
     }

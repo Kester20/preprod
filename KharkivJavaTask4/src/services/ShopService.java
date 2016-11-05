@@ -35,6 +35,13 @@ public interface ShopService {
     public Map orderOnTheNearestDate(Date date);
 
     /**
+     * displays all orders that in map
+     * @param map
+     * @return string representation
+     */
+    public String printOrdersInMap(Map map);
+
+    /**
      *
      * @return shop repository
      */

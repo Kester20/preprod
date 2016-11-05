@@ -18,9 +18,11 @@ import java.util.Map;
 public class ShopServiceImpl implements ShopService {
 
     private ShopRepository shopRepository;
+    private CartService cartService;
 
     public ShopServiceImpl() {
         this.shopRepository = new ShopRepositoryImpl();
+        cartService = new CartServiceImpl();
     }
 
     @Override
@@ -48,13 +50,37 @@ public class ShopServiceImpl implements ShopService {
         Date floorDate = shopRepository.getShop().getListOrders().getStorageOrders().floorKey(date);
         Date ceilingDate = shopRepository.getShop().getListOrders().getStorageOrders().ceilingKey(date);
 
-        if (floorDate.getTime() - date.getTime() > ceilingDate.getTime() - date.getTime()) {
-            result.put(ceilingDate, shopRepository.getShop().getListOrders().getStorageOrders().get(date));
-        } else {
-            result.put(floorDate, shopRepository.getShop().getListOrders().getStorageOrders().get(date));
+        if(floorDate == null){
+            result.put(ceilingDate, shopRepository.getShop().getListOrders().getStorageOrders().get(ceilingDate));
         }
-
+        else if(ceilingDate == null){
+            result.put(floorDate, shopRepository.getShop().getListOrders().getStorageOrders().get(floorDate));
+        }else{
+            if (floorDate.getTime() - date.getTime() > ceilingDate.getTime() - date.getTime()) {
+                result.put(ceilingDate, shopRepository.getShop().getListOrders().getStorageOrders().get(ceilingDate));
+            } else {
+                result.put(floorDate, shopRepository.getShop().getListOrders().getStorageOrders().get(floorDate));
+            }
+        }
         return result;
+    }
+
+    @Override
+    public String printOrdersInMap(Map map) {
+        StringBuilder sb = new StringBuilder();
+        if(map.size() == 0){
+            sb.append("Order list is empty!");
+        }else{
+            int index = 0;
+            Iterator iterator = map.keySet().iterator();
+            while (iterator.hasNext()) {
+                Date date = (Date) iterator.next();
+                Map cart = (Map) map.get(date);
+                sb.append(++index + ". " + date.toString() + "\n");
+                sb.append(cartService.printProductsInMap(cart));
+            }
+        }
+        return sb.toString();
     }
 
 

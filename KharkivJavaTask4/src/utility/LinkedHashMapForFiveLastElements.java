@@ -11,12 +11,12 @@ public class LinkedHashMapForFiveLastElements extends LinkedHashMap {
 
     private static final int MAX_ENTRIES = 5;
 
-    public LinkedHashMapForFiveLastElements(){
+    public LinkedHashMapForFiveLastElements() {
         super(MAX_ENTRIES + 1, .75F, false);
     }
 
     @Override
     protected boolean removeEldestEntry(Map.Entry eldest) {
-        return size() >  MAX_ENTRIES;
+        return size() > MAX_ENTRIES;
     }
 }

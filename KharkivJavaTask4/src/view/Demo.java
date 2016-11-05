@@ -8,10 +8,13 @@ import services.impl.ProductServiceImpl;
 import services.impl.ShopServiceImpl;
 import storage.Products;
 import utility.DateFormatter;
+import view.impl.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -25,8 +28,17 @@ public class Demo {
         ProductService productService = new ProductServiceImpl();
         CartService cartService = new CartServiceImpl();
         ShopService shopService = new ShopServiceImpl();
-
         Scanner scanner = new Scanner(System.in);
+
+        Map<Integer, Command> commandMap = new HashMap<>();
+        commandMap.put(1, new ShowAllProductsCommand());
+        commandMap.put(2, new AddProductToCartCommand(cartService, productService, scanner));
+        commandMap.put(3, new ShowProductsInCartCommand(cartService));
+        commandMap.put(4, new BuyAllProductsInCartCommand(cartService, shopService, scanner));
+        commandMap.put(5, new GetLastFiveProductsCommand(cartService));
+        commandMap.put(6, new GetOrdersInDateRangeCommand(shopService, scanner));
+        commandMap.put(7, new GetOrderOnTheNearestDateCommand(shopService, scanner));
+
 
         while (true) {
             System.out.println("///////////////////////////////////////////////////////");
@@ -42,55 +54,10 @@ public class Demo {
             System.out.println("Choose operation:");
 
             int operation = scanner.nextInt();
-            switch (operation) {
-                case 1: {
-                    System.out.println(Products.printList());
-                    break;
-                }
-                case 2: {
-                    System.out.println("---------------------------------------------------------");
-                    System.out.println("Enter product's id:");
-                    int productId = scanner.nextInt();
-                    cartService.addProductToCart(productService.getProductById(productId));
-                    break;
-                }
-                case 3: {
-                    System.out.println("---------------------------------------------------------");
-                    System.out.println(cartService.printProductsInCart());
-                    break;
-                }
-                case 4: {
-                    System.out.println("---------------------------------------------------------");
-                    System.out.println("Amount: " + cartService.getAmountOfProductsInCart());
-                    System.out.println("Please, enter the current date:");
-                    String dateString = scanner.next();
-                    shopService.addOrder(DateFormatter.format(dateString), cartService.getCartRepository().getCart());
-                    cartService.getCartRepository().getCart().clearContainer();
-                    System.out.println(shopService.getShopRepository().getShop().getListOrders().getStorageOrders().size());
-                    break;
-                }
-                case 5: {
-                    System.out.println("---------------------------------------------------------");
-                    System.out.println(cartService.getLastFiveProducts());
-                    break;
-                }
-                case 6: {
-                    System.out.println("Enter the range:");
-                    String dateStringFirst = scanner.next();
-                    String dateStringSecond = scanner.next();
-                    System.out.println(shopService.ordersInRange(DateFormatter.format(dateStringFirst), DateFormatter.format(dateStringSecond)));
-                    break;
-                }
-                case 7: {
-                    System.out.println("Enter the date");
-                    String dateString = scanner.next();
-                    System.out.println(shopService.orderOnTheNearestDate(DateFormatter.format(dateString)));
-                    break;
-                }
-                case 8: {
-                    return;
-                }
+            if(operation == 8){
+                return;
             }
+            commandMap.get(operation).exec();
         }
     }
 }

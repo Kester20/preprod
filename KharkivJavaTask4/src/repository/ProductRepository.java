@@ -10,7 +10,7 @@ public interface ProductRepository {
 
     /**
      * @param id product
-     * @return product
+     * @return product by id
      */
     public Product getProductById(int id);
 }

@@ -12,6 +12,7 @@ public class DateFormatter {
 
     /**
      * format string to date
+     *
      * @param date
      * @return
      * @throws ParseException

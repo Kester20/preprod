@@ -19,11 +19,11 @@ public interface CartService {
     public void addProductToCart(Product product);
 
     /**
-     * displays all products that in shop cart
+     * displays all products that in map
      *
      * @return string representation
      */
-    public String printProductsInCart();
+    public String printProductsInMap(Map map);
 
     /**
      * @return amount of products that in shop cart

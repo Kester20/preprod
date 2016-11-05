@@ -1,6 +1,8 @@
 package services;
 
 import entity.product.Product;
+import repository.CartRepository;
+import repository.ProductRepository;
 
 /**
  * Created by Arsal on 03.11.2016.
@@ -15,4 +17,9 @@ public interface ProductService {
      * @return product
      */
     public Product getProductById(int id);
+
+    /**
+     * @return template repository for product
+     */
+    public ProductRepository getProductRepository();
 }

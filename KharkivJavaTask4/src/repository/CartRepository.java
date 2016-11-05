@@ -9,6 +9,7 @@ import entity.shop.Cart;
 public interface CartRepository {
 
     /**
+     * adds product in cart
      * @param idProduct       id product
      * @param numberOfProduct number of product in cart
      */

@@ -1,7 +1,5 @@
 package utility;
 
-import entity.shop.Cart;
-
 import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
@@ -14,12 +12,11 @@ public class ListOrders {
 
     private TreeMap<Date, Map> storageOrders;
 
-    public ListOrders(){
+    public ListOrders() {
         storageOrders = new TreeMap<>();
     }
 
     /**
-     *
      * @return storage of orders
      */
     public TreeMap<Date, Map> getStorageOrders() {

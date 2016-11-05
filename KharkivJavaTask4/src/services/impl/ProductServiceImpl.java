@@ -22,4 +22,9 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.getProductById(id);
     }
 
+    @Override
+    public ProductRepository getProductRepository() {
+        return productRepository;
+    }
+
 }
