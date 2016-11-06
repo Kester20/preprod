@@ -3,9 +3,9 @@ package view.impl;
 import services.ShopService;
 import utility.DateFormatter;
 import view.Command;
+import view.appl.PrintItems;
 
 import java.text.ParseException;
-import java.util.Scanner;
 
 /**
  * Created by Arsal on 05.11.2016.
@@ -13,23 +13,21 @@ import java.util.Scanner;
  */
 public class GetOrderOnTheNearestDateCommand implements Command {
 
-    private ShopService shopService;
-    private Scanner scanner;
+	private ShopService shopService;
 
-    public GetOrderOnTheNearestDateCommand(ShopService shopService, Scanner scanner) {
-        this.shopService = shopService;
-        this.scanner = scanner;
-    }
+	public GetOrderOnTheNearestDateCommand(ShopService shopService) {
+		this.shopService = shopService;
+	}
 
-    /**
-     * gets nearest order
-     *
-     * @throws ParseException
-     */
-    @Override
-    public void exec() throws ParseException {
-        System.out.println("Enter the date");
-        String dateString = scanner.next();
-        System.out.println(shopService.printOrdersInMap(shopService.orderOnTheNearestDate(DateFormatter.format(dateString))));
-    }
+	/**
+	 * gets nearest order
+	 *
+	 * @throws ParseException
+	 */
+	@Override
+	public void exec() throws ParseException {
+		System.out.println("Enter the date");
+		String dateString = scanner.next();
+		System.out.println(PrintItems.printOrdersInMap(shopService.orderOnTheNearestDate(DateFormatter.format(dateString))));
+	}
 }

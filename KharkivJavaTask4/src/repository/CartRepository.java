@@ -1,5 +1,6 @@
 package repository;
 
+import entity.product.Product;
 import entity.shop.Cart;
 
 /**
@@ -8,15 +9,16 @@ import entity.shop.Cart;
  */
 public interface CartRepository {
 
-    /**
-     * adds product in cart
-     * @param idProduct       id product
-     * @param numberOfProduct number of product in cart
-     */
-    public void addProductToCart(int idProduct, int numberOfProduct);
+	/**
+	 * adds product in cart
+	 *
+	 * @param product
+	 * @param numberOfProduct number of product in cart
+	 */
+	public void addProductToCart(Product product, int numberOfProduct);
 
-    /**
-     * @return shop cart
-     */
-    public Cart getCart();
+	/**
+	 * @return shop cart
+	 */
+	public Cart getCart();
 }

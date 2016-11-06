@@ -2,6 +2,7 @@ package view.impl;
 
 import services.CartService;
 import view.Command;
+import view.appl.PrintItems;
 
 import java.text.ParseException;
 
@@ -24,7 +25,7 @@ public class GetLastFiveProductsCommand implements Command {
      */
     @Override
     public void exec() throws ParseException {
-        System.out.println("---------------------------------------------------------");
-        System.out.println(cartService.printProductsInMap(cartService.getLastFiveProducts()));
+        System.out.println(line);
+        System.out.println(PrintItems.printProductsInMap(cartService.getLastFiveProducts()));
     }
 }

@@ -8,9 +8,10 @@ import entity.product.Product;
  */
 public interface ProductRepository {
 
-    /**
-     * @param id product
-     * @return product by id
-     */
-    public Product getProductById(int id);
+	/**
+	 * @param id product
+	 * @return product by id
+	 */
+	public Product getProductById(int id);
+
 }

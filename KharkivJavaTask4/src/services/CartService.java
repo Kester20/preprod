@@ -19,21 +19,14 @@ public interface CartService {
     public void addProductToCart(Product product);
 
     /**
-     * displays all products that in map
-     *
-     * @return string representation
-     */
-    public String printProductsInMap(Map map);
-
-    /**
      * @return amount of products that in shop cart
      */
-    public double getAmountOfProductsInCart();
+    public int getAmountOfProductsInCart();
 
     /**
      * @return 5 last products that were added to cart
      */
-    public Map getLastFiveProducts();
+    public Map<Product, Integer> getLastFiveProducts();
 
     /**
      * @return template repository for cart

@@ -8,15 +8,8 @@ public class Laptop extends Product {
 
     private String producer;
     private double screenResolution;
-    private static final String DEFAULT_PRODUCER = "Dell";
-    private static final double DEFAULT_SCREEN = 15.6;
 
-    /**
-     * Sets producer and screen default value
-     */
     public Laptop() {
-        this.producer = DEFAULT_PRODUCER;
-        this.screenResolution = DEFAULT_SCREEN;
     }
 
     /**

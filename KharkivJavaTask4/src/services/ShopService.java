@@ -25,21 +25,14 @@ public interface ShopService {
      * @param secondDate
      * @return order list in date range
      */
-    public Map ordersInRange(Date firstDate, Date secondDate);
+    public Map<Date, Map> ordersInRange(Date firstDate, Date secondDate);
 
     /**
      *
      * @param date
      * @return  order on the nearest date
      */
-    public Map orderOnTheNearestDate(Date date);
-
-    /**
-     * displays all orders that in map
-     * @param map
-     * @return string representation
-     */
-    public String printOrdersInMap(Map map);
+    public Map<Date, Map> orderOnTheNearestDate(Date date);
 
     /**
      *

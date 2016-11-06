@@ -2,6 +2,7 @@ package view.impl;
 
 import services.CartService;
 import view.Command;
+import view.appl.PrintItems;
 
 /**
  * Created by Arsal on 05.11.2016.
@@ -20,7 +21,7 @@ public class ShowProductsInCartCommand implements Command {
      */
     @Override
     public void exec() {
-        System.out.println("---------------------------------------------------------");
-        System.out.println(cartService.printProductsInMap(cartService.getCartRepository().getCart().getContainer()));
+        System.out.println(line);
+        System.out.println(PrintItems.printProductsInMap(cartService.getCartRepository().getCart().getContainer()));
     }
 }

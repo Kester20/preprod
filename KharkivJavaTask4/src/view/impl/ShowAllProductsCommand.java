@@ -1,7 +1,8 @@
 package view.impl;
 
-import storage.Products;
+import repository.impl.ProductRepositoryImpl;
 import view.Command;
+import view.appl.PrintItems;
 
 /**
  * Created by Arsal on 05.11.2016.
@@ -9,11 +10,11 @@ import view.Command;
  */
 public class ShowAllProductsCommand implements Command {
 
-    /**
-     * shows all products
-     */
-    @Override
-    public void exec() {
-        System.out.println(Products.printList());
-    }
+	/**
+	 * shows all products
+	 */
+	@Override
+	public void exec() {
+		System.out.println(PrintItems.printList(ProductRepositoryImpl.getList()));
+	}
 }

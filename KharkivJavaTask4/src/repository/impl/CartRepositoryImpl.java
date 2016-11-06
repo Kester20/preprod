@@ -1,5 +1,6 @@
 package repository.impl;
 
+import entity.product.Product;
 import entity.shop.Cart;
 import repository.CartRepository;
 
@@ -9,19 +10,19 @@ import repository.CartRepository;
  */
 public class CartRepositoryImpl implements CartRepository {
 
-    private Cart cart;
+	private Cart cart;
 
-    public CartRepositoryImpl(Cart cart) {
-        this.cart = cart;
-    }
+	public CartRepositoryImpl(Cart cart) {
+		this.cart = cart;
+	}
 
-    @Override
-    public void addProductToCart(int idProduct, int numberOfProduct) {
-        getCart().getContainer().put(idProduct, numberOfProduct);
-    }
+	@Override
+	public void addProductToCart(Product product, int numberOfProduct) {
+		getCart().getContainer().put(product, numberOfProduct);
+	}
 
-    @Override
-    public Cart getCart() {
-        return cart;
-    }
+	@Override
+	public Cart getCart() {
+		return cart;
+	}
 }

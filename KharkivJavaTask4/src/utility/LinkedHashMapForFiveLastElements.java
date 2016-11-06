@@ -1,5 +1,7 @@
 package utility;
 
+import entity.product.Product;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -7,7 +9,7 @@ import java.util.Map;
  * Created by Said_Sulaiman_Arsala on 11/4/2016.
  * keeps 5 last elements
  */
-public class LinkedHashMapForFiveLastElements extends LinkedHashMap {
+public class LinkedHashMapForFiveLastElements extends LinkedHashMap <Product, Integer>{
 
     private static final int MAX_ENTRIES = 5;
 

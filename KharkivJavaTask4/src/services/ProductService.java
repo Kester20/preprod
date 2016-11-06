@@ -1,7 +1,6 @@
 package services;
 
 import entity.product.Product;
-import repository.CartRepository;
 import repository.ProductRepository;
 
 /**
@@ -10,16 +9,16 @@ import repository.ProductRepository;
  */
 public interface ProductService {
 
-    /**
-     * gets product by id
-     *
-     * @param id product
-     * @return product
-     */
-    public Product getProductById(int id);
+	/**
+	 * gets product by id
+	 *
+	 * @param id product
+	 * @return product
+	 */
+	public Product getProductById(int id);
 
-    /**
-     * @return template repository for product
-     */
-    public ProductRepository getProductRepository();
+	/**
+	 * @return template repository for product
+	 */
+	public ProductRepository getProductRepository();
 }

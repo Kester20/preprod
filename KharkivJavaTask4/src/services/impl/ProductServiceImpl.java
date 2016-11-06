@@ -11,20 +11,20 @@ import services.ProductService;
  */
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepository productRepository;
+	private ProductRepository productRepository;
 
-    public ProductServiceImpl() {
-        this.productRepository = new ProductRepositoryImpl();
-    }
+	public ProductServiceImpl() {
+		this.productRepository = new ProductRepositoryImpl();
+	}
 
-    @Override
-    public Product getProductById(int id) {
-        return productRepository.getProductById(id);
-    }
+	@Override
+	public Product getProductById(int id) {
+		return productRepository.getProductById(id);
+	}
 
-    @Override
-    public ProductRepository getProductRepository() {
-        return productRepository;
-    }
+	@Override
+	public ProductRepository getProductRepository() {
+		return productRepository;
+	}
 
 }

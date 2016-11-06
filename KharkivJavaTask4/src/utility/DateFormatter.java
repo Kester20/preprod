@@ -10,14 +10,18 @@ import java.util.Date;
  */
 public class DateFormatter {
 
-    /**
-     * format string to date
-     *
-     * @param date
-     * @return
-     * @throws ParseException
-     */
-    public static Date format(String date) throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(date);
-    }
+	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private static Date date = new Date();
+
+	/**
+	 * format string to date
+	 *
+	 * @param dateString
+	 * @return
+	 * @throws ParseException
+	 */
+	public static Date format(String dateString) throws ParseException {
+		date = simpleDateFormat.parse(dateString);
+		return date;
+	}
 }

@@ -1,10 +1,11 @@
 package services.impl;
 
+import entity.product.Product;
 import org.junit.Before;
 import org.junit.Test;
+import repository.impl.ProductRepositoryImpl;
 import services.CartService;
 import services.ProductService;
-import storage.Products;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +25,7 @@ public class ProductServiceImplTest {
     @Test
     public void testGetProductById() {
         CartService cartService = new CartServiceImpl();
-        cartService.getCartRepository().getCart().getContainer().put(3, 55);
-        assertEquals(productService.getProductById(3), Products.getList().get(3));
+        cartService.getCartRepository().getCart().getContainer().put(new Product(3, "a", 5), 55);
+        assertEquals(productService.getProductById(3), ProductRepositoryImpl.getList().get(3));
     }
 }
