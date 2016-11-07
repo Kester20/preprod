@@ -2,6 +2,7 @@ package services.impl;
 
 import entity.product.Product;
 import repository.ProductRepository;
+import repository.factory.RepositoryFactory;
 import repository.impl.ProductRepositoryImpl;
 import services.ProductService;
 
@@ -11,20 +12,20 @@ import services.ProductService;
  */
 public class ProductServiceImpl implements ProductService {
 
-	private ProductRepository productRepository;
+	private RepositoryFactory repositoryFactory;
 
 	public ProductServiceImpl() {
-		this.productRepository = new ProductRepositoryImpl();
+		this.repositoryFactory = new RepositoryFactory();
 	}
 
 	@Override
 	public Product getProductById(int id) {
-		return productRepository.getProductById(id);
+		return repositoryFactory.getProductRepository().getProductById(id);
 	}
 
 	@Override
 	public ProductRepository getProductRepository() {
-		return productRepository;
+		return repositoryFactory.getProductRepository();
 	}
 
 }
