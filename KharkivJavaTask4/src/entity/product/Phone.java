@@ -30,7 +30,7 @@ public class Phone extends Product {
 	}
 
 	/**
-	 * @param producer Phone
+	 * @param producer new value of producer's name
 	 */
 	public void setProducer(String producer) {
 		this.producer = producer;

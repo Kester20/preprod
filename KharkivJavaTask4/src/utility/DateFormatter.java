@@ -10,8 +10,7 @@ import java.util.Date;
  */
 public class DateFormatter {
 
-	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	private static Date date = new Date();
+	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
 
 	/**
 	 * format string to date
@@ -21,7 +20,6 @@ public class DateFormatter {
 	 * @throws ParseException
 	 */
 	public static Date format(String dateString) throws ParseException {
-		date = simpleDateFormat.parse(dateString);
-		return date;
+		return simpleDateFormat.parse(dateString);
 	}
 }
