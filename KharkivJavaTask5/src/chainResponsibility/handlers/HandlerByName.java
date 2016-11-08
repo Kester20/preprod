@@ -10,28 +10,30 @@ import java.util.List;
  */
 public class HandlerByName extends RequestHandler {
 
-    private String byName;
+	private String byName;
 
-    public HandlerByName(String byName) {
-        this.byName = byName;
-    }
+	public HandlerByName(String byName) {
+		this.byName = byName;
+	}
 
-    public String getByName() {
-        return byName;
-    }
+	public String getByName() {
+		return byName;
+	}
 
-    @Override
-    public List<File> handleRequest(List<File> fileList) {
-        Iterator iterator = fileList.iterator();
-        while (iterator.hasNext()){
-            File file = (File) iterator.next();
-            if(!file.getName().equals(getByName())){
-                iterator.remove();
-            }
-        }
-        if(successor != null){
-            successor.handleRequest(fileList);
-        }
-        return fileList;
-    }
+	@Override
+	public List<File> handleRequest(List<File> fileList) {
+		if (getByName() != null) {
+			Iterator iterator = fileList.iterator();
+			while (iterator.hasNext()) {
+				File file = (File) iterator.next();
+				if (!file.getName().startsWith(getByName())) {
+					iterator.remove();
+				}
+			}
+		}
+		if (successor != null) {
+			successor.handleRequest(fileList);
+		}
+		return fileList;
+	}
 }

@@ -10,18 +10,19 @@ import java.util.List;
 
 public abstract class RequestHandler {
 
-    protected RequestHandler successor;
+	protected RequestHandler successor;
 
-    /**
-     * receiver creation
-     * @param successor - next in the chain(receiver)
-     */
-    public void setSuccessor(RequestHandler successor){
-        this.successor = successor;
-    }
+	/**
+	 * receiver creation
+	 *
+	 * @param successor - next in the chain(receiver)
+	 */
+	public void setSuccessor(RequestHandler successor) {
+		this.successor = successor;
+	}
 
-    /**
-     * processes the request
-     */
-    public abstract List<File> handleRequest(List<File> fileList);
+	/**
+	 * processes the request
+	 */
+	public abstract List<File> handleRequest(List<File> fileList);
 }
