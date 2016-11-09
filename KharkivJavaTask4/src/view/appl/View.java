@@ -1,5 +1,10 @@
 package view.appl;
 
+import entity.product.Laptop;
+import entity.product.Product;
+import serialization.Serialize;
+
+import java.io.IOException;
 import java.text.ParseException;
 
 /**
@@ -18,7 +23,11 @@ public class View {
 	 * Display menu
 	 * @throws ParseException
 	 */
-	public void viewApplication() throws ParseException {
+	public void viewApplication() throws ParseException, IOException, ClassNotFoundException {
+
+		/*application.getProductService().getProductRepository().setList(Serialize.deSerialize("ser.out"));
+		System.out.println(application.getProductService().getProductRepository().getList());*/
+
 		while (true) {
 			System.out.println("///////////////////////////////////////////////////////");
 			System.out.println("1. Show all products.");
@@ -34,6 +43,9 @@ public class View {
 
 			int operation = application.getScanner().nextInt();
 			if (operation == 8) {
+				application.getProductService().getProductRepository().getList().add(new Laptop(1, "a", 55,"b",15.6));
+				Serialize.serializeSeveralTimes(application.getProductService().getProductRepository(), 15000);
+				Serialize.saveGZip("");
 				return;
 			}
 			application.getCommandMap().get(operation).exec();

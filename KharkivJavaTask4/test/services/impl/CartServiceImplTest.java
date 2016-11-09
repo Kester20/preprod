@@ -1,5 +1,6 @@
 package services.impl;
 
+import entity.product.Laptop;
 import entity.product.Product;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class CartServiceImplTest {
 	@Before
 	public void initial() {
 		this.cartService = new CartServiceImpl();
-		this.product = new Product(1, "a", 15000);
+		this.product = new Laptop(1, "a", 15000, "b", 15.6);
 	}
 
 	@Test
@@ -41,13 +42,13 @@ public class CartServiceImplTest {
 
 	@Test
 	public void testGetLastFiveProducts() {
-		cartService.getCartRepository().addProductToCart(new Product(1, "a", 5), 1);
-		cartService.getCartRepository().addProductToCart(new Product(2, "b", 5), 1);
-		cartService.getCartRepository().addProductToCart(new Product(3, "c", 5), 1);
-		cartService.getCartRepository().addProductToCart(new Product(4, "d", 5), 1);
-		cartService.getCartRepository().addProductToCart(new Product(5, "e", 5), 1);
-		cartService.getCartRepository().addProductToCart(new Product(6, "f", 5), 1);
-		cartService.getCartRepository().addProductToCart(new Product(7, "g", 5), 1);
+		cartService.getCartRepository().addProductToCart(new Laptop(1, "a", 5, "a", 15.6), 1);
+		cartService.getCartRepository().addProductToCart(new Laptop(2, "b", 5, "a", 15.6), 1);
+		cartService.getCartRepository().addProductToCart(new Laptop(3, "c", 5, "a", 15.6), 1);
+		cartService.getCartRepository().addProductToCart(new Laptop(4, "d", 5, "a", 15.6), 1);
+		cartService.getCartRepository().addProductToCart(new Laptop(5, "e", 5, "a", 15.6), 1);
+		cartService.getCartRepository().addProductToCart(new Laptop(6, "f", 5, "a", 15.6), 1);
+		cartService.getCartRepository().addProductToCart(new Laptop(7, "g", 5, "a", 15.6), 1);
 
 		List<Integer> list = new ArrayList() {{
 			add(3);

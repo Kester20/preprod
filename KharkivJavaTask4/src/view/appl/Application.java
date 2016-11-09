@@ -40,7 +40,7 @@ public class Application {
 		scanner = new Scanner(System.in);
 
 		commandMap = new HashMap<>();
-		commandMap.put(firstCommand, new ShowAllProductsCommand());
+		commandMap.put(firstCommand, new ShowAllProductsCommand(productService));
 		commandMap.put(secondCommand, new AddProductToCartCommand(cartService, productService));
 		commandMap.put(thirdCommand, new ShowProductsInCartCommand(cartService));
 		commandMap.put(fourthCommand, new BuyAllProductsInCartCommand(cartService, shopService));

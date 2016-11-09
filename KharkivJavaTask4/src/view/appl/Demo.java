@@ -1,5 +1,6 @@
 package view.appl;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 /**
@@ -7,7 +8,7 @@ import java.text.ParseException;
  * class demo
  */
 public class Demo {
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException, IOException, ClassNotFoundException {
 		View view = new View();
 		view.viewApplication();
 	}

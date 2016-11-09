@@ -1,9 +1,11 @@
 package entity.product;
 
+import java.io.Serializable;
+
 /**
  * Entity product
  */
-public class Product {
+public abstract class Product implements Serializable {
 
     private String name;
     private double cost;
