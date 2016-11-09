@@ -17,16 +17,16 @@ public class BuilderChain {
 	 * initialize filter by name
 	 * @param name name of the file
 	 */
-	public void createFilterByName(String name){
-		byName = new HandlerByName(name);
+	public void createFilterByName(boolean isNeed, String name){
+		byName = new HandlerByName(isNeed, name);
 	}
 
 	/**
 	 * initialize filter by extension
 	 * @param ext extension of file
 	 */
-	public void createFilterByExtension(String ext){
-		byExt = new HandlerByExtension(ext);
+	public void createFilterByExtension(boolean isNeed, String ext){
+		byExt = new HandlerByExtension(isNeed, ext);
 	}
 
 	/**
@@ -34,22 +34,22 @@ public class BuilderChain {
 	 * @param firstBorder first border of the range
 	 * @param secondBorder second border of the range
 	 */
-	public void createFilterBySize(int firstBorder, int secondBorder){
-		bySize = new HandlerBySize(firstBorder, secondBorder);
+	public void createFilterBySize(boolean isNeed, int firstBorder, int secondBorder){
+		bySize = new HandlerBySize(isNeed, firstBorder, secondBorder);
 	}
 
 	/**
 	 *
-	 * @param firstDate
-	 * @param secondDate
+	 * @param firstDate first date of the range
+	 * @param secondDate second date of the range
 	 */
-	public void createFilterByDate(long firstDate, long secondDate){
-		byDate = new HandlerByDateOfChange(firstDate, secondDate);
+	public void createFilterByDate(boolean isNeed, long firstDate, long secondDate){
+		byDate = new HandlerByDateOfChange(isNeed, firstDate, secondDate);
 	}
 
 	/**
 	 * create chain of handlers
-	 * @return chain of handlers
+	 * @return head of the chain
 	 */
 	public RequestHandler getChain() {
 		byName.setSuccessor(byExt);

@@ -10,30 +10,41 @@ import java.util.List;
  */
 public class HandlerByExtension extends RequestHandler {
 
-	private String byExtension;
+    private String byExtension;
 
-	public HandlerByExtension(String byExtension) {
-		this.byExtension = byExtension;
-	}
+    /**
+     * initialize the handler
+     * @param isNeed value of need(true/false)
+     * @param byExtension criteria
+     */
+    public HandlerByExtension(boolean isNeed, String byExtension) {
+        super(isNeed);
+        this.byExtension = byExtension;
+    }
 
-	public String getByExtension() {
-		return byExtension;
-	}
+    /**
+     *
+     * @return criteria
+     */
+    public String getByExtension() {
+        return byExtension;
+    }
 
-	@Override
-	public List<File> handleRequest(List<File> fileList) {
-		if (getByExtension() != null) {
-			Iterator iterator = fileList.iterator();
-			while (iterator.hasNext()) {
-				File file = (File) iterator.next();
-				if (!file.getName().endsWith(byExtension)) {
-					iterator.remove();
-				}
-			}
-		}
-		if (successor != null) {
-			successor.handleRequest(fileList);
-		}
-		return fileList;
-	}
+    @Override
+    public List<File> handleRequest(List<File> fileList) {
+        System.out.println("Handle by ext");
+        Iterator iterator = fileList.iterator();
+        while (iterator.hasNext()) {
+            File file = (File) iterator.next();
+            if (!file.getName().endsWith(byExtension)) {
+                iterator.remove();
+            }
+        }
+        if (!fileList.isEmpty() & successor != null) {
+            if(successor.isNeed()){
+                successor.handleRequest(fileList);
+            }
+        }
+        return fileList;
+    }
 }

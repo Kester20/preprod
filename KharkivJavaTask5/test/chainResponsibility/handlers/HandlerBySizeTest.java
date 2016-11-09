@@ -16,7 +16,7 @@ public class HandlerBySizeTest {
 
     @Before
     public void initial(){
-        handlerBySize = new HandlerBySize(14, 25);
+        handlerBySize = new HandlerBySize(true, 14, 25);
     }
 
     @Test
