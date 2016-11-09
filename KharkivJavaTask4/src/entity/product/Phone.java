@@ -12,10 +12,10 @@ public class Phone extends Product {
 	}
 
 	/**
-	 * @param id       Phone
-	 * @param name     Phone
-	 * @param cost     Phone
-	 * @param producer Phone
+	 * @param id       Phone's id
+	 * @param name     Phone's name
+	 * @param cost     Phone's cost
+	 * @param producer Phone's producer
 	 */
 	public Phone(int id, String name, double cost, String producer) {
 		super(id, name, cost);
@@ -36,9 +36,6 @@ public class Phone extends Product {
 		this.producer = producer;
 	}
 
-	/**
-	 * @return a string representation of phone
-	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

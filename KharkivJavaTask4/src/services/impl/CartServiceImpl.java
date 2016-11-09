@@ -19,23 +19,25 @@ import java.util.Map;
 public class CartServiceImpl implements CartService {
 
 	private RepositoryFactory repositoryFactory;
+	private CartRepository cartRepository;
 	private LinkedHashMap<Product, Integer> linkedHashMap;
 	private static final int DEFAULT_PRODUCT_NUMBER = 1;
 
 	public CartServiceImpl() {
 		this.repositoryFactory = new RepositoryFactory();
+		this.cartRepository = repositoryFactory.getCartRepository();
 		this.linkedHashMap = new LinkedHashMapForFiveLastElements();
 	}
 
 
 	@Override
 	public void addProductToCart(Product product) {
-		if (repositoryFactory.getCartRepository().getCart().getContainer().containsKey(product)) {
-			int numberOfProduct = repositoryFactory.getCartRepository().getCart().getContainer().get(product);
-			repositoryFactory.getCartRepository().addProductToCart(product, ++numberOfProduct);
+		if (cartRepository.getCart().getContainer().containsKey(product)) {
+			int numberOfProduct = cartRepository.getCart().getContainer().get(product);
+			cartRepository.addProductToCart(product, ++numberOfProduct);
 			linkedHashMap.put(product, numberOfProduct);
 		} else {
-			repositoryFactory.getCartRepository().addProductToCart(product, DEFAULT_PRODUCT_NUMBER);
+			cartRepository.addProductToCart(product, DEFAULT_PRODUCT_NUMBER);
 			linkedHashMap.put(product, DEFAULT_PRODUCT_NUMBER);
 		}
 	}
@@ -43,10 +45,8 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public int getAmountOfProductsInCart() {
 		int amount = 0;
-		Iterator iterator = repositoryFactory.getCartRepository().getCart().getContainer().keySet().iterator();
-		while (iterator.hasNext()) {
-			Product product = (Product) iterator.next();
-			amount += (product.getCost() * repositoryFactory.getCartRepository().getCart().getContainer().get(product));
+		for (Product product:cartRepository.getCart().getContainer().keySet()) {
+			amount += (product.getCost() * cartRepository.getCart().getContainer().get(product));
 		}
 		return amount;
 	}
@@ -58,6 +58,6 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public CartRepository getCartRepository() {
-		return repositoryFactory.getCartRepository();
+		return cartRepository;
 	}
 }

@@ -4,7 +4,6 @@ import entity.product.Product;
 import entity.shop.Cart;
 import repository.ShopRepository;
 import repository.factory.RepositoryFactory;
-import repository.impl.ShopRepositoryImpl;
 import services.ShopService;
 
 import java.util.Date;
@@ -18,9 +17,11 @@ import java.util.Map;
 public class ShopServiceImpl implements ShopService {
 
 	private RepositoryFactory repositoryFactory;
+	private ShopRepository shopRepository;
 
 	public ShopServiceImpl() {
 		this.repositoryFactory = new RepositoryFactory();
+		this.shopRepository = repositoryFactory.getShopRepository();
 	}
 
 	@Override
@@ -31,24 +32,26 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public Map<Date, Map> ordersInRange(Date firstDate, Date secondDate) {
-		return repositoryFactory.getShopRepository().getShop().getListOrders().subMap(firstDate, secondDate);
+		return shopRepository.getShop().getListOrders().subMap(firstDate, secondDate);
 	}
 
 	@Override
 	public Map<Date, Map> orderOnTheNearestDate(Date date) {
 		Map<Date, Map> result = new HashMap<>();
-		Date floorDate = repositoryFactory.getShopRepository().getShop().getListOrders().floorKey(date);
-		Date ceilingDate = repositoryFactory.getShopRepository().getShop().getListOrders().ceilingKey(date);
+		Date floorDate = shopRepository.getShop().getListOrders().floorKey(date);
+		Date ceilingDate = shopRepository.getShop().getListOrders().ceilingKey(date);
 
-		if (floorDate == null) {
-			result.put(ceilingDate, repositoryFactory.getShopRepository().getShop().getListOrders().get(ceilingDate));
-		} else if (ceilingDate == null) {
-			result.put(floorDate, repositoryFactory.getShopRepository().getShop().getListOrders().get(floorDate));
-		} else {
-			if (floorDate.getTime() - date.getTime() > ceilingDate.getTime() - date.getTime()) {
-				result.put(ceilingDate, repositoryFactory.getShopRepository().getShop().getListOrders().get(ceilingDate));
+		if (floorDate != null & ceilingDate != null) {
+			if (floorDate == null) {
+				result.put(ceilingDate, shopRepository.getShop().getListOrders().get(ceilingDate));
+			} else if (ceilingDate == null) {
+				result.put(floorDate, shopRepository.getShop().getListOrders().get(floorDate));
 			} else {
-				result.put(floorDate, repositoryFactory.getShopRepository().getShop().getListOrders().get(floorDate));
+				if (floorDate.getTime() - date.getTime() > ceilingDate.getTime() - date.getTime()) {
+					result.put(ceilingDate, shopRepository.getShop().getListOrders().get(ceilingDate));
+				} else {
+					result.put(floorDate, shopRepository.getShop().getListOrders().get(floorDate));
+				}
 			}
 		}
 		return result;
@@ -56,6 +59,6 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public ShopRepository getShopRepository() {
-		return repositoryFactory.getShopRepository();
+		return shopRepository;
 	}
 }

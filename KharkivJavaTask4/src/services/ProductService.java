@@ -12,13 +12,13 @@ public interface ProductService {
 	/**
 	 * gets product by id
 	 *
-	 * @param id product
+	 * @param id product's id
 	 * @return product
 	 */
 	public Product getProductById(int id);
 
 	/**
-	 * @return template repository for product
+	 * @return repository
 	 */
 	public ProductRepository getProductRepository();
 }

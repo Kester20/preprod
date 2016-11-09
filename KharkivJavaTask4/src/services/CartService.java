@@ -19,7 +19,7 @@ public interface CartService {
     public void addProductToCart(Product product);
 
     /**
-     * @return amount of products that in shop cart
+     * @return amount of products cost that in shop cart
      */
     public int getAmountOfProductsInCart();
 

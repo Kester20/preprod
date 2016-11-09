@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class DateFormatter {
 
-	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 	/**
 	 * format string to date

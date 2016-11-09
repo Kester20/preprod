@@ -13,19 +13,21 @@ import services.ProductService;
 public class ProductServiceImpl implements ProductService {
 
 	private RepositoryFactory repositoryFactory;
+	private ProductRepository productRepository;
 
 	public ProductServiceImpl() {
 		this.repositoryFactory = new RepositoryFactory();
+		this.productRepository = repositoryFactory.getProductRepository();
 	}
 
 	@Override
 	public Product getProductById(int id) {
-		return repositoryFactory.getProductRepository().getProductById(id);
+		return productRepository.getProductById(id);
 	}
 
 	@Override
 	public ProductRepository getProductRepository() {
-		return repositoryFactory.getProductRepository();
+		return productRepository;
 	}
 
 }

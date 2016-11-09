@@ -13,11 +13,11 @@ public class SmartPhone extends Phone {
 	}
 
 	/**
-	 * @param id             smart phone
-	 * @param name           smart phone
-	 * @param cost           smart phone
-	 * @param producer       smart phone
-	 * @param androidVersion smart phone
+	 * @param id             smart phone's id
+	 * @param name           smart phone's name
+	 * @param cost           smart phone's cost
+	 * @param producer       smart phone's producer
+	 * @param androidVersion smart phone's version
 	 */
 	public SmartPhone(int id, String name, double cost, String producer, String androidVersion) {
 		super(id, name, cost, producer);

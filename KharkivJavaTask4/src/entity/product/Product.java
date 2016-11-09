@@ -14,8 +14,8 @@ public class Product {
     }
 
     /**
-     * @param name product
-     * @param cost product
+     * @param name product's name
+     * @param cost product's cost
      */
     public Product(int id, String name, double cost) {
         this.id = id;
