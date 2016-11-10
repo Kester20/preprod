@@ -1,15 +1,14 @@
 package services.impl;
 
 import entity.product.Laptop;
-import entity.product.Product;
 import org.junit.Before;
 import org.junit.Test;
 import repository.factory.RepositoryFactory;
-import repository.impl.ProductRepositoryImpl;
 import services.CartService;
 import services.ProductService;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Arsal on 05.11.2016.
@@ -17,17 +16,16 @@ import static org.junit.Assert.assertEquals;
  */
 public class ProductServiceImplTest {
 
-    private ProductService productService;
+	private ProductService productService;
 
-    @Before
-    public void initial() {
-        productService = new ProductServiceImpl(new RepositoryFactory());
-    }
+	@Before
+	public void initial() {
+		productService = new ProductServiceImpl(new RepositoryFactory());
+	}
 
-    @Test
-    public void testGetProductById() {
-        CartService cartService = new CartServiceImpl(new RepositoryFactory());
-        cartService.getCartRepository().getCart().getContainer().put(new Laptop(3, "a", 5, "b", 15.6), 55);
-        assertEquals(productService.getProductById(3), productService.getProductRepository().getList().get(3));
-    }
+	@Test
+	public void testAddProduct() {
+		productService.addProductToList(new Laptop(3, "a", 5, "b", 15.6));
+		assertTrue(productService.getProductRepository().getList().size() ==1);
+	}
 }

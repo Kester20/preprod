@@ -20,7 +20,7 @@ public class Serialize {
 
     /**
      * serializes object
-     * @param productRepository the object to be serialized
+     * @param productRepository the repository, which contains list, than will be serialized
      * @throws IOException
      */
     public static void serialize(ProductRepository productRepository) throws IOException {
