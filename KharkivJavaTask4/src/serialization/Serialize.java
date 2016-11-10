@@ -14,45 +14,89 @@ import java.util.zip.GZIPOutputStream;
  */
 public class Serialize {
 
-	public static void serialize(ProductRepository productRepository) throws IOException {
-		OutputStream fos = new FileOutputStream("ser.out");
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(productRepository.getList());
-		oos.flush();
-		oos.close();
-	}
+    private static final String FILE_NAME_SER = "ser.out";
+    private static final String FILE_NAME_SEVERAL_SER = "serSeveralTimes.out";
+    private static final String FILE_NAME_GZIP = "ser.gz";
 
-	public static List<Product> deSerialize(String fileName) throws IOException, ClassNotFoundException {
-		InputStream fis = new FileInputStream(fileName);
-		ObjectInputStream oin = new ObjectInputStream(fis);
-		List<Product> list = (ArrayList<Product>) oin.readObject();
-		return list;
-	}
+    /**
+     * serializes object
+     * @param productRepository the object to be serialized
+     * @throws IOException
+     */
+    public static void serialize(ProductRepository productRepository) throws IOException {
+        try (OutputStream fos = new FileOutputStream(FILE_NAME_SER);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(productRepository.getList());
+        }
+    }
 
-	public static void serializeSeveralTimes(ProductRepository productRepository, int times) throws IOException {
-		OutputStream fos = new FileOutputStream("serSeveralTimes.out");
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		for (int i = 0; i < times; i++) {
-			oos.writeObject(productRepository.getList());
-		}
-		oos.flush();
-		oos.close();
-	}
+    /**
+     *
+     * @param fileName file name, where it will go deserialization
+     * @return list of products
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public static List<Product> deSerialize(String fileName) throws IOException, ClassNotFoundException {
+        List<Product> list;
+        try (InputStream fis = new FileInputStream(fileName);
+             ObjectInputStream oin = new ObjectInputStream(fis);) {
+            list = (ArrayList<Product>) oin.readObject();
+        }
+        return list;
+    }
 
-	public static void saveGZip(String filename) throws IOException {
-		byte[] buffer = new byte[1024];
+    /**
+     * serializes object several times
+     * @param productRepository the object to be serialized
+     * @param times - the number of times
+     * @throws IOException
+     */
+    public static void serializeSeveralTimes(ProductRepository productRepository, int times) throws IOException {
+        try(OutputStream fos = new FileOutputStream(FILE_NAME_SEVERAL_SER);
+            ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            for (int i = 0; i < times; i++) {
+                oos.writeObject(productRepository.getList());
+            }
+        }
+    }
 
-		GZIPOutputStream gZIPOutputStream = new GZIPOutputStream(new FileOutputStream("ser.gz"));
+    /**
+     * saves file to archive
+     * @throws IOException
+     */
+    public static void saveGZip() throws IOException {
+        byte[] buffer = new byte[1024];
+        try(GZIPOutputStream gZIPOutputStream = new GZIPOutputStream(new FileOutputStream(FILE_NAME_GZIP));
+            FileInputStream fileInputStream = new FileInputStream(FILE_NAME_SEVERAL_SER)){
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                gZIPOutputStream.write(buffer, 0, len);
+            }
+        }
+    }
 
-		FileInputStream fileInputStream = new FileInputStream("serSeveralTimes.out");
-		int len;
-		while ((len = fileInputStream.read(buffer)) > 0) {
-			gZIPOutputStream.write(buffer, 0, len);
-		}
-		fileInputStream.close();
-		gZIPOutputStream.finish();
-		gZIPOutputStream.close();
+    /**
+     *
+     * @return the name of the file, which was held serialization
+     */
+    public static String getFileNameSer() {
+        return FILE_NAME_SER;
+    }
 
-	}
+    /**
+     *
+     * @return the name of the file, which was held serialization several times
+     */
+    public static String getFileNameSeveralSer() {
+        return FILE_NAME_SEVERAL_SER;
+    }
 
+    /**
+     *
+     * @return the name of the GZip archive
+     */
+    public static String getFileNameGzip() {
+        return FILE_NAME_GZIP;
+    }
 }

@@ -16,18 +16,16 @@ import java.util.Map;
  */
 public class ShopServiceImpl implements ShopService {
 
-	private RepositoryFactory repositoryFactory;
 	private ShopRepository shopRepository;
 
-	public ShopServiceImpl() {
-		this.repositoryFactory = new RepositoryFactory();
-		this.shopRepository = repositoryFactory.getShopRepository();
+	public ShopServiceImpl(RepositoryFactory factory) {
+		this.shopRepository = factory.getShopRepository();
 	}
 
 	@Override
 	public void addOrder(Date date, Cart cart) {
 		Map<Product, Integer> cloneCart = new HashMap((Map<Product, Integer>) cart.getContainer().clone());
-		repositoryFactory.getShopRepository().addOrder(date, cloneCart);
+		shopRepository.addOrder(date, cloneCart);
 	}
 
 	@Override

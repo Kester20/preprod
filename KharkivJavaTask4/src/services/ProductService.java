@@ -9,16 +9,23 @@ import repository.ProductRepository;
  */
 public interface ProductService {
 
-	/**
-	 * gets product by id
-	 *
-	 * @param id product's id
-	 * @return product
-	 */
-	public Product getProductById(int id);
+    /**
+     * adds product to product list
+     *
+     * @param product product, that will be added
+     */
+    public void addProductToList(Product product);
 
-	/**
-	 * @return repository
-	 */
-	public ProductRepository getProductRepository();
+    /**
+     * gets product by id
+     *
+     * @param id product's id
+     * @return product
+     */
+    public Product getProductById(int id);
+
+    /**
+     * @return repository
+     */
+    public ProductRepository getProductRepository();
 }

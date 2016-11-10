@@ -3,6 +3,7 @@ package services.impl;
 import entity.shop.Cart;
 import org.junit.Before;
 import org.junit.Test;
+import repository.factory.RepositoryFactory;
 import services.ShopService;
 import utility.DateFormatter;
 
@@ -22,7 +23,7 @@ public class ShopServiceImplTest {
 
     @Before
     public void initial() {
-        shopService = new ShopServiceImpl();
+        shopService = new ShopServiceImpl(new RepositoryFactory());
     }
 
     @Test

@@ -12,12 +12,15 @@ import services.ProductService;
  */
 public class ProductServiceImpl implements ProductService {
 
-	private RepositoryFactory repositoryFactory;
 	private ProductRepository productRepository;
 
-	public ProductServiceImpl() {
-		this.repositoryFactory = new RepositoryFactory();
-		this.productRepository = repositoryFactory.getProductRepository();
+	public ProductServiceImpl(RepositoryFactory factory) {
+		this.productRepository = factory.getProductRepository();
+	}
+
+	@Override
+	public void addProductToList(Product product) {
+		productRepository.getList().add(product);
 	}
 
 	@Override

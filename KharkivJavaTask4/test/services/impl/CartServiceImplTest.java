@@ -4,6 +4,7 @@ import entity.product.Laptop;
 import entity.product.Product;
 import org.junit.Before;
 import org.junit.Test;
+import repository.factory.RepositoryFactory;
 import services.CartService;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class CartServiceImplTest {
 
 	@Before
 	public void initial() {
-		this.cartService = new CartServiceImpl();
+		this.cartService = new CartServiceImpl(new RepositoryFactory());
 		this.product = new Laptop(1, "a", 15000, "b", 15.6);
 	}
 

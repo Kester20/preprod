@@ -4,6 +4,7 @@ import entity.product.Laptop;
 import entity.product.Product;
 import org.junit.Before;
 import org.junit.Test;
+import repository.factory.RepositoryFactory;
 import repository.impl.ProductRepositoryImpl;
 import services.CartService;
 import services.ProductService;
@@ -20,12 +21,12 @@ public class ProductServiceImplTest {
 
     @Before
     public void initial() {
-        productService = new ProductServiceImpl();
+        productService = new ProductServiceImpl(new RepositoryFactory());
     }
 
     @Test
     public void testGetProductById() {
-        CartService cartService = new CartServiceImpl();
+        CartService cartService = new CartServiceImpl(new RepositoryFactory());
         cartService.getCartRepository().getCart().getContainer().put(new Laptop(3, "a", 5, "b", 15.6), 55);
         assertEquals(productService.getProductById(3), productService.getProductRepository().getList().get(3));
     }

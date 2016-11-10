@@ -19,7 +19,7 @@ public class Laptop extends Product {
      * @param producer         laptop
      * @param screenResolution laptop
      */
-    public Laptop(int id, String name, double cost, String producer, double screenResolution) {
+    public Laptop(int id, String name, int cost, String producer, double screenResolution) {
         super(id, name, cost);
         this.producer = producer;
         this.screenResolution = screenResolution;

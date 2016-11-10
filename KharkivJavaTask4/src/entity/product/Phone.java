@@ -17,7 +17,7 @@ public class Phone extends Product {
 	 * @param cost     Phone's cost
 	 * @param producer Phone's producer
 	 */
-	public Phone(int id, String name, double cost, String producer) {
+	public Phone(int id, String name, int cost, String producer) {
 		super(id, name, cost);
 		this.producer = producer;
 	}

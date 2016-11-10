@@ -18,14 +18,12 @@ import java.util.Map;
  */
 public class CartServiceImpl implements CartService {
 
-	private RepositoryFactory repositoryFactory;
 	private CartRepository cartRepository;
 	private LinkedHashMap<Product, Integer> linkedHashMap;
 	private static final int DEFAULT_PRODUCT_NUMBER = 1;
 
-	public CartServiceImpl() {
-		this.repositoryFactory = new RepositoryFactory();
-		this.cartRepository = repositoryFactory.getCartRepository();
+	public CartServiceImpl(RepositoryFactory factory) {
+		this.cartRepository = factory.getCartRepository();
 		this.linkedHashMap = new LinkedHashMapForFiveLastElements();
 	}
 

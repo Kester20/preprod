@@ -19,7 +19,7 @@ public class SmartPhone extends Phone {
 	 * @param producer       smart phone's producer
 	 * @param androidVersion smart phone's version
 	 */
-	public SmartPhone(int id, String name, double cost, String producer, String androidVersion) {
+	public SmartPhone(int id, String name, int cost, String producer, String androidVersion) {
 		super(id, name, cost, producer);
 		this.androidVersion = androidVersion;
 	}

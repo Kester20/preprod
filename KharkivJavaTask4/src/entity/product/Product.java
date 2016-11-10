@@ -8,7 +8,7 @@ import java.io.Serializable;
 public abstract class Product implements Serializable {
 
     private String name;
-    private double cost;
+    private int cost;
     private int id;
 
     public Product() {
@@ -19,7 +19,7 @@ public abstract class Product implements Serializable {
      * @param name product's name
      * @param cost product's cost
      */
-    public Product(int id, String name, double cost) {
+    public Product(int id, String name, int cost) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -56,14 +56,14 @@ public abstract class Product implements Serializable {
     /**
      * @return cost product
      */
-    public double getCost() {
+    public int getCost() {
         return cost;
     }
 
     /**
      * @param cost product
      */
-    public void setCost(double cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
