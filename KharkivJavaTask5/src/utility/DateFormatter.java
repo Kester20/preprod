@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/4/2016.
+ * @author Arsalan
  * format string to date
  */
 public class DateFormatter {

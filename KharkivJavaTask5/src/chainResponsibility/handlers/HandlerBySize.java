@@ -5,13 +5,14 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/8/2016.
+ * @author Arsalan
  * handles the request and search file by size
  */
 public class HandlerBySize extends RequestHandler {
 
     private int firstBorder;
     private int secondBorder;
+    public static final int THOUSAND = 1000;
 
     /**
      * initialize the handler
@@ -43,19 +44,14 @@ public class HandlerBySize extends RequestHandler {
 
     @Override
     public List<File> handleRequest(List<File> fileList) {
-        System.out.println("Handle by size");
         Iterator iterator = fileList.iterator();
         while (iterator.hasNext()) {
             File file = (File) iterator.next();
-            if (!((file.length() > firstBorder * 1024) & (file.length() < secondBorder * 1024))) {
+            if (!((file.length() > firstBorder * THOUSAND) & (file.length() < secondBorder * THOUSAND))) {
                 iterator.remove();
             }
         }
-        if (!fileList.isEmpty() & successor != null) {
-            if(successor.isNeed()){
-                successor.handleRequest(fileList);
-            }
-        }
+        sendRequestToNextChain(fileList);
         return fileList;
     }
 }

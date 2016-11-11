@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/8/2016.
+ * @author Arsalan
  * handles the request and search file by format
  */
 public class HandlerByExtension extends RequestHandler {
@@ -23,7 +23,7 @@ public class HandlerByExtension extends RequestHandler {
     }
 
     /**
-     *
+     * in this context criteria - extension
      * @return criteria
      */
     public String getByExtension() {
@@ -32,7 +32,6 @@ public class HandlerByExtension extends RequestHandler {
 
     @Override
     public List<File> handleRequest(List<File> fileList) {
-        System.out.println("Handle by ext");
         Iterator iterator = fileList.iterator();
         while (iterator.hasNext()) {
             File file = (File) iterator.next();
@@ -40,11 +39,7 @@ public class HandlerByExtension extends RequestHandler {
                 iterator.remove();
             }
         }
-        if (!fileList.isEmpty() & successor != null) {
-            if(successor.isNeed()){
-                successor.handleRequest(fileList);
-            }
-        }
+        sendRequestToNextChain(fileList);
         return fileList;
     }
 }

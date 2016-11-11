@@ -4,13 +4,13 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/8/2016.
+ * @author Arsalan
  * the parent of the all handlers
  */
 
 public abstract class RequestHandler {
 
-    protected RequestHandler successor;
+    protected RequestHandler nextChain;
     protected boolean isNeed;
 
     public RequestHandler() {
@@ -30,7 +30,7 @@ public abstract class RequestHandler {
      * @param successor - next in the chain(receiver)
      */
     public void setSuccessor(RequestHandler successor) {
-        this.successor = successor;
+        this.nextChain = successor;
     }
 
     /**
@@ -40,6 +40,14 @@ public abstract class RequestHandler {
      * @return updated list
      */
     public abstract List<File> handleRequest(List<File> fileList);
+
+    protected void sendRequestToNextChain(List<File> fileList){
+        if (!fileList.isEmpty() && nextChain != null) {
+            if(nextChain.isNeed()){
+                nextChain.handleRequest(fileList);
+            }
+        }
+    }
 
     /**
      *

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/8/2016.
+ * @author Arsalan
  * contains all files in specific directory
  */
 public class Directory {
@@ -29,9 +29,8 @@ public class Directory {
         if (file.isDirectory()) {
             for (File temp : file.listFiles()) {
                 if (temp.isDirectory()) {
-                    File subFile = new File(temp.getAbsolutePath());
-                    resultList.add(subFile);
-                    fill(subFile.getAbsolutePath());
+                    resultList.add(temp);
+                    fill(temp.getAbsolutePath());
                 } else {
                     resultList.add(temp);
                 }
@@ -41,7 +40,7 @@ public class Directory {
     }
 
     /**
-     * @return list of files
+     * @return result list
      */
     public List<File> getResultList() {
         return resultList;

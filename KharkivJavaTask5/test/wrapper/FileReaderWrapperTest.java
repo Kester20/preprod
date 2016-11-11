@@ -5,23 +5,21 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Said_Sulaiman_Arsala on 11/8/2016.
  */
-public class FireReaderWrapperTest {
+public class FileReaderWrapperTest {
 
-    private FireReaderWrapper fireReaderWrapper;
+    private FileReaderWrapper fileReaderWrapper;
 
     @Before
     public void initial(){
-        fireReaderWrapper = new FireReaderWrapper("example");
+        fileReaderWrapper = new FileReaderWrapper("example");
     }
 
     @Test
     public void testReadFile() throws IOException {
-        fireReaderWrapper.readFile();
+        fileReaderWrapper.readFile();
     }
 
 }

@@ -11,18 +11,20 @@ import java.text.ParseException;
  */
 public class AddProductToListCommand implements Command {
 
-	private ReaderProductService readerProductService;
+    private ReaderProductService readerProductService;
 
-	public AddProductToListCommand(ReaderProductService readerProductService) {
-		this.readerProductService = readerProductService;
-	}
+    public AddProductToListCommand(ReaderProductService readerProductService) {
+        this.readerProductService = readerProductService;
+    }
 
-	/**
-	 * reads products and adds them to the list
-	 * @throws ParseException
-	 */
-	@Override
-	public void exec() throws ParseException {
-		readerProductService.read();
-	}
+    /**
+     * reads products and adds them to the list
+     *
+     * @throws ParseException
+     */
+    @Override
+    public void exec() throws ParseException {
+        //System.out.println("ENTER THE PRODUCT NAME");
+        readerProductService.read();
+    }
 }

@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/8/2016.
+ * @author Arsalan
  * handles the request and search file by date of change
  */
 public class HandlerByDateOfChange extends RequestHandler {
@@ -43,7 +43,6 @@ public class HandlerByDateOfChange extends RequestHandler {
 
     @Override
     public List<File> handleRequest(List<File> fileList) {
-        System.out.println("Handle by date");
         Iterator iterator = fileList.iterator();
         while (iterator.hasNext()) {
             File file = (File) iterator.next();
@@ -51,6 +50,7 @@ public class HandlerByDateOfChange extends RequestHandler {
                 iterator.remove();
             }
         }
+        sendRequestToNextChain(fileList);
         return fileList;
     }
 }
