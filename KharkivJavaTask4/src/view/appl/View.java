@@ -2,6 +2,7 @@ package view.appl;
 
 import serialization.Serialize;
 import view.impl.AddProductToListCommand;
+import view.impl.AddProductToListWithReflectionCommand;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,10 +37,12 @@ public class View {
 		int chooseType = scanner.nextInt();
 		application.getCommandMap().put(Application.getAddProductCommand(),
 				new AddProductToListCommand(application.getProductService(), chooseType));
+		application.getCommandMap().put(Application.getEigthCommand(),
+				new AddProductToListWithReflectionCommand(application.getProductService(), chooseType));
 
 
 		while (true) {
-			System.out.println("///////////////////////////////////////////////////////");
+			System.out.println("\n///////////////////////////////////////////////////////");
 			System.out.println("0. Add product.");
 			System.out.println("1. Show all products.");
 			System.out.println("2. Add to cart.");
@@ -48,12 +51,13 @@ public class View {
 			System.out.println("5. Show 5 last products, which were added to cart.");
 			System.out.println("6. Show orders in range");
 			System.out.println("7. Show order on the nearest date");
-			System.out.println("8. Exit.");
+			System.out.println("8. Add product with reflection.");
+			System.out.println("9. Exit.");
 			System.out.println("---------------------------------------------------------");
 			System.out.println("Choose operation:");
 
 			int operation = application.getScanner().nextInt();
-			if (operation == 8) {
+			if (operation == 9) {
 				Serialize.serialize(application.getProductService().getProductRepository());
 				return;
 			}

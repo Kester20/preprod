@@ -1,24 +1,29 @@
 package view.helpers;
 
+import entity.product.Product;
 import view.helpers.reader.ReaderProduct;
 
+import java.lang.reflect.Field;
 import java.util.*;
+
+import static entity.product.annot.ProductAnnotations.FriendlyName;
+import static entity.product.annot.ProductAnnotations.ruProperties;
 
 /**
  * @author Arsalan
- * reads product's fields from console and random
+ *         reads product's fields from console and random
  */
 public abstract class ProductHelper implements ReaderProduct {
 
 	protected Scanner scanner;
 	protected Random random;
-	private static final String ENTER_ID = "Enter product's id:";
-	private static final String ENTER_NAME = "Enter product's name:";
-	private static final String ENTER_COST = "Enter product's cost:";
 	protected static final String ID = "id";
 	protected static final String NAME = "name";
 	protected static final String COST = "cost";
+	protected static final String ENTER_PARAMETERS = "Enter the next parameters:";
 	protected static final int DEFAULT_BOUND = 1000;
+	protected ResourceBundle bundle;
+
 
 	/**
 	 * initialize types of reading
@@ -26,15 +31,17 @@ public abstract class ProductHelper implements ReaderProduct {
 	public ProductHelper() {
 		this.scanner = new Scanner(System.in);
 		this.random = new Random();
+		bundle = ResourceBundle.getBundle(ruProperties);
 	}
 
 	/**
 	 * add all 's' to list
+	 *
 	 * @param s names of fields
 	 * @return list, which contains fields name
 	 */
-	private List<String> createListFieldsName(String ... s){
-		return new ArrayList<String>(){{
+	private List<String> createListFieldsName(String... s) {
+		return new ArrayList<String>() {{
 			for (int i = 0; i < s.length; i++) {
 				add(s[i]);
 			}
@@ -43,11 +50,12 @@ public abstract class ProductHelper implements ReaderProduct {
 
 	/**
 	 * create a map
+	 *
 	 * @param listFieldsNames list, which contains fields name
-	 * @param values values of fields
+	 * @param values          values of fields
 	 * @retur map, where key - field's name, entry - value
 	 */
-	private Map<String, Object> createMapFields(List<String> listFieldsNames,Object ... values) {
+	private Map<String, Object> createMapFields(List<String> listFieldsNames, Object... values) {
 		return new HashMap<String, Object>() {{
 			for (int i = 0; i < values.length; i++) {
 				put(listFieldsNames.get(i), values[i]);
@@ -57,23 +65,32 @@ public abstract class ProductHelper implements ReaderProduct {
 
 	@Override
 	public Map<String, Object> readFromConsole() {
-		System.out.println(ENTER_ID);
+		System.out.println(ENTER_PARAMETERS);
+		printSuggestion(Product.class);
 		int productId = scanner.nextInt();
-		System.out.println(ENTER_NAME);
 		String productName = scanner.next();
-		System.out.println(ENTER_COST);
 		int productCost = scanner.nextInt();
-		return createMapFields(createListFieldsName(ID, NAME, COST),productId, productName, productCost);
+		return createMapFields(createListFieldsName(ID, NAME, COST), productId, productName, productCost);
 	}
 
 	@Override
 	public Map<String, Object> readFromRandom() {
-		System.out.println(ENTER_ID);
+		System.out.println(ENTER_PARAMETERS);
+		printSuggestion(Product.class);
 		int productId = random.nextInt(DEFAULT_BOUND);
-		System.out.println(ENTER_NAME);
 		String productName = NAME + random.nextInt(DEFAULT_BOUND);
-		System.out.println(ENTER_COST);
 		int productCost = random.nextInt(DEFAULT_BOUND);
-		return createMapFields(createListFieldsName(ID, NAME, COST),productId, productName, productCost);
+		return createMapFields(createListFieldsName(ID, NAME, COST), productId, productName, productCost);
+	}
+
+	/**
+	 * prints 'enter fields'
+	 */
+	public void printSuggestion(Class clazz) {
+		for (Field field : clazz.getDeclaredFields()) {
+			FriendlyName friendlyName = (field.getAnnotation(FriendlyName.class));
+			String value = bundle.getString(friendlyName.value());
+			System.out.print(value + ", ");
+		}
 	}
 }

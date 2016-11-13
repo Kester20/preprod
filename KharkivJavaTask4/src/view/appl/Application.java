@@ -29,6 +29,7 @@ public class Application {
 	private static final int fifthCommand = 5;
 	private static final int sixthCommand = 6;
 	private static final int seventhCommand = 7;
+	private static final int eigthCommand = 8;
 
 	private ProductService productService;
 	private CartService cartService;
@@ -82,5 +83,9 @@ public class Application {
 
 	public BuilderMap getMapBuilder() {
 		return mapBuilder;
+	}
+
+	public static int getEigthCommand() {
+		return eigthCommand;
 	}
 }

@@ -1,5 +1,7 @@
 package entity.product;
 
+import entity.product.annot.ProductAnnotations;
+
 import java.io.Serializable;
 
 /**
@@ -8,9 +10,12 @@ import java.io.Serializable;
  */
 public abstract class Product implements Serializable {
 
-	private String name;
-	private int cost;
+	@ProductAnnotations.FriendlyName("id")
 	private int id;
+	@ProductAnnotations.FriendlyName("name")
+	private String name;
+	@ProductAnnotations.FriendlyName("cost")
+	private int cost;
 
 	public Product() {
 
@@ -36,6 +41,7 @@ public abstract class Product implements Serializable {
 	/**
 	 * @param id product
 	 */
+	@ProductAnnotations.SetId
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -50,6 +56,7 @@ public abstract class Product implements Serializable {
 	/**
 	 * @param name product
 	 */
+	@ProductAnnotations.SetName
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -64,6 +71,7 @@ public abstract class Product implements Serializable {
 	/**
 	 * @param cost product
 	 */
+	@ProductAnnotations.SetCost
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
@@ -90,4 +98,6 @@ public abstract class Product implements Serializable {
 		return name != null ? name.equals(product.name) : product.name == null;
 
 	}
+
+
 }

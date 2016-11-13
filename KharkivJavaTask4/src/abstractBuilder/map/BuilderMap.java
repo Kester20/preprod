@@ -14,7 +14,7 @@ public class BuilderMap {
 	private Map<String, Builder> builderMap;
 
 	/**
-	 * initializes factory map
+	 * initializes builder map
 	 */
 	public BuilderMap() {
 		builderMap = new HashMap<>();
@@ -25,7 +25,7 @@ public class BuilderMap {
 
 	/**
 	 *
-	 * @return factory map
+	 * @return builder map
 	 */
 	public Map<String, Builder> getBuilderMap() {
 		return builderMap;

@@ -1,12 +1,16 @@
 package entity.product;
 
+import entity.product.annot.ProductAnnotations;
+
 /**
  * @author Arsalan
  *         Entity laptop
  */
 public class Laptop extends Product {
 
+	@ProductAnnotations.FriendlyName("producer")
 	private String producer;
+	@ProductAnnotations.FriendlyName("screen")
 	private double screenResolution;
 
 	public Laptop() {
@@ -35,6 +39,7 @@ public class Laptop extends Product {
 	/**
 	 * @param producer laptop
 	 */
+	@ProductAnnotations.SetProducer
 	public void setProducer(String producer) {
 		this.producer = producer;
 	}
@@ -49,6 +54,7 @@ public class Laptop extends Product {
 	/**
 	 * @param screenResolution laptop
 	 */
+	@ProductAnnotations.SetScreen
 	public void setScreenResolution(double screenResolution) {
 		this.screenResolution = screenResolution;
 	}
@@ -75,4 +81,6 @@ public class Laptop extends Product {
 		return producer != null ? producer.equals(laptop.producer) : laptop.producer == null;
 
 	}
+
+
 }

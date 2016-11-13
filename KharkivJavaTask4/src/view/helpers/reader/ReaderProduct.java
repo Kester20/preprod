@@ -1,5 +1,7 @@
 package view.helpers.reader;
 
+import entity.product.Product;
+
 import java.util.Map;
 
 /**
@@ -21,4 +23,11 @@ public interface ReaderProduct {
 	 * @return map, where keys- field's name, entry - values
 	 */
 	public Map<String, Object> readFromRandom();
+
+	/**
+	 * reads fields values with reflection
+	 * @return new instance
+	 */
+	public Product readWithReflection(int choice) throws Exception;
+
 }

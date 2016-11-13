@@ -1,11 +1,14 @@
 package entity.product;
 
+import entity.product.annot.ProductAnnotations;
+
 /**
  * @author Arsalan
  *         Entity smart phone
  */
 public class SmartPhone extends Phone {
 
+	@ProductAnnotations.FriendlyName("version")
 	private String androidVersion;
 
 
@@ -35,6 +38,7 @@ public class SmartPhone extends Phone {
 	/**
 	 * @param androidVersion smart phone
 	 */
+	@ProductAnnotations.SetVersion
 	public void setAndroidVersion(String androidVersion) {
 		this.androidVersion = androidVersion;
 	}

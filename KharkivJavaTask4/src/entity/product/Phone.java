@@ -1,11 +1,14 @@
 package entity.product;
 
+import entity.product.annot.ProductAnnotations;
+
 /**
  * @author Arsalan
  *         Entity Phone
  */
 public class Phone extends Product {
 
+	@ProductAnnotations.FriendlyName("producer")
 	private String producer;
 
 	public Phone() {
@@ -33,6 +36,7 @@ public class Phone extends Product {
 	/**
 	 * @param producer new value of producer's name
 	 */
+	@ProductAnnotations.SetProducer
 	public void setProducer(String producer) {
 		this.producer = producer;
 	}
