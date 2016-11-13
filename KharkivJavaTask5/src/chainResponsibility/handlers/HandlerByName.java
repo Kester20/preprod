@@ -6,39 +6,45 @@ import java.util.List;
 
 /**
  * @author Arsalan
- * handles the request and search file by name
+ *         handles the request and search file by name
  */
 public class HandlerByName extends RequestHandler {
 
-    private String byName;
+	private String byName;
 
-    /**
-     * initialize the handler
-     * @param isNeed value of need(true/false)
-     * @param byName criteria
-     */
-    public HandlerByName(boolean isNeed, String byName) {
-        super(isNeed);
-        this.byName = byName;
-    }
+	public HandlerByName() {
+		isNeed = false;
+	}
 
-    /**
-     * @return criteria
-     */
-    public String getByName() {
-        return byName;
-    }
+	/**
+	 * initialize the handler
+	 *
+	 * @param byName criteria
+	 */
+	public HandlerByName(String byName) {
+		isNeed = true;
+		this.byName = byName;
+	}
 
-    @Override
-    public List<File> handleRequest(List<File> fileList) {
-        Iterator iterator = fileList.iterator();
-        while (iterator.hasNext()) {
-            File file = (File) iterator.next();
-            if (!file.getName().startsWith(getByName())) {
-                iterator.remove();
-            }
-        }
-        sendRequestToNextChain(fileList);
-        return fileList;
-    }
+	/**
+	 * @return criteria
+	 */
+	public String getByName() {
+		return byName;
+	}
+
+	@Override
+	public List<File> handleRequest(List<File> fileList) {
+		if(!fileList.isEmpty()){
+			Iterator iterator = fileList.iterator();
+			while (iterator.hasNext()) {
+				File file = (File) iterator.next();
+				if (!file.getName().startsWith(getByName())) {
+					iterator.remove();
+				}
+			}
+			sendRequestToNextChain(fileList);
+		}
+		return fileList;
+	}
 }

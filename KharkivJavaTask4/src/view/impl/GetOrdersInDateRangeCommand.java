@@ -8,7 +8,7 @@ import view.appl.PrintItems;
 import java.text.ParseException;
 
 /**
- * Created by Arsal on 05.11.2016.
+ * @author Arsalan
  * template for get orders in range
  */
 public class GetOrdersInDateRangeCommand implements Command {

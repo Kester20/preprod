@@ -5,7 +5,7 @@ import view.Command;
 import view.appl.PrintItems;
 
 /**
- * Created by Arsal on 05.11.2016.
+ * @author Arsalan
  * template for show cart
  */
 public class ShowProductsInCartCommand implements Command {

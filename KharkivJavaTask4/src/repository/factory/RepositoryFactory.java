@@ -9,7 +9,7 @@ import repository.impl.ProductRepositoryImpl;
 import repository.impl.ShopRepositoryImpl;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/7/2016.
+ * @author Arsalan
  * factory for repositories
  */
 public class RepositoryFactory {

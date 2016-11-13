@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Arsal on 03.11.2016.
+ * @author Arsalan
  * template repository for product
  */
 public class ProductRepositoryImpl implements ProductRepository, Serializable {

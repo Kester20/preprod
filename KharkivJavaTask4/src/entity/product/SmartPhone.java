@@ -1,7 +1,8 @@
 package entity.product;
 
 /**
- * Entity smart phone
+ * @author Arsalan
+ *         Entity smart phone
  */
 public class SmartPhone extends Phone {
 

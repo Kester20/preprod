@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/4/2016.
- * Entity shop
+ * @author Arsalan
+ *         Entity shop
  */
 public class Shop {
 

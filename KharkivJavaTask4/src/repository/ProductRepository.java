@@ -5,7 +5,7 @@ import entity.product.Product;
 import java.util.List;
 
 /**
- * Created by Arsal on 03.11.2016.
+ * @author Arsalan
  * template repository for product
  */
 public interface ProductRepository {

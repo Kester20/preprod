@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/4/2016.
+ * @author Arsalan
  * keeps 5 last elements
  */
 public class LinkedHashMapForFiveLastElements extends LinkedHashMap <Product, Integer>{

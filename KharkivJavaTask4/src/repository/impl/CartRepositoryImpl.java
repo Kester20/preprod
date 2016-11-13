@@ -5,7 +5,7 @@ import entity.shop.Cart;
 import repository.CartRepository;
 
 /**
- * Created by Arsal on 03.11.2016.
+ * @author Arsalan
  * template repository for shop cart
  */
 public class CartRepositoryImpl implements CartRepository {

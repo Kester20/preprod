@@ -5,7 +5,7 @@ import services.ProductService;
 import view.Command;
 
 /**
- * Created by Arsal on 05.11.2016.
+ * @author Arsalan
  * template for add to cart
  */
 public class AddProductToCartCommand implements Command {

@@ -4,7 +4,7 @@ import entity.product.Product;
 import entity.shop.Cart;
 
 /**
- * Created by Arsal on 03.11.2016.
+ * @author Arsalan
  * template repository for shop cart
  */
 public interface CartRepository {

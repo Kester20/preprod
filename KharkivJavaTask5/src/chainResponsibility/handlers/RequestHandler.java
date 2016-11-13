@@ -5,59 +5,58 @@ import java.util.List;
 
 /**
  * @author Arsalan
- * the parent of the all handlers
+ *         the parent of the all handlers
  */
 
 public abstract class RequestHandler {
 
-    protected RequestHandler nextChain;
-    protected boolean isNeed;
+	protected RequestHandler nextChain;
+	protected boolean isNeed;
 
-    public RequestHandler() {
-    }
+	public RequestHandler() {
+	}
 
-    /**
-     * initialize handler
-     * @param isNeed - value of need
-     */
-    public RequestHandler(boolean isNeed) {
-        this.isNeed = isNeed;
-    }
+	/**
+	 * initialize handler
+	 *
+	 * @param isNeed - value of need
+	 */
+	public RequestHandler(boolean isNeed) {
+		this.isNeed = isNeed;
+	}
 
-    /**
-     * receiver creation
-     *
-     * @param successor - next in the chain(receiver)
-     */
-    public void setSuccessor(RequestHandler successor) {
-        this.nextChain = successor;
-    }
+	/**
+	 * receiver creation
+	 *
+	 * @param nextChain - next in the chain(receiver)
+	 */
+	public void setNextChain(RequestHandler nextChain) {
+		this.nextChain = nextChain;
+	}
 
-    /**
-     * processes the request
-     * remove all files from list that do not meet the condition
-     * @param fileList list of files
-     * @return updated list
-     */
-    public abstract List<File> handleRequest(List<File> fileList);
+	/**
+	 * processes the request
+	 * remove all files from list that do not meet the condition
+	 *
+	 * @param fileList list of files
+	 * @return updated list
+	 */
+	public abstract List<File> handleRequest(List<File> fileList);
 
-    protected void sendRequestToNextChain(List<File> fileList){
-        if (!fileList.isEmpty() && nextChain != null) {
-            if(nextChain.isNeed()){
-                nextChain.handleRequest(fileList);
-            }
-        }
-    }
+	protected void sendRequestToNextChain(List<File> fileList) {
+		if (nextChain != null) {
+			nextChain.handleRequest(fileList);
+		}
+	}
 
-    /**
-     *
-     * @return if filter is needed
-     */
-    public boolean isNeed() {
-        return isNeed;
-    }
+	/**
+	 * @return if filter is needed
+	 */
+	public boolean isNeed() {
+		return isNeed;
+	}
 
-    public void setNeed(boolean need) {
-        isNeed = need;
-    }
+	public void setNeed(boolean need) {
+		isNeed = need;
+	}
 }

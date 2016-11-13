@@ -8,7 +8,7 @@ import view.Command;
 import java.text.ParseException;
 
 /**
- * Created by Arsal on 05.11.2016.
+ * @author Arsalan
  * template for buy all products
  */
 public class BuyAllProductsInCartCommand implements Command {

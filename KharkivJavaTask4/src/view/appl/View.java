@@ -1,8 +1,6 @@
 package view.appl;
 
 import serialization.Serialize;
-import services.impl.ReaderProductFromConsoleServiceImpl;
-import services.impl.ReaderProductRandomServiceImpl;
 import view.impl.AddProductToListCommand;
 
 import java.io.File;
@@ -11,8 +9,8 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 /**
- * Created by Arsal on 06.11.2016.
- * view class
+ * @author Arsalan
+ *         view class
  */
 public class View {
 
@@ -31,28 +29,14 @@ public class View {
 
 		if (new File(Serialize.getFileNameSer()).exists()) {
 			application.getProductService().getProductRepository().setList(Serialize.deSerialize(Serialize.getFileNameSer()));
-			System.out.println(application.getProductService().getProductRepository().getList());
 		}
 
 		System.out.println("Choose type of adding product:\n 1.From console\n 2.From random");
 		Scanner scanner = new Scanner(System.in);
 		int chooseType = scanner.nextInt();
-		switch (chooseType) {
-			case 1: {
-				application.getCommandMap().put(Application.getAddProductCommand(),
-						new AddProductToListCommand(
-								new ReaderProductFromConsoleServiceImpl(application.getProductService(),
-										application.getMapFactory())));
-				break;
-			}
-			case 2: {
-				application.getCommandMap().put(Application.getAddProductCommand(),
-						new AddProductToListCommand(
-								new ReaderProductRandomServiceImpl(
-										application.getProductService(), application.getMapFactory())));
-				break;
-			}
-		}
+		application.getCommandMap().put(Application.getAddProductCommand(),
+				new AddProductToListCommand(application.getProductService(), chooseType));
+
 
 		while (true) {
 			System.out.println("///////////////////////////////////////////////////////");

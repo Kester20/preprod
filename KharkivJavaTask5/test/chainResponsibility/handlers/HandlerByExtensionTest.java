@@ -15,7 +15,7 @@ public class HandlerByExtensionTest {
 
     @Before
     public void initial(){
-        handlerByFormat = new HandlerByExtension(true, EXTENSION);
+        handlerByFormat = new HandlerByExtension(EXTENSION);
     }
 
     @Test

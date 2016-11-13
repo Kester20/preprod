@@ -22,7 +22,7 @@ public class HandlerByDateOfChangeTest {
     public void initial() throws ParseException {
         Date firstDate = new SimpleDateFormat("dd/MM/yyyy").parse("07/11/2016");
         Date secondDate = new SimpleDateFormat("dd/MM/yyyy").parse("09/11/2016");
-        handlerByDateOfChange = new HandlerByDateOfChange(true, firstDate.getTime(), secondDate.getTime());
+        handlerByDateOfChange = new HandlerByDateOfChange(firstDate.getTime(), secondDate.getTime());
     }
 
     @Test

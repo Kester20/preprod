@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/4/2016.
- * template service for shop
+ * @author Arsalan
+ *         template service for shop
  */
 public class ShopServiceImpl implements ShopService {
 
@@ -39,7 +39,7 @@ public class ShopServiceImpl implements ShopService {
 		Date floorDate = shopRepository.getShop().getListOrders().floorKey(date);
 		Date ceilingDate = shopRepository.getShop().getListOrders().ceilingKey(date);
 
-		if (floorDate != null & ceilingDate != null) {
+		if (!(ceilingDate == null & floorDate == null)) {
 			if (floorDate == null) {
 				result.put(ceilingDate, shopRepository.getShop().getListOrders().get(ceilingDate));
 			} else if (ceilingDate == null) {

@@ -1,6 +1,6 @@
 package view.appl;
 
-import abstractFactory.map.MapFactory;
+import abstractBuilder.map.BuilderMap;
 import repository.factory.RepositoryFactory;
 import services.CartService;
 import services.ProductService;
@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Created by Arsal on 06.11.2016.
+ * @author Arsalan
  * application class
  */
 public class Application {
@@ -36,7 +36,7 @@ public class Application {
 	private Scanner scanner;
 	private Map<Integer, Command> commandMap;
 	private RepositoryFactory repositoryFactory;
-	private MapFactory mapFactory;
+	private BuilderMap mapBuilder;
 
 	public Application() {
 		repositoryFactory = new RepositoryFactory();
@@ -44,7 +44,7 @@ public class Application {
 		cartService = new CartServiceImpl(repositoryFactory);
 		shopService = new ShopServiceImpl(repositoryFactory);
 		scanner = new Scanner(System.in);
-		mapFactory = new MapFactory();
+		mapBuilder = new BuilderMap();
 
 		commandMap = new HashMap<>();
 		commandMap.put(firstCommand, new ShowAllProductsCommand(productService));
@@ -80,7 +80,7 @@ public class Application {
 		return addProductCommand;
 	}
 
-	public MapFactory getMapFactory() {
-		return mapFactory;
+	public BuilderMap getMapBuilder() {
+		return mapBuilder;
 	}
 }

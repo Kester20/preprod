@@ -13,7 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by Arsal on 03.11.2016.
+ * @author Arsalan
  * template service for shop cart
  */
 public class CartServiceImpl implements CartService {

@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/4/2016.
+ * @author Arsalan
  * template repository for shop
  */
 public class ShopRepositoryImpl implements ShopRepository {

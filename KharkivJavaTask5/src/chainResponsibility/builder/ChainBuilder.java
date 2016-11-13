@@ -23,8 +23,16 @@ public class ChainBuilder {
      *
      * @param name name of the file
      */
-    public void createFilterByName(boolean isNeed, String name) {
-        byName = new HandlerByName(isNeed, name);
+    public void createFilterByName(String name) {
+        byName = new HandlerByName(name);
+    }
+
+	/**
+	 * initialize filter by name
+	 * filter is not needed(is disable)
+	 */
+	public void createFilterByName(){
+	    byName = new HandlerByName();
     }
 
     /**
@@ -32,8 +40,16 @@ public class ChainBuilder {
      *
      * @param ext extension of file
      */
-    public void createFilterByExtension(boolean isNeed, String ext) {
-        byExt = new HandlerByExtension(isNeed, ext);
+    public void createFilterByExtension(String ext) {
+        byExt = new HandlerByExtension(ext);
+    }
+
+	/**
+	 * initialize filter by extension
+	 * filter is not needed(is disable)
+	 */
+	public void createFilterByExtension() {
+	    byExt = new HandlerByExtension();
     }
 
     /**
@@ -42,35 +58,51 @@ public class ChainBuilder {
      * @param firstBorder  first border of the range
      * @param secondBorder second border of the range
      */
-    public void createFilterBySize(boolean isNeed, int firstBorder, int secondBorder) {
-        bySize = new HandlerBySize(isNeed, firstBorder, secondBorder);
+    public void createFilterBySize(int firstBorder, int secondBorder) {
+        bySize = new HandlerBySize(firstBorder, secondBorder);
+    }
+
+	/**
+	 * initialize filter by name
+	 * filter is not needed(is disable)
+	 */
+	public void createFilterBySize() {
+	    bySize = new HandlerBySize();
     }
 
     /**
      * @param firstDate  first date of the range
      * @param secondDate second date of the range
      */
-    public void createFilterByDate(boolean isNeed, long firstDate, long secondDate) {
-        byDate = new HandlerByDateOfChange(isNeed, firstDate, secondDate);
+    public void createFilterByDate(long firstDate, long secondDate) {
+        byDate = new HandlerByDateOfChange(firstDate, secondDate);
     }
+
+	/**
+	 * initialize filter by date
+	 * filter is not needed(is disable)
+	 */
+	public void createFilterByDate() {
+		byDate = new HandlerByDateOfChange();
+	}
 
     /**
      * create chain of handlers
-     *
+     * put all filters to 'help' list
+     * than remove(disable) that filters, which not be needed from 'help' list
+     * so, 'help' list contains only needed filters
+     * than, in loop, every element of chain gets their next element(setNextChain)
+     * as a result, disabled filters will not be work
+     * only needed filters will be work
      * @return head of the chain
      */
     public RequestHandler getChain() {
         fillList();
         disableNotNeededFilters();
-
-        if (!list.isEmpty()) {
-            byName.setSuccessor(list.get(0));
-        }
-
         for (int i = 0; i < list.size() - 1; i++) {
-            list.get(i).setSuccessor(list.get(i + 1));
+            list.get(i).setNextChain(list.get(i + 1));
         }
-        return byName;
+        return list.get(0);
     }
 
     /**
@@ -79,6 +111,7 @@ public class ChainBuilder {
     public void fillList() {
         list = new ArrayList<RequestHandler>() {
             {
+	            add(byName);
                 add(byExt);
                 add(bySize);
                 add(byDate);

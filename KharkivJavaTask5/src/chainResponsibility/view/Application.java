@@ -3,10 +3,13 @@ package chainResponsibility.view;
 import chainResponsibility.builder.ChainBuilder;
 import chainResponsibility.directory.Directory;
 import chainResponsibility.handlers.RequestHandler;
+import chainResponsibility.view.get_parameters.*;
 import utility.DateFormatter;
 
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Arsalan
@@ -14,111 +17,80 @@ import java.util.*;
  */
 public class Application {
 
-    private static final String path = "D:\\KharkivJavaTask5";
-    private ChainBuilder chainBuilder;
-    private Scanner scanner;
+	private static final String path = "E:\\new folder";
+	private ChainBuilder chainBuilder;
+	private GetParametersForFilterByName byName;
+	private GetParametersForFilterByExtension byExtension;
+	private GetParametersForFilterBySize bySize;
+	private GetParametersForFilterByDate byDate;
 
-    private static final String ASK_BY_NAME = "By name ?";
-    private static final String ASK_THE_NAME_OF_FILE = "Enter the name of file";
-    private static final String BY_NAME = "by name";
+	public Application() {
+		chainBuilder = new ChainBuilder();
+		byName = new GetParametersForFilterByName();
+		byExtension = new GetParametersForFilterByExtension();
+		bySize = new GetParametersForFilterBySize();
+		byDate = new GetParametersForFilterByDate();
+	}
 
-    private static final String ASK_BY_EXT = "By extension ?";
-    private static final String ASK_THE_EXT = "Enter the extension of file";
-    private static final String BY_EXT = "by ext";
+	/**
+	 * starts application
+	 *
+	 * @throws ParseException
+	 */
+	public void startApplication() throws ParseException {
+		initializeFilters();
+		RequestHandler chain = chainBuilder.getChain();
 
-    private static final String ASK_BY_SIZE = "By size ?";
-    private static final String ASK_THE_SIZE = "Enter the range of size";
-    private static final String BY_SIZE = "by size";
+		Directory directory = new Directory();
+		directory.fill(path);
 
-    private static final String ASK_BY_DATE = "By last change ?";
-    private static final String ASK_THE_DATE = "Enter the range of date";
-    private static final String BY_DATE = "by date";
+		List list = (ArrayList) chain.handleRequest(directory.getResultList());
+		System.out.println(list);
+	}
 
-    public Application() {
-        chainBuilder = new ChainBuilder();
-        scanner = new Scanner(System.in);
-    }
+	/**
+	 * creates filters anyway
+	 * first gets maps of parameters
+	 * then sees the value of parameter isNeed
+	 * if isNeed = true - creates enabled filter
+	 * if isNeed = false - creates disabled filter
+	 *
+	 * @throws ParseException
+	 */
+	public void initializeFilters() throws ParseException {
 
-    /**
-     * starts application
-     *
-     * @throws ParseException
-     */
-    public void startApplication() throws ParseException {
-        askFilters(ASK_BY_NAME, ASK_THE_NAME_OF_FILE, BY_NAME);
-        askFilters(ASK_BY_EXT, ASK_THE_EXT, BY_EXT);
-        askFilters(ASK_BY_SIZE, ASK_THE_SIZE, BY_SIZE);
-        askFilters(ASK_BY_DATE, ASK_THE_DATE, BY_DATE);
+		Map<String, Object> paramsByName = byName.getParameters();
+		Map<String, Object> paramsByExt = byExtension.getParameters();
+		Map<String, Object> paramsBySize = bySize.getParameters();
+		Map<String, Object> paramsByDate = byDate.getParameters();
 
-        RequestHandler chain = chainBuilder.getChain();
+		if ((boolean) paramsByName.get(GetParameters.getIsNeed())) {
+			chainBuilder.createFilterByName((String) paramsByName.get(GetParametersForFilterByName.getByName()));
+		} else {
+			chainBuilder.createFilterByName();
+		}
 
-        Directory directory = new Directory();
-        directory.fill(path);
+		if ((boolean) paramsByExt.get(GetParameters.getIsNeed())) {
+			chainBuilder.createFilterByExtension(
+					(String) paramsByExt.get(GetParametersForFilterByExtension.getByExt()));
+		} else {
+			chainBuilder.createFilterByExtension();
+		}
 
-        List list = (ArrayList) chain.handleRequest(directory.getResultList());
-        System.out.println(list);
-    }
+		if ((boolean) paramsBySize.get(GetParameters.getIsNeed())) {
+			chainBuilder.createFilterBySize(
+					Integer.parseInt((String) paramsBySize.get(GetParametersForFilterBySize.getFirstSize())),
+					Integer.parseInt((String) paramsBySize.get(GetParametersForFilterBySize.getSecondSize())));
+		} else {
+			chainBuilder.createFilterBySize();
+		}
 
-
-
-    /**
-     * creates filters anyway
-     * @param filter name of filter
-     * @param isNeed true if filter is need, else - false
-     * @throws ParseException
-     */
-    public void createFilters(String filter, boolean isNeed) throws ParseException {
-        switch (filter) {
-            case BY_NAME: {
-                if (isNeed) {
-                    chainBuilder.createFilterByName(isNeed, scanner.next());
-                } else {
-                    chainBuilder.createFilterByName(isNeed, "");
-                }
-                break;
-            }
-            case BY_EXT: {
-                if (isNeed) {
-                    chainBuilder.createFilterByExtension(isNeed, scanner.next());
-                } else {
-                    chainBuilder.createFilterByExtension(isNeed, "");
-                }
-                break;
-            }
-            case BY_SIZE: {
-                if (isNeed) {
-                    chainBuilder.createFilterBySize(isNeed, scanner.nextInt(), scanner.nextInt());
-                } else {
-                    chainBuilder.createFilterBySize(isNeed, 0, 0);
-                }
-                break;
-            }
-            case BY_DATE: {
-                if (isNeed) {
-                    chainBuilder.createFilterByDate(isNeed, DateFormatter.format(scanner.next()).getTime(),
-                            DateFormatter.format(scanner.next()).getTime());
-                } else {
-                    chainBuilder.createFilterByDate(isNeed, 0, 0);
-                }
-                break;
-            }
-        }
-    }
-
-    /**
-     * @param str         first question to user
-     * @param specificStr second question to user
-     * @param filter      name of filter
-     * @throws ParseException
-     */
-    public void askFilters(String str, String specificStr, String filter) throws ParseException {
-        System.out.println(str);
-        int z = scanner.nextInt();
-        if (z == 1) {
-            System.out.println(specificStr);
-            createFilters(filter, true);
-        } else {
-            createFilters(filter, false);
-        }
-    }
+		if ((boolean) paramsByDate.get(GetParameters.getIsNeed())) {
+			chainBuilder.createFilterByDate(
+					DateFormatter.format((String) paramsByDate.get(GetParametersForFilterByDate.getFirstDate())).getTime(),
+					DateFormatter.format((String) paramsByDate.get(GetParametersForFilterByDate.getSecondDate())).getTime());
+		} else {
+			chainBuilder.createFilterByDate();
+		}
+	}
 }

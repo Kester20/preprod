@@ -14,7 +14,7 @@ public class HandlerByNameTest {
 
     @Before
     public void initial(){
-        handlerByName = new HandlerByName(true, "example");
+        handlerByName = new HandlerByName("example");
     }
 
     @Test
