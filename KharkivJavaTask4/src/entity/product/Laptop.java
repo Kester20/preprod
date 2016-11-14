@@ -2,6 +2,9 @@ package entity.product;
 
 import entity.product.annot.ProductAnnotations;
 
+import static entity.constants.Constants.PRODUCER;
+import static entity.constants.Constants.SCREEN;
+
 /**
  * @author Arsalan
  *         Entity laptop
@@ -39,7 +42,7 @@ public class Laptop extends Product {
 	/**
 	 * @param producer laptop
 	 */
-	@ProductAnnotations.SetProducer
+	@ProductAnnotations.Set(PRODUCER)
 	public void setProducer(String producer) {
 		this.producer = producer;
 	}
@@ -54,7 +57,7 @@ public class Laptop extends Product {
 	/**
 	 * @param screenResolution laptop
 	 */
-	@ProductAnnotations.SetScreen
+	@ProductAnnotations.Set(SCREEN)
 	public void setScreenResolution(double screenResolution) {
 		this.screenResolution = screenResolution;
 	}

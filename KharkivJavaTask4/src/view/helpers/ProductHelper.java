@@ -6,7 +6,11 @@ import view.helpers.reader.ReaderProduct;
 import java.lang.reflect.Field;
 import java.util.*;
 
+import static entity.constants.Constants.COST;
+import static entity.constants.Constants.ID;
+import static entity.constants.Constants.NAME;
 import static entity.product.annot.ProductAnnotations.FriendlyName;
+import static entity.product.annot.ProductAnnotations.enProperties;
 import static entity.product.annot.ProductAnnotations.ruProperties;
 
 /**
@@ -17,9 +21,7 @@ public abstract class ProductHelper implements ReaderProduct {
 
 	protected Scanner scanner;
 	protected Random random;
-	protected static final String ID = "id";
-	protected static final String NAME = "name";
-	protected static final String COST = "cost";
+
 	protected static final String ENTER_PARAMETERS = "Enter the next parameters:";
 	protected static final int DEFAULT_BOUND = 1000;
 	protected ResourceBundle bundle;
@@ -88,7 +90,7 @@ public abstract class ProductHelper implements ReaderProduct {
 	 */
 	public void printSuggestion(Class clazz) {
 		for (Field field : clazz.getDeclaredFields()) {
-			FriendlyName friendlyName = (field.getAnnotation(FriendlyName.class));
+			FriendlyName friendlyName = field.getAnnotation(FriendlyName.class);
 			String value = bundle.getString(friendlyName.value());
 			System.out.print(value + ", ");
 		}

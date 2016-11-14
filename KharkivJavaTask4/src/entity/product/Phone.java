@@ -2,6 +2,8 @@ package entity.product;
 
 import entity.product.annot.ProductAnnotations;
 
+import static entity.constants.Constants.PRODUCER;
+
 /**
  * @author Arsalan
  *         Entity Phone
@@ -36,7 +38,7 @@ public class Phone extends Product {
 	/**
 	 * @param producer new value of producer's name
 	 */
-	@ProductAnnotations.SetProducer
+	@ProductAnnotations.Set(PRODUCER)
 	public void setProducer(String producer) {
 		this.producer = producer;
 	}

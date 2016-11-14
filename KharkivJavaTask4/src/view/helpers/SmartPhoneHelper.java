@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import static view.helpers.LaptopHelper.PRODUCER;
+import static entity.constants.Constants.*;
 
 
 /**
@@ -17,7 +17,6 @@ import static view.helpers.LaptopHelper.PRODUCER;
  */
 public class SmartPhoneHelper extends PhoneHelper {
 
-	public static final String VERSION = "version";
 	private static final String path = "entity.product.SmartPhone";
 
 	@Override
@@ -51,20 +50,9 @@ public class SmartPhoneHelper extends PhoneHelper {
 		Object phone = clazz.newInstance();
 		Method[] methods = clazz.getMethods();
 		for (Method method : methods) {
-			if (method.getAnnotation(ProductAnnotations.SetId.class) != null) {
-				method.invoke(phone, map.get(ProductHelper.ID));
-			}
-			if (method.getAnnotation(ProductAnnotations.SetName.class) != null) {
-				method.invoke(phone, map.get(ProductHelper.NAME));
-			}
-			if (method.getAnnotation(ProductAnnotations.SetCost.class) != null) {
-				method.invoke(phone, map.get(ProductHelper.COST));
-			}
-			if (method.getAnnotation(ProductAnnotations.SetProducer.class) != null) {
-				method.invoke(phone, map.get(PRODUCER));
-			}
-			if (method.getAnnotation(ProductAnnotations.SetVersion.class) != null) {
-				method.invoke(phone, map.get(VERSION));
+			if (method.getAnnotation(ProductAnnotations.Set.class) != null) {
+				ProductAnnotations.Set value = method.getAnnotation(ProductAnnotations.Set.class);
+				method.invoke(phone, map.get(value.value()));
 			}
 		}
 		return (Product) phone;

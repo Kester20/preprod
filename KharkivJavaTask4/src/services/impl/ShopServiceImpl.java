@@ -39,7 +39,7 @@ public class ShopServiceImpl implements ShopService {
 		Date floorDate = shopRepository.getShop().getListOrders().floorKey(date);
 		Date ceilingDate = shopRepository.getShop().getListOrders().ceilingKey(date);
 
-		if (!(ceilingDate == null & floorDate == null)) {
+		if (!(ceilingDate == null && floorDate == null)) {
 			if (floorDate == null) {
 				result.put(ceilingDate, shopRepository.getShop().getListOrders().get(ceilingDate));
 			} else if (ceilingDate == null) {

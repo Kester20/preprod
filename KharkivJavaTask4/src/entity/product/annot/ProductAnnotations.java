@@ -10,42 +10,18 @@ import java.lang.annotation.Target;
  */
 public @interface ProductAnnotations {
 
-	public static final String enProperties = "view/helpers/resources_en";
-	public static final String ruProperties = "view/helpers/resources_ru";
+    public static final String enProperties = "resources_en";
+    public static final String ruProperties = "resources_ru";
 
-	@Target(value= ElementType.FIELD)
-	@Retention(value= RetentionPolicy.RUNTIME)
-	public @interface FriendlyName {
-		String value();
-	}
+    @Target(value = ElementType.FIELD)
+    @Retention(value = RetentionPolicy.RUNTIME)
+    public @interface FriendlyName {
+        String value();
+    }
 
-	@Target(value= ElementType.METHOD)
-	@Retention(value= RetentionPolicy.RUNTIME)
-	public @interface SetId {
-	}
-
-	@Target(value= ElementType.METHOD)
-	@Retention(value= RetentionPolicy.RUNTIME)
-	public @interface SetName {
-	}
-
-	@Target(value= ElementType.METHOD)
-	@Retention(value= RetentionPolicy.RUNTIME)
-	public @interface SetCost {
-	}
-
-	@Target(value = ElementType.METHOD)
-	@Retention(value = RetentionPolicy.RUNTIME)
-	public @interface SetProducer {
-	}
-
-	@Target(value = ElementType.METHOD)
-	@Retention(value = RetentionPolicy.RUNTIME)
-	public @interface SetScreen {
-	}
-
-	@Target(value = ElementType.METHOD)
-	@Retention(value = RetentionPolicy.RUNTIME)
-	public @interface SetVersion {
-	}
+    @Target(value = ElementType.METHOD)
+    @Retention(value = RetentionPolicy.RUNTIME)
+    public @interface Set {
+        String value();
+    }
 }

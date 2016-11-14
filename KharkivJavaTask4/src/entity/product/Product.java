@@ -1,7 +1,7 @@
 package entity.product;
 
 import entity.product.annot.ProductAnnotations;
-
+import static entity.constants.Constants.*;
 import java.io.Serializable;
 
 /**
@@ -41,7 +41,7 @@ public abstract class Product implements Serializable {
 	/**
 	 * @param id product
 	 */
-	@ProductAnnotations.SetId
+	@ProductAnnotations.Set(ID)
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -56,7 +56,7 @@ public abstract class Product implements Serializable {
 	/**
 	 * @param name product
 	 */
-	@ProductAnnotations.SetName
+	@ProductAnnotations.Set(NAME)
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -71,7 +71,7 @@ public abstract class Product implements Serializable {
 	/**
 	 * @param cost product
 	 */
-	@ProductAnnotations.SetCost
+	@ProductAnnotations.Set(COST)
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
