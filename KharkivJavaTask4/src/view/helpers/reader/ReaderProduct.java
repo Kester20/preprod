@@ -28,6 +28,6 @@ public interface ReaderProduct {
 	 * reads fields values with reflection
 	 * @return new instance
 	 */
-	public Product readWithReflection(int choice) throws Exception;
+	public Product readWithReflection(int choice, String path) throws Exception;
 
 }

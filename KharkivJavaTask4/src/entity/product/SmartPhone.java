@@ -8,7 +8,7 @@ import static entity.constants.Constants.VERSION;
  */
 public class SmartPhone extends Phone {
 
-	@ProductAnnotations.FriendlyName("version")
+	@ProductAnnotations.FriendlyName(VERSION)
 	private String androidVersion;
 
 

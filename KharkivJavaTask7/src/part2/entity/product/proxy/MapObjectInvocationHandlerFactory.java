@@ -1,5 +1,7 @@
 package part2.entity.product.proxy;
 
+import part2.entity.product.constants.Constants;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -8,28 +10,30 @@ import java.util.Map;
 /**
  * @author Arsalan
  */
-public class MapProxy implements InvocationHandler {
+public class MapObjectInvocationHandlerFactory implements InvocationHandler {
 
     private Map<String, Object> map;
-    private Object obj;
     private static final int ZERO = 0;
     private static final int ONE = 1;
 
-    public MapProxy(Object obj) {
+    public static Object createInstance(Class clazz){
+        return java.lang.reflect.Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), new MapObjectInvocationHandlerFactory());
+    }
+
+    private MapObjectInvocationHandlerFactory() {
         map = new HashMap<>();
-        this.obj = obj;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("Proxy invoke : " + method.getName());
-        if(method.getName().startsWith("set")){
-            map.put(returnSubStringAfterRegex(method.getName(), "set").toLowerCase(), args[ZERO]);
+        Object result = "";
+        if(method.getName().startsWith(Constants.SET)){
+            result = map.put(returnSubStringAfterRegex(method.getName(), Constants.SET).toLowerCase(), args[ZERO]);
         }
-        if (method.getName().startsWith("get")){
-            System.out.println(map.get(returnSubStringAfterRegex(method.getName(), "get").toLowerCase()));
+        if (method.getName().startsWith(Constants.GET) || method.getName().startsWith(Constants.IS)){
+            result = map.get(returnSubStringAfterRegex(method.getName(), Constants.GET).toLowerCase());
         }
-        return null ;
+        return result;
     }
 
     /**

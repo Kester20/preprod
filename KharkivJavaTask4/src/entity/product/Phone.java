@@ -10,7 +10,7 @@ import static entity.constants.Constants.PRODUCER;
  */
 public class Phone extends Product {
 
-	@ProductAnnotations.FriendlyName("producer")
+	@ProductAnnotations.FriendlyName(PRODUCER)
 	private String producer;
 
 	public Phone() {

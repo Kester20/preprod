@@ -10,11 +10,11 @@ import java.io.Serializable;
  */
 public abstract class Product implements Serializable {
 
-	@ProductAnnotations.FriendlyName("id")
+	@ProductAnnotations.FriendlyName(ID)
 	private int id;
-	@ProductAnnotations.FriendlyName("name")
+	@ProductAnnotations.FriendlyName(NAME)
 	private String name;
-	@ProductAnnotations.FriendlyName("cost")
+	@ProductAnnotations.FriendlyName(COST)
 	private int cost;
 
 	public Product() {

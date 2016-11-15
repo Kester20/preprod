@@ -11,9 +11,9 @@ import static entity.constants.Constants.SCREEN;
  */
 public class Laptop extends Product {
 
-	@ProductAnnotations.FriendlyName("producer")
+	@ProductAnnotations.FriendlyName(PRODUCER)
 	private String producer;
-	@ProductAnnotations.FriendlyName("screen")
+	@ProductAnnotations.FriendlyName(SCREEN)
 	private double screenResolution;
 
 	public Laptop() {

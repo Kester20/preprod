@@ -43,19 +43,4 @@ public class LaptopHelper extends ProductHelper {
             put(SCREEN, productScreen);
         }};
     }
-
-    @Override
-    public Product readWithReflection(int choice) throws Exception {
-        Map<String, Object> map = choice == 1 ? readFromConsole() : readFromRandom();
-        Class clazz = Class.forName(path);
-        Object laptop = clazz.newInstance();
-        Method[] methods = clazz.getMethods();
-        for (Method method : methods) {
-            if (method.getAnnotation(ProductAnnotations.Set.class) != null) {
-                ProductAnnotations.Set value = method.getAnnotation(ProductAnnotations.Set.class);
-                method.invoke(laptop, map.get(value.value()));
-            }
-        }
-        return (Product) laptop;
-    }
 }
