@@ -13,8 +13,8 @@ public class ProductInvocationHandlerFactory implements  InvocationHandler {
     private Product obj;
     public static final String SET = "set";
 
-    public static Product createInstance(Class clazz, Product product){
-        return (Product) java.lang.reflect.Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), new ProductInvocationHandlerFactory(product));
+    public static Object createInstance(Class clazz, Product product){
+        return java.lang.reflect.Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), new ProductInvocationHandlerFactory(product));
     }
 
     private ProductInvocationHandlerFactory(Product obj) {
