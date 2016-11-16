@@ -1,57 +1,51 @@
 package part1;
 
+import part1.utility.Checker;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Arsalan
  */
-public class MyThread implements Runnable {
+public class MyThread extends Thread{
 
-    private List<Integer> list;
-    private int start;
-    private int end;
+	private List<Long> list;
+	private long from;
+	private long to;
 
-    public MyThread(int start, int end) {
-        list = new ArrayList<>();
-    }
+	public MyThread(long from, long to) {
+		list = new ArrayList<>();
+		this.from = from;
+		this.to = to;
+	}
 
-    @Override
-    public void run() {
-        for (int i = start; i <= end ; i++) {
-            if(isPrime(i)){
-                list.add(i);
-            }
-        }
-    }
+	@Override
+	public void run() {
+		for (long i = from; i < to; i++) {
+			if (Checker.isPrime(i)) {
+				list.add(i);
+			}
+		}
+	}
 
-    /**
-     *
-     * @param number the number, that will be checked
-     * @return true, if number is prime, else - false
-     */
-    public boolean isPrime(int number){
-        boolean isPrime = true;
-        int temp = 0;
-        for (int i=2; i <=number/2; i++) {
-            temp = number % i;
-            if (temp == 0) {
-                isPrime = false;
-                break;
-            }
-        }
-        return isPrime;
-    }
+	public List<Long> getList() {
+		return list;
+	}
 
-    public List<Integer> getList() {
-        return list;
-    }
+	public long getFrom() {
+		return from;
+	}
 
-    public int getStart() {
-        return start;
-    }
+	public long getTo() {
+		return to;
+	}
 
-    public int getEnd() {
-        return end;
-    }
+	public void setFrom(long from) {
+		this.from = from;
+	}
+
+	public void setTo(long to) {
+		this.to = to;
+	}
 }
