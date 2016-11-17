@@ -2,71 +2,89 @@ package part1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Arsalan
  */
 public class ThreadsManager {
 
-	private List<MyThread> listThreads;
-	private List<Long> listPrimes;
-	private int countThreads;
-	private long from;
-	private long to;
+    private List<FindPrimesThread> listThreads;
+    private List<Long> listPrimes;
+    private int countThreads;
+    private long from;
+    private long to;
 
-	public ThreadsManager(int countThreads, int from, int to) {
-		listThreads = new ArrayList<>();
-		listPrimes = new ArrayList<>();
-		this.countThreads = countThreads;
-		setFrom(from);
-		this.to = to;
-	}
+    public ThreadsManager(int countThreads, int from, int to) {
+        setFrom(from);
+        this.to = to;
+        listThreads = new ArrayList<>();
+        listPrimes = new ArrayList<>();
+        this.countThreads = countThreads;
+    }
 
-	public void startThreads() throws InterruptedException {
-		giveIntervals();
-		for (Thread myThread: listThreads) {
-			myThread.start();
-		}
-		for (Thread myThread: listThreads) {
-			myThread.join();
-		}
-		fillPrimes();
-	}
+    public void startThreads() throws InterruptedException {
+        giveIntervals();
+        for (Thread myThread : listThreads) {
+            myThread.start();
+        }
+        for (Thread myThread : listThreads) {
+            myThread.join();
+        }
+        fillPrimes();
+    }
 
-	public void fillPrimes(){
-		for (MyThread myThread: listThreads) {
-			listPrimes.addAll(myThread.getList());
-		}
-	}
+    public void startThreadsWithExecutor() throws InterruptedException {
+        giveIntervals();
+        ExecutorService executorService = Executors.newFixedThreadPool(countThreads);
+        for (Thread listThread : listThreads) {
+            executorService.execute(listThread);
+        }
+        executorService.shutdown();
+        executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
+        fillPrimes();
+    }
 
-	/**
-	 * gives intervals to threads
-	 */
-	private void giveIntervals(){
-		long range = (to - from) / countThreads;
-		for (long i = from; i < to ; i++) {
-			if(i % range == 0){
-				listThreads.add(new MyThread(i, i + range));
-			}
-		}
-	}
+    public void fillPrimes() {
+        for (FindPrimesThread findPrimesThread : listThreads) {
+            listPrimes.addAll(findPrimesThread.getList());
+        }
+    }
 
-	public List<Long> getListPrimes() {
-		return listPrimes;
-	}
+    /**
+     * gives intervals to threads
+     */
+    private void giveIntervals() {
+        long range = to / countThreads;
+        for (long j = 0; j < to; j++) {
+            if (j % range == 0) {
+                if(j + range > to){
+                    listThreads.add(new FindPrimesThread(j, j + (to - j), false));
+                }else{
+                    listThreads.add(new FindPrimesThread(j, j + range, false));
+                }
+            }
+        }
+    }
 
-	public List<MyThread> getListThreads() {
-		return listThreads;
-	}
+    public List<Long> getListPrimes() {
+        return listPrimes;
+    }
 
-	public void setFrom(long from) {
-		if(from < 2){
-			from = 2;
-		}
-		this.from = from;
-	}
+    public List<FindPrimesThread> getListThreads() {
+        return listThreads;
+    }
 
-	public void setTo(long to) {
-		this.to = to;
-	}
+    public void setFrom(long from) {
+        if (from < 2) {
+            from = 2;
+        }
+        this.from = from;
+    }
+
+    public void setTo(long to) {
+        this.to = to;
+    }
 }

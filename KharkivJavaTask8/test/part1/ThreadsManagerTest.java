@@ -2,6 +2,8 @@ package part1;
 
 import org.junit.Before;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 /**
@@ -9,32 +11,25 @@ import static org.junit.Assert.*;
  */
 public class ThreadsManagerTest {
 
-	private ThreadsManager threadsManager;
+    private ThreadsManager threadsManager;
+    public static final int numberOfPrimes = 78498;
 
-	@Before
-	public void initial(){
-		threadsManager = new ThreadsManager(10, 0, 30);
-	}
+    @Before
+    public void initial() {
+        threadsManager = new ThreadsManager(10, 0, 1000000);
+        PrimesStorage.getList().clear();
+    }
 
-	@org.junit.Test
-	public void startThreads() throws Exception {
-		threadsManager.startThreads();
-		assertTrue(threadsManager.getListPrimes().size() == 10);
-	}
+    @org.junit.Test
+    public void startThreads() throws Exception {
+        threadsManager.startThreads();
+        assertEquals(PrimesStorage.getList().size(), numberOfPrimes);
+    }
 
-	@org.junit.Test
-	public void getPrimes() throws Exception {
-
-	}
-
-	@org.junit.Test
-	public void getListPrimes() throws Exception {
-
-	}
-
-	@org.junit.Test
-	public void getListThreads() throws Exception {
-
-	}
+    @org.junit.Test
+    public void startThreadsWithExecutor() throws Exception {
+        threadsManager.startThreadsWithExecutor();
+        assertEquals(PrimesStorage.getList().size(), numberOfPrimes);
+    }
 
 }
