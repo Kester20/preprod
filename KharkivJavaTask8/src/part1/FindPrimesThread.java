@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author Arsalan
  */
-public class FindPrimesThread extends Thread {
+public class FindPrimesThread implements Runnable {
 
     private List<Long> list;
     private long from;

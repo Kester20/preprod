@@ -11,8 +11,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadsManager {
 
-    private List<FindPrimesThread> listThreads;
+    private List<Thread> listThreads;
     private List<Long> listPrimes;
+    private List<FindPrimesThread> findPrimesThreads;
     private int countThreads;
     private long from;
     private long to;
@@ -22,6 +23,7 @@ public class ThreadsManager {
         this.to = to;
         listThreads = new ArrayList<>();
         listPrimes = new ArrayList<>();
+        findPrimesThreads = new ArrayList<>();
         this.countThreads = countThreads;
     }
 
@@ -48,7 +50,7 @@ public class ThreadsManager {
     }
 
     public void fillPrimes() {
-        for (FindPrimesThread findPrimesThread : listThreads) {
+        for (FindPrimesThread findPrimesThread : findPrimesThreads) {
             listPrimes.addAll(findPrimesThread.getList());
         }
     }
@@ -61,9 +63,15 @@ public class ThreadsManager {
         for (long j = 0; j < to; j++) {
             if (j % range == 0) {
                 if(j + range > to){
-                    listThreads.add(new FindPrimesThread(j, j + (to - j), false));
+                    FindPrimesThread findPrimesThread = new FindPrimesThread(j, j + (to - j), false);
+                    Thread thread = new Thread(findPrimesThread);
+                    listThreads.add(thread);
+                    findPrimesThreads.add(findPrimesThread);
                 }else{
-                    listThreads.add(new FindPrimesThread(j, j + range, false));
+                    FindPrimesThread findPrimesThread = new FindPrimesThread(j, j + range, false);
+                    Thread thread = new Thread(findPrimesThread);
+                    listThreads.add(thread);
+                    findPrimesThreads.add(findPrimesThread);
                 }
             }
         }
@@ -73,7 +81,7 @@ public class ThreadsManager {
         return listPrimes;
     }
 
-    public List<FindPrimesThread> getListThreads() {
+    public List<Thread> getListThreads() {
         return listThreads;
     }
 

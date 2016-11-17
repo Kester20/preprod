@@ -27,10 +27,6 @@ public class FindLongestRepeated {
 
         Arrays.sort(suffixes);
 
-        for (int i = 0; i < suffixes.length; i++) {
-            System.out.println(suffixes[i]);
-        }
-
         String lrs = "";
         for (int i = 0; i < n - 1; i++) {
             String x = longestCommonPrefix(suffixes[i], suffixes[i + 1]);
@@ -38,11 +34,5 @@ public class FindLongestRepeated {
                 lrs = x;
         }
         return lrs;
-    }
-
-    public static void main(String[] args) {
-        String s = "aaavvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvbbbbbbbbddadqadsadaaaaawww";
-        s = s.replaceAll("\\s+", " ");
-        System.out.println(("'" + longestRepeated(s) + "'"));
     }
 }
