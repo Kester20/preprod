@@ -18,7 +18,7 @@ public class ThreadsManager {
     private long from;
     private long to;
 
-    public ThreadsManager(int countThreads, int from, int to) {
+    public ThreadsManager(int countThreads, long from, long to) {
         setFrom(from);
         this.to = to;
         listThreads = new ArrayList<>();
@@ -59,20 +59,17 @@ public class ThreadsManager {
      * gives intervals to threads
      */
     private void giveIntervals() {
-        long range = to / countThreads;
-        for (long j = 0; j < to; j++) {
-            if (j % range == 0) {
-                if(j + range > to){
-                    FindPrimesThread findPrimesThread = new FindPrimesThread(j, j + (to - j), false);
-                    Thread thread = new Thread(findPrimesThread);
-                    listThreads.add(thread);
-                    findPrimesThreads.add(findPrimesThread);
-                }else{
-                    FindPrimesThread findPrimesThread = new FindPrimesThread(j, j + range, false);
-                    Thread thread = new Thread(findPrimesThread);
-                    listThreads.add(thread);
-                    findPrimesThreads.add(findPrimesThread);
-                }
+        for (int i = 0; i < countThreads; i++) {
+            FindPrimesThread findPrimesThread = new FindPrimesThread(false);
+            Thread thread = new Thread(findPrimesThread);
+            listThreads.add(thread);
+            findPrimesThreads.add(findPrimesThread);
+        }
+
+        long number = from;
+        while (number < to){
+            for (FindPrimesThread thread:findPrimesThreads) {
+                thread.getList().add(number++);
             }
         }
     }

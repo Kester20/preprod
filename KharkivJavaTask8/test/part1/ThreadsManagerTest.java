@@ -16,7 +16,7 @@ public class ThreadsManagerTest {
 
     @Before
     public void initial() {
-        threadsManager = new ThreadsManager(10, 0, 1000000);
+        threadsManager = new ThreadsManager(100, 0, 1000000);
         PrimesStorage.getList().clear();
     }
 
