@@ -19,7 +19,7 @@ public class ChildThread implements Runnable {
 	public void run() {
 		while (true) {
 			if (canWork) {
-				byteArrayHandler();
+				findLongestRepeated();
 			} else {
 				try {
 					TimeUnit.SECONDS.sleep(1);
@@ -31,22 +31,22 @@ public class ChildThread implements Runnable {
 	}
 
 	/**
-	 * Searches byte sequences.
+	 * Searches longest byte sequences.
 	 */
-	private void byteArrayHandler() {
+	private void findLongestRepeated() {
 		boolean equalsSequence = true;
-		byte[] sample;
+		byte[] origin;
 		for (int i = 0; i < bytes.length; i++) {
 			if (!equalsSequence) {
 				break;
 			}
-			sample = new byte[sequence];
+			origin = new byte[sequence];
 			for (int k = 0; k + sequence < bytes.length; k++) {
-				System.arraycopy(bytes, k, sample, 0, sequence);
+				System.arraycopy(bytes, k, origin, 0, sequence);
 				for (int j = k + 1; j + sequence - 1 < bytes.length; j++) {
 					equalsSequence = true;
 					for (int z = 0; z < sequence; z++) {
-						if (sample[z] != bytes[j + z]) {
+						if (origin[z] != bytes[j + z]) {
 							equalsSequence = false;
 							break;
 						}
@@ -56,7 +56,7 @@ public class ChildThread implements Runnable {
 						secondEntry = j;
 						synchronized (result) {
 							result = new byte[sequence];
-							result = sample;
+							result = origin;
 						}
 						equalsSequence = true;
 						break;
