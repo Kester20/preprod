@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class MainThread {
 
 	public static void main(String[] args) throws IOException {
+
 		ChildThread childThread = new ChildThread();
 		new Thread(childThread).start();
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {

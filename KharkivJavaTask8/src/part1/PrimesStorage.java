@@ -8,9 +8,9 @@ import java.util.List;
  */
 public class PrimesStorage {
 
-    private static List<Long> list = new ArrayList<>();
+    private static List<Integer> list = new ArrayList<>();
 
-    public static List<Long> getList() {
+    public static List<Integer> getList() {
         return list;
     }
 }

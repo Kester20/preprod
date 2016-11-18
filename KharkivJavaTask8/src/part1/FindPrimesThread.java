@@ -10,30 +10,36 @@ import java.util.List;
  */
 public class FindPrimesThread implements Runnable {
 
-    private List<Long> list;
+    private List<Integer> list;
     private boolean addToOwnList;
+    private int from;
+    private int step;
+    private int to;
 
-    public FindPrimesThread(boolean addToOwnList){
+    public FindPrimesThread(int from, int to, int step, boolean addToOwnList){
         this.addToOwnList = addToOwnList;
         this.list = new ArrayList<>();
+        this.from = from;
+        this.to = to;
+        this.step = step;
     }
 
     @Override
     public void run() {
-        for (long l: list) {
-            if(Checker.isPrime(l)){
-                if (addToOwnList) {
-                    list.add(l);
-                } else {
+        for (int i = from; i < to; i += step) {
+            if(Checker.isPrime(i)){
+                if(addToOwnList){
+                    list.add(i);
+                }else{
                     synchronized (PrimesStorage.getList()) {
-                        PrimesStorage.getList().add(l);
+                        PrimesStorage.getList().add(i);
                     }
                 }
             }
         }
     }
 
-    public List<Long> getList() {
+    public List<Integer> getList() {
         return list;
     }
 }

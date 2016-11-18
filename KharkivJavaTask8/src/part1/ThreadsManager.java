@@ -12,13 +12,13 @@ import java.util.concurrent.TimeUnit;
 public class ThreadsManager {
 
     private List<Thread> listThreads;
-    private List<Long> listPrimes;
+    private List<Integer> listPrimes;
     private List<FindPrimesThread> findPrimesThreads;
     private int countThreads;
-    private long from;
-    private long to;
+    private int from;
+    private int to;
 
-    public ThreadsManager(int countThreads, long from, long to) {
+    public ThreadsManager(int countThreads, int from, int to) {
         setFrom(from);
         this.to = to;
         listThreads = new ArrayList<>();
@@ -60,21 +60,14 @@ public class ThreadsManager {
      */
     private void giveIntervals() {
         for (int i = 0; i < countThreads; i++) {
-            FindPrimesThread findPrimesThread = new FindPrimesThread(false);
+            FindPrimesThread findPrimesThread = new FindPrimesThread(from++, to, countThreads, false);
             Thread thread = new Thread(findPrimesThread);
             listThreads.add(thread);
             findPrimesThreads.add(findPrimesThread);
         }
-
-        long number = from;
-        while (number < to){
-            for (FindPrimesThread thread:findPrimesThreads) {
-                thread.getList().add(number++);
-            }
-        }
     }
 
-    public void setFrom(long from) {
+    public void setFrom(int from) {
         if (from < 2) {
             from = 2;
         }

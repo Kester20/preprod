@@ -16,20 +16,20 @@ public class ThreadsManagerTest {
 
     @Before
     public void initial() {
-        threadsManager = new ThreadsManager(100, 0, 1000000);
+        threadsManager = new ThreadsManager(10, 0, 1000000);
         PrimesStorage.getList().clear();
     }
 
     @org.junit.Test
     public void startThreads() throws Exception {
         threadsManager.startThreads();
-        assertEquals(PrimesStorage.getList().size(), numberOfPrimes);
+        assertEquals(numberOfPrimes, PrimesStorage.getList().size());
     }
 
     @org.junit.Test
     public void startThreadsWithExecutor() throws Exception {
         threadsManager.startThreadsWithExecutor();
-        assertEquals(PrimesStorage.getList().size(), numberOfPrimes);
+        assertEquals(numberOfPrimes, PrimesStorage.getList().size());
     }
 
 }
