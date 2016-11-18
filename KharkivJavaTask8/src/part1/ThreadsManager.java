@@ -74,22 +74,10 @@ public class ThreadsManager {
         }
     }
 
-    public List<Long> getListPrimes() {
-        return listPrimes;
-    }
-
-    public List<Thread> getListThreads() {
-        return listThreads;
-    }
-
     public void setFrom(long from) {
         if (from < 2) {
             from = 2;
         }
         this.from = from;
-    }
-
-    public void setTo(long to) {
-        this.to = to;
     }
 }

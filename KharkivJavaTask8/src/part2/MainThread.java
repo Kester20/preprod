@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 public class MainThread {
 
 	public static void main(String[] args) throws IOException {
-		Worker worker = new Worker();
-		new Thread(worker).start();
+		ChildThread childThread = new ChildThread();
+		new Thread(childThread).start();
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
 			while (true) {
 				System.out.println("Enter file name:");
@@ -19,14 +19,14 @@ public class MainThread {
 					FileInputStream fileInputStream = new FileInputStream(file);
 					byte[] bytes = getBytes(fileInputStream, file.length());
 
-					worker.setBytes(bytes);
-					while (!worker.isFinished()) {
-						System.out.println("Current length: " + worker.getResult());
+					childThread.setBytes(bytes);
+					while (!childThread.isFinished()) {
+						System.out.println("Current length: " + childThread.getResult());
 						TimeUnit.SECONDS.sleep(1);
 					}
-					System.out.println("Finish length: " + worker.getResult());
-					System.out.println("First entry: " + worker.getFirstEntry());
-					System.out.println("Second entry: " + worker.getSecondEntry());
+					System.out.println("Finish length: " + childThread.getResult());
+					System.out.println("First entry: " + childThread.getFirstEntry());
+					System.out.println("Second entry: " + childThread.getSecondEntry());
 
 				} else {
 					System.out.println("File not found.");

@@ -36,8 +36,4 @@ public class FindPrimesThread implements Runnable {
     public List<Long> getList() {
         return list;
     }
-
-    public void setList(List<Long> list) {
-        this.list = list;
-    }
 }
