@@ -1,6 +1,9 @@
 package part2;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,10 +18,11 @@ public class MainThread {
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
 			while (true) {
 				System.out.println("Enter file name:");
-				File file = new File(reader.readLine().trim());
+				String fileName = reader.readLine();
+				Path path = Paths.get(fileName);
+				File file = new File(fileName);
 				if (file.exists() && file.isFile()) {
-					FileInputStream fileInputStream = new FileInputStream(file);
-					byte[] bytes = getBytes(fileInputStream, file.length());
+					byte[] bytes = Files.readAllBytes(path);
 
 					childThread.setBytes(bytes);
 					while (!childThread.isFinished()) {
@@ -38,13 +42,5 @@ public class MainThread {
 			e.printStackTrace();
 		}
 
-	}
-
-	private static byte[] getBytes(FileInputStream fileInputStream, long length) throws IOException {
-		byte[] bytes = new byte[(int) length];
-		for (int i = 0; i < length; i++) {
-			bytes[i] = (byte) fileInputStream.read();
-		}
-		return bytes;
 	}
 }

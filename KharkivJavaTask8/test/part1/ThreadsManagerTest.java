@@ -1,6 +1,7 @@
 package part1;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Arrays;
 
@@ -20,13 +21,20 @@ public class ThreadsManagerTest {
         PrimesStorage.getList().clear();
     }
 
-    @org.junit.Test
-    public void startThreads() throws Exception {
+    @Test
+    public void startThreadsAddToGlobalList() throws Exception {
         threadsManager.startThreads();
         assertEquals(numberOfPrimes, PrimesStorage.getList().size());
     }
 
-    @org.junit.Test
+    @Test
+    public void startThreadsAddToOwnList() throws Exception {
+        threadsManager.setAddPrimesToGlobalList(false);
+        threadsManager.startThreads();
+        assertEquals(numberOfPrimes, threadsManager.getListPrimes().size());
+    }
+
+    @Test
     public void startThreadsWithExecutor() throws Exception {
         threadsManager.startThreadsWithExecutor();
         assertEquals(numberOfPrimes, PrimesStorage.getList().size());
