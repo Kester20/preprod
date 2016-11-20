@@ -1,6 +1,7 @@
 package view.impl;
 
 import entity.product.Product;
+import provider.Reader;
 import services.ProductService;
 import view.Command;
 import view.helpers.map.MapHelper;
@@ -16,14 +17,13 @@ public class AddProductToListWithReflectionCommand implements Command {
     private ProductService productService;
     private MapHelper mapHelper;
     private MapPath mapPath;
-    private int choice;
-    private static final int DEFAULT_CHOICE = 1;
+    private Reader reader;
 
-    public AddProductToListWithReflectionCommand(ProductService productService, int choice) {
+    public AddProductToListWithReflectionCommand(ProductService productService, Reader reader) {
         this.productService = productService;
         mapHelper = new MapHelper();
         mapPath = new MapPath();
-        this.choice = choice;
+        this.reader = reader;
     }
 
     /**
@@ -42,7 +42,6 @@ public class AddProductToListWithReflectionCommand implements Command {
     }
 
     private Product getParametersForFields(String productName) throws Exception {
-        return choice == DEFAULT_CHOICE ? mapHelper.getMapHelper().get(productName).readWithReflection(choice, mapPath.getMapPath().get(productName)) :
-                mapHelper.getMapHelper().get(productName).readWithReflection(choice, mapPath.getMapPath().get(productName));
+        return mapHelper.getMapHelper().get(productName).readWithReflection(mapPath.getMapPath().get(productName), reader);
     }
 }

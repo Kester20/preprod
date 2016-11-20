@@ -1,14 +1,13 @@
 package view.helpers;
 
-import entity.product.Product;
 import entity.product.SmartPhone;
-import entity.product.annot.ProductAnnotations;
+import provider.Reader;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import static entity.constants.Constants.*;
+import static entity.constants.Constants.PRODUCER;
+import static entity.constants.Constants.VERSION;
 
 
 /**
@@ -17,26 +16,12 @@ import static entity.constants.Constants.*;
  */
 public class SmartPhoneHelper extends PhoneHelper {
 
-	private static final String path = "entity.product.SmartPhone";
-
 	@Override
-	public Map<String, Object> readFromConsole() {
-		Map<String, Object> map = super.readFromConsole();
+	public Map<String, Object> read(Reader reader) {
+		Map<String, Object> map = super.read(reader);
 		printSuggestion(SmartPhone.class);
-		String productProducer = scanner.next();
-		String version = scanner.next();
-		return new HashMap<String, Object>(map) {{
-			put(PRODUCER, productProducer);
-			put(VERSION, version);
-		}};
-	}
-
-	@Override
-	public Map<String, Object> readFromRandom() {
-		Map<String, Object> map = super.readFromRandom();
-		printSuggestion(SmartPhone.class);
-		String productProducer = PRODUCER + random.nextInt(DEFAULT_BOUND);
-		String version = VERSION + random.nextInt(DEFAULT_BOUND);
+		String productProducer = reader.getString(PRODUCER);
+		String version = reader.getString(VERSION);
 		return new HashMap<String, Object>(map) {{
 			put(PRODUCER, productProducer);
 			put(VERSION, version);

@@ -3,6 +3,7 @@ package view.helpers;
 import entity.product.Laptop;
 import entity.product.Product;
 import entity.product.annot.ProductAnnotations;
+import provider.Reader;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -17,27 +18,12 @@ import static entity.constants.Constants.SCREEN;
  */
 public class LaptopHelper extends ProductHelper {
 
-    private static final String path = "entity.product.Laptop";
-
-
     @Override
-    public Map<String, Object> readFromConsole() {
-        Map<String, Object> map = super.readFromConsole();
+    public Map<String, Object> read(Reader reader) {
+        Map<String, Object> map = super.read(reader);
         printSuggestion(Laptop.class);
-        String productProducer = scanner.next();
-        double productScreen = scanner.nextDouble();
-        return new HashMap<String, Object>(map) {{
-            put(PRODUCER, productProducer);
-            put(SCREEN, productScreen);
-        }};
-    }
-
-    @Override
-    public Map<String, Object> readFromRandom() {
-        Map<String, Object> map = super.readFromRandom();
-        printSuggestion(Laptop.class);
-        String productProducer = PRODUCER + random.nextInt(DEFAULT_BOUND);
-        double productScreen = random.nextDouble();
+        String productProducer = reader.getString(PRODUCER);
+        double productScreen = reader.getDouble();
         return new HashMap<String, Object>(map) {{
             put(PRODUCER, productProducer);
             put(SCREEN, productScreen);

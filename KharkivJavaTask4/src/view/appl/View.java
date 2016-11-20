@@ -36,9 +36,9 @@ public class View {
 		Scanner scanner = new Scanner(System.in);
 		int chooseType = scanner.nextInt();
 		application.getCommandMap().put(Application.getAddProductCommand(),
-				new AddProductToListCommand(application.getProductService(), chooseType));
+				new AddProductToListCommand(application.getProductService(),application.getMapReader().getMapReader().get(chooseType)));
 		application.getCommandMap().put(Application.getEigthCommand(),
-				new AddProductToListWithReflectionCommand(application.getProductService(), chooseType));
+				new AddProductToListWithReflectionCommand(application.getProductService(), application.getMapReader().getMapReader().get(chooseType)));
 
 
 		while (true) {

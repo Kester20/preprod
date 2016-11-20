@@ -1,5 +1,6 @@
 package view.impl;
 
+import provider.Reader;
 import services.ProductService;
 import view.Command;
 import view.helpers.map.MapHelper;
@@ -15,13 +16,12 @@ public class AddProductToListCommand implements Command {
 
 	private ProductService productService;
 	private MapHelper mapHelper;
-	private int choice;
-	private static final int DEFAULT_CHOICE = 1;
+	private Reader reader;
 
-	public AddProductToListCommand(ProductService productService, int choice) {
+	public AddProductToListCommand(ProductService productService, Reader reader) {
 		this.productService = productService;
+		this.reader = reader;
 		mapHelper = new MapHelper();
-		this.choice = choice;
 	}
 
 	/**
@@ -36,7 +36,6 @@ public class AddProductToListCommand implements Command {
 	}
 
 	private Map<String, Object> getParametersForFields(String productName){
-		return choice == DEFAULT_CHOICE ? mapHelper.getMapHelper().get(productName).readFromConsole() :
-				mapHelper.getMapHelper().get(productName).readFromRandom();
+		return  mapHelper.getMapHelper().get(productName).read(reader);
 	}
 }

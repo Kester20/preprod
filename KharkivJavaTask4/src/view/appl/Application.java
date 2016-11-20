@@ -1,6 +1,7 @@
 package view.appl;
 
 import abstractBuilder.map.BuilderMap;
+import provider.map.MapReader;
 import repository.factory.RepositoryFactory;
 import services.CartService;
 import services.ProductService;
@@ -38,6 +39,7 @@ public class Application {
 	private Map<Integer, Command> commandMap;
 	private RepositoryFactory repositoryFactory;
 	private BuilderMap mapBuilder;
+	private MapReader mapReader;
 
 	public Application() {
 		repositoryFactory = new RepositoryFactory();
@@ -46,6 +48,7 @@ public class Application {
 		shopService = new ShopServiceImpl(repositoryFactory);
 		scanner = new Scanner(System.in);
 		mapBuilder = new BuilderMap();
+		mapReader = new MapReader();
 
 		commandMap = new HashMap<>();
 		commandMap.put(firstCommand, new ShowAllProductsCommand(productService));
@@ -87,5 +90,9 @@ public class Application {
 
 	public static int getEigthCommand() {
 		return eigthCommand;
+	}
+
+	public MapReader getMapReader() {
+		return mapReader;
 	}
 }
