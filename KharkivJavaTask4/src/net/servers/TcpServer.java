@@ -1,62 +1,68 @@
 package net.servers;
 
 import handler.impl.Handler;
+import net.RequestMap;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Logger;
 
-import static java.lang.Thread.NORM_PRIORITY;
+import static net.Constants.*;
 
 /**
  * @author Arsalan
  */
 public class TcpServer extends Server implements Runnable {
 
-    private Thread thread;
-    private Socket s;
-    private Handler handler;
+	private ServerSocket server;
+	private Socket socket;
+	private Handler handler;
+	private RequestMap requestMap;
+	private Logger log = Logger.getLogger(TcpServer.class.getName());
 
-    public static void main(Handler handler) {
-        try {
-            ServerSocket server = new ServerSocket(3000, 0,
-                    InetAddress.getByName("localhost"));
-            System.out.println("server is started");
-            while (true) {
-                new TcpServer(server.accept(), handler);
-            }
-        } catch (Exception e) {
-            System.out.println("init error: " + e);
-        }
-    }
+	public TcpServer(Handler handler) {
+		this.handler = handler;
+		this.requestMap = new RequestMap(handler);
+	}
 
-    public TcpServer(Socket s, Handler handler) {
-        this.handler = handler;
-        this.s = s;
-        this.thread = new Thread(this);
-        this.thread.setDaemon(true);
-        this.thread.setPriority(NORM_PRIORITY);
-        this.thread.start();
-    }
+	public void run() {
+		try {
+			server = new ServerSocket(PORT, ZERO,
+					InetAddress.getByName(HOST));
+			log.info("Server is started");
+			while (true) {
+				socket = server.accept();
+				sendResponse();
+			}
+		} catch (IOException e) {
+			log.info(e.getMessage());
+		}
 
-    public void run() {
-        try {
-            InputStream is = s.getInputStream();
-            OutputStream os = s.getOutputStream();
+	}
 
-            byte buf[] = new byte[64 * 1024];
-            int r = is.read(buf);
+	public void sendResponse(){
+		try (InputStream is = socket.getInputStream();
+		     OutputStream os = socket.getOutputStream()) {
 
-            String data = new String(buf, 0, r);
-            System.out.println("request name --> " + data);
+			byte buf[] = new byte[BUFFER_SIZE];
+			int r = is.read(buf);
+			String data = new String(buf, ZERO, r);
+			log.info("request name --> " + data);
 
-            data = handler.getCountOfProducts();
-            os.write(data.getBytes());
-            s.close();
-        } catch (Exception e) {
-            System.out.println("init error: " + e);
-        }
-    }
+			data = requestMap.handleRequest(data);
+			os.write(data.getBytes());
+			socket.close();
+		} catch (Exception e) {
+			log.info("init error: " + e);
+		}
+	}
+
+	public static void main(String[] args) {
+		Thread thread = new Thread(new TcpServer(new Handler()));
+		thread.start();
+	}
 }
