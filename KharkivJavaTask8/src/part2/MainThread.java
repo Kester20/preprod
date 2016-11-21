@@ -26,7 +26,9 @@ public class MainThread {
 
 					childThread.setBytes(bytes);
 					while (!childThread.isFinished()) {
-						System.out.println("Current length: " + childThread.getResult());
+						synchronized (childThread){
+							System.out.println("Current length: " + childThread.getResult());
+						}
 						TimeUnit.SECONDS.sleep(1);
 					}
 					System.out.println("Finish length: " + childThread.getResult());

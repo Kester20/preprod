@@ -1,6 +1,6 @@
 package utility;
 
-import entity.product.Product;
+import shop.entity.product.Product;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

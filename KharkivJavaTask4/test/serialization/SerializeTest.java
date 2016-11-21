@@ -1,10 +1,10 @@
 package serialization;
 
-import entity.product.Laptop;
+import shop.entity.product.Laptop;
 import org.junit.Before;
 import org.junit.Test;
-import repository.ProductRepository;
-import repository.impl.ProductRepositoryImpl;
+import shop.repository.ProductRepository;
+import shop.repository.impl.ProductRepositoryImpl;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * Created by Said_Sulaiman_Arsala on 11/10/2016.
+ * @author Arsalan
  */
 public class SerializeTest {
 

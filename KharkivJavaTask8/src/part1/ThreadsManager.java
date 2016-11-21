@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadsManager {
 
-	private List<Thread> listThreads;
+	private List<Thread> searchers;
 	private List<Integer> listPrimes;
 	private List<FindPrimesThread> findPrimesThreads;
 	private int countThreads;
@@ -22,7 +22,7 @@ public class ThreadsManager {
 	public ThreadsManager(int countThreads, int from, int to) {
 		setFrom(from);
 		this.to = to;
-		listThreads = new ArrayList<>();
+		searchers = new ArrayList<>();
 		listPrimes = new ArrayList<>();
 		findPrimesThreads = new ArrayList<>();
 		this.countThreads = countThreads;
@@ -30,11 +30,11 @@ public class ThreadsManager {
 
 	public void startThreads() throws InterruptedException {
 		giveIntervals();
-		for (Thread myThread : listThreads) {
-			myThread.start();
+		for (Thread thread : searchers) {
+			thread.start();
 		}
-		for (Thread myThread : listThreads) {
-			myThread.join();
+		for (Thread thread : searchers) {
+			thread.join();
 		}
 		fillPrimes();
 	}
@@ -42,8 +42,8 @@ public class ThreadsManager {
 	public void startThreadsWithExecutor() throws InterruptedException {
 		giveIntervals();
 		ExecutorService executorService = Executors.newFixedThreadPool(countThreads);
-		for (Thread myThread : listThreads) {
-			executorService.execute(myThread);
+		for (Thread thread : searchers) {
+			executorService.execute(thread);
 		}
 		executorService.shutdown();
 		executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
@@ -63,7 +63,7 @@ public class ThreadsManager {
 		for (int i = 0; i < countThreads; i++) {
 			FindPrimesThread findPrimesThread = new FindPrimesThread(from++, to, countThreads, addPrimesToGlobalList);
 			Thread thread = new Thread(findPrimesThread);
-			listThreads.add(thread);
+			searchers.add(thread);
 			findPrimesThreads.add(findPrimesThread);
 		}
 	}

@@ -1,7 +1,7 @@
 package serialization;
 
-import entity.product.Product;
-import repository.ProductRepository;
+import shop.entity.product.Product;
+import shop.repository.ProductRepository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class Serialize {
 	/**
 	 * serializes object
 	 *
-	 * @param productRepository the repository, which contains list, than will be serialized
+	 * @param productRepository the shop.repository, which contains list, than will be serialized
 	 * @throws IOException
 	 */
 	public static void serialize(ProductRepository productRepository) throws IOException {
