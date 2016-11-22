@@ -20,7 +20,7 @@ public class Handler implements RequestHandler {
     @Override
     public String getCountOfProducts() {
         int count = productService.getProductRepository().getList().size();
-        return "count = " + count;
+        return "{count: " + count + "}";
     }
 
     @Override
@@ -28,12 +28,10 @@ public class Handler implements RequestHandler {
         String result = null;
         for (Product product:productService.getProductRepository().getList()) {
             if(product.getId() == Integer.parseInt(id)){
-                result = product.getName() + " | " + product.getCost();
+                result = "{name: " + product.getName() + " | price: " + product.getCost() +"}";
                 break;
             }
         }
         return result;
     }
-
-
 }

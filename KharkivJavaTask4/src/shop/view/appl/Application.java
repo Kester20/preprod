@@ -58,7 +58,7 @@ public class Application {
         threadTcpServer.setDaemon(true);
         threadTcpServer.start();*/
 
-        Thread threadHttpServer = new Thread(new HttpServer());
+        Thread threadHttpServer = new Thread(new HttpServer(handler));
         threadHttpServer.setDaemon(true);
         threadHttpServer.start();
 

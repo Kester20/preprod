@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -41,9 +43,4 @@ public class TcpServerTest {
 		thread.interrupt();
 	}
 
-	@Test
-	public void regex(){
-		String data = "GET /shop/count HTTP/1.1";
-		System.out.println(data.matches("^GET [a-z] "));
-	}
 }
