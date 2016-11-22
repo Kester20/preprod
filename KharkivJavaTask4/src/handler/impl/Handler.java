@@ -25,8 +25,9 @@ public class Handler implements RequestHandler {
     }
 
     @Override
-    public String getItemById(int id) {
-        return "!!!";
+    public String getItemById(String id) {
+        System.out.println(id + " !!!");
+        return "zzz";
     }
 
 

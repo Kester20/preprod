@@ -13,6 +13,7 @@ public class RequestMap {
 	private Handler handler;
 	private Map<String, String> requestMap;
 	private static String ITEM_ID = "itemId";
+	private String parameter = null;
 
 	/**
 	 * initializes  map
@@ -21,6 +22,7 @@ public class RequestMap {
 		this.handler = handler;
 		requestMap = new HashMap<String, String>() {{
 			put("get count", handler.getCountOfProducts());
+			put("get item", handler.getItemById(parameter));
 		}};
 	}
 
@@ -33,7 +35,8 @@ public class RequestMap {
 		String result = null;
 		if (data.contains("=")) {
 			String[] array = data.split("=");
-			result = handler.getItemById(Integer.parseInt(array[1]));
+			parameter = array[1];
+			result = requestMap.get(array[0]);
 		} else {
 			result = requestMap.get(data);
 		}

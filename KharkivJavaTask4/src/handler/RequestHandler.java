@@ -15,5 +15,5 @@ public interface RequestHandler {
      * @param id - id of item
      * @return item
      */
-    public String getItemById(int id);
+    public String getItemById(String id);
 }
