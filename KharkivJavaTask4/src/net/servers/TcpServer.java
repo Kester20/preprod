@@ -18,51 +18,45 @@ import static net.Constants.*;
  */
 public class TcpServer extends Server implements Runnable {
 
-	private ServerSocket server;
-	private Socket socket;
-	private Handler handler;
-	private RequestMap requestMap;
-	private Logger log = Logger.getLogger(TcpServer.class.getName());
+    private ServerSocket server;
+    private Socket socket;
+    private RequestMap requestMap;
+    private static Logger log = Logger.getLogger(TcpServer.class.getName());
 
-	public TcpServer(Handler handler) {
-		this.handler = handler;
-		this.requestMap = new RequestMap(handler);
-	}
+    public TcpServer(Handler handler) {
+        this.requestMap = new RequestMap(handler);
+    }
 
-	public void run() {
-		try {
-			server = new ServerSocket(PORT, ZERO,
-					InetAddress.getByName(HOST));
-			log.info("Server is started");
-			while (true) {
-				socket = server.accept();
-				sendResponse();
-			}
-		} catch (IOException e) {
-			log.info(e.getMessage());
-		}
+    public void run() {
+        try {
+            server = new ServerSocket(PORT, ZERO,
+                    InetAddress.getByName(HOST));
+            log.info("Tcp server is started");
+            while (true) {
+                socket = server.accept();
+                sendResponse();
+            }
+        } catch (IOException e) {
+            log.info(e.getMessage());
+        }
 
-	}
+    }
 
-	public void sendResponse(){
-		try (InputStream is = socket.getInputStream();
-		     OutputStream os = socket.getOutputStream()) {
+    private void sendResponse() {
+        try (InputStream is = socket.getInputStream();
+             OutputStream os = socket.getOutputStream()) {
 
-			byte buf[] = new byte[BUFFER_SIZE];
-			int r = is.read(buf);
-			String data = new String(buf, ZERO, r);
-			log.info("request name --> " + data);
+            byte buf[] = new byte[BUFFER_SIZE];
+            int r = is.read(buf);
+            String data = new String(buf, ZERO, r);
+            log.info("request name --> " + data);
 
-			data = requestMap.handleRequest(data);
-			os.write(data.getBytes());
-			socket.close();
-		} catch (Exception e) {
-			log.info("init error: " + e);
-		}
-	}
-
-	public static void main(String[] args) {
-		Thread thread = new Thread(new TcpServer(new Handler()));
-		thread.start();
-	}
+            data = requestMap.handleRequest(data);//requestMap.handleRequest(data);
+            os.write(data.getBytes());
+            socket.close();
+        } catch (Exception e) {
+            log.info("init error: " + e);
+            e.printStackTrace();
+        }
+    }
 }

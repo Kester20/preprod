@@ -23,12 +23,13 @@ public class Client {
             System.out.println(result);
         } catch (Exception e) {
             log.info("init error: " + e);
+            e.printStackTrace();
         }
         return  result;
     }
 
     public static void main(String[] args) {
         Client client = new Client();
-        client.sendRequest("get item=1");
+        client.sendRequest("get count");
     }
 }

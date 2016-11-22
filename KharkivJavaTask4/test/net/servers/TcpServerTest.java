@@ -40,4 +40,10 @@ public class TcpServerTest {
 	public void shutDownServer() throws InterruptedException {
 		thread.interrupt();
 	}
+
+	@Test
+	public void regex(){
+		String data = "GET /shop/count HTTP/1.1";
+		System.out.println(data.matches("^GET [a-z] "));
+	}
 }

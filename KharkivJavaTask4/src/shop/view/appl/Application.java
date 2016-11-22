@@ -1,5 +1,8 @@
 package shop.view.appl;
 
+import handler.impl.Handler;
+import net.servers.HttpServer;
+import net.servers.TcpServer;
 import shop.abstractBuilder.map.BuilderMap;
 import provider.map.MapReader;
 import shop.repository.factory.RepositoryFactory;
@@ -18,81 +21,90 @@ import java.util.Scanner;
 
 /**
  * @author Arsalan
- * application class
+ *         application class
  */
 public class Application {
 
-	private static final int addProductCommand = 0;
-	private static final int firstCommand = 1;
-	private static final int secondCommand = 2;
-	private static final int thirdCommand = 3;
-	private static final int fourthCommand = 4;
-	private static final int fifthCommand = 5;
-	private static final int sixthCommand = 6;
-	private static final int seventhCommand = 7;
-	private static final int eigthCommand = 8;
+    private static final int addProductCommand = 0;
+    private static final int firstCommand = 1;
+    private static final int secondCommand = 2;
+    private static final int thirdCommand = 3;
+    private static final int fourthCommand = 4;
+    private static final int fifthCommand = 5;
+    private static final int sixthCommand = 6;
+    private static final int seventhCommand = 7;
+    private static final int eigthCommand = 8;
 
-	private ProductService productService;
-	private CartService cartService;
-	private ShopService shopService;
-	private Scanner scanner;
-	private Map<Integer, Command> commandMap;
-	private RepositoryFactory repositoryFactory;
-	private BuilderMap mapBuilder;
-	private MapReader mapReader;
+    private ProductService productService;
+    private CartService cartService;
+    private ShopService shopService;
+    private Scanner scanner;
+    private Map<Integer, Command> commandMap;
+    private RepositoryFactory repositoryFactory;
+    private BuilderMap mapBuilder;
+    private MapReader mapReader;
+    private Handler handler;
 
-	public Application() {
-		repositoryFactory = new RepositoryFactory();
-		productService = new ProductServiceImpl(repositoryFactory);
-		cartService = new CartServiceImpl(repositoryFactory);
-		shopService = new ShopServiceImpl(repositoryFactory);
-		scanner = new Scanner(System.in);
-		mapBuilder = new BuilderMap();
-		mapReader = new MapReader();
+    public Application() {
+        repositoryFactory = new RepositoryFactory();
+        productService = new ProductServiceImpl(repositoryFactory);
+        cartService = new CartServiceImpl(repositoryFactory);
+        shopService = new ShopServiceImpl(repositoryFactory);
+        scanner = new Scanner(System.in);
+        mapBuilder = new BuilderMap();
+        mapReader = new MapReader();
+        handler = new Handler(productService);
+        /*Thread threadTcpServer = new Thread(new TcpServer(handler));
+        threadTcpServer.setDaemon(true);
+        threadTcpServer.start();*/
 
-		commandMap = new HashMap<>();
-		commandMap.put(firstCommand, new ShowAllProductsCommand(productService));
-		commandMap.put(secondCommand, new AddProductToCartCommand(cartService, productService));
-		commandMap.put(thirdCommand, new ShowProductsInCartCommand(cartService));
-		commandMap.put(fourthCommand, new BuyAllProductsInCartCommand(cartService, shopService));
-		commandMap.put(fifthCommand, new GetLastFiveProductsCommand(cartService));
-		commandMap.put(sixthCommand, new GetOrdersInDateRangeCommand(shopService));
-		commandMap.put(seventhCommand, new GetOrderOnTheNearestDateCommand(shopService));
-	}
+        Thread threadHttpServer = new Thread(new HttpServer());
+        threadHttpServer.setDaemon(true);
+        threadHttpServer.start();
 
-	public ProductService getProductService() {
-		return productService;
-	}
+        commandMap = new HashMap<>();
+        commandMap.put(firstCommand, new ShowAllProductsCommand(productService));
+        commandMap.put(secondCommand, new AddProductToCartCommand(cartService, productService));
+        commandMap.put(thirdCommand, new ShowProductsInCartCommand(cartService));
+        commandMap.put(fourthCommand, new BuyAllProductsInCartCommand(cartService, shopService));
+        commandMap.put(fifthCommand, new GetLastFiveProductsCommand(cartService));
+        commandMap.put(sixthCommand, new GetOrdersInDateRangeCommand(shopService));
+        commandMap.put(seventhCommand, new GetOrderOnTheNearestDateCommand(shopService));
+    }
 
-	public CartService getCartService() {
-		return cartService;
-	}
+    public ProductService getProductService() {
+        return productService;
+    }
 
-	public ShopService getShopService() {
-		return shopService;
-	}
+    public CartService getCartService() {
+        return cartService;
+    }
 
-	public Scanner getScanner() {
-		return scanner;
-	}
+    public ShopService getShopService() {
+        return shopService;
+    }
 
-	public Map<Integer, Command> getCommandMap() {
-		return commandMap;
-	}
+    public Scanner getScanner() {
+        return scanner;
+    }
 
-	public static int getAddProductCommand() {
-		return addProductCommand;
-	}
+    public Map<Integer, Command> getCommandMap() {
+        return commandMap;
+    }
 
-	public BuilderMap getMapBuilder() {
-		return mapBuilder;
-	}
+    public static int getAddProductCommand() {
+        return addProductCommand;
+    }
 
-	public static int getEigthCommand() {
-		return eigthCommand;
-	}
+    public BuilderMap getMapBuilder() {
+        return mapBuilder;
+    }
 
-	public MapReader getMapReader() {
-		return mapReader;
-	}
+    public static int getEigthCommand() {
+        return eigthCommand;
+    }
+
+    public MapReader getMapReader() {
+        return mapReader;
+    }
 }

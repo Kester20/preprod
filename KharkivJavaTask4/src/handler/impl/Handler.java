@@ -1,6 +1,7 @@
 package handler.impl;
 
 import handler.RequestHandler;
+import shop.entity.product.Product;
 import shop.repository.factory.RepositoryFactory;
 import shop.services.ProductService;
 import shop.services.impl.ProductServiceImpl;
@@ -10,12 +11,10 @@ import shop.services.impl.ProductServiceImpl;
  */
 public class Handler implements RequestHandler {
 
-    private RepositoryFactory repositoryFactory;
     private ProductService productService;
 
-    public Handler() {
-        repositoryFactory = new RepositoryFactory();
-        productService = new ProductServiceImpl(repositoryFactory);
+    public Handler(ProductService productService) {
+        this.productService = productService;
     }
 
     @Override
@@ -26,8 +25,14 @@ public class Handler implements RequestHandler {
 
     @Override
     public String getItemById(String id) {
-        System.out.println(id + " !!!");
-        return "zzz";
+        String result = null;
+        for (Product product:productService.getProductRepository().getList()) {
+            if(product.getId() == Integer.parseInt(id)){
+                result = product.getName() + " | " + product.getCost();
+                break;
+            }
+        }
+        return result;
     }
 
 
