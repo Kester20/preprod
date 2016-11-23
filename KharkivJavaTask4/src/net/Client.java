@@ -12,31 +12,30 @@ import static net.Constants.PORT;
  */
 public class Client {
 
-	private static Logger log = Logger.getLogger(Client.class.getName());
+    private static Logger log = Logger.getLogger(Client.class.getName());
 
-	public String sendRequest(String request) {
-		String result = null;
-		try {
-			Socket socket = new Socket(HOST, PORT);
-			try(BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			    BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()))){
+    public String sendRequest(String request) {
+        String result = null;
+        try {
+            Socket socket = new Socket(HOST, PORT);
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                 BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-				bufferedWriter.write(request+System.lineSeparator());
-				bufferedWriter.flush();
+                bufferedWriter.write(request + System.lineSeparator());
+                bufferedWriter.flush();
 
-				result = is.readLine();
-				System.out.println(result);
-			}
-		} catch (Exception e) {
-			log.info("init error: " + e);
-			e.printStackTrace();
-		}
-		return result;
-	}
+                result = is.readLine();
+                System.out.println(result);
+            }
+        } catch (Exception e) {
+            log.info("init error: " + e);
+        }
+        return result;
+    }
 
-	public static void main(String[] args) {
-		Client client = new Client();
-		client.sendRequest("get count");
-		client.sendRequest("get item=843");
-	}
+    public static void main(String[] args) {
+        Client client = new Client();
+        client.sendRequest("get count");
+        client.sendRequest("get item=843");
+    }
 }

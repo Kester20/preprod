@@ -26,12 +26,16 @@ public class Handler implements RequestHandler {
     @Override
     public String getItemById(String id) {
         String result = null;
-        for (Product product:productService.getProductRepository().getList()) {
-            if(product.getId() == Integer.parseInt(id)){
-                result = "{name: " + product.getName() + " | price: " + product.getCost() +"}";
+        for (Product product : productService.getProductRepository().getList()) {
+            if (product.getId() == Integer.parseInt(id)) {
+                result = "{name: " + product.getName() + " | price: " + product.getCost() + "}";
                 break;
             }
         }
         return result;
+    }
+
+    public String icon() {
+        return "";
     }
 }

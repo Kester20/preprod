@@ -9,25 +9,25 @@ import java.util.Scanner;
  */
 public class ScannerReader implements Reader {
 
-	private Scanner scanner;
+    private Scanner scanner;
 
-	public ScannerReader() {
-		this.scanner = new Scanner(System.in);
-	}
+    public ScannerReader() {
+        this.scanner = new Scanner(System.in);
+    }
 
 
-	@Override
-	public int getInt() {
-		return scanner.nextInt();
-	}
+    @Override
+    public int getInt() {
+        return scanner.nextInt();
+    }
 
-	@Override
-	public double getDouble() {
-		return scanner.nextDouble();
-	}
+    @Override
+    public double getDouble() {
+        return scanner.nextDouble();
+    }
 
-	@Override
-	public String getString(String s) {
-		return scanner.next();
-	}
+    @Override
+    public String getString(String s) {
+        return scanner.next();
+    }
 }

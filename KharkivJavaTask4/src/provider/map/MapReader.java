@@ -12,23 +12,23 @@ import java.util.Map;
  */
 public class MapReader {
 
-	private Map<Integer, Reader> mapReader;
+    private Map<Integer, Reader> mapReader;
 
-	/**
-	 * initializes helper map
-	 */
-	public MapReader() {
-		mapReader = new HashMap<Integer, Reader>() {{
-			put(1, new ScannerReader());
-			put(2, new RandomReader());
-		}};
-	}
+    /**
+     * initializes helper map
+     */
+    public MapReader() {
+        mapReader = new HashMap<Integer, Reader>() {{
+            put(1, new ScannerReader());
+            put(2, new RandomReader());
+        }};
+    }
 
-	/**
-	 * @return map helper
-	 */
-	public Map<Integer, Reader> getMapReader() {
-		return mapReader;
-	}
+    /**
+     * @return map helper
+     */
+    public Map<Integer, Reader> getMapReader() {
+        return mapReader;
+    }
 
 }

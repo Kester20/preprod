@@ -9,26 +9,26 @@ import java.util.Random;
  */
 public class RandomReader implements Reader {
 
-	private Random random;
-	private static final int DEFAULT_BOUND = 1000;
+    private Random random;
+    private static final int DEFAULT_BOUND = 1000;
 
-	public RandomReader() {
-		random = new Random();
-	}
+    public RandomReader() {
+        random = new Random();
+    }
 
 
-	@Override
-	public int getInt() {
-		return random.nextInt(DEFAULT_BOUND);
-	}
+    @Override
+    public int getInt() {
+        return random.nextInt(DEFAULT_BOUND);
+    }
 
-	@Override
-	public double getDouble() {
-		return random.nextDouble();
-	}
+    @Override
+    public double getDouble() {
+        return random.nextDouble();
+    }
 
-	@Override
-	public String getString(String s) {
-		return s + random.nextInt();
-	}
+    @Override
+    public String getString(String s) {
+        return s + random.nextInt();
+    }
 }

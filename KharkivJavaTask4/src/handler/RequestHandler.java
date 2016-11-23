@@ -12,6 +12,7 @@ public interface RequestHandler {
 
     /**
      * gets item
+     *
      * @param id - id of item
      * @return item
      */
