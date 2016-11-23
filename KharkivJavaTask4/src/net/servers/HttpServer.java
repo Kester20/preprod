@@ -35,17 +35,22 @@ public class HttpServer extends Server implements Runnable {
     }
 
     public void sendResponse(Socket socket) {
-        try (BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-             OutputStream os = socket.getOutputStream()) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try (BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                     OutputStream os = socket.getOutputStream()) {
 
-            String request = (parser(readRequest(is)));
-            String response = requestMap.handleRequest(request);
-            writeResponse("<html><body><h1>" + response + "</h1></body></html>", os);
+                    String request = (parser(readRequest(is)));
+                    String response = requestMap.handleRequest(request);
+                    writeResponse("<html><body><h1>" + response + "</h1></body></html>", os);
 
-            socket.close();
-        } catch (Throwable e) {
-            log.info("init error: " + e);
-        }
+                    socket.close();
+                } catch (Throwable e) {
+                    log.info("init error: " + e);
+                }
+            }
+        }).start();
     }
 
     private void writeResponse(String s, OutputStream os) throws Throwable {

@@ -28,18 +28,23 @@ public class TcpServer extends Server implements Runnable {
     }
 
     public void sendResponse(Socket socket) {
-        try (BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-             BufferedWriter os = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try (BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                     BufferedWriter os = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
 
-            String data = is.readLine();
-            log.info("request name --> " + data);
+                    String data = is.readLine();
+                    log.info("request name --> " + data);
 
-            data = requestMap.handleRequest(data);
-            os.write(data + System.lineSeparator());
-            os.flush();
-            socket.close();
-        } catch (Exception e) {
-            log.info("init error: " + e);
-        }
+                    data = requestMap.handleRequest(data);
+                    os.write(data + System.lineSeparator());
+                    os.flush();
+                    socket.close();
+                } catch (Exception e) {
+                    log.info("init error: " + e);
+                }
+            }
+        }).start();
     }
 }
