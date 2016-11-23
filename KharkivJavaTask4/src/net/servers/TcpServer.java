@@ -16,8 +16,6 @@ import static net.Constants.*;
  */
 public class TcpServer extends Server implements Runnable {
 
-	private ServerSocket server;
-	private Socket socket;
 	private RequestMap requestMap;
 	private static Logger log = Logger.getLogger(TcpServer.class.getName());
 
@@ -26,21 +24,10 @@ public class TcpServer extends Server implements Runnable {
 	}
 
 	public void run() {
-		try {
-			server = new ServerSocket(PORT, ZERO,
-					InetAddress.getByName(HOST));
-			log.info("Tcp server is started");
-			while (true) {
-				socket = server.accept();
-				sendResponse();
-			}
-		} catch (IOException e) {
-			log.info(e.getMessage());
-		}
-
+		runServer(PORT, TCP_SERVER_STARTED);
 	}
 
-	private void sendResponse() {
+	public void sendResponse(Socket socket) {
 		try (BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		     BufferedWriter os = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
 			String data = is.readLine();

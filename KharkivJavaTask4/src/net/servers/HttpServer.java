@@ -20,8 +20,6 @@ import static net.Constants.*;
  */
 public class HttpServer extends Server implements Runnable {
 
-	private ServerSocket server;
-	private Socket socket;
 	private RequestMap requestMap;
 	private static Logger log = Logger.getLogger(HttpServer.class.getName());
 
@@ -31,31 +29,19 @@ public class HttpServer extends Server implements Runnable {
 
 	@Override
 	public void run() {
-		try {
-			server = new ServerSocket(PORT, ZERO,
-					InetAddress.getByName(HOST));
-			log.info("Http server is started");
-
-			while (true) {
-				socket = server.accept();
-				log.info("accept");
-				sendResponse();
-			}
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+		runServer(PORT9000, HTTP_SERVER_STARTED);
 	}
 
-	private void sendResponse() throws Throwable {
+	public void sendResponse(Socket socket)  {
 		try (BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		     OutputStream os = socket.getOutputStream()) {
 
-			String request = (parser(readInputHeaders(is)));
+			String request = (parser(readRequest(is)));
 			String response = requestMap.handleRequest(request);
 			writeResponse("<html><body><h1>" + response + "</h1></body></html>", os);
 
 			socket.close();
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			log.info("init error: " + e);
 			e.printStackTrace();
 		}
@@ -71,7 +57,7 @@ public class HttpServer extends Server implements Runnable {
 		os.flush();
 	}
 
-	private String readInputHeaders(BufferedReader is) throws Throwable {
+	private String readRequest(BufferedReader is) throws Throwable {
 		String data = is.readLine();
 		return data;
 	}
