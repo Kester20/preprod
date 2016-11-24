@@ -23,13 +23,13 @@ public class Client {
         String result = null;
         try {
             Socket socket = new Socket(HOST, PORT);
-            try (BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                 BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+            try (PrintWriter writer = new PrintWriter(socket.getOutputStream());
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-                bufferedWriter.write(request + System.lineSeparator());
-                bufferedWriter.flush();
+                writer.println(request);
+                writer.flush();
 
-                result = is.readLine();
+                result = reader.readLine();
                 System.out.println(result);
             }
         } catch (Exception e) {
