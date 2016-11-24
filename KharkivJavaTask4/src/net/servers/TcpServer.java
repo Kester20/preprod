@@ -1,48 +1,53 @@
 package net.servers;
 
-import handler.impl.Handler;
-import net.RequestMap;
+import net.connector.Connector;
+import net.dispatcher.AbstractDispatcher;
+import net.dispatcher.TcpDispatcher;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Logger;
 
-import static net.Constants.*;
+import static net.constants.Constants.*;
 
 /**
  * @author Arsalan
  */
 public class TcpServer extends Server implements Runnable {
 
-    private RequestMap requestMap;
+    private AbstractDispatcher tcpDispatcher;
     private static Logger log = Logger.getLogger(TcpServer.class.getName());
 
-    public TcpServer(Handler handler) {
-        this.requestMap = new RequestMap(handler);
+    public TcpServer(Connector connector) {
+        this.tcpDispatcher = new TcpDispatcher(connector);
     }
 
     public void run() {
         runServer(PORT, TCP_SERVER_STARTED);
     }
 
-    public void sendResponse(Socket socket) {
+    public void handleRequest(Socket socket) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try (BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                     BufferedWriter os = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                     PrintWriter writer = new PrintWriter(socket.getOutputStream())) {
 
-                    String data = is.readLine();
+                    String data = reader.readLine();
                     log.info("request name --> " + data);
 
-                    data = requestMap.handleRequest(data);
-                    os.write(data + System.lineSeparator());
-                    os.flush();
-                    socket.close();
+                    data = (String) tcpDispatcher.handleRequest(data);
+                    writer.println(data);
+                    writer.flush();
+
                 } catch (Exception e) {
-                    log.info("init error: " + e);
+                    log.info("init error: " + e.getMessage());
+                }finally {
+                    try {
+                        socket.close();
+                    } catch (IOException e) {
+                        log.info("init error while socket closing: " + e.getMessage());
+                    }
                 }
             }
         }).start();

@@ -1,6 +1,6 @@
 package shop.view.appl;
 
-import handler.impl.Handler;
+import net.connector.impl.ConnectorFromNetToShop;
 import net.servers.HttpServer;
 import net.servers.TcpServer;
 import provider.map.MapReader;
@@ -43,7 +43,7 @@ public class Application {
     private RepositoryFactory repositoryFactory;
     private BuilderMap mapBuilder;
     private MapReader mapReader;
-    private Handler handler;
+    private ConnectorFromNetToShop connectorFromNetToShop;
 
     public Application() {
         repositoryFactory = new RepositoryFactory();
@@ -53,13 +53,13 @@ public class Application {
         scanner = new Scanner(System.in);
         mapBuilder = new BuilderMap();
         mapReader = new MapReader();
-        handler = new Handler(productService);
+        connectorFromNetToShop = new ConnectorFromNetToShop(productService);
 
-        Thread threadTcpServer = new Thread(new TcpServer(handler));
+        Thread threadTcpServer = new Thread(new TcpServer(connectorFromNetToShop));
         threadTcpServer.setDaemon(true);
         threadTcpServer.start();
 
-        Thread threadHttpServer = new Thread(new HttpServer(handler));
+        Thread threadHttpServer = new Thread(new HttpServer(connectorFromNetToShop));
         threadHttpServer.setDaemon(true);
         threadHttpServer.start();
 

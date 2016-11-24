@@ -1,13 +1,9 @@
 package net.servers;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Logger;
-
-import static net.Constants.HOST;
-import static net.Constants.ZERO;
 
 /**
  * @author Arsalan
@@ -20,17 +16,23 @@ public abstract class Server {
 
     public void runServer(int port, String whichServerIsStarted) {
         try {
-            server = new ServerSocket(port, ZERO,
-                    InetAddress.getByName(HOST));
+            server = new ServerSocket(port);
             log.info(whichServerIsStarted);
             while (true) {
                 socket = server.accept();
-                sendResponse(socket);
+                handleRequest(socket);
             }
         } catch (IOException e) {
-            log.info(e.getMessage());
+            log.info("init error: " + e.getMessage());
+        }finally {
+            try {
+                socket.close();
+                server.close();
+            } catch (IOException e) {
+                log.info("init error: " + e.getMessage());
+            }
         }
     }
 
-    public abstract void sendResponse(Socket socket);
+    public abstract void handleRequest(Socket socket);
 }
