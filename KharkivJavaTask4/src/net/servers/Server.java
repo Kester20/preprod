@@ -23,13 +23,13 @@ public abstract class Server {
                 handleRequest(socket);
             }
         } catch (IOException e) {
-            log.info("init error: " + e.getMessage());
+            log.warning("init error: " + e.getMessage());
         }finally {
             try {
                 socket.close();
                 server.close();
             } catch (IOException e) {
-                log.info("init error: " + e.getMessage());
+                log.warning("init error: " + e.getMessage());
             }
         }
     }

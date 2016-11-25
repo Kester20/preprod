@@ -41,12 +41,12 @@ public class TcpServer extends Server implements Runnable {
                     writer.flush();
 
                 } catch (Exception e) {
-                    log.info("init error: " + e.getMessage());
+                    log.warning("init error: " + e.getMessage());
                 }finally {
                     try {
                         socket.close();
                     } catch (IOException e) {
-                        log.info("init error while socket closing: " + e.getMessage());
+                        log.warning("init error while socket closing: " + e.getMessage());
                     }
                 }
             }

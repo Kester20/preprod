@@ -48,12 +48,12 @@ public class HttpServer extends Server implements Runnable {
                     writeResponse("<html><body><h1>" + response + "</h1></body></html>", writer);
 
                 } catch (IOException e) {
-                    log.info("init error: " + e);
+                    log.warning("init error: " + e);
                 } finally {
                     try {
                         socket.close();
                     } catch (IOException e) {
-                        log.info("init error while socket closing: " + e.getMessage());
+                        log.warning("init error while socket closing: " + e.getMessage());
                     }
                 }
             }

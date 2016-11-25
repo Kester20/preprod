@@ -33,7 +33,7 @@ public class Client {
                 System.out.println(result);
             }
         } catch (Exception e) {
-            log.info("init error: " + e);
+            log.warning("init error: " + e);
         }
         return result;
     }
