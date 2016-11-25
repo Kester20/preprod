@@ -3,6 +3,7 @@ package net.dispatcher;
 import net.command.Command;
 import net.connector.Connector;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,26 +16,27 @@ public abstract class AbstractDispatcher {
 
     /**
      * parses request
+     *
      * @param request - request
      * @return response
      */
-    public Object handleRequest(String request){
-        Object result;
-        if (request.contains("=")) {
-            String[] array = request.split("=");
-            initRequestMap(Integer.parseInt(array[1]));
-            result = requestMap.get(array[0]).execute(connector);
-        } else {
-            initRequestMap(0);
-            result = requestMap.get(request).execute(connector);
-        }
-        return result;
+    public abstract Object handleRequest(String request);
+
+    /**
+     * handles simple request
+     * @param request - request
+     * @return response
+     */
+    protected Object handleSimpleRequest(String request){
+        initRequestMap(null);
+        return requestMap.get(request).execute(connector);
     }
 
     /**
      * initialize request map
-     * @param id - id of item
+     *
+     * @param parameterMap - parameters of item
      */
-    public abstract void initRequestMap(int id);
+    public abstract void initRequestMap(Map<String, Object> parameterMap);
 
 }

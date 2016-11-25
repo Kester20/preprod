@@ -27,7 +27,7 @@ public class TcpServer extends Server implements Runnable {
     }
 
     public void handleRequest(Socket socket) {
-        new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -41,6 +41,7 @@ public class TcpServer extends Server implements Runnable {
                     writer.flush();
 
                 } catch (Exception e) {
+                    e.printStackTrace();
                     log.warning("init error: " + e.getMessage());
                 }finally {
                     try {
@@ -50,6 +51,8 @@ public class TcpServer extends Server implements Runnable {
                     }
                 }
             }
-        }).start();
+        });
+        thread.setDaemon(true);
+        thread.start();
     }
 }

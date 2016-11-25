@@ -32,7 +32,7 @@ public class HttpServer extends Server implements Runnable {
     }
 
     public void handleRequest(Socket socket) {
-        new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -57,7 +57,9 @@ public class HttpServer extends Server implements Runnable {
                     }
                 }
             }
-        }).start();
+        });
+        thread.setDaemon(true);
+        thread.start();
     }
 
     private void writeResponse(String body, PrintWriter writer) throws IOException {
