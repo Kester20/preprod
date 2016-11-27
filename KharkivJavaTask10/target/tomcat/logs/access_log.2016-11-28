@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [28/Nov/2016:00:08:48 +0200] "GET /miniservlet/account.html HTTP/1.1" 304 - http-bio-8080-exec-1 43
+0:0:0:0:0:0:0:1 - - [28/Nov/2016:00:08:49 +0200] "GET /miniservlet/css/style.css HTTP/1.1" 200 51485 http-bio-8080-exec-2 10
+0:0:0:0:0:0:0:1 - - [28/Nov/2016:00:08:49 +0200] "GET /miniservlet/js/validation.js HTTP/1.1" 200 984 http-bio-8080-exec-3 8
+0:0:0:0:0:0:0:1 - - [28/Nov/2016:00:08:49 +0200] "GET /miniservlet/images/bag.png HTTP/1.1" 304 - http-bio-8080-exec-4 9
+0:0:0:0:0:0:0:1 - - [28/Nov/2016:00:08:49 +0200] "GET /miniservlet/images/cards.jpg HTTP/1.1" 304 - http-bio-8080-exec-5 10
