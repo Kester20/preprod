@@ -1,6 +1,6 @@
 
 function validateRegisterForm (){
-    alert(document.getElementsByClassName("text-info")[0].lastChild.textContent + "invalid input");
+    //alert(document.getElementsByClassName("text-info")[0].lastChild.textContent + "invalid input");
 	return isNotEmptyInput() && checkLengthPassword(document.registerForm.pass.value)
 	 && validateEmail(document.registerForm.email.value)
 	 && validatePhone(document.registerForm.mobileNumber.value);
@@ -12,7 +12,10 @@ function isNotEmptyInput(){
     for (i=0; i<inputs.length; i++){
         if(inputs[i].value == ""){
             isNotEmpty = false;
-            break;
+            inputs[i].className = "error";
+            var s = document.getElementsByClassName("text-info")[i].lastChild.textContent;
+            document.getElementsByClassName("text-info")[i].lastChild.textContent = s + "invalid input";
+            //break;
         }
     }
     return isNotEmpty;
