@@ -93,12 +93,12 @@ a.simpleCart_empty {
   float: left;
 }
 .banner {
-	background:url("../images/banner_img.jpg") no-repeat 0px 0px;
-	background-size:cover;
+	background:url("../img/hp06.jpg") no-repeat 0px 0px;
+	/*background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
-	-webkit-background-size:cover;
+	-webkit-background-size:cover;*/
 	min-height:705px;
 }
 .logo h1 a {

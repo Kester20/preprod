@@ -27,51 +27,51 @@ function invokeAllFunctions(){
 function validateField(condition, element, text){
     if(!condition){
         setInvalidClass(element);
-        element.parentNode.nextSibling.nextSibling.innerHTML = text;
+        $(element).parent().next().html(text);
     }else{
         setValidClass(element);
-        element.parentNode.nextSibling.nextSibling.innerHTML = "";
+        $(element).parent().next().html("");
     }
 }
 
 function setInvalidClass(element){
-    element.parentNode.previousSibling.previousSibling.className = "text-info-invalid";
-    element.className = "invalid";
+    $(element).parent().prev().addClass("text-info-invalid");
+    $(element).addClass("invalid");
 }
 
 function setValidClass(element){
-    element.parentNode.previousSibling.previousSibling.className = "text-info";
-    element.className = "valid";
+    $(element).parent().prev().removeClass("text-info-invalid");
+    $(element).removeClass("invalid");
 }
 
 function isNotEmptyInput(input){
-    var result =  input.value != "";
+    var result =  $(input).val() != "";
     validateField(result, input, "Empty field");
     return result;
 }
 
 function checkLengthPassword(pass){
-    var result = pass.value.length >= 8;
+    var result = $(pass).val().length >= 8;
     validateField(result, pass, "Password less then 8 symbols");
     return result;
 }
 
 function validateEmail(email) {
     var regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-    var result = regex.test(email.value);
+    var result = regex.test($(email).val());
     validateField(result, email, "Invalid email format");
     return result;
 }
 
 function validatePhone(phone){
     var regex = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4,5})$/;
-    var result = regex.test(phone.value);
+    var result = regex.test($(phone).val());
     validateField(result, phone, "Invalid mobile number format");
     return result;
 }
 
 function checkStringEquals(element, element2){
-    var result = element.value == element2.value;
+    var result = $(element).val() == $(element2).val();
     validateField(result, element2, "Passwords are different");
     return result;
 }
