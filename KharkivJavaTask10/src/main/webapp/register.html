@@ -6,6 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Eshop a Flat E-Commerce Bootstrap Responsive Website Template | Register :: w3layouts</title>
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
@@ -19,7 +20,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
     <script type="application/x-javascript">
-         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
 
     </script>
     <!--webfont-->
@@ -33,6 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- cart -->
     <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen"/>
 </head>
+
 <body>
 <!-- header-section-starts -->
 <div class="header">
@@ -226,37 +234,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="reg">
                     <p>Welcome, please enter the following details to continue.</p>
                     <p>If you have previously registered with us, <a href="#">click here</a></p>
-                    <form name="registerForm" id="registerForm" method="get" action=""
+                    <form action="RegistrationServlet" name="registerForm" id="registerForm" method="post"
                           onsubmit="return validateRegisterForm ();">
 
                         <ul>
                             <li class="text-info">First Name:</li>
-                            <li><input class="valid" type="text" value="" name="firstName" id="firstName" onchange="isNotEmptyInput(this);"></li>
+                            <li><input class="valid" type="text" value="" name="firstName" id="firstName"
+                                       onchange="isNotEmptyInput(this);"></li>
                             <li class="showInfo"></li>
                         </ul>
                         <ul>
                             <li class="text-info">Last Name:</li>
-                            <li><input class="valid" type="text" value="" name="lastName" onchange="isNotEmptyInput(this);"></li>
+                            <li><input class="valid" type="text" value="" name="lastName"
+                                       onchange="isNotEmptyInput(this);"></li>
                             <li class="showInfo"></li>
                         </ul>
                         <ul>
                             <li class="text-info">Email:</li>
-                            <li><input class="valid" type="text" value="" name="email" placeholder="Example: ars.kester@epam.com" onchange="validateEmail(this);"></li>
+                            <li><input class="valid" type="text" value="" name="email"
+                                       placeholder="Example: ars.kester@epam.com" onchange="validateEmail(this);"></li>
                             <li class="showInfo"></li>
                         </ul>
                         <ul>
                             <li class="text-info">Password:</li>
-                            <li><input class="valid" type="password" value="" name="pass" onchange="checkLengthPassword(this);"></li>
+                            <li><input class="valid" type="password" value="" name="pass"
+                                       onchange="checkLengthPassword(this);"></li>
                             <li class="showInfo"></li>
                         </ul>
                         <ul>
                             <li class="text-info">Re-enter Password:</li>
-                            <li><input class="valid" type="password" value="" name="pass2" onchange="checkStringEquals(document.registerForm.pass,this);"></li>
+                            <li><input class="valid" type="password" value="" name="pass2"
+                                       onchange="checkStringEquals(document.registerForm.pass,this);"></li>
                             <li class="showInfo"></li>
                         </ul>
                         <ul>
                             <li class="text-info">Mobile Number:</li>
-                            <li><input class="valid" type="text" value="" name="mobileNumber" placeholder="Example: +80945678977" onchange="validatePhone(this);"></li>
+                            <li><input class="valid" type="text" value="" name="mobileNumber"
+                                       placeholder="Example: +80945678977" onchange="validatePhone(this);"></li>
                             <li class="showInfo"></li>
                         </ul>
 
@@ -357,4 +371,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 </body>
+
 </html>

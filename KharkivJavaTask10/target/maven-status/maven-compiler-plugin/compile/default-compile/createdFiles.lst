@@ -1,0 +1,5 @@
+shop\service\ClientService.class
+api\servlet\RegistrationServlet.class
+shop\entity\Clients$1.class
+shop\entity\Clients.class
+shop\repository\ClientRepository.class
