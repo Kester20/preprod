@@ -1,9 +1,8 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -42,6 +41,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
+
+
+
+
+
+
 <!-- header-section-starts -->
 <div class="header">
     <div class="header-top-strip">
@@ -228,50 +233,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ul>
             <div class="clearfix"></div>
         </div>
+
+
+
+
+
         <h2>Registration</h2>
         <div class="registration-grids">
             <div class="reg-form">
                 <div class="reg">
                     <p>Welcome, please enter the following details to continue.</p>
                     <p>If you have previously registered with us, <a href="#">click here</a></p>
-                    <form action="RegistrationServlet" name="registerForm" id="registerForm" method="post"
-                          onsubmit="return validateRegisterForm ();">
+                    <form action="RegistrationServlet" name="registerForm" id="registerForm" method="post" onsubmit="return validateRegisterForm ();">
 
                         <ul>
                             <li class="text-info">First Name:</li>
-                            <li><input class="valid" type="text" value="" name="firstName" id="firstName"
+                            <li><input class="valid" type="text" value="${formBean.firstName}" name="firstName" id="firstName"
                                        onchange="isNotEmptyInput(this);"></li>
-                            <li class="showInfo"></li>
+                            <li class="showInfo">${errors.firstName}</li>
                         </ul>
                         <ul>
                             <li class="text-info">Last Name:</li>
-                            <li><input class="valid" type="text" value="" name="lastName" id="lastName"
+                            <li><input class="valid" type="text" value="${formBean.secondName}" name="lastName" id="lastName"
                                        onchange="isNotEmptyInput(this);"></li>
-                            <li class="showInfo"></li>
+                            <li class="showInfo">${errors.secondName}</li>
                         </ul>
                         <ul>
                             <li class="text-info">Email:</li>
-                            <li><input class="valid" type="text" value="" name="email"
+                            <li><input class="valid" type="text" value="${formBean.email}" name="email"
                                        placeholder="Example: ars.kester@epam.com" onchange="validateEmail(this);"></li>
-                            <li class="showInfo"></li>
+                            <li class="showInfo">${errors.email}</li>
                         </ul>
                         <ul>
                             <li class="text-info">Password:</li>
                             <li><input class="valid" type="password" value="" name="pass"
                                        onchange="checkLengthPassword(this);"></li>
-                            <li class="showInfo"></li>
+                            <li class="showInfo">${errors.password}</li>
                         </ul>
                         <ul>
                             <li class="text-info">Re-enter Password:</li>
                             <li><input class="valid" type="password" value="" name="pass2"
                                        onchange="checkStringEquals(document.registerForm.pass,this);"></li>
-                            <li class="showInfo"></li>
+                            <li class="showInfo">${errors.password}</li>
                         </ul>
                         <ul>
                             <li class="text-info">Mobile Number:</li>
-                            <li><input class="valid" type="text" value="" name="mobileNumber"
+                            <li><input class="valid" type="text" value="${formBean.mobileNumber}" name="mobileNumber"
                                        placeholder="Example: +80945678977" onchange="validatePhone(this);"></li>
-                            <li class="showInfo"></li>
+                            <li class="showInfo">${errors.mobileNumber}</li>
+                        </ul>
+
+                        <ul>
+                            <li class="text-info">Enter the numbers in picture:</li>
+                             <li><input class="valid" type="text" value="" name="captcha"></li>
+                            <li class="captcha"><img src="http://localhost:8080/miniservlet/CaptchaServlet"></li>
                         </ul>
 
                         <input type="submit" value="REGISTER NOW">

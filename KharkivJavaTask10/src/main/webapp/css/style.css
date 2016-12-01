@@ -20,6 +20,10 @@ body a {
     -ms-transition: 0.5s all;
 }
 
+.captcha{
+    margin-left : 50px;
+}
+
 @font-face {
     font-family: 'Lato-Regular';
     src: url(../fonts/Lato-Regular.ttf)format('truetype');

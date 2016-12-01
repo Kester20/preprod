@@ -8,17 +8,17 @@ import java.util.Map;
  */
 public class Clients {
 
-    private Map<Integer, String> users;
+    private static Map<String, Client> users;
 
     public Clients() {
-        users = new HashMap<Integer, String>() {{
-            put(1, "Steve");
-            put(2, "Bob");
-            put(3, "Alan");
+        users = new HashMap<String, Client>() {{
+            put("steve.s.@gmail.com", new Client("Steve", "S", "steve.s.@gmail.com", "00", "00"));
+            put("bob.b.@gmail.com", new Client("Bob", "B", "bob.b.@gmail.com", "00", "00"));
+            put("alan.a.@gmail.com", new Client("Alan", "A", "alan.a.@gmail.com", "00", "00"));
         }};
     }
 
-    public Map<Integer, String> getUsers() {
+    public static Map<String, Client> getUsers() {
         return users;
     }
 }

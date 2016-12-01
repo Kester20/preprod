@@ -22,26 +22,25 @@ public class Validator {
         this.formBean = formBean;
     }
 
-    public Map<String, String> validate() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public Map<String, String> validate() {
         Map<String, String> result = new HashMap<>();
         Field[] fields = formBean.getClass().getDeclaredFields();
-        for (Field field: fields) {
+        for (Field field : fields) {
             if (field.getAnnotation(ValidatorAnnotation.Pattern.class) != null) {
                 ValidatorAnnotation.Pattern annotation = field.getAnnotation(ValidatorAnnotation.Pattern.class);
                 ValidatorAnnotation.GetMethod getMethod = field.getAnnotation(ValidatorAnnotation.GetMethod.class);
                 Pattern pattern = Pattern.compile(annotation.pattern());
-                Matcher matcher = pattern.matcher((CharSequence) formBean.getClass().getMethod(getMethod.method()).invoke(formBean));
-                if(!matcher.find()){
+                Matcher matcher = null;
+                try {
+                    matcher = pattern.matcher((CharSequence) formBean.getClass().getMethod(getMethod.method()).invoke(formBean));
+                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
+                if (!matcher.find()) {
                     result.put(field.getName(), annotation.errorMessage());
                 }
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        RegistrationFormBean bean = new RegistrationFormBean("a","b","a","a","01");
-        Validator validator = new Validator(bean);
-        System.out.println(validator.validate());
     }
 }

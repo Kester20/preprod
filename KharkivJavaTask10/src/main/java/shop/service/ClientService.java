@@ -1,6 +1,8 @@
 package shop.service;
 
 
+import shop.entity.Client;
+import shop.entity.Clients;
 import shop.repository.ClientRepository;
 
 /**
@@ -14,7 +16,11 @@ public class ClientService {
         clientRepository = new ClientRepository();
     }
 
-    public boolean checkExistclient(int id){
-        return clientRepository.getClients().getUsers().get(id) != null;
+    public boolean checkExistClient(String email){
+        return clientRepository.getClients().getUsers().get(email) != null;
+    }
+
+    public void createClient(Client client){
+        Clients.getUsers().put(client.getEmail(), client);
     }
 }

@@ -1,6 +1,8 @@
 shop\service\ClientService.class
+shop\entity\Clients.class
+api\servlet\CaptchaServlet.class
+formbean\RegistrationFormBean.class
 api\servlet\RegistrationServlet.class
 shop\entity\Clients$1.class
-shop\entity\Clients.class
 shop\repository\ClientRepository.class
-formbean\RegistrationFormBean.class
+shop\entity\Client.class

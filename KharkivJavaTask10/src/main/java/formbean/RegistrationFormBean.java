@@ -37,12 +37,6 @@ public class RegistrationFormBean {
         this.mobileNumber = mobileNumber;
     }
 
-    /*public static RegistrationFormBean createFormBean(HttpServletRequest request) {
-        return new RegistrationFormBean(request.getParameter("firstName"), request.getParameter("secondName"),
-                request.getParameter("email"), request.getParameter("password"),
-                request.getParameter("mobileNumber"));
-    }*/
-
     public String getFirstName() {
         return firstName;
     }

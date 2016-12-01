@@ -57,32 +57,32 @@ function setValidClass(element) {
 
 function isNotEmptyInput(input) {
     var result = input.value != "";
-    validateField(result, input, "Empty field");
+    validateField(result, input, "Empty field(JS)");
     return result;
 }
 
 function checkLengthPassword(pass) {
     var result = pass.value.length >= 8;
-    validateField(result, pass, "Password less then 8 symbols");
+    validateField(result, pass, "Password less then 8 symbols(JS)");
     return result;
 }
 
 function validateEmail(email) {
     var regex = /^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
     var result = regex.test(email.value);
-    validateField(result, email, "Invalid email format");
+    validateField(result, email, "Invalid email format(JS)");
     return result;
 }
 
 function validatePhone(phone) {
     var regex = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4,5})$/;
     var result = regex.test(phone.value);
-    validateField(result, phone, "Invalid mobile number format");
+    validateField(result, phone, "Invalid mobile number format(JS)");
     return result;
 }
 
 function checkStringEquals(element, element2) {
     var result = element.value == element2.value;
-    validateField(result, element2, "Passwords are different");
+    validateField(result, element2, "Passwords are different(JS)");
     return result;
 }
