@@ -12,14 +12,14 @@ public @interface ValidatorAnnotation {
 
     @Target(value = ElementType.FIELD)
     @Retention(value = RetentionPolicy.RUNTIME)
-    public @interface Pattern {
+    @interface Pattern {
         String errorMessage();
         String pattern();
     }
 
     @Target(value = ElementType.FIELD)
     @Retention(value = RetentionPolicy.RUNTIME)
-    public @interface GetMethod {
+    @interface GetMethod {
         String method();
     }
 

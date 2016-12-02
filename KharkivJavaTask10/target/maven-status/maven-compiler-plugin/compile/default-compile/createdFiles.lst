@@ -1,8 +1,14 @@
 shop\service\ClientService.class
+captchaService\SessionCaptchaService.class
+captchaService\ContextCaptchaService.class
+captchaService\map\CaptchaServiceMap.class
+shop\entity\Clients$1.class
+captchaService\map\CaptchaServiceMap$1.class
+shop\repository\ClientRepository.class
+shop\entity\Client.class
 shop\entity\Clients.class
 api\servlet\CaptchaServlet.class
 formbean\RegistrationFormBean.class
+captchaService\CaptchaService.class
+captchaService\CaptchaDrawer.class
 api\servlet\RegistrationServlet.class
-shop\entity\Clients$1.class
-shop\repository\ClientRepository.class
-shop\entity\Client.class
