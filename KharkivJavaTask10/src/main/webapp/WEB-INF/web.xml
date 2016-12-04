@@ -8,4 +8,11 @@
         <param-value>session</param-value>
     </context-param>
 
+    <listener>
+        <listener-class>
+            listener.ContextListener
+        </listener-class>
+    </listener>
+
+
 </web-app>

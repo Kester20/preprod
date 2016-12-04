@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="tg" uri="WEB-INF/tags/captcha.tld"%>
 
 <!DOCTYPE html>
 <html>
@@ -235,16 +236,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
 
 
-
-
-
         <h2>Registration</h2>
         <div class="registration-grids">
             <div class="reg-form">
                 <div class="reg">
                     <p>Welcome, please enter the following details to continue.</p>
                     <p>If you have previously registered with us, <a href="#">click here</a></p>
-                    <form action="RegistrationServlet" name="registerForm" id="registerForm" method="post" onsubmit="return validateRegisterForm ();">
+                    <form action="<c:url value='registration_servlet' />" name="registerForm" id="registerForm" method="post" onsubmit="return validateRegisterForm ();">
 
                         <ul>
                             <li class="text-info">First Name:</li>
@@ -285,8 +283,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <ul>
                             <li class="text-info">Enter the numbers in picture:</li>
-                             <li><input class="valid" type="text" value="" name="captcha"></li>
-                            <li class="captcha"><img src="http://localhost:8080/miniservlet/CaptchaServlet"></li>
+                            <li><input class="valid" type="text" value="" name="captcha_input"></li>
+                            <li class="captcha"><tg:captcha captchaCode="${captchaCode}" servlet="/miniservlet/captcha_servlet"/></li>
+                            <li class="showInfo">${errors.captcha_input}</li>
+                            <c:out value="${captchaCode}" />
                         </ul>
 
                         <input type="submit" value="REGISTER NOW">

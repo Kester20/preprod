@@ -1,8 +1,9 @@
 package api.servlet;
 
-import captchaService.map.CaptchaServiceMap;
+import org.apache.log4j.Logger;
+import service.captcha.CaptchaService;
 
-import javax.servlet.ServletContext;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,20 +14,19 @@ import java.io.IOException;
 /**
  * @author Arsalan
  */
-@WebServlet("/CaptchaServlet")
+@WebServlet("/captcha_servlet")
 public class CaptchaServlet extends HttpServlet {
 
-    private CaptchaServiceMap captchaServiceMap;
-    private ServletContext servletContext;
+    private CaptchaService captchaService;
+    private static final Logger log = Logger.getLogger(CaptchaServlet.class);
 
     @Override
     public void init() throws ServletException {
-        captchaServiceMap = new CaptchaServiceMap();
-        servletContext = getServletContext();
+        captchaService = (CaptchaService) getServletContext().getAttribute("scope");
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        captchaServiceMap.getCaptchaGeneratorServiceMap().get(servletContext.getInitParameter("captchaScope")).sendCaptcha(request, response);
+        captchaService.sendCaptcha(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

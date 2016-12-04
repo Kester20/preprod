@@ -1,8 +1,8 @@
 package util;
 
 
-import annotations.ValidatorAnnotation;
-import formbean.RegistrationFormBean;
+import annotation.ValidatorAnnotation;
+import entity.formbean.RegistrationFormBean;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
