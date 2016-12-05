@@ -15,6 +15,5 @@ listener\ContextListener.class
 api\servlet\RegistrationServlet.class
 entity\formbean\RegistrationFormBean.class
 service\client\ClientService.class
-tags\CaptchaTag.class
 annotation\ValidatorAnnotation$Pattern.class
 repository\ClientRepository.class

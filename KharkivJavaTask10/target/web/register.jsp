@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="tg" uri="WEB-INF/tags/captcha.tld"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="h" %>
 
 <!DOCTYPE html>
 <html>
@@ -45,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+<h:captcha captchaCode="!!!!!!!!!!!!!!!!" />
 
 
 <!-- header-section-starts -->
