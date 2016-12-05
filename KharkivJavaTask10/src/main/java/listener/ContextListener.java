@@ -9,6 +9,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import static constatnts.Constants.*;
+
 /**
  * @author Arsalan
  */
@@ -19,20 +21,20 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext servletContext = servletContextEvent.getServletContext();
-        switch (servletContext.getInitParameter("captchaScope")) {
-            case "session": {
+        switch (servletContext.getInitParameter(CAPTCHA_SCOPE)) {
+            case SESSION: {
                 log.info("Captcha scope: SESSION");
-                servletContext.setAttribute("scope", new SessionCaptchaService());
+                servletContext.setAttribute(SCOPE, new SessionCaptchaService());
                 break;
             }
-            case "cookie":{
+            case COOKIE: {
                 log.info("Captcha scope: COOKIE");
-                servletContext.setAttribute("scope", new CookieCaptchaService());
+                servletContext.setAttribute(SCOPE, new CookieCaptchaService());
                 break;
             }
-            case "hidden":{
+            case HIDDEN: {
                 log.info("Captcha scope: HIDDEN");
-                servletContext.setAttribute("scope", new HiddenCaptchaService());
+                servletContext.setAttribute(SCOPE, new HiddenCaptchaService());
                 break;
             }
         }

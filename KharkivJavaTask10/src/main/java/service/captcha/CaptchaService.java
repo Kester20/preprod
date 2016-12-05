@@ -1,7 +1,7 @@
 package service.captcha;
 
-import service.captcha.drawer.CaptchaDrawer;
 import org.apache.log4j.Logger;
+import service.captcha.drawer.CaptchaDrawer;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Arsalan
@@ -21,10 +20,10 @@ public abstract class CaptchaService {
     private static final Logger log = Logger.getLogger(CaptchaService.class);
     protected Map<String, String> codsOfCaptcha;
     protected CaptchaDrawer captchaDrawer;
-    protected long captchaLifeTime = 1*60*1000;
+    protected long captchaLifeTime = 1 * 30 * 1000;
 
     public CaptchaService() {
-        this.codsOfCaptcha = new HashMap<>();
+        this.codsOfCaptcha = new ConcurrentHashMap<>();
         this.captchaDrawer = new CaptchaDrawer();
     }
 
@@ -32,11 +31,6 @@ public abstract class CaptchaService {
         captchaDrawer.drawCaptcha();
     }
 
-    protected String generateCodeCaptcha(String captcha) {
-        String code = UUID.randomUUID().toString();
-        codsOfCaptcha.put(code, captcha);
-        return code;
-    }
 
     protected void sendImage(HttpServletResponse response) throws IOException {
         response.setContentType("image/png");
@@ -52,7 +46,20 @@ public abstract class CaptchaService {
         return codsOfCaptcha;
     }
 
-    public void clearCods(){
-        codsOfCaptcha.clear();
+    protected void startCleanerThread(String codeCaptcha) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    log.info("CODS MAP ---> " + codsOfCaptcha);
+                    try {
+                        Thread.sleep(captchaLifeTime);
+                        codsOfCaptcha.remove(codeCaptcha);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 }

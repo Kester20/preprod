@@ -1,10 +1,13 @@
 entity\client\Client.class
 service\captcha\CookieCaptchaService.class
+service\formbean\FormBeanService.class
 service\captcha\HiddenCaptchaService.class
 repository\ClientRepository$1.class
 annotation\ValidatorAnnotation.class
+constatnts\Constants.class
 annotation\ValidatorAnnotation$GetMethod.class
 service\captcha\CaptchaService.class
+service\captcha\SessionCaptchaService$1.class
 service\captcha\drawer\CaptchaDrawer.class
 api\servlet\CaptchaServlet.class
 service\captcha\SessionCaptchaService.class

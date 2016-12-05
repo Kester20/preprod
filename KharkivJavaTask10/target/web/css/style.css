@@ -24,6 +24,15 @@ body a {
     margin-left : 50px;
 }
 
+.errorTimeOutMessage{
+    text-align:center;
+    color:red;
+}
+
+.tryAgainRegister{
+    text-align:center;
+}
+
 @font-face {
     font-family: 'Lato-Regular';
     src: url(../fonts/Lato-Regular.ttf)format('truetype');

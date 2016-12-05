@@ -281,12 +281,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li class="showInfo">${errors.mobileNumber}</li>
                         </ul>
 
+                        <c:set var="code" value="${requestScope.codeCaptcha}"/>
+
                         <ul>
                             <li class="text-info">Enter the numbers in picture:</li>
                             <li><input class="valid" type="text" value="" name="captcha_input"></li>
-                            <li class="captcha"><tg:captcha captchaCode="${captchaCode}" servlet="/miniservlet/captcha_servlet"/></li>
+                            <li class="captcha"><tg:captcha captchaCode="${code}" servlet="/miniservlet/captcha_servlet?codeCaptcha=${code}"/></li>
                             <li class="showInfo">${errors.captcha_input}</li>
-                            <c:out value="${captchaCode}" />
+
                         </ul>
 
                         <input type="submit" value="REGISTER NOW">

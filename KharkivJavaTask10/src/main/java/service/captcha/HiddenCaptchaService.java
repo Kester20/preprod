@@ -1,29 +1,28 @@
 package service.captcha;
 
-import org.apache.log4j.Logger;
-
-import javax.imageio.ImageIO;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.OutputStream;
+
+import static constatnts.Constants.CAPTCHA;
+import static constatnts.Constants.CAPTCHA_CODE;
+import static constatnts.Constants.TIME;
 
 /**
  * @author Arsalan
  */
 public class HiddenCaptchaService extends CaptchaService {
 
-    private static final Logger log = Logger.getLogger(HiddenCaptchaService.class);
-
     @Override
     public void sendCaptcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         drawCaptcha();
-        String code = generateCodeCaptcha(captchaDrawer.getCaptcha());
-        request.getServletContext().setAttribute("captchaCode", code);
-        log.info("captchaCode set in request --> " + code);
-        request.getServletContext().setAttribute("captcha", getCodsOfCaptcha());
+        String code = request.getParameter(CAPTCHA_CODE);
+        getCodsOfCaptcha().put(code, captchaDrawer.getCaptcha());
+        request.getServletContext().setAttribute(CAPTCHA_CODE, code);
+        request.getServletContext().setAttribute(CAPTCHA, getCodsOfCaptcha());
+        request.getSession().setAttribute(TIME, System.currentTimeMillis() + captchaLifeTime);
         sendImage(response);
+        startCleanerThread(code);
     }
 }
