@@ -1,7 +1,7 @@
 package service.client;
 
 
-import entity.client.Client;
+import entity.user.User;
 import repository.ClientRepository;
 
 /**
@@ -19,8 +19,8 @@ public class UserService {
         return clientRepository.getUsers().get(email) != null;
     }
 
-    public void createClient(Client client) {
-        clientRepository.getUsers().put(client.getEmail(), client);
+    public void createClient(User user) {
+        clientRepository.getUsers().put(user.getEmail(), user);
     }
 
     public int getCountOfUsers(){

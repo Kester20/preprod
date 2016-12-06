@@ -4,6 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import service.captcha.CaptchaService;
+import service.client.UserService;
+import service.formbean.FormBeanService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -31,6 +34,10 @@ public class RegistrationServletTest {
     private HttpSession session;
     @Mock
     private ServletConfig servletConfig;
+    @Mock
+    private CaptchaService captchaService;
+    private UserService userService;
+    private FormBeanService formBeanService;
 
     private static final long tenMinutes = 10 * 60 * 1000;
     private static final int DEFAULT_SIZE_OF_USERS = 3;
@@ -39,18 +46,26 @@ public class RegistrationServletTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         servlet = new RegistrationServlet();
+        userService = new UserService();
+        formBeanService = new FormBeanService();
 
         when(servletConfig.getServletContext()).thenReturn(servletContext);
-        when(request.getSession()).thenReturn(session);
+
+        when(servletContext.getInitParameter(CAPTCHA_SCOPE)).thenReturn("");
+        when(servletContext.getAttribute(USER_SERVICE)).thenReturn(userService);
+        when(servletContext.getAttribute(FORM_BEAN_SERVICE)).thenReturn(formBeanService);
+        when(servletContext.getAttribute(SCOPE)).thenReturn(captchaService);
+
         when(session.getAttribute(TIME)).thenReturn(System.currentTimeMillis() + tenMinutes);
+
+        when(request.getSession()).thenReturn(session);
+        when(request.getServletContext()).thenReturn(servletContext);
         when(request.getParameter(FIRST_NAME)).thenReturn("kester");
         when(request.getParameter(LAST_NAME)).thenReturn("kester");
         when(request.getParameter(EMAIL)).thenReturn("ars.noo@epam.com");
         when(request.getParameter(PASS)).thenReturn("00000000");
         when(request.getParameter(MOBILE_NUMBER)).thenReturn("0935046774");
         when(request.getParameter(CAPTCHA_INPUT)).thenReturn("446774");
-        when(servletContext.getInitParameter(CAPTCHA_SCOPE)).thenReturn("");
-        when(request.getServletContext()).thenReturn(servletContext);
 
         servlet.init(servletConfig);
         servlet.init();
@@ -71,6 +86,7 @@ public class RegistrationServletTest {
         when(request.getParameter(MOBILE_NUMBER)).thenReturn("093");
 
         servlet.doPost(request, response);
+        System.out.println(servlet.getUserService().getCountOfUsers());
         assertTrue(servlet.getUserService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS);
     }
 

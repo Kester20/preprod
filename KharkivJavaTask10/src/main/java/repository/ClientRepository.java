@@ -1,6 +1,6 @@
 package repository;
 
-import entity.client.Client;
+import entity.user.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,17 +10,17 @@ import java.util.Map;
  */
 public class ClientRepository {
 
-    private Map<String, Client> users;
+    private Map<String, User> users;
 
     public ClientRepository() {
-        users = new HashMap<String, Client>() {{
-            put("steve.s.@gmail.com", new Client("Steve", "S", "steve.s.@gmail.com", "00", "00"));
-            put("bob.b.@gmail.com", new Client("Bob", "B", "bob.b.@gmail.com", "00", "00"));
-            put("alan.a.@gmail.com", new Client("Alan", "A", "alan.a.@gmail.com", "00", "00"));
+        users = new HashMap<String, User>() {{
+            put("steve.s.@gmail.com", new User("Steve", "S", "steve.s.@gmail.com", "00", "00"));
+            put("bob.b.@gmail.com", new User("Bob", "B", "bob.b.@gmail.com", "00", "00"));
+            put("alan.a.@gmail.com", new User("Alan", "A", "alan.a.@gmail.com", "00", "00"));
         }};
     }
 
-    public Map<String, Client> getUsers() {
+    public Map<String, User> getUsers() {
         return users;
     }
 }

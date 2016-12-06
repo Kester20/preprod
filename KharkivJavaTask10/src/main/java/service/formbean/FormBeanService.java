@@ -1,6 +1,6 @@
 package service.formbean;
 
-import entity.client.Client;
+import entity.user.User;
 import entity.formbean.RegistrationFormBean;
 import util.Validator;
 
@@ -31,8 +31,16 @@ public class FormBeanService {
         return  validator.validate();
     }
 
-    public Client transformBean(RegistrationFormBean formBean){
-        return new Client(formBean.getFirstName(), formBean.getSecondName(), formBean.getEmail(),
+    public User transformBean(RegistrationFormBean formBean){
+        return new User(formBean.getFirstName(), formBean.getSecondName(), formBean.getEmail(),
                 formBean.getPassword(), formBean.getMobileNumber());
+    }
+
+    public Validator getValidator() {
+        return validator;
+    }
+
+    public void setValidator(Validator validator) {
+        this.validator = validator;
     }
 }

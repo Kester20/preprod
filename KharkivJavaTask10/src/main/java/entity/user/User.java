@@ -1,9 +1,9 @@
-package entity.client;
+package entity.user;
 
 /**
  * @author Arsalan
  */
-public class Client {
+public class User {
 
     private String firstName;
     private String secondName;
@@ -11,7 +11,7 @@ public class Client {
     private String password;
     private String mobileNumber;
 
-    public Client(String firstName, String secondName, String email, String password, String mobileNumber) {
+    public User(String firstName, String secondName, String email, String password, String mobileNumber) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;

@@ -1,6 +1,6 @@
 package api.servlet;
 
-import entity.client.Client;
+import entity.user.User;
 import entity.formbean.RegistrationFormBean;
 import org.apache.log4j.Logger;
 import service.captcha.CaptchaService;
@@ -76,9 +76,9 @@ public class RegistrationServlet extends HttpServlet {
             if (userService.checkExistClient(formBean.getEmail())) {
                 errors.put(EMAIL, EMAIL_ALREADY_EXIST);
             } else {
-                Client client = formBeanService.transformBean(formBean);
-                userService.createClient(client);
-                log.info("New client was registered");
+                User user = formBeanService.transformBean(formBean);
+                userService.createClient(user);
+                log.info("New user was registered");
             }
         }
         session.setAttribute(FORM_BEAN, formBean);
