@@ -22,7 +22,7 @@ public class CookieCaptchaService extends CaptchaService {
     public void sendCaptcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         drawCaptcha();
         String code = request.getParameter(CAPTCHA_CODE);
-        codsOfCaptcha.put(code, captchaDrawer.getCaptcha());
+        getCodsOfCaptcha().put(code, getCaptchaDrawer().getCaptcha());
         Cookie cookie = new Cookie(CAPTCHA_CODE, code);
         response.addCookie(cookie);
         request.getSession().setAttribute(TIME, System.currentTimeMillis() + captchaLifeTime);
@@ -36,7 +36,7 @@ public class CookieCaptchaService extends CaptchaService {
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals(CAPTCHA_CODE)) {
-                    if (!codsOfCaptcha.get(cookie.getValue()).equals(request.getParameter(CAPTCHA_INPUT))) {
+                    if (!getCodsOfCaptcha().get(cookie.getValue()).equals(request.getParameter(CAPTCHA_INPUT))) {
                         errors.put(CAPTCHA_INPUT, WRONG_NUMBERS);
                     } else {
                         log.info("Correct captcha!");

@@ -44,10 +44,6 @@ public abstract class CaptchaService {
         os.close();
     }
 
-    public Map<String, String> getCodsOfCaptcha() {
-        return codsOfCaptcha;
-    }
-
     protected void startCleanerThread(String codeCaptcha) {
         new Thread(new Runnable() {
             @Override
@@ -63,5 +59,13 @@ public abstract class CaptchaService {
                 }
             }
         }).start();
+    }
+
+    public CaptchaDrawer getCaptchaDrawer() {
+        return captchaDrawer;
+    }
+
+    public Map<String, String> getCodsOfCaptcha() {
+        return codsOfCaptcha;
     }
 }

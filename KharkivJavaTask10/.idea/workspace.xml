@@ -19,55 +19,7 @@
     <favorites_list name="KharkivJavaTask10" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="RegistrationServletTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/api/servlet/RegistrationServletTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormBeanService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/formbean/FormBeanService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding>
-                <element signature="e#1369#1370#0" expanded="true" />
-                <element signature="e#1401#1402#0" expanded="true" />
-                <element signature="e#1454#1455#0" expanded="true" />
-                <element signature="e#1496#1497#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/client/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="e#600#601#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegistrationServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api/servlet/RegistrationServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -75,8 +27,8 @@
         <option value="HTML File" />
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -121,7 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/js/validation.js" />
         <option value="$PROJECT_DIR$/src/main/java/captchaService/impl/SessionCaptcha.java" />
         <option value="$PROJECT_DIR$/src/main/java/captchaService/Captcha.java" />
         <option value="$PROJECT_DIR$/src/main/java/captchaService/CaptchaGenerator.java" />
@@ -162,16 +113,17 @@
         <option value="$PROJECT_DIR$/src/main/java/constatnts/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/register.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/listener/ContextListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/captcha/CaptchaService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/captcha/SessionCaptchaService.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/servlet/RegistrationServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/util/Validator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/captcha/CookieCaptchaService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/service/captcha/HiddenCaptchaService.java" />
         <option value="C:/log/anotherlogfile.log" />
         <option value="$PROJECT_DIR$/src/main/java/service/formbean/FormBeanService.java" />
         <option value="$PROJECT_DIR$/test/api/servlet/RegistrationServletTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/captcha/SessionCaptchaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/captcha/CookieCaptchaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/captcha/CaptchaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/captcha/HiddenCaptchaService.java" />
+        <option value="$PROJECT_DIR$/test/api/servlet/CaptchaServletTest.java" />
       </list>
     </option>
   </component>
@@ -615,18 +567,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="service.captcha" />
       <recent name="api.servlet" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Arsal\IdeaProjects\preprod\KharkivJavaTask10\src\main\webapp\js" />
-      <recent name="C:\Users\Arsal\IdeaProjects\preprod\KharkivJavaTask10\src\main\webapp" />
-      <recent name="C:\Users\Said_Sulaiman_Arsala\IdeaProjects\KharkivJavaTask10\src\main\webapp" />
+      <recent name="service.captcha" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -634,9 +578,17 @@
       <recent name="C:\Users\Arsal\IdeaProjects\preprod\KharkivJavaTask10\src\main\webapp" />
       <recent name="C:\Users\Said_Sulaiman_Arsala\IdeaProjects\KharkivJavaTask10\src\main\webapp" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Arsal\IdeaProjects\preprod\KharkivJavaTask10\src\main\webapp\js" />
+      <recent name="C:\Users\Arsal\IdeaProjects\preprod\KharkivJavaTask10\src\main\webapp" />
+      <recent name="C:\Users\Said_Sulaiman_Arsala\IdeaProjects\KharkivJavaTask10\src\main\webapp" />
+    </key>
   </component>
   <component name="RunManager" selected="JUnit.RegistrationServletTest">
-    <configuration default="false" name="RegistrationServletTest.doPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="CaptchaServletTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="api.servlet.*" />
@@ -647,8 +599,86 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="api.servlet" />
-      <option name="MAIN_CLASS_NAME" value="api.servlet.RegistrationServletTest" />
-      <option name="METHOD_NAME" value="doPost" />
+      <option name="MAIN_CLASS_NAME" value="api.servlet.CaptchaServletTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="CaptchaServletTest.testSessionCaptchaService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="api.servlet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="KharkivJavaTask10" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="api.servlet" />
+      <option name="MAIN_CLASS_NAME" value="api.servlet.CaptchaServletTest" />
+      <option name="METHOD_NAME" value="testSessionCaptchaService" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="CaptchaServletTest.testCookieCaptchaService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="api.servlet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="KharkivJavaTask10" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="api.servlet" />
+      <option name="MAIN_CLASS_NAME" value="api.servlet.CaptchaServletTest" />
+      <option name="METHOD_NAME" value="testCookieCaptchaService" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="CaptchaServletTest.testHiddenCaptchaService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="api.servlet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="KharkivJavaTask10" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="api.servlet" />
+      <option name="MAIN_CLASS_NAME" value="api.servlet.CaptchaServletTest" />
+      <option name="METHOD_NAME" value="testHiddenCaptchaService" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -676,84 +706,6 @@
       <option name="MAIN_CLASS_NAME" value="api.servlet.RegistrationServletTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="RegistrationServletTest.testWithAddingClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="api.servlet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="KharkivJavaTask10" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="api.servlet" />
-      <option name="MAIN_CLASS_NAME" value="api.servlet.RegistrationServletTest" />
-      <option name="METHOD_NAME" value="testWithAddingClient" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="RegistrationServletTest.testNotAddingClientWithInvalidParameters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="api.servlet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="KharkivJavaTask10" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="api.servlet" />
-      <option name="MAIN_CLASS_NAME" value="api.servlet.RegistrationServletTest" />
-      <option name="METHOD_NAME" value="testNotAddingClientWithInvalidParameters" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="RegistrationServletTest.testNotAddingExistClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="api.servlet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="KharkivJavaTask10" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="api.servlet" />
-      <option name="MAIN_CLASS_NAME" value="api.servlet.RegistrationServletTest" />
-      <option name="METHOD_NAME" value="testNotAddingExistClient" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -993,19 +945,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest.doPost" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest.testWithAddingClient" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest.testNotAddingClientWithInvalidParameters" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest.testNotAddingExistClient" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.CaptchaServletTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.CaptchaServletTest.testSessionCaptchaService" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.CaptchaServletTest.testCookieCaptchaService" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.CaptchaServletTest.testHiddenCaptchaService" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest.testNotAddingExistClient" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest.testWithAddingClient" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest.testNotAddingClientWithInvalidParameters" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.RegistrationServletTest.doPost" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.CaptchaServletTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.CaptchaServletTest.testSessionCaptchaService" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.CaptchaServletTest.testHiddenCaptchaService" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.CaptchaServletTest.testCookieCaptchaService" />
       </list>
     </recent_temporary>
   </component>
@@ -1023,35 +975,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RegistrationServletTest - 2016.12.06 at 12h 47m 52s.xml">
+    <history-entry file="CaptchaServletTest - 2016.12.06 at 14h 49m 41s.xml">
+      <configuration name="CaptchaServletTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CaptchaServletTest_testHiddenCaptchaService - 2016.12.06 at 14h 43m 16s.xml">
+      <configuration name="CaptchaServletTest.testHiddenCaptchaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CaptchaServletTest_testHiddenCaptchaService - 2016.12.06 at 14h 43m 40s.xml">
+      <configuration name="CaptchaServletTest.testHiddenCaptchaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CaptchaServletTest_testHiddenCaptchaService - 2016.12.06 at 14h 44m 20s.xml">
+      <configuration name="CaptchaServletTest.testHiddenCaptchaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CaptchaServletTest_testHiddenCaptchaService - 2016.12.06 at 14h 45m 07s.xml">
+      <configuration name="CaptchaServletTest.testHiddenCaptchaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CaptchaServletTest_testHiddenCaptchaService - 2016.12.06 at 14h 45m 45s.xml">
+      <configuration name="CaptchaServletTest.testHiddenCaptchaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CaptchaServletTest_testHiddenCaptchaService - 2016.12.06 at 14h 47m 11s.xml">
+      <configuration name="CaptchaServletTest.testHiddenCaptchaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CaptchaServletTest_testHiddenCaptchaService - 2016.12.06 at 14h 48m 16s.xml">
+      <configuration name="CaptchaServletTest.testHiddenCaptchaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CaptchaServletTest_testSessionCaptchaService - 2016.12.06 at 14h 49m 37s.xml">
+      <configuration name="CaptchaServletTest.testSessionCaptchaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RegistrationServletTest - 2016.12.06 at 14h 49m 50s.xml">
       <configuration name="RegistrationServletTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest - 2016.12.06 at 12h 48m 36s.xml">
-      <configuration name="RegistrationServletTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest_testNotAddingClientWithInvalidParameters - 2016.12.06 at 12h 43m 07s.xml">
-      <configuration name="RegistrationServletTest.testNotAddingClientWithInvalidParameters" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest_testNotAddingClientWithInvalidParameters - 2016.12.06 at 12h 44m 32s.xml">
-      <configuration name="RegistrationServletTest.testNotAddingClientWithInvalidParameters" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest_testNotAddingClientWithInvalidParameters - 2016.12.06 at 12h 46m 20s.xml">
-      <configuration name="RegistrationServletTest.testNotAddingClientWithInvalidParameters" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest_testNotAddingClientWithInvalidParameters - 2016.12.06 at 12h 47m 07s.xml">
-      <configuration name="RegistrationServletTest.testNotAddingClientWithInvalidParameters" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest_testNotAddingClientWithInvalidParameters - 2016.12.06 at 12h 47m 31s.xml">
-      <configuration name="RegistrationServletTest.testNotAddingClientWithInvalidParameters" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest_testNotAddingExistClient - 2016.12.06 at 12h 43m 28s.xml">
-      <configuration name="RegistrationServletTest.testNotAddingExistClient" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest_testNotAddingExistClient - 2016.12.06 at 12h 47m 44s.xml">
-      <configuration name="RegistrationServletTest.testNotAddingExistClient" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RegistrationServletTest_testWithAddingClient - 2016.12.06 at 12h 47m 38s.xml">
-      <configuration name="RegistrationServletTest.testWithAddingClient" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1065,7 +1017,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1082,7 +1034,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28218883" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28218883" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1111,27 +1063,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/w3layouts-License.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/products.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10355">
-          <caret line="545" column="18" lean-forward="false" selection-start-line="545" selection-start-column="18" selection-end-line="545" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/validationJQuery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1330">
-          <caret line="70" column="22" lean-forward="false" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/shop/hj" />
     <entry file="file://$PROJECT_DIR$/target/web/index.jsp" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/Class.java">
@@ -1239,6 +1170,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-684">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1246,6 +1178,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1261,13 +1194,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/servlet/CaptchaServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1287,39 +1214,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/captcha/CaptchaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/util/Validator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/captcha/CookieCaptchaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/captcha/HiddenCaptchaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="24" column="65" lean-forward="false" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/captcha/SessionCaptchaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1385,27 +1284,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/register.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/captcha.tag">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3299">
-          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/captcha.tag">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/register.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        <state relative-caret-position="76">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="48" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar!/javax/servlet/http/HttpSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="304" column="16" lean-forward="false" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/captcha/SessionCaptchaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/captcha/CookieCaptchaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="24" column="55" lean-forward="false" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/captcha/CaptchaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="69" column="5" lean-forward="false" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+          <folding>
+            <element signature="e#2073#2074#0" expanded="true" />
+            <element signature="e#2109#2110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="239" column="6" lean-forward="false" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/captcha/HiddenCaptchaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/api/servlet/CaptchaServletTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="926">
+          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/api/servlet/RegistrationServletTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="1159">
+          <caret line="67" column="71" lean-forward="true" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/servlet/CaptchaServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

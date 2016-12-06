@@ -21,7 +21,7 @@ public class SessionCaptchaService extends CaptchaService {
     @Override
     public void sendCaptcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         drawCaptcha();
-        request.getSession().setAttribute(CAPTCHA, captchaDrawer.getCaptcha());
+        request.getSession().setAttribute(CAPTCHA, getCaptchaDrawer().getCaptcha());
         request.getSession().setAttribute(TIME, System.currentTimeMillis() + captchaLifeTime);
         sendImage(response);
         new Thread(new Runnable() {
