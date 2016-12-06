@@ -14,6 +14,8 @@ import static constatnts.Constants.*;
  */
 public class FormBeanService {
 
+    private Validator validator = new Validator();
+
     public RegistrationFormBean createFormBean(HttpServletRequest request){
         if(request.getParameter(FIRST_NAME) != null && request.getParameter(LAST_NAME) != null && request.getParameter(EMAIL) != null &&
                 request.getParameter(PASS) != null && request.getParameter(MOBILE_NUMBER) != null){
@@ -25,7 +27,8 @@ public class FormBeanService {
     }
 
     public Map<String, String> validateBean(RegistrationFormBean formBean){
-        return  new Validator(formBean).validate();
+        validator.setFormBean(formBean);
+        return  validator.validate();
     }
 
     public Client transformBean(RegistrationFormBean formBean){
@@ -36,15 +39,15 @@ public class FormBeanService {
     public void validateCaptcha(HttpServletRequest request, Map<String, String> errors){
         switch (request.getServletContext().getInitParameter(CAPTCHA_SCOPE)){
             case SESSION:{
-                new Validator().validateCaptchaInSession(request, errors);
+                validator.validateCaptchaInSession(request, errors);
                 break;
             }
             case COOKIE:{
-                new Validator().validateCaptchaInCookie(request, errors);
+                validator.validateCaptchaInCookie(request, errors);
                 break;
             }
             case HIDDEN :{
-                new Validator().validateCaptchaInHidden(request, errors);
+                validator.validateCaptchaInHidden(request, errors);
                 break;
             }
         }

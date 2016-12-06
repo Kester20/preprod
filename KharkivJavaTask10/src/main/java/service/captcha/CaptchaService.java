@@ -27,6 +27,8 @@ public abstract class CaptchaService {
         this.captchaDrawer = new CaptchaDrawer();
     }
 
+    public abstract void sendCaptcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
     protected void drawCaptcha() {
         captchaDrawer.drawCaptcha();
     }
@@ -39,8 +41,6 @@ public abstract class CaptchaService {
         os.flush();
         os.close();
     }
-
-    public abstract void sendCaptcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
     public Map<String, String> getCodsOfCaptcha() {
         return codsOfCaptcha;

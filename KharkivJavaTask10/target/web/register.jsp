@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="tg" uri="WEB-INF/tags/captcha.tld"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="h" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tg" %>
 
 <!DOCTYPE html>
 <html>
@@ -43,10 +42,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
-
-
-
-<h:captcha captchaCode="!!!!!!!!!!!!!!!!" />
 
 
 <!-- header-section-starts -->
@@ -287,7 +282,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul>
                             <li class="text-info">Enter the numbers in picture:</li>
                             <li><input class="valid" type="text" value="" name="captcha_input"></li>
-                            <li class="captcha"><tg:captcha captchaCode="${code}" servlet="/miniservlet/captcha_servlet?codeCaptcha=${code}"/></li>
+                            <li class="captcha"><tg:captcha servlet="/miniservlet/captcha_servlet?codeCaptcha=${code}"
+                                        captcha="${code}"/>
+                            </li>
                             <li class="showInfo">${errors.captcha_input}</li>
 
                         </ul>

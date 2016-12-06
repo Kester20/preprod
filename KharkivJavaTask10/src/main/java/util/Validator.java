@@ -29,10 +29,6 @@ public class Validator {
 
     public Validator(){};
 
-    public Validator(RegistrationFormBean formBean) {
-        this.formBean = formBean;
-    }
-
     public Map<String, String> validate() {
         Map<String, String> result = new HashMap<>();
         Field[] fields = formBean.getClass().getDeclaredFields();
@@ -68,11 +64,11 @@ public class Validator {
     }
 
     public void validateCaptchaInCookie(HttpServletRequest request, Map<String, String> errors){
-        Map<String, String> captchaCodes = (Map<String, String>) request.getServletContext().getAttribute("captcha");
+        Map<String, String> captchaCodes = (Map<String, String>) request.getServletContext().getAttribute(CAPTCHA);
         Cookie[] cookies = request.getCookies();
         if(cookies != null){
             for (Cookie cookie: cookies) {
-                if(cookie.getName().equals(CAPTCHA)){
+                if(cookie.getName().equals(CAPTCHA_CODE)){
                     if(!captchaCodes.get(cookie.getValue()).equals(request.getParameter(CAPTCHA_INPUT))){
                         errors.put(CAPTCHA_INPUT, WRONG_NUMBERS);
                     }else {
@@ -94,5 +90,9 @@ public class Validator {
         }else{
             log.info("Correct captcha!");
         }
+    }
+
+    public void setFormBean(RegistrationFormBean formBean) {
+        this.formBean = formBean;
     }
 }

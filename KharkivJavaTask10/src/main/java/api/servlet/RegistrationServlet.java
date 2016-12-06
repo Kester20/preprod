@@ -81,8 +81,4 @@ public class RegistrationServlet extends HttpServlet {
     public ClientService getClientService() {
         return clientService;
     }
-
-    public FormBeanService getFormBeanService() {
-        return formBeanService;
-    }
 }

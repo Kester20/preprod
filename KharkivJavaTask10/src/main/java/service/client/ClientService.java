@@ -23,7 +23,7 @@ public class ClientService {
         clientRepository.getUsers().put(client.getEmail(), client);
     }
 
-    public ClientRepository getClientRepository() {
-        return clientRepository;
+    public int getCountOfUsers(){
+        return clientRepository.getUsers().size();
     }
 }

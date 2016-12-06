@@ -45,8 +45,9 @@ public class RegistrationServletTest {
         when(request.getParameter(PASS)).thenReturn("00000000");
         when(request.getParameter(MOBILE_NUMBER)).thenReturn("0935046774");
         when(request.getParameter(CAPTCHA_INPUT)).thenReturn("446774");
-        when(request.getServletContext()).thenReturn(servletContext);
         when(servletContext.getInitParameter(CAPTCHA_SCOPE)).thenReturn("");
+        when(request.getServletContext()).thenReturn(servletContext);
+
 
         servlet.init();
     }
@@ -54,7 +55,7 @@ public class RegistrationServletTest {
     @Test
     public void testWithAddingClient() throws Exception {
         servlet.doPost(request, response);
-        assertTrue(servlet.getClientService().getClientRepository().getUsers().size() == DEFAULT_SIZE_OF_USERS + 1);
+        assertTrue(servlet.getClientService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS + 1);
     }
 
     @Test
@@ -66,14 +67,14 @@ public class RegistrationServletTest {
         when(request.getParameter(MOBILE_NUMBER)).thenReturn("093");
 
         servlet.doPost(request, response);
-        assertTrue(servlet.getClientService().getClientRepository().getUsers().size() == DEFAULT_SIZE_OF_USERS);
+        assertTrue(servlet.getClientService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS);
     }
 
     @Test
     public void testNotAddingExistClient() throws Exception {
         servlet.doPost(request, response);
         servlet.doPost(request, response);
-        assertTrue(servlet.getClientService().getClientRepository().getUsers().size() == DEFAULT_SIZE_OF_USERS + 1);
+        assertTrue(servlet.getClientService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS + 1);
     }
 
 }
