@@ -1,11 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: api.servlet.RegistrationServletTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.438 sec <<< FAILURE!
-testNotAddingExistClient(api.servlet.RegistrationServletTest)  Time elapsed: 0.341 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.502 sec <<< FAILURE!
+testNotAddingExistClient(api.servlet.RegistrationServletTest)  Time elapsed: 0.386 sec  <<< ERROR!
 java.lang.IllegalStateException: ServletConfig has not been initialized
 	at javax.servlet.GenericServlet.getServletContext(GenericServlet.java:199)
-	at api.servlet.RegistrationServlet.init(RegistrationServlet.java:36)
+	at api.servlet.RegistrationServlet.init(RegistrationServlet.java:37)
 	at api.servlet.RegistrationServletTest.setUp(RegistrationServletTest.java:52)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -37,10 +37,10 @@ java.lang.IllegalStateException: ServletConfig has not been initialized
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-testNotAddingClientWithInvalidParameters(api.servlet.RegistrationServletTest)  Time elapsed: 0.001 sec  <<< ERROR!
+testNotAddingClientWithInvalidParameters(api.servlet.RegistrationServletTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.IllegalStateException: ServletConfig has not been initialized
 	at javax.servlet.GenericServlet.getServletContext(GenericServlet.java:199)
-	at api.servlet.RegistrationServlet.init(RegistrationServlet.java:36)
+	at api.servlet.RegistrationServlet.init(RegistrationServlet.java:37)
 	at api.servlet.RegistrationServletTest.setUp(RegistrationServletTest.java:52)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -72,10 +72,10 @@ java.lang.IllegalStateException: ServletConfig has not been initialized
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-testWithAddingClient(api.servlet.RegistrationServletTest)  Time elapsed: 0.003 sec  <<< ERROR!
+testWithAddingClient(api.servlet.RegistrationServletTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.IllegalStateException: ServletConfig has not been initialized
 	at javax.servlet.GenericServlet.getServletContext(GenericServlet.java:199)
-	at api.servlet.RegistrationServlet.init(RegistrationServlet.java:36)
+	at api.servlet.RegistrationServlet.init(RegistrationServlet.java:37)
 	at api.servlet.RegistrationServletTest.setUp(RegistrationServletTest.java:52)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

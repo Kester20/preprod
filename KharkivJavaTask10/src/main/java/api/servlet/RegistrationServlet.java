@@ -3,6 +3,7 @@ package api.servlet;
 import entity.client.Client;
 import entity.formbean.RegistrationFormBean;
 import org.apache.log4j.Logger;
+import service.captcha.CaptchaService;
 import service.client.UserService;
 import service.formbean.FormBeanService;
 
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
@@ -27,20 +29,25 @@ public class RegistrationServlet extends HttpServlet {
 
     private UserService userService;
     private FormBeanService formBeanService;
-    private Map<String, String> errors;
-    private RegistrationFormBean formBean;
+    private CaptchaService captchaService;
     private static final Logger log = Logger.getLogger(RegistrationServlet.class);
 
     @Override
     public void init() throws ServletException {
         userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
-        formBeanService = new FormBeanService();
+        formBeanService = (FormBeanService) getServletContext().getAttribute(FORM_BEAN_SERVICE);
+        captchaService = (CaptchaService) getServletContext().getAttribute(SCOPE);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        RegistrationFormBean formBean = (RegistrationFormBean) session.getAttribute(FORM_BEAN);
+        Map<String, String> errors = (Map<String, String>) session.getAttribute(ERRORS);
+
         if (errors != null) {
             if (errors.size() > 0) {
+                log.info("ERRORS DETECTED");
                 request.setAttribute(FORM_BEAN, formBean);
                 request.setAttribute(ERRORS, errors);
             }
@@ -59,9 +66,12 @@ public class RegistrationServlet extends HttpServlet {
             dispatcher.forward(request, response);
             return;
         }
-        formBean = formBeanService.createFormBean(request);
-        errors = formBeanService.validateBean(formBean);
-        formBeanService.validateCaptcha(request, errors);
+
+        HttpSession session = request.getSession();
+        RegistrationFormBean formBean = formBeanService.createFormBean(request);
+        Map<String, String> errors = formBeanService.validateBean(formBean);
+
+        captchaService.validateCaptcha(request, errors);
         if (errors.size() == 0) {
             if (userService.checkExistClient(formBean.getEmail())) {
                 errors.put(EMAIL, EMAIL_ALREADY_EXIST);
@@ -71,6 +81,8 @@ public class RegistrationServlet extends HttpServlet {
                 log.info("New client was registered");
             }
         }
+        session.setAttribute(FORM_BEAN, formBean);
+        session.setAttribute(ERRORS, errors);
         response.sendRedirect(REGISTRATION_SERVLET);
     }
 

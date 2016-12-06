@@ -27,5 +27,5 @@ public class Constants {
     public static final String FORM_BEAN = "formBean";
     public static final String ERRORS = "errors";
     public static final String USER_SERVICE = "userService";
-
+    public static final String FORM_BEAN_SERVICE = "formBeanService";
 }

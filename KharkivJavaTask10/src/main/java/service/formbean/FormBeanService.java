@@ -35,22 +35,4 @@ public class FormBeanService {
         return new Client(formBean.getFirstName(), formBean.getSecondName(), formBean.getEmail(),
                 formBean.getPassword(), formBean.getMobileNumber());
     }
-
-    public void validateCaptcha(HttpServletRequest request, Map<String, String> errors){
-        switch (request.getServletContext().getInitParameter(CAPTCHA_SCOPE)){
-            case SESSION:{
-                validator.validateCaptchaInSession(request, errors);
-                break;
-            }
-            case COOKIE:{
-                validator.validateCaptchaInCookie(request, errors);
-                break;
-            }
-            case HIDDEN :{
-                validator.validateCaptchaInHidden(request, errors);
-                break;
-            }
-        }
-
-    }
 }

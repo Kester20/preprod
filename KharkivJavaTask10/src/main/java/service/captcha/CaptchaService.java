@@ -29,6 +29,8 @@ public abstract class CaptchaService {
 
     public abstract void sendCaptcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
+    public abstract void validateCaptcha(HttpServletRequest request, Map<String, String> errors) throws ServletException, IOException;
+
     protected void drawCaptcha() {
         captchaDrawer.drawCaptcha();
     }

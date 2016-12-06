@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,8 @@ public class RegistrationServletTest {
     private ServletContext servletContext;
     @Mock
     private HttpSession session;
+    @Mock
+    private ServletConfig servletConfig;
 
     private static final long tenMinutes = 10 * 60 * 1000;
     private static final int DEFAULT_SIZE_OF_USERS = 3;
@@ -37,6 +40,7 @@ public class RegistrationServletTest {
         MockitoAnnotations.initMocks(this);
         servlet = new RegistrationServlet();
 
+        when(servletConfig.getServletContext()).thenReturn(servletContext);
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute(TIME)).thenReturn(System.currentTimeMillis() + tenMinutes);
         when(request.getParameter(FIRST_NAME)).thenReturn("kester");
@@ -48,7 +52,7 @@ public class RegistrationServletTest {
         when(servletContext.getInitParameter(CAPTCHA_SCOPE)).thenReturn("");
         when(request.getServletContext()).thenReturn(servletContext);
 
-
+        servlet.init(servletConfig);
         servlet.init();
     }
 

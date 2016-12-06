@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 import static constatnts.Constants.*;
 
@@ -15,16 +16,33 @@ import static constatnts.Constants.*;
  */
 public class CookieCaptchaService extends CaptchaService {
 
+    private static final Logger log = Logger.getLogger(CookieCaptchaService.class);
+
     @Override
     public void sendCaptcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         drawCaptcha();
         String code = request.getParameter(CAPTCHA_CODE);
         codsOfCaptcha.put(code, captchaDrawer.getCaptcha());
         Cookie cookie = new Cookie(CAPTCHA_CODE, code);
-        request.getServletContext().setAttribute(CAPTCHA, getCodsOfCaptcha());
         response.addCookie(cookie);
         request.getSession().setAttribute(TIME, System.currentTimeMillis() + captchaLifeTime);
         sendImage(response);
         startCleanerThread(code);
+    }
+
+    @Override
+    public void validateCaptcha(HttpServletRequest request, Map<String, String> errors) throws ServletException, IOException {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(CAPTCHA_CODE)) {
+                    if (!codsOfCaptcha.get(cookie.getValue()).equals(request.getParameter(CAPTCHA_INPUT))) {
+                        errors.put(CAPTCHA_INPUT, WRONG_NUMBERS);
+                    } else {
+                        log.info("Correct captcha!");
+                    }
+                }
+            }
+        }
     }
 }
