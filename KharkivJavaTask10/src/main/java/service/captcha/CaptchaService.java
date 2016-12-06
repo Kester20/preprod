@@ -20,7 +20,7 @@ public abstract class CaptchaService {
     private static final Logger log = Logger.getLogger(CaptchaService.class);
     protected Map<String, String> codsOfCaptcha;
     protected CaptchaDrawer captchaDrawer;
-    protected long captchaLifeTime = 1 * 30 * 1000;
+    protected long captchaLifeTime = 1 * 60 * 1000;
 
     public CaptchaService() {
         this.codsOfCaptcha = new ConcurrentHashMap<>();
