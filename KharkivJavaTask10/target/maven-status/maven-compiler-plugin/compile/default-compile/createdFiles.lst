@@ -14,6 +14,6 @@ service\captcha\SessionCaptchaService.class
 listener\ContextListener.class
 api\servlet\RegistrationServlet.class
 entity\formbean\RegistrationFormBean.class
-service\client\ClientService.class
 annotation\ValidatorAnnotation$Pattern.class
+service\client\UserService.class
 repository\ClientRepository.class

@@ -7,11 +7,11 @@ import repository.ClientRepository;
 /**
  * @author Arsalan
  */
-public class ClientService {
+public class UserService {
 
     private ClientRepository clientRepository;
 
-    public ClientService() {
+    public UserService() {
         clientRepository = new ClientRepository();
     }
 

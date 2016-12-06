@@ -5,7 +5,7 @@
 
     <context-param>
         <param-name>captchaScope</param-name>
-        <param-value>cookie</param-value>
+        <param-value>session</param-value>
     </context-param>
 
     <listener>

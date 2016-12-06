@@ -26,5 +26,6 @@ public class Constants {
     public static final String REGISTER_JSP = "register.jsp";
     public static final String FORM_BEAN = "formBean";
     public static final String ERRORS = "errors";
+    public static final String USER_SERVICE = "userService";
 
 }

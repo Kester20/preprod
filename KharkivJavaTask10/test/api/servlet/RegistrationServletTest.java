@@ -55,7 +55,7 @@ public class RegistrationServletTest {
     @Test
     public void testWithAddingClient() throws Exception {
         servlet.doPost(request, response);
-        assertTrue(servlet.getClientService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS + 1);
+        assertTrue(servlet.getUserService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS + 1);
     }
 
     @Test
@@ -67,14 +67,14 @@ public class RegistrationServletTest {
         when(request.getParameter(MOBILE_NUMBER)).thenReturn("093");
 
         servlet.doPost(request, response);
-        assertTrue(servlet.getClientService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS);
+        assertTrue(servlet.getUserService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS);
     }
 
     @Test
     public void testNotAddingExistClient() throws Exception {
         servlet.doPost(request, response);
         servlet.doPost(request, response);
-        assertTrue(servlet.getClientService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS + 1);
+        assertTrue(servlet.getUserService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS + 1);
     }
 
 }

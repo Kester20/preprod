@@ -3,7 +3,7 @@ package api.servlet;
 import entity.client.Client;
 import entity.formbean.RegistrationFormBean;
 import org.apache.log4j.Logger;
-import service.client.ClientService;
+import service.client.UserService;
 import service.formbean.FormBeanService;
 
 import javax.servlet.RequestDispatcher;
@@ -25,7 +25,7 @@ import static constatnts.Constants.*;
 @WebServlet("/registration_servlet")
 public class RegistrationServlet extends HttpServlet {
 
-    private ClientService clientService;
+    private UserService userService;
     private FormBeanService formBeanService;
     private Map<String, String> errors;
     private RegistrationFormBean formBean;
@@ -33,7 +33,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        clientService = new ClientService();
+        userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
         formBeanService = new FormBeanService();
     }
 
@@ -63,11 +63,11 @@ public class RegistrationServlet extends HttpServlet {
         errors = formBeanService.validateBean(formBean);
         formBeanService.validateCaptcha(request, errors);
         if (errors.size() == 0) {
-            if (clientService.checkExistClient(formBean.getEmail())) {
+            if (userService.checkExistClient(formBean.getEmail())) {
                 errors.put(EMAIL, EMAIL_ALREADY_EXIST);
             } else {
                 Client client = formBeanService.transformBean(formBean);
-                clientService.createClient(client);
+                userService.createClient(client);
                 log.info("New client was registered");
             }
         }
@@ -78,7 +78,7 @@ public class RegistrationServlet extends HttpServlet {
         return UUID.randomUUID().toString();
     }
 
-    public ClientService getClientService() {
-        return clientService;
+    public UserService getUserService() {
+        return userService;
     }
 }

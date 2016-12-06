@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import service.captcha.CookieCaptchaService;
 import service.captcha.HiddenCaptchaService;
 import service.captcha.SessionCaptchaService;
+import service.client.UserService;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -21,6 +22,20 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext servletContext = servletContextEvent.getServletContext();
+        initCaptchaScope(servletContext);
+        initUserService(servletContext);
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+
+    }
+
+    private void initUserService(ServletContext servletContext){
+        servletContext.setAttribute(USER_SERVICE, new UserService());
+    }
+
+    private void initCaptchaScope(ServletContext servletContext){
         switch (servletContext.getInitParameter(CAPTCHA_SCOPE)) {
             case SESSION: {
                 log.info("Captcha scope: SESSION");
@@ -38,10 +53,5 @@ public class ContextListener implements ServletContextListener {
                 break;
             }
         }
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
     }
 }
