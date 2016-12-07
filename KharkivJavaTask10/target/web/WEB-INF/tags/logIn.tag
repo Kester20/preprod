@@ -3,14 +3,17 @@
 
 <c:choose>
     <c:when test="${sessionScope.user == null}">
-       <form action="<c:url value='log_in_servlet' />" name="logInForm" id="logInForm" method="post" >
 
-            <input type ="text" name="email" placeholder="Email" autofocus required />
-            <input type ="text" name="password" placeholder="Password" required/>
-       </form>
+
+       <a href="account.jsp"><span class="glyphicon glyphicon-user"> </span>Login</a>
+
     </c:when>
 
+
+
     <c:otherwise>
+
+       <a href=""><span class="glyphicon glyphicon-user"> </span>Log out</a>
 
     </c:otherwise>
 </c:choose>

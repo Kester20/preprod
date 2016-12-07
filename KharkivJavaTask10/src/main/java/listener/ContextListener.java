@@ -1,6 +1,7 @@
 package listener;
 
 import org.apache.log4j.Logger;
+import repository.impl.UserRepository;
 import service.captcha.CookieCaptchaService;
 import service.captcha.HiddenCaptchaService;
 import service.captcha.SessionCaptchaService;
@@ -47,7 +48,7 @@ public class ContextListener implements ServletContextListener {
     }
 
     private void initUserService(ServletContext servletContext, DataSource dataSource){
-        servletContext.setAttribute(USER_SERVICE, new UserService(dataSource));
+        servletContext.setAttribute(USER_SERVICE, new UserService(new UserRepository(dataSource)));
     }
 
     private void initFormBeanService(ServletContext servletContext){

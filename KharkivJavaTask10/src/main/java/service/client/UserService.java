@@ -3,51 +3,29 @@ package service.client;
 
 import entity.user.User;
 import org.apache.log4j.Logger;
-import repository.UserRepository;
-
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
+import repository.impl.UserRepository;
 
 /**
  * @author Arsalan
  */
 public class UserService {
 
-    private static final Logger log = Logger.getLogger(UserRepository.class);
+    private static final Logger log = Logger.getLogger(UserService.class);
     private UserRepository userRepository;
-    private DataSource dataSource;
 
-    public UserService(DataSource dataSource) {
-        this.userRepository = new UserRepository();
-        this.dataSource = dataSource;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public void createUser(User user) {
-        try (Connection connection = dataSource.getConnection()) {
-
-            userRepository.createUser(connection, user);
-
-        } catch (SQLException e) {
-            log.warn("SQL error during create user! " + e.getMessage());
-            e.printStackTrace();
-        }
+        userRepository.create(user);
     }
 
     public boolean checkIfExistUser(String email) {
-        boolean result = true;
-        try (Connection connection = dataSource.getConnection()) {
-
-            result = userRepository.checkIfExistUser(connection, email);
-
-        } catch (SQLException e) {
-            log.warn("SQL error during check if exist user! " + e.getMessage());
-            e.printStackTrace();
-        }
-        return result;
+        return userRepository.checkIfExistUser(email);
     }
 
-    public int getCountOfUsers() {
-        return userRepository.getUsers().size();
+    public boolean logInUser(String email, String password){
+        return userRepository.logInUser(email, password);
     }
 }

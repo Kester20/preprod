@@ -44,7 +44,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 
 
-<tg:logIn />
+
 
 <!-- header-section-starts -->
 <div class="header">
@@ -53,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-top-left">
                 <ul>
                     <li><a href="account.html"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
-                    <li><a href="register.html"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a>
+                    <li><a href="register.jsp"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a>
                     </li>
                 </ul>
             </div>
@@ -86,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="icon-bar"></span>
                     </button>
                     <div class="logo">
-                        <h1><a href="index.html"><span>E</span> -Shop</a></h1>
+                        <h1><a href="index.jsp"><span>E</span> -Shop</a></h1>
                     </div>
                 </div>
                 <!--/.navbar-header-->

@@ -5,21 +5,15 @@
     <c:when test="${sessionScope.user == null}">
 
 
-       <div class="reg">
-
-           <form action="<c:url value='log_in_servlet' />" name="logInForm" id="logInForm" method="post" >
-                <input class="logIn" type ="text" name="email" placeholder="Email" autofocus required /><br>
-                <input class="logIn" type ="text" name="password" placeholder="Password" required/><br>
-                <input type="submit" value="Log in">
-           </form>
-
-       </div>
+       <a href="account.jsp"><span class="glyphicon glyphicon-user"> </span>Login</a>
 
     </c:when>
 
 
 
     <c:otherwise>
+
+       <a href=""><span class="glyphicon glyphicon-user"> </span>Log out</a>
 
     </c:otherwise>
 </c:choose>
