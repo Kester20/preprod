@@ -2,28 +2,52 @@ package service.client;
 
 
 import entity.user.User;
-import repository.ClientRepository;
+import org.apache.log4j.Logger;
+import repository.UserRepository;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * @author Arsalan
  */
 public class UserService {
 
-    private ClientRepository clientRepository;
+    private static final Logger log = Logger.getLogger(UserRepository.class);
+    private UserRepository userRepository;
+    private DataSource dataSource;
 
-    public UserService() {
-        clientRepository = new ClientRepository();
+    public UserService(DataSource dataSource) {
+        this.userRepository = new UserRepository();
+        this.dataSource = dataSource;
     }
 
-    public boolean checkExistClient(String email) {
-        return clientRepository.getUsers().get(email) != null;
+    public void createUser(User user) {
+        try (Connection connection = dataSource.getConnection()) {
+
+            userRepository.createUser(connection, user);
+
+        } catch (SQLException e) {
+            log.warn("SQL error during create user! " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-    public void createClient(User user) {
-        clientRepository.getUsers().put(user.getEmail(), user);
+    public boolean checkIfExistUser(String email) {
+        boolean result = true;
+        try (Connection connection = dataSource.getConnection()) {
+
+            result = userRepository.checkIfExistUser(connection, email);
+
+        } catch (SQLException e) {
+            log.warn("SQL error during check if exist user! " + e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
     }
 
-    public int getCountOfUsers(){
-        return clientRepository.getUsers().size();
+    public int getCountOfUsers() {
+        return userRepository.getUsers().size();
     }
 }

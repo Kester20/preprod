@@ -32,7 +32,7 @@ public class FormBeanService {
     }
 
     public User transformBean(RegistrationFormBean formBean){
-        return new User(formBean.getFirstName(), formBean.getSecondName(), formBean.getEmail(),
+        return new User(formBean.getFirstName(), formBean.getLastName(), formBean.getEmail(),
                 formBean.getPassword(), formBean.getMobileNumber());
     }
 

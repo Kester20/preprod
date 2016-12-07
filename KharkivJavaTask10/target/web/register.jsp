@@ -44,6 +44,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 
 
+<tg:logIn>
+
 <!-- header-section-starts -->
 <div class="header">
     <div class="header-top-strip">
@@ -242,19 +244,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <ul>
                             <li class="text-info">First Name:</li>
-                            <li><input class="valid" type="text" value="${formBean.firstName}" name="firstName" id="firstName"
+                            <li><input class="valid" type="text" value="${requestScope.formBean.firstName}" name="firstName" id="firstName"
                                        onchange="isNotEmptyInput(this);"></li>
                             <li class="showInfo">${errors.firstName}</li>
                         </ul>
                         <ul>
                             <li class="text-info">Last Name:</li>
-                            <li><input class="valid" type="text" value="${formBean.secondName}" name="lastName" id="lastName"
+                            <li><input class="valid" type="text" value="${requestScope.formBean.lastName}" name="lastName" id="lastName"
                                        onchange="isNotEmptyInput(this);"></li>
                             <li class="showInfo">${errors.secondName}</li>
                         </ul>
                         <ul>
                             <li class="text-info">Email:</li>
-                            <li><input class="valid" type="text" value="${formBean.email}" name="email"
+                            <li><input class="valid" type="text" value="${requestScope.formBean.email}" name="email"
                                        placeholder="Example: ars.kester@epam.com" onchange="validateEmail(this);"></li>
                             <li class="showInfo">${errors.email}</li>
                         </ul>
@@ -272,7 +274,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                         <ul>
                             <li class="text-info">Mobile Number:</li>
-                            <li><input class="valid" type="text" value="${formBean.mobileNumber}" name="mobileNumber"
+                            <li><input class="valid" type="text" value="${requestScope.formBean.mobileNumber}" name="mobileNumber"
                                        placeholder="Example: +80945678977" onchange="validatePhone(this);"></li>
                             <li class="showInfo">${errors.mobileNumber}</li>
                         </ul>

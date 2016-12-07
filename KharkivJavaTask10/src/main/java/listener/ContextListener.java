@@ -7,9 +7,13 @@ import service.captcha.SessionCaptchaService;
 import service.client.UserService;
 import service.formbean.FormBeanService;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.sql.DataSource;
 
 import static constatnts.Constants.*;
 
@@ -22,19 +26,28 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
+        DataSource dataSource = initDataSource();
         ServletContext servletContext = servletContextEvent.getServletContext();
         initCaptchaService(servletContext);
-        initUserService(servletContext);
+        initUserService(servletContext, dataSource);
         initFormBeanService(servletContext);
     }
 
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
+    private DataSource initDataSource(){
+        Context initialContext;
+        DataSource dataSource = null;
+        try {
+            initialContext = new InitialContext();
+            dataSource = (DataSource)initialContext.lookup("java:comp/env/jdbc/web_store");
+        } catch (NamingException e) {
+            log.warn("ERROR during creating data source");
+            e.printStackTrace();
+        }
+        return  dataSource;
     }
 
-    private void initUserService(ServletContext servletContext){
-        servletContext.setAttribute(USER_SERVICE, new UserService());
+    private void initUserService(ServletContext servletContext, DataSource dataSource){
+        servletContext.setAttribute(USER_SERVICE, new UserService(dataSource));
     }
 
     private void initFormBeanService(ServletContext servletContext){
@@ -59,5 +72,10 @@ public class ContextListener implements ServletContextListener {
                 break;
             }
         }
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+
     }
 }

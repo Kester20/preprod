@@ -44,6 +44,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 
 
+<tg:logIn />
+
 <!-- header-section-starts -->
 <div class="header">
     <div class="header-top-strip">
@@ -248,7 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                         <ul>
                             <li class="text-info">Last Name:</li>
-                            <li><input class="valid" type="text" value="${requestScope.formBean.secondName}" name="lastName" id="lastName"
+                            <li><input class="valid" type="text" value="${requestScope.formBean.lastName}" name="lastName" id="lastName"
                                        onchange="isNotEmptyInput(this);"></li>
                             <li class="showInfo">${errors.secondName}</li>
                         </ul>

@@ -53,7 +53,8 @@ public class RegistrationServlet extends HttpServlet {
             }
         }
         request.setAttribute(CAPTCHA_CODE, generateCodeCaptcha());
-        log.info("GENERATE CODE CAPTCHA IN GET");
+        session.removeAttribute(FORM_BEAN);
+        session.removeAttribute(ERRORS);
         RequestDispatcher dispatcher = request.getRequestDispatcher(REGISTER_JSP);
         dispatcher.forward(request, response);
     }
@@ -73,11 +74,11 @@ public class RegistrationServlet extends HttpServlet {
 
         captchaService.validateCaptcha(request, errors);
         if (errors.size() == 0) {
-            if (userService.checkExistClient(formBean.getEmail())) {
+            if (userService.checkIfExistUser(formBean.getEmail())) {
                 errors.put(EMAIL, EMAIL_ALREADY_EXIST);
             } else {
                 User user = formBeanService.transformBean(formBean);
-                userService.createClient(user);
+                userService.createUser(user);
                 log.info("New user was registered");
             }
         }

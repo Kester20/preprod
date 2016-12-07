@@ -11,7 +11,7 @@ public class RegistrationFormBean {
     @ValidatorAnnotation.Pattern(pattern = "\\w+",errorMessage = "Empty field!")
     private String firstName;
 
-    @ValidatorAnnotation.GetMethod(method = "getSecondName")
+    @ValidatorAnnotation.GetMethod(method = "getLastName")
     @ValidatorAnnotation.Pattern(pattern = "\\w+", errorMessage = "Empty field!")
     private String secondName;
 
@@ -39,7 +39,7 @@ public class RegistrationFormBean {
         return firstName;
     }
 
-    public String getSecondName() {
+    public String getLastName() {
         return secondName;
     }
 

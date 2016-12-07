@@ -49,7 +49,6 @@ public abstract class CaptchaService {
             @Override
             public void run() {
                 while (true) {
-                    log.info("CODS MAP ---> " + codsOfCaptcha);
                     try {
                         Thread.sleep(captchaLifeTime);
                         codsOfCaptcha.remove(codeCaptcha);
