@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 
-import static constatnts.Constants.REGISTER_JSP;
-import static constatnts.Constants.USER_SERVICE;
+import static constatnts.Constants.*;
 
 /**
  * @author Arsalan
@@ -30,30 +30,32 @@ public class LogInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getSession().getAttribute("wrongEmailOrPassword") != null){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("account.jsp");
+        if(request.getSession().getAttribute(WRONG_EMAIL_OR_PASSWORD) != null){
+            RequestDispatcher dispatcher = request.getRequestDispatcher(ACCOUNT_JSP);
             dispatcher.forward(request, response);
         }else{
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher(INDEX_JSP);
             dispatcher.forward(request, response);
         }
-        request.getSession().removeAttribute("wrongEmailOrPassword");
+        request.getSession().removeAttribute(WRONG_EMAIL_OR_PASSWORD);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        if(request.getParameter("email") != null && request.getParameter("password") != null){
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
+        if(request.getParameter(EMAIL) != null && request.getParameter(PASSWORD) != null){
+            String email = request.getParameter(EMAIL);
+            String password = request.getParameter(PASSWORD);
             if(userService.logInUser(email, password)){
-                session.setAttribute("user", "user");
-                session.setAttribute("userName", userService.getUserNameByEmail(email));
+                String appPath = request.getServletContext().getRealPath("");
+                session.setAttribute(USER, USER);
+                session.setAttribute(USER_NAME, userService.getUserNameByEmail(email));
+                session.setAttribute(USER_AVATAR, AVATARS_PATH + File.separator + email+".png");
             }else{
-                session.setAttribute("wrongEmailOrPassword","Wrong email or password");
+                session.setAttribute(WRONG_EMAIL_OR_PASSWORD,SIMPLE_WRONG_EMAIL_OR_PASSWORD);
             }
         }
-        response.sendRedirect("login_servlet");
+        response.sendRedirect(LOGIN_SERVLET);
     }
 }

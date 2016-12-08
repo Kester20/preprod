@@ -1,12 +1,7 @@
 package api.servlet;
 
-import entity.user.User;
 import entity.formbean.RegistrationFormBean;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import entity.user.User;
 import org.apache.log4j.Logger;
 import service.captcha.CaptchaService;
 import service.client.UserService;
@@ -19,8 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -31,7 +24,8 @@ import static constatnts.Constants.*;
  * @author Arsalan
  */
 @WebServlet("/registration_servlet")
-@MultipartConfig
+@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class RegistrationServlet extends HttpServlet {
 
     private UserService userService;
@@ -80,21 +74,14 @@ public class RegistrationServlet extends HttpServlet {
         HttpSession session = request.getSession();
         RegistrationFormBean formBean = formBeanService.createFormBean(request);
         Map<String, String> errors = formBeanService.validateBean(formBean);
-
-        /*try {
-            loadImage(request);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
-
-
-
         captchaService.validateCaptcha(request, errors);
+
         if (errors.size() == 0) {
             if (userService.checkIfExistUser(formBean.getEmail())) {
                 errors.put(EMAIL, EMAIL_ALREADY_EXIST);
             } else {
                 User user = formBeanService.transformBean(formBean);
+                createAvatar(request);
                 userService.createUser(user);
                 log.info("NEW USER WAS REGISTERED");
             }
@@ -108,41 +95,17 @@ public class RegistrationServlet extends HttpServlet {
         return UUID.randomUUID().toString();
     }
 
-    public void loadImage(HttpServletRequest request) throws ServletException, IOException, SQLException {
-        log.info("IM HERE");
-        if (!ServletFileUpload.isMultipartContent(request)) {
-            log.error("Nothing uploaded.");
-            return;
+    public void createAvatar(HttpServletRequest request) throws IOException, ServletException {
+        String appPath = request.getServletContext().getRealPath("");
+        String savePath = appPath + File.separator + AVATARS_PATH;
+
+        File fileSaveDir = new File(savePath);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
         }
 
-        FileItemFactory itemFactory = new DiskFileItemFactory();
-        ServletFileUpload upload = new ServletFileUpload(itemFactory);
-
-        try {
-            List<FileItem> items = upload.parseRequest(request);
-            log.info(items.size());
-
-            for (FileItem item : items) {
-
-                if (item.isFormField()) {
-                    // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
-                    log.info(item.getFieldName());
-                    log.info(item.getString());
-                }
-
-                if (item.getName() != null) {
-
-                    log.info(item.getName());
-                    String path = System.getProperty("user.dir") + "/src/main/webapp/avatars/" + item.getName();
-                    File uploadDir = new File(path);
-                    item.write(uploadDir);
-                    //laptopDao.setImage("/images/" + item.getName() );
-                    log.info("Upload image succesfull");
-                }
-            }
-        } catch ( Exception  e) {
-            log.error("Upload failed.");
-            e.printStackTrace();
+        if(request.getPart("photo") != null && request.getParameter("email") != null){
+            request.getPart("photo").write(savePath + File.separator + request.getParameter("email") + ".png");
         }
     }
 }

@@ -7,7 +7,6 @@ repository\impl\UserRepository.class
 service\captcha\CaptchaService.class
 service\captcha\drawer\CaptchaDrawer.class
 api\servlet\CaptchaServlet.class
-Demo.class
 api\servlet\LogOutServlet.class
 api\servlet\RegistrationServlet.class
 entity\formbean\RegistrationFormBean.class

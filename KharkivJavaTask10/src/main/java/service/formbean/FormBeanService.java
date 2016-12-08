@@ -24,30 +24,13 @@ public class FormBeanService {
     private Validator validator = new Validator();
 
     public RegistrationFormBean createFormBean(HttpServletRequest request){
-
-        Map<String, String> inputs = new HashMap<>();
-        try {
-            List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-            for (FileItem item : items) {
-                if (item.isFormField()) {
-                    inputs.put(item.getFieldName(), item.getString());
-                }
-            }
-        } catch (FileUploadException e) {
-            e.printStackTrace();
-        }
-
-
-        return new RegistrationFormBean(inputs.get(FIRST_NAME), inputs.get(LAST_NAME), inputs.get(EMAIL), inputs.get(PASS),
-                inputs.get(MOBILE_NUMBER));
-
-        /*if(request.getParameter(FIRST_NAME) != null && request.getParameter(LAST_NAME) != null && request.getParameter(EMAIL) != null &&
+        if(request.getParameter(FIRST_NAME) != null && request.getParameter(LAST_NAME) != null && request.getParameter(EMAIL) != null &&
                 request.getParameter(PASS) != null && request.getParameter(MOBILE_NUMBER) != null){
             return new RegistrationFormBean(request.getParameter(FIRST_NAME), request.getParameter(LAST_NAME),
                     request.getParameter(EMAIL), request.getParameter(PASS),
                     request.getParameter(MOBILE_NUMBER));
         }
-        return null;*/
+        return null;
     }
 
     public Map<String, String> validateBean(RegistrationFormBean formBean){
@@ -58,13 +41,5 @@ public class FormBeanService {
     public User transformBean(RegistrationFormBean formBean){
         return new User(formBean.getFirstName(), formBean.getLastName(), formBean.getEmail(),
                 formBean.getPassword(), formBean.getMobileNumber());
-    }
-
-    public Validator getValidator() {
-        return validator;
-    }
-
-    public void setValidator(Validator validator) {
-        this.validator = validator;
     }
 }

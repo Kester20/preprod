@@ -230,13 +230,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
 
 
+
+
         <h2>Registration</h2>
         <div class="registration-grids">
             <div class="reg-form">
                 <div class="reg">
                     <p>Welcome, please enter the following details to continue.</p>
                     <p>If you have previously registered with us, <a href="#">click here</a></p>
-                    <form action="<c:url value='registration_servlet' />" name="registerForm" id="registerForm" method="post" onsubmit="return validateRegisterForm ();">
+                    <form action="<c:url value='registration_servlet' />" name="registerForm" id="registerForm"
+                     method="post" onsubmit="return validateRegisterForm ();" enctype="multipart/form-data">
 
                         <ul>
                             <li class="text-info">First Name:</li>
@@ -276,8 +279,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
 
                         <ul>
-                            <li class="text-info">Upload your photo:</li>
-                            <li><input type="file" name="photo" size="50" /></li>
+
+                                <li class="text-info">Upload your photo:</li>
+                                <li><input type="file" name="photo" size="50"></li>
+
                         </ul>
 
                         <c:set var="code" value="${requestScope.codeCaptcha}"/>
@@ -292,7 +297,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         </ul>
 
-                       <input type="submit" value="REGISTER NOW">
+                       <input type="submit" value="REGISTER NOW" >
 
                         <p class="click">By clicking this button, you are agree to my <a href="#">Policy Terms and
                             Conditions.</a></p>

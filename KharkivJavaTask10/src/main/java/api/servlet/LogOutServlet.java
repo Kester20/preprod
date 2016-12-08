@@ -6,7 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
+import static constatnts.Constants.*;
 
 /**
  * @author Arsalan
@@ -21,10 +24,13 @@ public class LogOutServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getSession().getAttribute("user") != null){
-            request.getSession().removeAttribute("user");
+        HttpSession session = request.getSession();
+        if(session.getAttribute(USER) != null){
+            session.removeAttribute(USER);
+            session.removeAttribute(USER_NAME);
+            session.removeAttribute(USER_AVATAR);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(INDEX_JSP);
         dispatcher.forward(request, response);
     }
 

@@ -18,7 +18,7 @@
     <c:otherwise>
 
        <ul>
-
+            <li><img class="avatar" src="${userAvatar}" /></li>
             <li><a>${userName}</a></li>
             <li><a href="<c:url value='logout_servlet' />"><span class="glyphicon glyphicon-user"> </span>Log out</a></li>
 

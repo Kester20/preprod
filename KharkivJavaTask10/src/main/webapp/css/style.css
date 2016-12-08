@@ -2033,6 +2033,11 @@ ul.women_pagenation li a:hover {
     font-weight: bold;
 }
 
+.avatar{
+    width: 30px;
+    height: 30px;
+}
+
 .errorInput{
     color: red;
     font-size: 16px;
