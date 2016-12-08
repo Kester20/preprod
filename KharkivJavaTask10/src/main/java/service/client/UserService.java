@@ -28,4 +28,8 @@ public class UserService {
     public boolean logInUser(String email, String password){
         return userRepository.logInUser(email, password);
     }
+
+    public String getUserNameByEmail(String email){
+        return userRepository.getUserNameByEmail(email);
+    }
 }

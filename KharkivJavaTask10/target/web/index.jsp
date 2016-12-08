@@ -41,15 +41,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header-top-strip">
         <div class="container">
             <div class="header-top-left">
-                <ul>
-                    <li><tg:logIn /></li>
-                    <li><a href="/miniservlet/registration_servlet"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a>
-                    </li>
-                </ul>
+                <tg:logIn />
             </div>
             <div class="header-right">
                 <div class="cart box_1">
-                    <a href="checkout.html">
+                    <a href="checkout.jsp">
                         <h3><span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity"
                                                                                  class="simpleCart_quantity"> 0 </span>)<img
                                 src="images/bag.png" alt=""></h3>
@@ -75,14 +71,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="icon-bar"></span>
                 </button>
                 <div class="logo">
-                    <h1><a href="index.html"><span>E</span> -Shop</a></h1>
+                    <h1><a href="index.jsp"><span>E</span> -Shop</a></h1>
                 </div>
             </div>
             <!--/.navbar-header-->
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
@@ -90,35 +86,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="col-sm-4">
                                     <ul class="multi-column-dropdown">
                                         <h6>NEW IN</h6>
-                                        <li><a href="products.html">New In Clothing</a></li>
-                                        <li><a href="products.html">New In Bags</a></li>
-                                        <li><a href="products.html">New In Shoes</a></li>
-                                        <li><a href="products.html">New In Watches</a></li>
-                                        <li><a href="products.html">New In Grooming</a></li>
+                                        <li><a href="products.jsp">New In Clothing</a></li>
+                                        <li><a href="products.jsp">New In Bags</a></li>
+                                        <li><a href="products.jsp">New In Shoes</a></li>
+                                        <li><a href="products.jsp">New In Watches</a></li>
+                                        <li><a href="products.jsp">New In Grooming</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-4">
                                     <ul class="multi-column-dropdown">
                                         <h6>CLOTHING</h6>
-                                        <li><a href="products.html">Polos & Tees</a></li>
-                                        <li><a href="products.html">Casual Shirts</a></li>
-                                        <li><a href="products.html">Casual Trousers</a></li>
-                                        <li><a href="products.html">Jeans</a></li>
-                                        <li><a href="products.html">Shorts & 3/4th</a></li>
-                                        <li><a href="products.html">Formal Shirts</a></li>
-                                        <li><a href="products.html">Formal Trousers</a></li>
-                                        <li><a href="products.html">Suits & Blazers</a></li>
-                                        <li><a href="products.html">Track Wear</a></li>
-                                        <li><a href="products.html">Inner Wear</a></li>
+                                        <li><a href="products.jsp">Polos & Tees</a></li>
+                                        <li><a href="products.jsp">Casual Shirts</a></li>
+                                        <li><a href="products.jsp">Casual Trousers</a></li>
+                                        <li><a href="products.jsp">Jeans</a></li>
+                                        <li><a href="products.jsp">Shorts & 3/4th</a></li>
+                                        <li><a href="products.jsp">Formal Shirts</a></li>
+                                        <li><a href="products.jsp">Formal Trousers</a></li>
+                                        <li><a href="products.jsp">Suits & Blazers</a></li>
+                                        <li><a href="products.jsp">Track Wear</a></li>
+                                        <li><a href="products.jsp">Inner Wear</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-4">
                                     <ul class="multi-column-dropdown">
                                         <h6>WATCHES</h6>
-                                        <li><a href="products.html">Analog</a></li>
-                                        <li><a href="products.html">Chronograph</a></li>
-                                        <li><a href="products.html">Digital</a></li>
-                                        <li><a href="products.html">Watch Cases</a></li>
+                                        <li><a href="products.jsp">Analog</a></li>
+                                        <li><a href="products.jsp">Chronograph</a></li>
+                                        <li><a href="products.jsp">Digital</a></li>
+                                        <li><a href="products.jsp">Watch Cases</a></li>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -132,35 +128,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="col-sm-4">
                                     <ul class="multi-column-dropdown">
                                         <h6>NEW IN</h6>
-                                        <li><a href="products.html">New In Clothing</a></li>
-                                        <li><a href="products.html">New In Bags</a></li>
-                                        <li><a href="products.html">New In Shoes</a></li>
-                                        <li><a href="products.html">New In Watches</a></li>
-                                        <li><a href="products.html">New In Beauty</a></li>
+                                        <li><a href="products.jsp">New In Clothing</a></li>
+                                        <li><a href="products.jsp">New In Bags</a></li>
+                                        <li><a href="products.jsp">New In Shoes</a></li>
+                                        <li><a href="products.jsp">New In Watches</a></li>
+                                        <li><a href="products.jsp">New In Beauty</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-4">
                                     <ul class="multi-column-dropdown">
                                         <h6>CLOTHING</h6>
-                                        <li><a href="products.html">Polos & Tees</a></li>
-                                        <li><a href="products.html">Casual Shirts</a></li>
-                                        <li><a href="products.html">Casual Trousers</a></li>
-                                        <li><a href="products.html">Jeans</a></li>
-                                        <li><a href="products.html">Shorts & 3/4th</a></li>
-                                        <li><a href="products.html">Formal Shirts</a></li>
-                                        <li><a href="products.html">Formal Trousers</a></li>
-                                        <li><a href="products.html">Suits & Blazers</a></li>
-                                        <li><a href="products.html">Track Wear</a></li>
-                                        <li><a href="products.html">Inner Wear</a></li>
+                                        <li><a href="products.jsp">Polos & Tees</a></li>
+                                        <li><a href="products.jsp">Casual Shirts</a></li>
+                                        <li><a href="products.jsp">Casual Trousers</a></li>
+                                        <li><a href="products.jsp">Jeans</a></li>
+                                        <li><a href="products.jsp">Shorts & 3/4th</a></li>
+                                        <li><a href="products.jsp">Formal Shirts</a></li>
+                                        <li><a href="products.jsp">Formal Trousers</a></li>
+                                        <li><a href="products.jsp">Suits & Blazers</a></li>
+                                        <li><a href="products.jsp">Track Wear</a></li>
+                                        <li><a href="products.jsp">Inner Wear</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-4">
                                     <ul class="multi-column-dropdown">
                                         <h6>WATCHES</h6>
-                                        <li><a href="products.html">Analog</a></li>
-                                        <li><a href="products.html">Chronograph</a></li>
-                                        <li><a href="products.html">Digital</a></li>
-                                        <li><a href="products.html">Watch Cases</a></li>
+                                        <li><a href="products.jsp">Analog</a></li>
+                                        <li><a href="products.jsp">Chronograph</a></li>
+                                        <li><a href="products.jsp">Digital</a></li>
+                                        <li><a href="products.jsp">Watch Cases</a></li>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -174,27 +170,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="col-sm-6">
                                     <ul class="multi-column-dropdown">
                                         <h6>NEW IN</h6>
-                                        <li><a href="products.html">New In Boys Clothing</a></li>
-                                        <li><a href="products.html">New In Girls Clothing</a></li>
-                                        <li><a href="products.html">New In Boys Shoes</a></li>
-                                        <li><a href="products.html">New In Girls Shoes</a></li>
+                                        <li><a href="products.jsp">New In Boys Clothing</a></li>
+                                        <li><a href="products.jsp">New In Girls Clothing</a></li>
+                                        <li><a href="products.jsp">New In Boys Shoes</a></li>
+                                        <li><a href="products.jsp">New In Girls Shoes</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="multi-column-dropdown">
                                         <h6>ACCESSORIES</h6>
-                                        <li><a href="products.html">Bags</a></li>
-                                        <li><a href="products.html">Watches</a></li>
-                                        <li><a href="products.html">Sun Glasses</a></li>
-                                        <li><a href="products.html">Jewellery</a></li>
+                                        <li><a href="products.jsp">Bags</a></li>
+                                        <li><a href="products.jsp">Watches</a></li>
+                                        <li><a href="products.jsp">Sun Glasses</a></li>
+                                        <li><a href="products.jsp">Jewellery</a></li>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                         </ul>
                     </li>
-                    <li><a href="typography.html">TYPO</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="typography.jsp">TYPO</a></li>
+                    <li><a href="contact.jsp">CONTACT</a></li>
                 </ul>
             </div>
             <!--/.navbar-collapse-->
@@ -260,7 +256,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"></div>
         </div>
         <div class="shop">
-            <a href="single.html">SHOP COLLECTION NOW</a>
+            <a href="single.jsp">SHOP COLLECTION NOW</a>
         </div>
     </div>
 </div>
@@ -292,75 +288,75 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h3 class="head text-center">Latest Products</h3>
             </header>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/acer2.jpg" alt=""/></a>
+                <a href="single.jsp"><img src="img/acer2.jpg" alt=""/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">Acer</a>
+                <a class="product_name" href="single.jsp">Acer</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1000</span></a></p>
             </div>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/acer3.jpg" alt=""/></a>
+                <a href="single.jsp"><img src="img/acer3.jpg" alt=""/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">Acer</a>
+                <a class="product_name" href="single.jsp">Acer</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1200</span></a></p>
             </div>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/apple.jpg" alt=""/></a>
+                <a href="single.jsp"><img src="img/apple.jpg" alt=""/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">Apple</a>
+                <a class="product_name" href="single.jsp">Apple</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1900</span></a></p>
             </div>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/hp.jpg" alt=""/></a>
+                <a href="single.jsp"><img src="img/hp.jpg" alt=""/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">HP </a>
+                <a class="product_name" href="single.jsp">HP </a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1300</span></a></p>
             </div>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/hp2.jpg" alt=""/></a>
+                <a href="single.jsp"><img src="img/hp2.jpg" alt=""/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">HP</a>
+                <a class="product_name" href="single.jsp">HP</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1200</span></a></p>
             </div>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/hp06.jpg" alt=""/></a>
+                <a href="single.jsp"><img src="img/hp06.jpg" alt=""/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">HP</a>
+                <a class="product_name" href="single.jsp">HP</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1300</span></a></p>
             </div>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/len.png" alt=""/></a>
+                <a href="single.jsp"><img src="img/len.png" alt=""/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">Lenovo</a>
+                <a class="product_name" href="single.jsp">Lenovo</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1000</span></a></p>
             </div>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/oi.jpg" alt=""/></a>
+                <a href="single.jsp"><img src="img/oi.jpg" alt=""/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">Dell</a>
+                <a class="product_name" href="single.jsp">Dell</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1200</span></a></p>
             </div>
             <div class="col-md-4 product simpleCart_shelfItem text-center">
-                <a href="single.html"><img src="img/sams.jpg" alt="" style="width:250px"/></a>
+                <a href="single.jsp"><img src="img/sams.jpg" alt="" style="width:250px"/></a>
                 <div class="mask">
-                    <a href="single.html">Quick View</a>
+                    <a href="single.jsp">Quick View</a>
                 </div>
-                <a class="product_name" href="single.html">Samsung</a>
+                <a class="product_name" href="single.jsp">Samsung</a>
                 <p><a class="item_add" href="#"><i></i> <span class="item_price">$1500</span></a></p>
             </div>
             <div class="clearfix"></div>
@@ -372,33 +368,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <h3 class="like text-center">Featured Collection</h3>
         <ul id="flexiselDemo3">
-            <li><a href="single.html"><img src="images/l1.jpg" class="img-responsive" alt=""/></a>
+            <li><a href="single.jsp"><img src="images/l1.jpg" class="img-responsive" alt=""/></a>
                 <div class="product liked-product simpleCart_shelfItem">
-                    <a class="like_name" href="single.html">perfectly simple</a>
+                    <a class="like_name" href="single.jsp">perfectly simple</a>
                     <p><a class="item_add" href="#"><i></i> <span class=" item_price">$759</span></a></p>
                 </div>
             </li>
-            <li><a href="single.html"><img src="images/l2.jpg" class="img-responsive" alt=""/></a>
+            <li><a href="single.jsp"><img src="images/l2.jpg" class="img-responsive" alt=""/></a>
                 <div class="product liked-product simpleCart_shelfItem">
-                    <a class="like_name" href="single.html">praising pain</a>
+                    <a class="like_name" href="single.jsp">praising pain</a>
                     <p><a class="item_add" href="#"><i></i> <span class=" item_price">$699</span></a></p>
                 </div>
             </li>
-            <li><a href="single.html"><img src="images/l3.jpg" class="img-responsive" alt=""/></a>
+            <li><a href="single.jsp"><img src="images/l3.jpg" class="img-responsive" alt=""/></a>
                 <div class="product liked-product simpleCart_shelfItem">
-                    <a class="like_name" href="single.html">Neque porro</a>
+                    <a class="like_name" href="single.jsp">Neque porro</a>
                     <p><a class="item_add" href="#"><i></i> <span class=" item_price">$329</span></a></p>
                 </div>
             </li>
-            <li><a href="single.html"><img src="images/l4.jpg" class="img-responsive" alt=""/></a>
+            <li><a href="single.jsp"><img src="images/l4.jpg" class="img-responsive" alt=""/></a>
                 <div class="product liked-product simpleCart_shelfItem">
-                    <a class="like_name" href="single.html">equal blame</a>
+                    <a class="like_name" href="single.jsp">equal blame</a>
                     <p><a class="item_add" href="#"><i></i> <span class=" item_price">$499</span></a></p>
                 </div>
             </li>
-            <li><a href="single.html"><img src="images/l5.jpg" class="img-responsive" alt=""/></a>
+            <li><a href="single.jsp"><img src="images/l5.jpg" class="img-responsive" alt=""/></a>
                 <div class="product liked-product simpleCart_shelfItem">
-                    <a class="like_name" href="single.html">perfectly simple</a>
+                    <a class="like_name" href="single.jsp">perfectly simple</a>
                     <p><a class="item_add" href="#"><i></i> <span class=" item_price">$649</span></a></p>
                 </div>
             </li>
@@ -483,10 +479,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-3 span1_of_4">
                     <h4>account</h4>
                     <ul class="f_nav">
-                        <li><a href="account.html">login</a></li>
+                        <li><a href="account.jsp">login</a></li>
                         <li><a href="register.jsp">create an account</a></li>
                         <li><a href="#">create wishlist</a></li>
-                        <li><a href="checkout.html">my shopping bag</a></li>
+                        <li><a href="checkout.jsp">my shopping bag</a></li>
                         <li><a href="#">brands</a></li>
                         <li><a href="#">create wishlist</a></li>
                     </ul>

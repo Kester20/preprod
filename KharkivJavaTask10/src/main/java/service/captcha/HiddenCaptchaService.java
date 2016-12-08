@@ -22,6 +22,7 @@ public class HiddenCaptchaService extends CaptchaService {
     public void sendCaptcha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         drawCaptcha();
         String code = request.getParameter(CAPTCHA_CODE);
+        log.info("code " + code);
         getCodsOfCaptcha().put(code, getCaptchaDrawer().getCaptcha());
         request.getSession().setAttribute(TIME, System.currentTimeMillis() + captchaLifeTime);
         sendImage(response);
@@ -34,7 +35,7 @@ public class HiddenCaptchaService extends CaptchaService {
         log.info("value hidden --> " + hidden);
         log.info("captcha in map --> " + getCodsOfCaptcha().get(hidden));
         log.info("input captcha --> " + request.getParameter(CAPTCHA_INPUT));
-        if (!request.getParameter(CAPTCHA_INPUT).equals(codsOfCaptcha.get(hidden))) {
+        if (!request.getParameter(CAPTCHA_INPUT).equals(codsOfCaptcha.get(CAPTCHA_CODE))) {
             errors.put(CAPTCHA_INPUT, WRONG_NUMBERS);
         } else {
             log.info("Correct captcha!");

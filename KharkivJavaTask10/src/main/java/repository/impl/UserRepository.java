@@ -96,4 +96,23 @@ public class UserRepository implements CrudRepository<User> {
         }
         return result;
     }
+
+    public String getUserNameByEmail(String email) {
+        String result = "";
+        String sql = UserQueries.GET_USER_NAME_BY_EMAIL;
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, email);
+            ResultSet resultSet  = statement.executeQuery();
+            if(resultSet.next()){
+                result = resultSet.getString(1);
+            }
+
+        }catch (SQLException e){
+            log.warn("SQL error during check if exist user! " + e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

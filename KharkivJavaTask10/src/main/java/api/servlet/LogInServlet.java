@@ -30,8 +30,14 @@ public class LogInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        if(request.getSession().getAttribute("wrongEmailOrPassword") != null){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("account.jsp");
+            dispatcher.forward(request, response);
+        }else{
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
+        request.getSession().removeAttribute("wrongEmailOrPassword");
     }
 
     @Override
@@ -43,6 +49,9 @@ public class LogInServlet extends HttpServlet {
             String password = request.getParameter("password");
             if(userService.logInUser(email, password)){
                 session.setAttribute("user", "user");
+                session.setAttribute("userName", userService.getUserNameByEmail(email));
+            }else{
+                session.setAttribute("wrongEmailOrPassword","Wrong email or password");
             }
         }
         response.sendRedirect("login_servlet");

@@ -45,15 +45,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="header-top-strip">
             <div class="container">
                 <div class="header-top-left">
-                    <ul>
-                        <li><a href="account.html"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
-                        <li><a href="register.html"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a>
-                        </li>
-                    </ul>
+                    <tg:logIn />
                 </div>
                 <div class="header-right">
                     <div class="cart box_1">
-                        <a href="checkout.html">
+                        <a href="checkout.jsp">
                             <h3><span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity"
                                                                                  class="simpleCart_quantity"> 0 </span>
                             items)<img src="images/bag.png" alt=""></h3>
@@ -79,14 +75,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="icon-bar"></span>
                     </button>
                         <div class="logo">
-                            <h1><a href="index.html"><span>E</span> -Shop</a></h1>
+                            <h1><a href="index.jsp"><span>E</span> -Shop</a></h1>
                         </div>
                     </div>
                     <!--/.navbar-header-->
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.jsp">Home</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
@@ -94,35 +90,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>NEW IN</h6>
-                                                <li><a href="products.html">New In Clothing</a></li>
-                                                <li><a href="products.html">New In Bags</a></li>
-                                                <li><a href="products.html">New In Shoes</a></li>
-                                                <li><a href="products.html">New In Watches</a></li>
-                                                <li><a href="products.html">New In Grooming</a></li>
+                                                <li><a href="products.jsp">New In Clothing</a></li>
+                                                <li><a href="products.jsp">New In Bags</a></li>
+                                                <li><a href="products.jsp">New In Shoes</a></li>
+                                                <li><a href="products.jsp">New In Watches</a></li>
+                                                <li><a href="products.jsp">New In Grooming</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>CLOTHING</h6>
-                                                <li><a href="products.html">Polos & Tees</a></li>
-                                                <li><a href="products.html">Casual Shirts</a></li>
-                                                <li><a href="products.html">Casual Trousers</a></li>
-                                                <li><a href="products.html">Jeans</a></li>
-                                                <li><a href="products.html">Shorts & 3/4th</a></li>
-                                                <li><a href="products.html">Formal Shirts</a></li>
-                                                <li><a href="products.html">Formal Trousers</a></li>
-                                                <li><a href="products.html">Suits & Blazers</a></li>
-                                                <li><a href="products.html">Track Wear</a></li>
-                                                <li><a href="products.html">Inner Wear</a></li>
+                                                <li><a href="products.jsp">Polos & Tees</a></li>
+                                                <li><a href="products.jsp">Casual Shirts</a></li>
+                                                <li><a href="products.jsp">Casual Trousers</a></li>
+                                                <li><a href="products.jsp">Jeans</a></li>
+                                                <li><a href="products.jsp">Shorts & 3/4th</a></li>
+                                                <li><a href="products.jsp">Formal Shirts</a></li>
+                                                <li><a href="products.jsp">Formal Trousers</a></li>
+                                                <li><a href="products.jsp">Suits & Blazers</a></li>
+                                                <li><a href="products.jsp">Track Wear</a></li>
+                                                <li><a href="products.jsp">Inner Wear</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>WATCHES</h6>
-                                                <li><a href="products.html">Analog</a></li>
-                                                <li><a href="products.html">Chronograph</a></li>
-                                                <li><a href="products.html">Digital</a></li>
-                                                <li><a href="products.html">Watch Cases</a></li>
+                                                <li><a href="products.jsp">Analog</a></li>
+                                                <li><a href="products.jsp">Chronograph</a></li>
+                                                <li><a href="products.jsp">Digital</a></li>
+                                                <li><a href="products.jsp">Watch Cases</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -136,35 +132,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>NEW IN</h6>
-                                                <li><a href="products.html">New In Clothing</a></li>
-                                                <li><a href="products.html">New In Bags</a></li>
-                                                <li><a href="products.html">New In Shoes</a></li>
-                                                <li><a href="products.html">New In Watches</a></li>
-                                                <li><a href="products.html">New In Beauty</a></li>
+                                                <li><a href="products.jsp">New In Clothing</a></li>
+                                                <li><a href="products.jsp">New In Bags</a></li>
+                                                <li><a href="products.jsp">New In Shoes</a></li>
+                                                <li><a href="products.jsp">New In Watches</a></li>
+                                                <li><a href="products.jsp">New In Beauty</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>CLOTHING</h6>
-                                                <li><a href="products.html">Polos & Tees</a></li>
-                                                <li><a href="products.html">Casual Shirts</a></li>
-                                                <li><a href="products.html">Casual Trousers</a></li>
-                                                <li><a href="products.html">Jeans</a></li>
-                                                <li><a href="products.html">Shorts & 3/4th</a></li>
-                                                <li><a href="products.html">Formal Shirts</a></li>
-                                                <li><a href="products.html">Formal Trousers</a></li>
-                                                <li><a href="products.html">Suits & Blazers</a></li>
-                                                <li><a href="products.html">Track Wear</a></li>
-                                                <li><a href="products.html">Inner Wear</a></li>
+                                                <li><a href="products.jsp">Polos & Tees</a></li>
+                                                <li><a href="products.jsp">Casual Shirts</a></li>
+                                                <li><a href="products.jsp">Casual Trousers</a></li>
+                                                <li><a href="products.jsp">Jeans</a></li>
+                                                <li><a href="products.jsp">Shorts & 3/4th</a></li>
+                                                <li><a href="products.jsp">Formal Shirts</a></li>
+                                                <li><a href="products.jsp">Formal Trousers</a></li>
+                                                <li><a href="products.jsp">Suits & Blazers</a></li>
+                                                <li><a href="products.jsp">Track Wear</a></li>
+                                                <li><a href="products.jsp">Inner Wear</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
                                                 <h6>WATCHES</h6>
-                                                <li><a href="products.html">Analog</a></li>
-                                                <li><a href="products.html">Chronograph</a></li>
-                                                <li><a href="products.html">Digital</a></li>
-                                                <li><a href="products.html">Watch Cases</a></li>
+                                                <li><a href="products.jsp">Analog</a></li>
+                                                <li><a href="products.jsp">Chronograph</a></li>
+                                                <li><a href="products.jsp">Digital</a></li>
+                                                <li><a href="products.jsp">Watch Cases</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -178,27 +174,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="col-sm-6">
                                             <ul class="multi-column-dropdown">
                                                 <h6>NEW IN</h6>
-                                                <li><a href="products.html">New In Boys Clothing</a></li>
-                                                <li><a href="products.html">New In Girls Clothing</a></li>
-                                                <li><a href="products.html">New In Boys Shoes</a></li>
-                                                <li><a href="products.html">New In Girls Shoes</a></li>
+                                                <li><a href="products.jsp">New In Boys Clothing</a></li>
+                                                <li><a href="products.jsp">New In Girls Clothing</a></li>
+                                                <li><a href="products.jsp">New In Boys Shoes</a></li>
+                                                <li><a href="products.jsp">New In Girls Shoes</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-6">
                                             <ul class="multi-column-dropdown">
                                                 <h6>ACCESSORIES</h6>
-                                                <li><a href="products.html">Bags</a></li>
-                                                <li><a href="products.html">Watches</a></li>
-                                                <li><a href="products.html">Sun Glasses</a></li>
-                                                <li><a href="products.html">Jewellery</a></li>
+                                                <li><a href="products.jsp">Bags</a></li>
+                                                <li><a href="products.jsp">Watches</a></li>
+                                                <li><a href="products.jsp">Sun Glasses</a></li>
+                                                <li><a href="products.jsp">Jewellery</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </ul>
                             </li>
-                            <li><a href="typography.html">TYPO</a></li>
-                            <li><a href="contact.html">CONTACT</a></li>
+                            <li><a href="typography.jsp">TYPO</a></li>
+                            <li><a href="contact.jsp">CONTACT</a></li>
                         </ul>
                     </div>
                     <!--/.navbar-collapse-->
@@ -214,7 +210,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="dreamcrub">
                     <ul class="breadcrumbs">
                         <li class="home">
-                            <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                            <a href="index.jsp" title="Go to Home Page">Home</a>&nbsp;
                             <span>&gt;</span>
                         </li>
                         <li class="women">
@@ -222,7 +218,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                     </ul>
                     <ul class="previous">
-                        <li><a href="index.html">Back to Previous Page</a></li>
+                        <li><a href="index.jsp">Back to Previous Page</a></li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -231,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <h2>NEW CUSTOMERS</h2>
                         <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.
                         </p>
-                        <a class="acount-btn" href="register.html">Create an Account</a>
+                        <a class="acount-btn" href="register.jsp">Create an Account</a>
                     </div>
                     <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
                         <h3>REGISTERED CUSTOMERS</h3>
@@ -239,12 +235,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <form name="logInForm" method="post" action="<c:url value='login_servlet' />" onsubmit="">
                             <div>
                                 <span>Email Address<label>*</label></span>
-                                <INPUT type="text" name="email">
+                                <input  type="text" name="email">
                             </div>
                             <div>
                                 <span>Password<label>*</label></span>
-                                <input type="password" name="password">
+                                <input  type="password" name="password">
+
                             </div>
+                            <label class="errorInput">${wrongEmailOrPassword}</label><br><br>
                             <a class="forgot" href="#">Forgot Your Password?</a>
                             <input type="submit" value="Login">
                         </form>
@@ -300,10 +298,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-3 span1_of_4">
                         <h4>account</h4>
                         <ul class="f_nav">
-                            <li><a href="account.html">login</a></li>
-                            <li><a href="register.html">create an account</a></li>
+                            <li><a href="account.jsp">login</a></li>
+                            <li><a href="register.jsp">create an account</a></li>
                             <li><a href="#">create wishlist</a></li>
-                            <li><a href="checkout.html">my shopping bag</a></li>
+                            <li><a href="checkout.jsp">my shopping bag</a></li>
                             <li><a href="#">brands</a></li>
                             <li><a href="#">create wishlist</a></li>
                         </ul>

@@ -2,6 +2,11 @@ package api.servlet;
 
 import entity.user.User;
 import entity.formbean.RegistrationFormBean;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
 import service.captcha.CaptchaService;
 import service.client.UserService;
@@ -9,12 +14,13 @@ import service.formbean.FormBeanService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -25,6 +31,7 @@ import static constatnts.Constants.*;
  * @author Arsalan
  */
 @WebServlet("/registration_servlet")
+@MultipartConfig
 public class RegistrationServlet extends HttpServlet {
 
     private UserService userService;
@@ -62,15 +69,25 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (System.currentTimeMillis() > (long) request.getSession().getAttribute(TIME)) {
-            log.info("Time out");
+            log.info("TIME OUT");
             RequestDispatcher dispatcher = request.getRequestDispatcher(ERROR_TIME_OUT_JSP);
             dispatcher.forward(request, response);
             return;
         }
 
+
+
         HttpSession session = request.getSession();
         RegistrationFormBean formBean = formBeanService.createFormBean(request);
         Map<String, String> errors = formBeanService.validateBean(formBean);
+
+        /*try {
+            loadImage(request);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+
+
 
         captchaService.validateCaptcha(request, errors);
         if (errors.size() == 0) {
@@ -79,7 +96,7 @@ public class RegistrationServlet extends HttpServlet {
             } else {
                 User user = formBeanService.transformBean(formBean);
                 userService.createUser(user);
-                log.info("New user was registered");
+                log.info("NEW USER WAS REGISTERED");
             }
         }
         session.setAttribute(FORM_BEAN, formBean);
@@ -91,7 +108,41 @@ public class RegistrationServlet extends HttpServlet {
         return UUID.randomUUID().toString();
     }
 
-    public UserService getUserService() {
-        return userService;
+    public void loadImage(HttpServletRequest request) throws ServletException, IOException, SQLException {
+        log.info("IM HERE");
+        if (!ServletFileUpload.isMultipartContent(request)) {
+            log.error("Nothing uploaded.");
+            return;
+        }
+
+        FileItemFactory itemFactory = new DiskFileItemFactory();
+        ServletFileUpload upload = new ServletFileUpload(itemFactory);
+
+        try {
+            List<FileItem> items = upload.parseRequest(request);
+            log.info(items.size());
+
+            for (FileItem item : items) {
+
+                if (item.isFormField()) {
+                    // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
+                    log.info(item.getFieldName());
+                    log.info(item.getString());
+                }
+
+                if (item.getName() != null) {
+
+                    log.info(item.getName());
+                    String path = System.getProperty("user.dir") + "/src/main/webapp/avatars/" + item.getName();
+                    File uploadDir = new File(path);
+                    item.write(uploadDir);
+                    //laptopDao.setImage("/images/" + item.getName() );
+                    log.info("Upload image succesfull");
+                }
+            }
+        } catch ( Exception  e) {
+            log.error("Upload failed.");
+            e.printStackTrace();
+        }
     }
 }
