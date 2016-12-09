@@ -1,9 +1,10 @@
 package repository.impl;
 
+import db.transaction.TransactionManager;
 import entity.user.User;
 import org.apache.log4j.Logger;
 import repository.CrudRepository;
-import repository.query.UserQueries;
+import db.query.UserQueries;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -17,9 +18,11 @@ import java.sql.SQLException;
 public class UserRepository implements CrudRepository<User> {
 
     private static final Logger log = Logger.getLogger(UserRepository.class);
+    private TransactionManager transactionManager;
     private DataSource dataSource;
 
     public UserRepository(DataSource dataSource) {
+        transactionManager = new TransactionManager(dataSource);
         this.dataSource = dataSource;
     }
 

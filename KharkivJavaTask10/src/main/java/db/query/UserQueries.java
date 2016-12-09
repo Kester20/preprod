@@ -1,4 +1,4 @@
-package repository.query;
+package db.query;
 
 /**
  * @author Arsalan
