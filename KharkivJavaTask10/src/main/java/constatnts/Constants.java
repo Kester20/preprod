@@ -6,7 +6,6 @@ package constatnts;
 public class Constants {
 
     public static final String USER = "user";
-    public static final String USER_NAME = "userName";
     public static final String USER_AVATAR = "userAvatar";
     public static final String FIRST_NAME = "firstName";
     public static final String LAST_NAME = "lastName";
@@ -38,6 +37,8 @@ public class Constants {
     public static final String AVATARS_PATH = "avatars";
     public static final String WRONG_EMAIL_OR_PASSWORD = "wrongEmailOrPassword";
     public static final String SIMPLE_WRONG_EMAIL_OR_PASSWORD = "Wrong email or password";
-    public static final String DATASOURCE_LOOKUP = "java:comp/env/jdbc/web_store";
+    public static final String DATA_SOURCE_LOOKUP = "java:comp/env/jdbc/web_store";
+    public static final String SIMPLE_TRANSACTIONAL_ERROR = "transactionalError";
+    public static final String TRANSACTIONAL_ERROR = "IT IS SERVER ERROR. PLEASE, TRY AGAIN LATER.";
 
 }

@@ -238,6 +238,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="reg">
                     <p>Welcome, please enter the following details to continue.</p>
                     <p>If you have previously registered with us, <a href="#">click here</a></p>
+
+                    <span class="transactionError">${errors.transactionalError}</span>
                     <form action="<c:url value='registration_servlet' />" name="registerForm" id="registerForm"
                      method="post" onsubmit="return validateRegisterForm ();" enctype="multipart/form-data">
 

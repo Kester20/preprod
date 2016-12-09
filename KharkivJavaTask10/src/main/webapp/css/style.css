@@ -2045,6 +2045,13 @@ ul.women_pagenation li a:hover {
     font-weight: bold;
 }
 
+.transactionError{
+    color: red;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .showInfo {
     color: red;
     margin-left: 25px;

@@ -85,7 +85,8 @@ public class RegistrationServlet extends HttpServlet {
                     userService.createUser(user);
                 } catch (BusinessException e) {
                     e.printStackTrace();
-                    log.info("TRANSACTIONAL EXCEPTION!");
+                    errors.put(SIMPLE_TRANSACTIONAL_ERROR, TRANSACTIONAL_ERROR);
+                    log.info("TRANSACTIONAL EXCEPTION! " + e.getMessage());
                 }
                 log.info("NEW USER WAS REGISTERED");
             }
