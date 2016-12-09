@@ -2,6 +2,7 @@ package api.servlet;
 
 import entity.formbean.RegistrationFormBean;
 import entity.user.User;
+import exceptions.BusinessException;
 import org.apache.log4j.Logger;
 import service.captcha.CaptchaService;
 import service.client.UserService;
@@ -69,8 +70,6 @@ public class RegistrationServlet extends HttpServlet {
             return;
         }
 
-
-
         HttpSession session = request.getSession();
         RegistrationFormBean formBean = formBeanService.createFormBean(request);
         Map<String, String> errors = formBeanService.validateBean(formBean);
@@ -82,7 +81,12 @@ public class RegistrationServlet extends HttpServlet {
             } else {
                 User user = formBeanService.transformBean(formBean);
                 createAvatar(request);
-                userService.createUser(user);
+                try {
+                    userService.createUser(user);
+                } catch (BusinessException e) {
+                    e.printStackTrace();
+                    log.info("TRANSACTIONAL EXCEPTION!");
+                }
                 log.info("NEW USER WAS REGISTERED");
             }
         }
@@ -95,7 +99,7 @@ public class RegistrationServlet extends HttpServlet {
         return UUID.randomUUID().toString();
     }
 
-    public void createAvatar(HttpServletRequest request) throws IOException, ServletException {
+    private void createAvatar(HttpServletRequest request) throws IOException, ServletException {
         String appPath = request.getServletContext().getRealPath("");
         String savePath = appPath + File.separator + AVATARS_PATH;
 

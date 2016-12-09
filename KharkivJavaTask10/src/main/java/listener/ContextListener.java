@@ -39,7 +39,7 @@ public class ContextListener implements ServletContextListener {
         DataSource dataSource = null;
         try {
             initialContext = new InitialContext();
-            dataSource = (DataSource)initialContext.lookup("java:comp/env/jdbc/web_store");
+            dataSource = (DataSource)initialContext.lookup(DATASOURCE_LOOKUP);
         } catch (NamingException e) {
             log.warn("ERROR during creating data source");
             e.printStackTrace();

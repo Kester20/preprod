@@ -1,16 +1,35 @@
 package repository;
 
+import exceptions.BusinessException;
+
 /**
  * @author Arsalan
  */
 public interface CrudRepository<T> {
 
-    void create(T object);
+    /**
+     * creates new item
+     * @param object - item
+     */
+    void create(T object) throws BusinessException;
 
-    T get (String criteria);
+    /**
+     * gets item by some criteria
+     * @param criteria
+     * @return item
+     */
+    T get (String criteria) throws BusinessException;
 
-    void update(T object);
+    /**
+     * updates item
+     * @param object - item
+     */
+    void update(T object) throws BusinessException;
 
-    void delete(T object);
+    /**
+     * deletes item
+     * @param object - item
+     */
+    void delete(T object) throws BusinessException;
 
 }

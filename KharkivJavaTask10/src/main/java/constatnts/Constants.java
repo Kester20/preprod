@@ -38,5 +38,6 @@ public class Constants {
     public static final String AVATARS_PATH = "avatars";
     public static final String WRONG_EMAIL_OR_PASSWORD = "wrongEmailOrPassword";
     public static final String SIMPLE_WRONG_EMAIL_OR_PASSWORD = "Wrong email or password";
+    public static final String DATASOURCE_LOOKUP = "java:comp/env/jdbc/web_store";
 
 }

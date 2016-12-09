@@ -2,6 +2,7 @@ package service.client;
 
 
 import entity.user.User;
+import exceptions.BusinessException;
 import org.apache.log4j.Logger;
 import repository.impl.UserRepository;
 
@@ -17,7 +18,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(User user) {
+    public void createUser(User user) throws BusinessException {
         userRepository.create(user);
     }
 
@@ -29,7 +30,7 @@ public class UserService {
         return userRepository.logInUser(email, password);
     }
 
-    public String getUserNameByEmail(String email){
-        return userRepository.getUserNameByEmail(email);
+    public User getUserByEmailAndPassword(String email, String password){
+        return userRepository.getUserByEmailAndPassword(email, password);
     }
 }

@@ -27,7 +27,6 @@ public class LogOutServlet extends HttpServlet{
         HttpSession session = request.getSession();
         if(session.getAttribute(USER) != null){
             session.removeAttribute(USER);
-            session.removeAttribute(USER_NAME);
             session.removeAttribute(USER_AVATAR);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(INDEX_JSP);
