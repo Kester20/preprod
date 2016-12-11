@@ -25,12 +25,19 @@ body a {
 }
 
 .errorTimeOutMessage{
+    margin-top: 50px;
     text-align:center;
     color:red;
 }
 
 .tryAgainRegister{
     text-align:center;
+    margin-bottom: 200px;
+}
+
+#producer_checkbox{
+    margin-right: 0px;
+    float: right;
 }
 
 @font-face {
@@ -74,7 +81,7 @@ label {
 
 .header-top-strip {
     padding: 8px 0 14px 0;
-    background-color: #31708f;
+    background-color: #816263;
 }
 
 .header-top-left ul li {
@@ -119,7 +126,7 @@ span.glyphicon.glyphicon-user, span.glyphicon.glyphicon-lock {
 
 a.simpleCart_empty {
     font-size: 14px;
-    color: ;
+    color: white;
 }
 
 .box_1 p {

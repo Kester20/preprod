@@ -4,7 +4,7 @@ package service.client;
 import entity.user.User;
 import exceptions.BusinessException;
 import org.apache.log4j.Logger;
-import repository.impl.UserRepository;
+import repository.user.UserRepository;
 
 /**
  * @author Arsalan

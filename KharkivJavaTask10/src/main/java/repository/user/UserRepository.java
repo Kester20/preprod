@@ -1,4 +1,4 @@
-package repository.impl;
+package repository.user;
 
 import db.query.UserQueries;
 import db.transaction.TransactionManager;

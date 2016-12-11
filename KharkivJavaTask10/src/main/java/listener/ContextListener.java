@@ -1,12 +1,14 @@
 package listener;
 
 import org.apache.log4j.Logger;
-import repository.impl.UserRepository;
+import repository.laptop.LaptopRepository;
+import repository.user.UserRepository;
 import service.captcha.CookieCaptchaService;
 import service.captcha.HiddenCaptchaService;
 import service.captcha.SessionCaptchaService;
 import service.client.UserService;
 import service.formbean.FormBeanService;
+import service.laptop.LaptopServiceImpl;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -32,6 +34,7 @@ public class ContextListener implements ServletContextListener {
         initCaptchaService(servletContext);
         initUserService(servletContext, dataSource);
         initFormBeanService(servletContext);
+        initLaptopService(servletContext, dataSource);
     }
 
     private DataSource initDataSource(){
@@ -45,6 +48,10 @@ public class ContextListener implements ServletContextListener {
             e.printStackTrace();
         }
         return  dataSource;
+    }
+
+    private void initLaptopService(ServletContext servletContext, DataSource dataSource){
+        servletContext.setAttribute(LAPTOP_SERVICE, new LaptopServiceImpl(new LaptopRepository(dataSource)));
     }
 
     private void initUserService(ServletContext servletContext, DataSource dataSource){

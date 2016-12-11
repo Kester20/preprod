@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tg" %>
 
 
@@ -57,7 +56,7 @@
                                     <div class="col-sm-4">
                                         <ul class="multi-column-dropdown">
                                             <h6>NEW IN</h6>
-                                            <li><a href="products.jsp">New In Clothing</a></li>
+                                            <li><a href="<c:url value='catalog_servlet' />">Laptops</a></li>
                                             <li><a href="products.jsp">New In Bags</a></li>
                                             <li><a href="products.jsp">New In Shoes</a></li>
                                             <li><a href="products.jsp">New In Watches</a></li>

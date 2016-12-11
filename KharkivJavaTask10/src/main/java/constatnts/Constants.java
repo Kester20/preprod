@@ -30,9 +30,11 @@ public class Constants {
     public static final String ACCOUNT_JSP = "account.jsp";
     public static final String INDEX_JSP = "index.jsp";
     public static final String REGISTER_JSP = "register.jsp";
+    public static final String PRODUCTS_JSP = "products.jsp";
     public static final String FORM_BEAN = "formBean";
     public static final String ERRORS = "errors";
     public static final String USER_SERVICE = "userService";
+    public static final String LAPTOP_SERVICE = "laptopService";
     public static final String FORM_BEAN_SERVICE = "formBeanService";
     public static final String AVATARS_PATH = "avatars";
     public static final String WRONG_EMAIL_OR_PASSWORD = "wrongEmailOrPassword";
@@ -40,5 +42,6 @@ public class Constants {
     public static final String DATA_SOURCE_LOOKUP = "java:comp/env/jdbc/web_store";
     public static final String SIMPLE_TRANSACTIONAL_ERROR = "transactionalError";
     public static final String TRANSACTIONAL_ERROR = "IT IS SERVER ERROR. PLEASE, TRY AGAIN LATER.";
+    public static final String LAPTOP_LIST = "laptopList";
 
 }

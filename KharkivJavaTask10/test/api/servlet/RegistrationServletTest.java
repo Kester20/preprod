@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import repository.impl.UserRepository;
+import repository.user.UserRepository;
 import service.captcha.CaptchaService;
 import service.client.UserService;
 import service.formbean.FormBeanService;
