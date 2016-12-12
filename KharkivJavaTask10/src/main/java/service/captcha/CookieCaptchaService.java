@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-import static constatnts.Constants.*;
+import static constants.Constants.*;
 
 /**
  * @author Arsalan

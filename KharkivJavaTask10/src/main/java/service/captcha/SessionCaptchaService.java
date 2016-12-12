@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
-import static constatnts.Constants.*;
+import static constants.Constants.*;
 
 /**
  * @author Arsalan
@@ -46,9 +46,9 @@ public class SessionCaptchaService extends CaptchaService {
         String clientCaptcha = request.getParameter(CAPTCHA_INPUT);
         log.info("User entered follow captcha --> " + clientCaptcha);
         log.info("Session captcha --> " + session.getAttribute(CAPTCHA));
-        if(!clientCaptcha.equals(session.getAttribute(CAPTCHA))){
+        if (!clientCaptcha.equals(session.getAttribute(CAPTCHA))) {
             errors.put(CAPTCHA_INPUT, WRONG_NUMBERS);
-        }else{
+        } else {
             log.info("Correct captcha!");
         }
     }

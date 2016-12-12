@@ -22,8 +22,9 @@ public class TransactionManager {
 
     /**
      * do operation with transaction
+     *
      * @param operation that will be process
-     * @param <T> type of operation
+     * @param <T>       type of operation
      * @return result of operation
      */
     public <T> T doInTransaction(TransactionOperation operation) throws BusinessException {
@@ -50,11 +51,12 @@ public class TransactionManager {
 
     /**
      * do operation without transaction
+     *
      * @param operation that will be process
-     * @param <T> type of operation
+     * @param <T>       type of operation
      * @return result of operation
      */
-    public <T> T doWithoutTransaction(TransactionOperation operation){
+    public <T> T doWithoutTransaction(TransactionOperation operation) {
         T result = null;
         try {
             connection = dataSource.getConnection();

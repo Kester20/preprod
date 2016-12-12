@@ -14,6 +14,7 @@ public @interface ValidatorAnnotation {
     @Retention(value = RetentionPolicy.RUNTIME)
     @interface Pattern {
         String errorMessage();
+
         String pattern();
     }
 

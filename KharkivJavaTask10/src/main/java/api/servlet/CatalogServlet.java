@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static constatnts.Constants.*;
+import static constants.Constants.*;
 
 /**
  * @author Arsalan
@@ -27,13 +27,22 @@ public class CatalogServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
         request.setAttribute(LAPTOP_LIST, laptopService.getAllLaptops());
+        request.setAttribute(PRODUCER_LIST, laptopService.getAllProducers());
         RequestDispatcher dispatcher = request.getRequestDispatcher(PRODUCTS_JSP);
         dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String[] lines = request.getParameterValues("checkbox");
+        if (lines != null) {
+            request.setAttribute(PRODUCER_LIST, laptopService.getAllProducers());
+            request.setAttribute(LAPTOP_LIST, laptopService.getByParameters(lines));
+            RequestDispatcher dispatcher = request.getRequestDispatcher(PRODUCTS_JSP);
+            dispatcher.forward(request, response);
+        }
     }
 }

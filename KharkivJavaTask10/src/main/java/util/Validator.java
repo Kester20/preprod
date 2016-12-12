@@ -2,22 +2,14 @@ package util;
 
 
 import annotation.ValidatorAnnotation;
-import api.servlet.RegistrationServlet;
 import entity.formbean.RegistrationFormBean;
-import org.apache.log4j.Logger;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static constatnts.Constants.*;
 
 /**
  * @author Arsalan
@@ -26,7 +18,10 @@ public class Validator {
 
     private RegistrationFormBean formBean;
 
-    public Validator(){};
+    public Validator() {
+    }
+
+    ;
 
     public Map<String, String> validate() {
         Map<String, String> result = new HashMap<>();

@@ -1,6 +1,6 @@
 package api.servlet;
 
-import service.client.UserService;
+import service.user.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 
-import static constatnts.Constants.*;
+import static constants.Constants.*;
 
 /**
  * @author Arsalan

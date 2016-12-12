@@ -8,7 +8,7 @@ import annotation.ValidatorAnnotation;
 public class RegistrationFormBean {
 
     @ValidatorAnnotation.GetMethod(method = "getFirstName")
-    @ValidatorAnnotation.Pattern(pattern = "\\w+",errorMessage = "Empty field!")
+    @ValidatorAnnotation.Pattern(pattern = "\\w+", errorMessage = "Empty field!")
     private String firstName;
 
     @ValidatorAnnotation.GetMethod(method = "getLastName")

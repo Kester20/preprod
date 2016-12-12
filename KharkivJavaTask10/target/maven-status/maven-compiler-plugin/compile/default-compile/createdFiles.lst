@@ -1,9 +1,11 @@
 db\transaction\TransactionManager.class
+repository\laptop\LaptopRepository$3.class
 db\query\LaptopQueries.class
 db\transaction\TransactionOperation.class
 service\captcha\CaptchaService$1.class
 repository\laptop\LaptopRepository$1.class
 repository\CrudRepository.class
+entity\laptop\Category.class
 repository\user\UserRepository$3.class
 annotation\ValidatorAnnotation.class
 util\Validator.class
@@ -18,13 +20,15 @@ service\laptop\LaptopServiceImpl.class
 api\servlet\RegistrationServlet.class
 entity\formbean\RegistrationFormBean.class
 api\servlet\LogInServlet.class
+service\user\UserService.class
 entity\user\User.class
+repository\laptop\LaptopRepository$2.class
 service\captcha\CookieCaptchaService.class
 service\formbean\FormBeanService.class
 repository\user\UserRepository$4.class
 service\captcha\HiddenCaptchaService.class
 service\laptop\LaptopService.class
-constatnts\Constants.class
+entity\laptop\Producer.class
 annotation\ValidatorAnnotation$GetMethod.class
 service\captcha\SessionCaptchaService$1.class
 db\query\UserQueries.class
@@ -33,6 +37,6 @@ service\captcha\SessionCaptchaService.class
 listener\ContextListener.class
 annotation\ValidatorAnnotation$Pattern.class
 repository\laptop\LaptopRepository.class
+constants\Constants.class
 exceptions\BusinessException.class
 repository\user\UserRepository$1.class
-service\client\UserService.class

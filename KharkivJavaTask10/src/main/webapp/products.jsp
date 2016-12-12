@@ -10,25 +10,32 @@
 <head>
 
     <title>Eshop a Flat E-Commerce Bootstrap Responsive Website Template | Products :: w3layouts</title>
-    
+
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/component.css" rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
+
     <script src="js/jquery.min.js"></script>
     <script type="application/x-javascript" src="js/addHandlerLoad.js"></script>
     <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
     <script src="js/simpleCart.min.js"></script>
     <script src="js/cbpViewModeSwitch.js" type="text/javascript"></script>
     <script src="js/classie.js" type="text/javascript"></script>
-    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="js/slider.js"></script>
+
 </head>
 <body>
 
+
+    <form id="catalogform" action="<c:url value='catalog_servlet' />" method="post">
+    </form>
     <jsp:include page="header.jsp"></jsp:include>
 
     <!-- content-section-starts -->
@@ -39,26 +46,23 @@
                     <h2>our Products</h2>
                     <ul class="product-list">
 
-                        <li><a><label>Acer<input id="producer_checkbox" type="checkbox" name="checkbox" value="value">
-                        </label></a>
+                      <div id="amountVal">
 
-                        
-                        
-                        </li>
-                        <li><a><label>Asus<input id="producer_checkbox" type="checkbox" name="checkbox" value="value">
-                        </label></a></li>
-                        <li><a><label>Apple<input id="producer_checkbox" type="checkbox" name="checkbox" value="value">
-                        </label></a></li>
-                        <li><a><label>Dell<input id="producer_checkbox" type="checkbox" name="checkbox" value="value">
-                        </label></a></li>
-                        <li><a><label>HP<input id="producer_checkbox" type="checkbox" name="checkbox" value="value">
-                        </label></a></li>
-                        <li><a><label>Lenovo<input id="producer_checkbox" type="checkbox" name="checkbox" value="value">
-                        </label></a></li>
-                        <li><a><label>Samsung<input id="producer_checkbox" type="checkbox" name="checkbox" value="value">
-                        </label></a></li>
+                        <input type="text" name="amount" id="amount" style="font-size: 14px; width: 77px; text-align: left;">
+                        -<input type="text" id="amount_1" name="amount1" style="font-size: 14px; width: 77px; text-align: left;">
+                      </div>
+                      <div id="slider-range" style="width: 146px; margin-left: 5px"></div>
+
+
+                        <c:forEach var="producer" items="${requestScope.producerList}">
+
+                          <li><a><label><input  type="checkbox" name="checkbox" value="${producer.name}" form="catalogform">${producer.name}</label></a></li>
+
+                        </c:forEach>
 
                     </ul>
+
+                    <input type="submit" value="Select" class="subm" form="catalogform">
                 </div>
                 <!-- <div class="latest-bis">
                     <img src="images/l4.jpg" class="img-responsive" alt=""/>
@@ -149,13 +153,13 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    
+
 
                     <tg:catalog_laptop />
 
 
                 </div>
-                
+
             </div>
             <div class="clearfix"></div>
         </div>

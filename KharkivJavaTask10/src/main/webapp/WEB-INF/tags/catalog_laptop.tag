@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="product_container">
                                     <div class="cart-left">
-                                        <p class="title">${laptop.producer}</p>
+                                        <p class="title">${laptop.producer.name}</p>
                                     </div>
                                     <div class="pricey"><span class="item_price">$${laptop.cost}</span></div>
                                     <div class="clearfix"></div>

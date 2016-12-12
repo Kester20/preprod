@@ -5,20 +5,23 @@ import entity.user.User;
 import exceptions.BusinessException;
 import org.apache.log4j.Logger;
 import service.captcha.CaptchaService;
-import service.client.UserService;
+import service.user.UserService;
 import service.formbean.FormBeanService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
-import static constatnts.Constants.*;
+import static constants.Constants.*;
 
 
 /**
@@ -109,7 +112,7 @@ public class RegistrationServlet extends HttpServlet {
             fileSaveDir.mkdir();
         }
 
-        if(request.getPart("photo") != null && request.getParameter("email") != null){
+        if (request.getPart("photo") != null && request.getParameter("email") != null) {
             request.getPart("photo").write(savePath + File.separator + request.getParameter("email") + ".png");
         }
     }

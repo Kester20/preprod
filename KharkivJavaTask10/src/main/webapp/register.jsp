@@ -16,13 +16,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
+
     <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/simpleCart.min.js"></script>
     <script type="text/javascript" src="js/validation.js"></script>
     <script type="application/x-javascript" src="js/addHandlerLoad.js"></script>
-    
+
 </head>
 
 <body>

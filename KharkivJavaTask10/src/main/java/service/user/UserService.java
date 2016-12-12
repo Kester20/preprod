@@ -1,4 +1,4 @@
-package service.client;
+package service.user;
 
 
 import entity.user.User;
@@ -26,11 +26,11 @@ public class UserService {
         return userRepository.checkIfExistUser(email);
     }
 
-    public boolean logInUser(String email, String password){
+    public boolean logInUser(String email, String password) {
         return userRepository.logInUser(email, password);
     }
 
-    public User getUserByEmailAndPassword(String email, String password){
+    public User getUserByEmailAndPassword(String email, String password) {
         return userRepository.getUserByEmailAndPassword(email, password);
     }
 }

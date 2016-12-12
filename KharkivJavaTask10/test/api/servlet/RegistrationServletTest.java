@@ -6,7 +6,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import repository.user.UserRepository;
 import service.captcha.CaptchaService;
-import service.client.UserService;
+import service.user.UserService;
 import service.formbean.FormBeanService;
 
 import javax.servlet.ServletConfig;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static constatnts.Constants.*;
+import static constants.Constants.*;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -75,7 +75,6 @@ public class RegistrationServletTest {
     @Test
     public void testWithAddingClient() throws Exception {
         servlet.doPost(request, response);
-        //assertTrue(servlet.getUserService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS + 1);
     }
 
     @Test
@@ -87,14 +86,12 @@ public class RegistrationServletTest {
         when(request.getParameter(MOBILE_NUMBER)).thenReturn("093");
 
         servlet.doPost(request, response);
-        //assertTrue(servlet.getUserService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS);
     }
 
     @Test
     public void testNotAddingExistClient() throws Exception {
         servlet.doPost(request, response);
         servlet.doPost(request, response);
-        //assertTrue(servlet.getUserService().getCountOfUsers() == DEFAULT_SIZE_OF_USERS + 1);
     }
 
 }

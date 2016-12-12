@@ -1,4 +1,4 @@
-package constatnts;
+package constants;
 
 /**
  * @author Arsalan
@@ -43,5 +43,6 @@ public class Constants {
     public static final String SIMPLE_TRANSACTIONAL_ERROR = "transactionalError";
     public static final String TRANSACTIONAL_ERROR = "IT IS SERVER ERROR. PLEASE, TRY AGAIN LATER.";
     public static final String LAPTOP_LIST = "laptopList";
+    public static final String PRODUCER_LIST = "producerList";
 
 }

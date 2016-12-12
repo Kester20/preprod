@@ -6,7 +6,7 @@ import repository.user.UserRepository;
 import service.captcha.CookieCaptchaService;
 import service.captcha.HiddenCaptchaService;
 import service.captcha.SessionCaptchaService;
-import service.client.UserService;
+import service.user.UserService;
 import service.formbean.FormBeanService;
 import service.laptop.LaptopServiceImpl;
 
@@ -18,7 +18,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
 
-import static constatnts.Constants.*;
+import static constants.Constants.*;
 
 /**
  * @author Arsalan
@@ -37,32 +37,32 @@ public class ContextListener implements ServletContextListener {
         initLaptopService(servletContext, dataSource);
     }
 
-    private DataSource initDataSource(){
+    private DataSource initDataSource() {
         Context initialContext;
         DataSource dataSource = null;
         try {
             initialContext = new InitialContext();
-            dataSource = (DataSource)initialContext.lookup(DATA_SOURCE_LOOKUP);
+            dataSource = (DataSource) initialContext.lookup(DATA_SOURCE_LOOKUP);
         } catch (NamingException e) {
             log.warn("ERROR during creating data source");
             e.printStackTrace();
         }
-        return  dataSource;
+        return dataSource;
     }
 
-    private void initLaptopService(ServletContext servletContext, DataSource dataSource){
+    private void initLaptopService(ServletContext servletContext, DataSource dataSource) {
         servletContext.setAttribute(LAPTOP_SERVICE, new LaptopServiceImpl(new LaptopRepository(dataSource)));
     }
 
-    private void initUserService(ServletContext servletContext, DataSource dataSource){
+    private void initUserService(ServletContext servletContext, DataSource dataSource) {
         servletContext.setAttribute(USER_SERVICE, new UserService(new UserRepository(dataSource)));
     }
 
-    private void initFormBeanService(ServletContext servletContext){
+    private void initFormBeanService(ServletContext servletContext) {
         servletContext.setAttribute(FORM_BEAN_SERVICE, new FormBeanService());
     }
 
-    private void initCaptchaService(ServletContext servletContext){
+    private void initCaptchaService(ServletContext servletContext) {
         switch (servletContext.getInitParameter(CAPTCHA_SCOPE)) {
             case SESSION: {
                 log.info("Captcha scope: SESSION");

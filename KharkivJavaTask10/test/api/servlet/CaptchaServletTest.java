@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static constatnts.Constants.CAPTCHA_CODE;
-import static constatnts.Constants.SCOPE;
+import static constants.Constants.CAPTCHA_CODE;
+import static constants.Constants.SCOPE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
