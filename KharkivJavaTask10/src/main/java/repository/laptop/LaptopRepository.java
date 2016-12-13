@@ -97,7 +97,7 @@ public class LaptopRepository {
                     }
 
                 } catch (SQLException e) {
-                    log.warn("SQL error during getting user! " + e.getMessage());
+                    log.warn("SQL error during getting producer! " + e.getMessage());
                     e.printStackTrace();
                 }
                 return result;
@@ -121,7 +121,7 @@ public class LaptopRepository {
                     }
 
                 } catch (SQLException e) {
-                    log.warn("SQL error during getting user! " + e.getMessage());
+                    log.warn("SQL error during getting category! " + e.getMessage());
                     e.printStackTrace();
                 }
                 return result;
