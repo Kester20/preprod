@@ -1,5 +1,6 @@
 package service.laptop;
 
+import entity.laptop.Category;
 import entity.laptop.Laptop;
 import entity.laptop.Producer;
 import repository.laptop.LaptopRepository;
@@ -30,5 +31,10 @@ public class DefaultLaptopService implements LaptopService {
     @Override
     public List<Producer> getAllProducers() {
         return laptopRepository.getAllProducers();
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return laptopRepository.getAllCategories();
     }
 }

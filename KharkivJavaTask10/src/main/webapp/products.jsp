@@ -34,7 +34,7 @@
 <body>
 
 
-    <form id="catalogform" action="<c:url value='catalog_servlet' />" method="post">
+    <form id="catalogform" action="<c:url value='catalog_servlet' />" method="get">
     </form>
     <jsp:include page="header.jsp"></jsp:include>
 
@@ -46,19 +46,32 @@
                     <h2>our Products</h2>
                     <ul class="product-list">
 
+
+
+                      <h4 class="labelCriteria">Price</h4>
                       <div id="amountVal">
 
-                        <input type="text" name="amount" id="amount" style="font-size: 14px; width: 77px; text-align: left;">
-                        -<input type="text" id="amount_1" name="amount1" style="font-size: 14px; width: 77px; text-align: left;">
+                        <input type="text" name="amount" id="amount" class="priceAmount">
+                        -<input type="text" name="amount1" id="amount_1"  class="priceAmount">
+
                       </div>
-                      <div id="slider-range" style="width: 146px; margin-left: 5px"></div>
+                      <div id="slider-range" class="priceSlider"></div>
 
-
+                      <h4 class="labelCriteria">Producers</h4>
                         <c:forEach var="producer" items="${requestScope.producerList}">
 
                           <li><a><label><input  type="checkbox" name="checkbox" value="${producer.name}" form="catalogform">${producer.name}</label></a></li>
 
                         </c:forEach>
+
+                      <h4 class="labelCriteria">Category</h4>
+
+                      <c:forEach var="category" items="${requestScope.categoryList}">
+
+                        <li><a><label><input  type="checkbox" name="checkbox" value="${category.name}" form="catalogform">${category.name}</label></a></li>
+
+                      </c:forEach>
+
 
                     </ul>
 

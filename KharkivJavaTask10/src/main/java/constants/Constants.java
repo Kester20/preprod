@@ -44,5 +44,6 @@ public class Constants {
     public static final String TRANSACTIONAL_ERROR = "IT IS SERVER ERROR. PLEASE, TRY AGAIN LATER.";
     public static final String LAPTOP_LIST = "laptopList";
     public static final String PRODUCER_LIST = "producerList";
+    public static final String CATEGORY_LIST = "categoryList";
 
 }

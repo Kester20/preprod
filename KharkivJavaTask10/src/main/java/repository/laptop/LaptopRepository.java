@@ -104,4 +104,28 @@ public class LaptopRepository {
             }
         });
     }
+
+    public List<Category> getAllCategories() {
+        String sql = GET_ALL_CATEGORIES;
+        return transactionManager.doWithoutTransaction(new TransactionOperation<List<Category>>() {
+            @Override
+            public List<Category> doOperation() {
+                List<Category> result = new ArrayList<>();
+                try {
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+
+                    ResultSet resultSet = statement.executeQuery();
+                    while (resultSet.next()) {
+                        Category category = new Category(resultSet.getString(2));
+                        result.add(category);
+                    }
+
+                } catch (SQLException e) {
+                    log.warn("SQL error during getting user! " + e.getMessage());
+                    e.printStackTrace();
+                }
+                return result;
+            }
+        });
+    }
 }

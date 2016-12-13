@@ -35,40 +35,61 @@ body a {
     margin-bottom: 200px;
 }
 
+.priceAmount {
+    background: #816263;
+    color: white;
+    font-size: 14px;
+    width: 77px;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.priceSlider {
+    width: 146px;
+    margin-left: 35px
+}
+
+.labelCriteria{
+  color:#816263;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 
 #price, #price2 {
-	border: 1px solid #074776;
-	padding: 5px;
-	width: 80px;
-
+    border: 1px solid #074776;
+    padding: 5px;
+    width: 80px;
 }
 
 #options {
-	width: 300px;
-	padding: 10px;
-	border: 1px solid #074776;
-
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #074776;
 }
 
 #slider_price {
-	margin-top: 10px;
-
+    margin-top: 10px;
 }
 
-
-.subm{
-  outline: none;
-  cursor: pointer;
-  width: 50%;
-  padding: 6px 0 10px;
-  background: #816263;
-  color: #fff;
-  font-size: 19px;
-  font-weight: 400;
-  margin: 0px 0 0 -3px;
-  border: none;
-  -webkit-apperance: none;
-  margin-left: 55px;
+.subm {
+    outline: none;
+    cursor: pointer;
+    width: 90%;
+    padding: 6px 0 10px;
+    background: #816263;
+    color: #fff;
+    font-size: 19px;
+    font-weight: 400;
+    margin: 0px 0 0 -3px;
+    margin-bottom: 10px;
+    border: none;
+    -webkit-apperance: none;
+    margin-left: 10px;
 }
 
 @font-face {

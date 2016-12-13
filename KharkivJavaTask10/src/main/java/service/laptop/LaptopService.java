@@ -1,5 +1,6 @@
 package service.laptop;
 
+import entity.laptop.Category;
 import entity.laptop.Laptop;
 import entity.laptop.Producer;
 
@@ -10,11 +11,6 @@ import java.util.List;
  */
 public interface LaptopService {
 
-    /**
-     * gets all laptops
-     *
-     * @return list of laptops
-     */
     List<Laptop> getAllLaptops();
 
     /**
@@ -23,9 +19,7 @@ public interface LaptopService {
      */
     List<Laptop> getByParameters(String[] producers);
 
-    /**
-     * @return list of producers
-     */
     List<Producer> getAllProducers();
 
+    List<Category> getAllCategories();
 }

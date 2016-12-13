@@ -36,6 +36,7 @@ db\query\UserQueries.class
 entity\laptop\Laptop.class
 service\captcha\SessionCaptchaService.class
 listener\ContextListener.class
+repository\laptop\LaptopRepository$4.class
 annotation\ValidatorAnnotation$Pattern.class
 repository\laptop\LaptopRepository.class
 service\user\DefaultUserService.class
