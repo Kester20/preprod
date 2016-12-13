@@ -6,8 +6,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import repository.user.UserRepository;
 import service.captcha.CaptchaService;
-import service.user.UserService;
-import service.formbean.FormBeanService;
+import service.user.DefaultUserService;
+import service.formbean.DefaultFormBeanService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -37,8 +37,8 @@ public class RegistrationServletTest {
     private ServletConfig servletConfig;
     @Mock
     private CaptchaService captchaService;
-    private UserService userService;
-    private FormBeanService formBeanService;
+    private DefaultUserService defaultUserService;
+    private DefaultFormBeanService defaultFormBeanService;
 
     private static final long tenMinutes = 10 * 60 * 1000;
     private static final int DEFAULT_SIZE_OF_USERS = 3;
@@ -47,14 +47,14 @@ public class RegistrationServletTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         servlet = new RegistrationServlet();
-        userService = new UserService(new UserRepository(null));
-        formBeanService = new FormBeanService();
+        defaultUserService = new DefaultUserService(new UserRepository(null));
+        defaultFormBeanService = new DefaultFormBeanService();
 
         when(servletConfig.getServletContext()).thenReturn(servletContext);
 
         when(servletContext.getInitParameter(CAPTCHA_SCOPE)).thenReturn("");
-        when(servletContext.getAttribute(USER_SERVICE)).thenReturn(userService);
-        when(servletContext.getAttribute(FORM_BEAN_SERVICE)).thenReturn(formBeanService);
+        when(servletContext.getAttribute(USER_SERVICE)).thenReturn(defaultUserService);
+        when(servletContext.getAttribute(FORM_BEAN_SERVICE)).thenReturn(defaultFormBeanService);
         when(servletContext.getAttribute(SCOPE)).thenReturn(captchaService);
 
         when(session.getAttribute(TIME)).thenReturn(System.currentTimeMillis() + tenMinutes);

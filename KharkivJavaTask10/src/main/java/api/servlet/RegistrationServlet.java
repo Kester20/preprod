@@ -5,8 +5,8 @@ import entity.user.User;
 import exceptions.BusinessException;
 import org.apache.log4j.Logger;
 import service.captcha.CaptchaService;
-import service.user.UserService;
-import service.formbean.FormBeanService;
+import service.user.DefaultUserService;
+import service.formbean.DefaultFormBeanService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,15 +32,15 @@ import static constants.Constants.*;
         maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class RegistrationServlet extends HttpServlet {
 
-    private UserService userService;
-    private FormBeanService formBeanService;
+    private DefaultUserService defaultUserService;
+    private DefaultFormBeanService defaultFormBeanService;
     private CaptchaService captchaService;
     private static final Logger log = Logger.getLogger(RegistrationServlet.class);
 
     @Override
     public void init() throws ServletException {
-        userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
-        formBeanService = (FormBeanService) getServletContext().getAttribute(FORM_BEAN_SERVICE);
+        defaultUserService = (DefaultUserService) getServletContext().getAttribute(USER_SERVICE);
+        defaultFormBeanService = (DefaultFormBeanService) getServletContext().getAttribute(FORM_BEAN_SERVICE);
         captchaService = (CaptchaService) getServletContext().getAttribute(SCOPE);
     }
 
@@ -74,18 +74,18 @@ public class RegistrationServlet extends HttpServlet {
         }
 
         HttpSession session = request.getSession();
-        RegistrationFormBean formBean = formBeanService.createFormBean(request);
-        Map<String, String> errors = formBeanService.validateBean(formBean);
+        RegistrationFormBean formBean = defaultFormBeanService.createFormBean(request);
+        Map<String, String> errors = defaultFormBeanService.validateBean(formBean);
         captchaService.validateCaptcha(request, errors);
 
         if (errors.size() == 0) {
-            if (userService.checkIfExistUser(formBean.getEmail())) {
+            if (defaultUserService.checkIfExistUser(formBean.getEmail())) {
                 errors.put(EMAIL, EMAIL_ALREADY_EXIST);
             } else {
-                User user = formBeanService.transformBean(formBean);
+                User user = defaultFormBeanService.transformBean(formBean);
                 createAvatar(request);
                 try {
-                    userService.createUser(user);
+                    defaultUserService.createUser(user);
                 } catch (BusinessException e) {
                     e.printStackTrace();
                     errors.put(SIMPLE_TRANSACTIONAL_ERROR, TRANSACTIONAL_ERROR);

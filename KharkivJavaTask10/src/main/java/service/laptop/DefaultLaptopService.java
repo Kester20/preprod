@@ -9,11 +9,11 @@ import java.util.List;
 /**
  * @author Arsalan
  */
-public class LaptopServiceImpl implements LaptopService {
+public class DefaultLaptopService implements LaptopService {
 
     private LaptopRepository laptopRepository;
 
-    public LaptopServiceImpl(LaptopRepository laptopRepository) {
+    public DefaultLaptopService(LaptopRepository laptopRepository) {
         this.laptopRepository = laptopRepository;
     }
 

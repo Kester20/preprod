@@ -6,9 +6,9 @@ import repository.user.UserRepository;
 import service.captcha.CookieCaptchaService;
 import service.captcha.HiddenCaptchaService;
 import service.captcha.SessionCaptchaService;
-import service.user.UserService;
-import service.formbean.FormBeanService;
-import service.laptop.LaptopServiceImpl;
+import service.user.DefaultUserService;
+import service.formbean.DefaultFormBeanService;
+import service.laptop.DefaultLaptopService;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -51,15 +51,15 @@ public class ContextListener implements ServletContextListener {
     }
 
     private void initLaptopService(ServletContext servletContext, DataSource dataSource) {
-        servletContext.setAttribute(LAPTOP_SERVICE, new LaptopServiceImpl(new LaptopRepository(dataSource)));
+        servletContext.setAttribute(LAPTOP_SERVICE, new DefaultLaptopService(new LaptopRepository(dataSource)));
     }
 
     private void initUserService(ServletContext servletContext, DataSource dataSource) {
-        servletContext.setAttribute(USER_SERVICE, new UserService(new UserRepository(dataSource)));
+        servletContext.setAttribute(USER_SERVICE, new DefaultUserService(new UserRepository(dataSource)));
     }
 
     private void initFormBeanService(ServletContext servletContext) {
-        servletContext.setAttribute(FORM_BEAN_SERVICE, new FormBeanService());
+        servletContext.setAttribute(FORM_BEAN_SERVICE, new DefaultFormBeanService());
     }
 
     private void initCaptchaService(ServletContext servletContext) {

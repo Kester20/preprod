@@ -143,17 +143,4 @@ public class UserRepository implements CrudRepository<User> {
             }
         });
     }
-
-    @Override
-    public User get(String criteria) throws BusinessException {
-        return null;
-    }
-
-    @Override
-    public void update(User object) throws BusinessException {
-    }
-
-    @Override
-    public void delete(User object) throws BusinessException {
-    }
 }

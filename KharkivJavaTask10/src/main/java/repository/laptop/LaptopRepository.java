@@ -21,33 +21,13 @@ import static db.query.LaptopQueries.*;
 /**
  * @author Arsalan
  */
-public class LaptopRepository implements CrudRepository<Laptop> {
+public class LaptopRepository {
 
     private static final Logger log = Logger.getLogger(LaptopRepository.class);
     private TransactionManager transactionManager;
 
     public LaptopRepository(DataSource dataSource) {
         this.transactionManager = new TransactionManager(dataSource);
-    }
-
-    @Override
-    public void create(Laptop object) throws BusinessException {
-
-    }
-
-    @Override
-    public Laptop get(String criteria) throws BusinessException {
-        return null;
-    }
-
-    @Override
-    public void update(Laptop object) throws BusinessException {
-
-    }
-
-    @Override
-    public void delete(Laptop object) throws BusinessException {
-
     }
 
     public List<Laptop> getAllLaptops() {

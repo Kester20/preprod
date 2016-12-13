@@ -20,15 +20,8 @@ public class TransactionManager {
         this.dataSource = dataSource;
     }
 
-    /**
-     * do operation with transaction
-     *
-     * @param operation that will be process
-     * @param <T>       type of operation
-     * @return result of operation
-     */
     public <T> T doInTransaction(TransactionOperation operation) throws BusinessException {
-        T result = null;
+        T result;
         try {
             connection = dataSource.getConnection();
             connection.setAutoCommit(false);
@@ -49,13 +42,6 @@ public class TransactionManager {
         return result;
     }
 
-    /**
-     * do operation without transaction
-     *
-     * @param operation that will be process
-     * @param <T>       type of operation
-     * @return result of operation
-     */
     public <T> T doWithoutTransaction(TransactionOperation operation) {
         T result = null;
         try {

@@ -27,8 +27,6 @@ public class CatalogServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
         request.setAttribute(LAPTOP_LIST, laptopService.getAllLaptops());
         request.setAttribute(PRODUCER_LIST, laptopService.getAllProducers());
         RequestDispatcher dispatcher = request.getRequestDispatcher(PRODUCTS_JSP);

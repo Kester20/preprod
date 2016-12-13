@@ -1,6 +1,6 @@
 package api.servlet;
 
-import service.user.UserService;
+import service.user.DefaultUserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,11 +20,11 @@ import static constants.Constants.*;
 @WebServlet("/login_servlet")
 public class LogInServlet extends HttpServlet {
 
-    private UserService userService;
+    private DefaultUserService defaultUserService;
 
     @Override
     public void init() throws ServletException {
-        userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
+        defaultUserService = (DefaultUserService) getServletContext().getAttribute(USER_SERVICE);
     }
 
     @Override
@@ -45,8 +45,8 @@ public class LogInServlet extends HttpServlet {
         if (request.getParameter(EMAIL) != null && request.getParameter(PASSWORD) != null) {
             String email = request.getParameter(EMAIL);
             String password = request.getParameter(PASSWORD);
-            if (userService.logInUser(email, password)) {
-                session.setAttribute(USER, userService.getUserByEmailAndPassword(email, password));
+            if (defaultUserService.logInUser(email, password)) {
+                session.setAttribute(USER, defaultUserService.getUserByEmailAndPassword(email, password));
                 session.setAttribute(USER_AVATAR, AVATARS_PATH + File.separator + email + ".png");
             } else {
                 session.setAttribute(WRONG_EMAIL_OR_PASSWORD, SIMPLE_WRONG_EMAIL_OR_PASSWORD);

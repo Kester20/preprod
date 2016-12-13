@@ -1,36 +1,18 @@
 package service.user;
 
-
 import entity.user.User;
 import exceptions.BusinessException;
-import org.apache.log4j.Logger;
-import repository.user.UserRepository;
 
 /**
  * @author Arsalan
  */
-public class UserService {
+public interface UserService {
 
-    private static final Logger log = Logger.getLogger(UserService.class);
-    private UserRepository userRepository;
+    void createUser(User user) throws BusinessException;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    boolean checkIfExistUser(String email);
 
-    public void createUser(User user) throws BusinessException {
-        userRepository.create(user);
-    }
+    boolean logInUser(String email, String password);
 
-    public boolean checkIfExistUser(String email) {
-        return userRepository.checkIfExistUser(email);
-    }
-
-    public boolean logInUser(String email, String password) {
-        return userRepository.logInUser(email, password);
-    }
-
-    public User getUserByEmailAndPassword(String email, String password) {
-        return userRepository.getUserByEmailAndPassword(email, password);
-    }
+    User getUserByEmailAndPassword(String email, String password);
 }
