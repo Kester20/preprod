@@ -1,0 +1,3 @@
+SELECT laptop.id,producer.name AS 'producer',laptop.model, laptop.cost, laptop.image, category.name AS 'category' 
+            FROM `laptop` JOIN producer JOIN category ON laptop.producer = producer.id AND laptop.category = category.id
+            WHERE (producer.name = 'Acer' OR ) AND (category.name = 'Netbook' OR category.name = 'For work and study')
