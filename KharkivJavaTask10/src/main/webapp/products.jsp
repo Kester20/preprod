@@ -46,13 +46,13 @@
                     <h2>our Products</h2>
                     <ul class="product-list">
 
-
+                    <input type="submit" value="Select" class="subm" form="catalogform"/>
 
                       <h4 class="labelCriteria">Price</h4>
                       <div id="amountVal">
 
-                        <input type="text" name="amount" id="amount" class="priceAmount">
-                        -<input type="text" name="amount1" id="amount_1"  class="priceAmount">
+                        <input type="text" name="firstPrice" id="amount" class="priceAmount" form="catalogform">
+                        -<input type="text" name="secondPrice" id="amount_1"  class="priceAmount" form="catalogform">
 
                       </div>
                       <div id="slider-range" class="priceSlider"></div>
@@ -60,7 +60,7 @@
                       <h4 class="labelCriteria">Producers</h4>
                         <c:forEach var="producer" items="${requestScope.producerList}">
 
-                          <li><a><label><input  type="checkbox" name="checkbox" value="${producer.name}" form="catalogform">${producer.name}</label></a></li>
+                          <li><a><label><input  type="checkbox" name="checkboxProducer" value="${producer.name}" form="catalogform">${producer.name}</label></a></li>
 
                         </c:forEach>
 
@@ -68,14 +68,14 @@
 
                       <c:forEach var="category" items="${requestScope.categoryList}">
 
-                        <li><a><label><input  type="checkbox" name="checkbox" value="${category.name}" form="catalogform">${category.name}</label></a></li>
+                        <li><a><label><input  type="checkbox" name="checkboxCategory" value="${category.name}" form="catalogform">${category.name}</label></a></li>
 
                       </c:forEach>
 
 
                     </ul>
 
-                    <input type="submit" value="Select" class="subm" form="catalogform">
+                    <input type="submit" value="Select" class="subm" form="catalogform"/>
                 </div>
                 <!-- <div class="latest-bis">
                     <img src="images/l4.jpg" class="img-responsive" alt=""/>

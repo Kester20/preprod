@@ -38,6 +38,13 @@ public class TransactionManager {
             log.info("SQL exceptipn during transaction operation");
             e.printStackTrace();
             throw new BusinessException(e.getMessage());
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                log.info("SQL exceptipn during closing connection");
+                e.printStackTrace();
+            }
         }
         return result;
     }

@@ -45,5 +45,10 @@ public class Constants {
     public static final String LAPTOP_LIST = "laptopList";
     public static final String PRODUCER_LIST = "producerList";
     public static final String CATEGORY_LIST = "categoryList";
+    public static final String LAPTOPS_PRODUCER = "laptops.producer";
+    public static final String LAPTOPS_CATEGORY = "laptops.category";
+    public static final String LAPTOPS_COST = "laptops.cost";
+    public static final String FIRST_PRICE = "firstPrice";
+    public static final String SECOND_PRICE = "secondPrice";
 
 }

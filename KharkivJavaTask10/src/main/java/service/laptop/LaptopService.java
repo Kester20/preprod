@@ -5,6 +5,7 @@ import entity.laptop.Laptop;
 import entity.laptop.Producer;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Arsalan
@@ -13,11 +14,7 @@ public interface LaptopService {
 
     List<Laptop> getAllLaptops();
 
-    /**
-     * @param producers
-     * @return
-     */
-    List<Laptop> getByParameters(String[] producers);
+    List<Laptop> getByParameters(Map<String, Object> criteria);
 
     List<Producer> getAllProducers();
 

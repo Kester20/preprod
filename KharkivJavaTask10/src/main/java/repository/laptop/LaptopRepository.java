@@ -1,5 +1,7 @@
 package repository.laptop;
 
+import db.sqlbuilder.CatalogSQLBuilder;
+import db.sqlbuilder.SQLDirector;
 import db.transaction.TransactionManager;
 import db.transaction.TransactionOperation;
 import entity.laptop.Category;
@@ -13,9 +15,9 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+import static constants.Constants.*;
 import static db.query.LaptopQueries.*;
 
 /**
@@ -55,16 +57,18 @@ public class LaptopRepository {
         });
     }
 
-    public List<Laptop> getByParameters(String[] producers) {
-        String sql = GET_BY_PRODUCER;
+    public List<Laptop> getByParameters(Map<String, Object> criteria) {
+        CatalogSQLBuilder sqlBuilder = new CatalogSQLBuilder(GET_ALL_LAPTOPS, criteria);
+        String sql = SQLDirector.buildSQL(sqlBuilder);
+        log.info(sql);
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Laptop>>() {
             @Override
             public List<Laptop> doOperation() {
-                List<Laptop> result = new ArrayList<Laptop>();
+                List<Laptop> result = new ArrayList<>();
                 try {
                     PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
 
-                    statement.setString(1, producers[0]);
+                    //statement.setString(1, producers[0]);
                     ResultSet resultSet = statement.executeQuery();
                     while (resultSet.next()) {
                         Laptop laptop = new Laptop(resultSet.getInt(1), new Producer(resultSet.getString(2)),

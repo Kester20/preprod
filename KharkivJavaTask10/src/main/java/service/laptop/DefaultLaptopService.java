@@ -6,6 +6,7 @@ import entity.laptop.Producer;
 import repository.laptop.LaptopRepository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Arsalan
@@ -24,8 +25,8 @@ public class DefaultLaptopService implements LaptopService {
     }
 
     @Override
-    public List<Laptop> getByParameters(String[] producers) {
-        return laptopRepository.getByParameters(producers);
+    public List<Laptop> getByParameters(Map<String, Object> criteria) {
+        return laptopRepository.getByParameters(criteria);
     }
 
     @Override

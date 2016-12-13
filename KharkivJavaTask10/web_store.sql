@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 13 2016 г., 15:19
--- Версия сервера: 10.1.19-MariaDB
--- Версия PHP: 5.6.28
+-- Время создания: Дек 14 2016 г., 00:24
+-- Версия сервера: 10.1.13-MariaDB
+-- Версия PHP: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -73,6 +73,20 @@ INSERT INTO `laptop` (`id`, `producer`, `model`, `cost`, `image`, `category`) VA
 -- --------------------------------------------------------
 
 --
+-- Дублирующая структура для представления `laptops`
+--
+CREATE TABLE `laptops` (
+`id` int(11)
+,`producer` varchar(30)
+,`model` varchar(30)
+,`cost` int(11)
+,`image` varchar(60)
+,`category` varchar(30)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `producer`
 --
 
@@ -116,6 +130,15 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `mobileNumber`) VALUES
 (1, 'arsalan', 'ars', 'ars', 'ars', 0),
 (5, 'Kester20', 'Kester20', 'arsalan.noormal@gmail.com', '11111111', 934096374);
+
+-- --------------------------------------------------------
+
+--
+-- Структура для представления `laptops`
+--
+DROP TABLE IF EXISTS `laptops`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `laptops`  AS  select `laptop`.`id` AS `id`,`producer`.`name` AS `producer`,`laptop`.`model` AS `model`,`laptop`.`cost` AS `cost`,`laptop`.`image` AS `image`,`category`.`name` AS `category` from ((`laptop` join `producer`) join `category` on(((`laptop`.`producer` = `producer`.`id`) and (`laptop`.`category` = `category`.`id`)))) ;
 
 --
 -- Индексы сохранённых таблиц
