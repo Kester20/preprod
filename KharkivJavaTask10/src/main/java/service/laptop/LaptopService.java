@@ -19,4 +19,6 @@ public interface LaptopService {
     List<Producer> getAllProducers();
 
     List<Category> getAllCategories();
+
+    int getCountOfLaptops();
 }

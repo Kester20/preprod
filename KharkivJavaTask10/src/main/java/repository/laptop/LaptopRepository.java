@@ -146,4 +146,27 @@ public class LaptopRepository {
             }
         });
     }
+
+    public int getCountOfLaptops() {
+        String sql = GET_COUNT_OF_LAPTOPS;
+        return transactionManager.doWithoutTransaction(new TransactionOperation<Integer>() {
+            @Override
+            public Integer doOperation() {
+                Integer result = 0;
+                try {
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+
+                    ResultSet resultSet = statement.executeQuery();
+                    if (resultSet.next()) {
+                        result = resultSet.getInt(1);
+                    }
+
+                } catch (SQLException e) {
+                    log.warn("SQL error during getting category! " + e.getMessage());
+                    e.printStackTrace();
+                }
+                return result;
+            }
+        });
+    }
 }

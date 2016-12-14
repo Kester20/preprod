@@ -19,7 +19,9 @@
                                     <div class="cart-left">
                                         <p class="title">${laptop.producer.name}</p>
                                     </div>
-                                    <div class="pricey"><span class="item_price">$${laptop.cost}</span></div>
+                                    <div class="pricey">
+                                        <span class="item_price">$${laptop.cost}</span>
+                                    </div>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -32,7 +34,7 @@
                 <div>
                     <a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
                 </div>
-        </li>
+            </li>
 
-    </c:forEach>
-</ul>
+        </c:forEach>
+    </ul>

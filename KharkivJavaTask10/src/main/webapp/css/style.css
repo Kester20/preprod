@@ -1764,9 +1764,9 @@ p.title {
 }
 
 ul.women_pagenation {
-    float: right;
     padding: 0;
     list-style: none;
+    margin-left: 350px;
 }
 
 ul.women_pagenation li.active a, ul.women_pagenation li a:hover {

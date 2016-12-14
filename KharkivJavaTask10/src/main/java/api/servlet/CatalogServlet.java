@@ -36,10 +36,11 @@ public class CatalogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] producers = request.getParameterValues("checkboxProducer");
         String[] categories = request.getParameterValues("checkboxCategory");
-
+        String showCount = request.getParameter("selectShow");
 
         if (producers != null || categories != null) {
 
+            log.info(laptopService.getCountOfLaptops());
             int firstPrice = Integer.parseInt(request.getParameter("firstPrice"));
             int secondPrice = Integer.parseInt(request.getParameter("secondPrice"));
             String orderBy = request.getParameter("selectSort");

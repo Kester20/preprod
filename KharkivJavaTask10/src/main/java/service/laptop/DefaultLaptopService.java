@@ -38,4 +38,9 @@ public class DefaultLaptopService implements LaptopService {
     public List<Category> getAllCategories() {
         return laptopRepository.getAllCategories();
     }
+
+    @Override
+    public int getCountOfLaptops() {
+        return laptopRepository.getCountOfLaptops();
+    }
 }
