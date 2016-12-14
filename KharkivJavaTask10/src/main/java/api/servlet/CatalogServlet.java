@@ -42,7 +42,7 @@ public class CatalogServlet extends HttpServlet {
 
             int firstPrice = Integer.parseInt(request.getParameter("firstPrice"));
             int secondPrice = Integer.parseInt(request.getParameter("secondPrice"));
-
+            String orderBy = request.getParameter("selectSort");
 
             Map<String, Object> criteria = new LinkedHashMap<>();
             if(producers != null){
@@ -53,6 +53,8 @@ public class CatalogServlet extends HttpServlet {
             }
             criteria.put(FIRST_PRICE, firstPrice);
             criteria.put(SECOND_PRICE, secondPrice);
+            criteria.put(ORDER_BY, orderBy);
+
             request.setAttribute(LAPTOP_LIST, laptopService.getByParameters(criteria));
             request.setAttribute(PRODUCER_LIST, laptopService.getAllProducers());
             request.setAttribute(CATEGORY_LIST, laptopService.getAllCategories());

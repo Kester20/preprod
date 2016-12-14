@@ -30,6 +30,7 @@ api\servlet\CatalogServlet.class
 repository\user\UserRepository$2.class
 repository\user\UserRepository.class
 api\servlet\LogOutServlet.class
+db\sqlbuilder\impl\CatalogSQLBuilder.class
 entity\formbean\RegistrationFormBean.class
 api\servlet\LogInServlet.class
 service\formbean\DefaultFormBeanService.class

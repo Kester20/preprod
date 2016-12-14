@@ -60,6 +60,10 @@ body a {
   margin-top: 10px;
 }
 
+.labelCriteriaValues{
+  color: black;
+}
+
 #price, #price2 {
     border: 1px solid #074776;
     padding: 5px;
@@ -1009,7 +1013,7 @@ ul.f_nav li a {
 }
 
 .product-listy {
-    background: #91b900;
+    background: #bab6b6;
 }
 
 ul.product-list {
@@ -1476,7 +1480,7 @@ ul.women_pagenation li.active a, ul.women_pagenation li a:hover {
 }
 
 .product-listy {
-    background: #9E9C9C;
+    background: #c9c5c5;
 }
 
 ul.product-list {

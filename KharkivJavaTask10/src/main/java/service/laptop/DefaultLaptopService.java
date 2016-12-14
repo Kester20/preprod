@@ -26,7 +26,7 @@ public class DefaultLaptopService implements LaptopService {
 
     @Override
     public List<Laptop> getByParameters(Map<String, Object> criteria) {
-        return laptopRepository.getByParameters(criteria);
+        return laptopRepository.getByCriteria(criteria);
     }
 
     @Override

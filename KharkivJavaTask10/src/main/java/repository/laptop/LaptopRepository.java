@@ -1,15 +1,13 @@
 package repository.laptop;
 
-import db.sqlbuilder.CatalogSQLBuilder;
+import db.sqlbuilder.impl.CatalogSQLBuilder;
 import db.sqlbuilder.SQLDirector;
 import db.transaction.TransactionManager;
 import db.transaction.TransactionOperation;
 import entity.laptop.Category;
 import entity.laptop.Laptop;
 import entity.laptop.Producer;
-import exceptions.BusinessException;
 import org.apache.log4j.Logger;
-import repository.CrudRepository;
 
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
@@ -49,7 +47,7 @@ public class LaptopRepository {
                     }
 
                 } catch (SQLException e) {
-                    log.warn("SQL error during getting user! " + e.getMessage());
+                    log.warn("SQL error during getting laptop! " + e.getMessage());
                     e.printStackTrace();
                 }
                 return result;
@@ -57,9 +55,8 @@ public class LaptopRepository {
         });
     }
 
-    public List<Laptop> getByParameters(Map<String, Object> criteria) {
-        CatalogSQLBuilder sqlBuilder = new CatalogSQLBuilder(GET_ALL_LAPTOPS, criteria);
-        String sql = SQLDirector.buildSQL(sqlBuilder);
+    public List<Laptop> getByCriteria(Map<String, Object> criteria) {
+        String sql = SQLDirector.buildSQL(new CatalogSQLBuilder(GET_ALL_LAPTOPS, criteria));
         log.info(sql);
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Laptop>>() {
             @Override
@@ -68,7 +65,24 @@ public class LaptopRepository {
                 try {
                     PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
 
-                    //statement.setString(1, producers[0]);
+                    int index = 1;
+                    Iterator iterator = criteria.keySet().iterator();
+                    while (iterator.hasNext()){
+                        String key = (String) iterator.next();
+                        if(key.equals(LAPTOPS_PRODUCER) || key.equals(LAPTOPS_CATEGORY)){
+                            for (String value : (List<String>)criteria.get(key)) {
+                                statement.setString(index++, value);
+                            }
+                        }
+                        if(key.equals(FIRST_PRICE) || key.equals(SECOND_PRICE)){
+                            statement.setInt(index++, (int)criteria.get(key));
+                        }
+                        if(key.equals(ORDER_BY)){
+                            //statement.setString(index++, (String) criteria.get(key));
+
+                        }
+                    }
+
                     ResultSet resultSet = statement.executeQuery();
                     while (resultSet.next()) {
                         Laptop laptop = new Laptop(resultSet.getInt(1), new Producer(resultSet.getString(2)),
@@ -77,7 +91,7 @@ public class LaptopRepository {
                     }
 
                 } catch (SQLException e) {
-                    log.warn("SQL error during getting user! " + e.getMessage());
+                    log.warn("SQL error during getting laptop by criteria! " + e.getMessage());
                     e.printStackTrace();
                 }
                 return result;

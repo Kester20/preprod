@@ -60,7 +60,12 @@
                       <h4 class="labelCriteria">Producers</h4>
                         <c:forEach var="producer" items="${requestScope.producerList}">
 
-                          <li><a><label><input  type="checkbox" name="checkboxProducer" value="${producer.name}" form="catalogform">${producer.name}</label></a></li>
+
+                          <c:if test="${not empty param.producer.name}">
+                                <c:set var="checked" scope="request" value="checked"/>
+                          </c:if>
+
+                          <li><a><label class="labelCriteriaValues"><input  type="checkbox"  ${checked} name="checkboxProducer" value="${producer.name}" form="catalogform">${producer.name}</label></a></li>
 
                         </c:forEach>
 
@@ -68,7 +73,7 @@
 
                       <c:forEach var="category" items="${requestScope.categoryList}">
 
-                        <li><a><label><input  type="checkbox" name="checkboxCategory" value="${category.name}" form="catalogform">${category.name}</label></a></li>
+                        <li><a><label class="labelCriteriaValues"><input  type="checkbox" name="checkboxCategory" value="${category.name}" form="catalogform">${category.name}</label></a></li>
 
                       </c:forEach>
 
@@ -122,14 +127,11 @@
                     <div class="sort">
                         <div class="sort-by">
                             <label>Sort By</label>
-                            <select>
-                                <option value="">
-                                    Position
-                                </option>
-                                <option value="">
+                            <select form="catalogform" name="selectSort">
+                                <option value="laptops.producer">
                                     Name
                                 </option>
-                                <option value="">
+                                <option value="laptops.cost">
                                     Price
                                 </option>
                             </select>
