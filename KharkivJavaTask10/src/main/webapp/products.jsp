@@ -200,7 +200,7 @@
                             </div>
 
                             <tg:page />
-                            
+
                             <div class="clearfix"></div>
                         </div>
                         <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
@@ -212,13 +212,13 @@
                                 <div class="limiter visible-desktop">
                                     <label>Show</label>
                                     <select form="catalogform" name="selectShow">
-                                        <option value="" selected="selected">
+                                        <option value="6" selected="selected">
                                             6
                                         </option>
-                                        <option value="">
+                                        <option value="9">
                                             9
                                         </option>
-                                        <option value="">
+                                        <option value="12">
                                             12
                                         </option>
                                     </select>

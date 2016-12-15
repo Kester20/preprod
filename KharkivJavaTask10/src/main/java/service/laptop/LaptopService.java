@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface LaptopService {
 
-    List<Laptop> getAllLaptops();
+    List<Laptop> getAllLaptops(int limit);
 
     List<Laptop> getByParameters(Map<String, Object> criteria);
 

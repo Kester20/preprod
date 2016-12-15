@@ -51,5 +51,9 @@ public class Constants {
     public static final String FIRST_PRICE = "firstPrice";
     public static final String SECOND_PRICE = "secondPrice";
     public static final String ORDER_BY = "orderBy";
+    public static final String LIMIT = "showCount";
+    public static final String PAGE = "page";
+    public static final String COUNT_OF_LAPTOPS = "countOfLaptops";
+    public static final String SHOW_COUNT = "showCount";
 
 }

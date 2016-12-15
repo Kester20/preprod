@@ -16,6 +16,7 @@ public class CatalogSQLBuilder implements SQLBuilder {
     private String table;
     private Map<String, Object> criteria;
     private static final int SIX_SYMBOLS = 6;
+    private static final int SEVEN_SYMBOLS = 7;
 
     public CatalogSQLBuilder(String table, Map<String, Object> criteria) {
         this.table = table;
@@ -82,6 +83,15 @@ public class CatalogSQLBuilder implements SQLBuilder {
             }
             case ORDER_BY: {
                 stringBuilder.replace(stringBuilder.length() - SIX_SYMBOLS, stringBuilder.length(), "ORDER BY " + criteria.get(column));
+                break;
+            }
+            case LIMIT: {
+                int skip = ((int)criteria.get(PAGE) - 1)*(int)criteria.get(LIMIT);
+                stringBuilder.replace(stringBuilder.length() - SEVEN_SYMBOLS, stringBuilder.length(), " LIMIT " + skip + ", " + criteria.get(LIMIT));
+                break;
+            }
+            case PAGE:{
+                stringBuilder.delete(stringBuilder.length() - SEVEN_SYMBOLS, stringBuilder.length());
                 break;
             }
         }

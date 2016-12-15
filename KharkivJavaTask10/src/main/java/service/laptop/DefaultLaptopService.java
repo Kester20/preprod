@@ -20,8 +20,8 @@ public class DefaultLaptopService implements LaptopService {
     }
 
     @Override
-    public List<Laptop> getAllLaptops() {
-        return laptopRepository.getAllLaptops();
+    public List<Laptop> getAllLaptops(int limit) {
+        return laptopRepository.getAllLaptops(limit);
     }
 
     @Override

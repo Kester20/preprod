@@ -30,8 +30,8 @@ public class LaptopRepository {
         this.transactionManager = new TransactionManager(dataSource);
     }
 
-    public List<Laptop> getAllLaptops() {
-        String sql = GET_ALL_LAPTOPS;
+    public List<Laptop> getAllLaptops(int limit) {
+        String sql = GET_ALL_LAPTOPS + " LIMIT 0, " + limit;
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Laptop>>() {
             @Override
             public List<Laptop> doOperation() {
@@ -76,10 +76,6 @@ public class LaptopRepository {
                         }
                         if(key.equals(FIRST_PRICE) || key.equals(SECOND_PRICE)){
                             statement.setInt(index++, (int)criteria.get(key));
-                        }
-                        if(key.equals(ORDER_BY)){
-                            //statement.setString(index++, (String) criteria.get(key));
-
                         }
                     }
 
@@ -152,7 +148,7 @@ public class LaptopRepository {
         return transactionManager.doWithoutTransaction(new TransactionOperation<Integer>() {
             @Override
             public Integer doOperation() {
-                Integer result = 0;
+                int result = 0;
                 try {
                     PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
 
