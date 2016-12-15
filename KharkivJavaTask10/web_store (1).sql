@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 14 2016 г., 00:24
--- Версия сервера: 10.1.13-MariaDB
--- Версия PHP: 7.0.8
+-- Время создания: Дек 15 2016 г., 17:14
+-- Версия сервера: 10.1.19-MariaDB
+-- Версия PHP: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -38,7 +38,7 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `name`) VALUES
 (1, 'Netbook'),
 (2, 'For work and study'),
-(3, 'Gaming ');
+(3, 'Gaming');
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,21 @@ INSERT INTO `laptop` (`id`, `producer`, `model`, `cost`, `image`, `category`) VA
 (6, 5, 'hp', 1300, 'img\\hp06.jpg', 2),
 (7, 6, 'lenovo', 1000, 'img\\len.png', 3),
 (8, 4, 'dell', 1200, 'img\\oi.jpg', 2),
-(9, 7, 'samsung', 1500, 'img\\sams.jpg', 3);
+(9, 7, 'samsung', 1500, 'img\\sams.jpg', 3),
+(10, 8, 'apple', 2500, '', 1),
+(11, 8, 'apple', 2100, '', 1),
+(12, 8, 'apple', 1800, '', 1),
+(13, 8, 'apple', 1900, '', 1),
+(14, 8, 'apple', 2200, '', 1),
+(15, 8, 'apple', 1800, '', 1),
+(16, 8, 'apple', 1600, '', 1),
+(17, 8, 'apple', 1600, '', 1),
+(18, 8, 'apple', 1600, '', 1),
+(19, 8, 'apple', 1600, '', 1),
+(20, 8, 'apple', 1600, '', 1),
+(21, 8, 'apple', 1600, '', 1),
+(22, 8, 'apple', 1600, '', 1),
+(23, 8, 'apple', 1600, '', 1);
 
 -- --------------------------------------------------------
 
@@ -106,7 +120,8 @@ INSERT INTO `producer` (`id`, `name`) VALUES
 (4, 'Dell'),
 (5, 'HP'),
 (6, 'Lenovo'),
-(7, 'Samsung');
+(7, 'Samsung'),
+(8, 'Zan');
 
 -- --------------------------------------------------------
 
@@ -138,7 +153,7 @@ INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `mobile
 --
 DROP TABLE IF EXISTS `laptops`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `laptops`  AS  select `laptop`.`id` AS `id`,`producer`.`name` AS `producer`,`laptop`.`model` AS `model`,`laptop`.`cost` AS `cost`,`laptop`.`image` AS `image`,`category`.`name` AS `category` from ((`laptop` join `producer`) join `category` on(((`laptop`.`producer` = `producer`.`id`) and (`laptop`.`category` = `category`.`id`)))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `laptops`  AS  select `laptop`.`id` AS `id`,`producer`.`name` AS `producer`,`laptop`.`model` AS `model`,`laptop`.`cost` AS `cost`,`laptop`.`image` AS `image`,`category`.`name` AS `category` from ((`laptop` join `producer`) join `category` on(((`laptop`.`producer` = `producer`.`id`) and (`laptop`.`category` = `category`.`id`)))) order by `laptop`.`id` ;
 
 --
 -- Индексы сохранённых таблиц
@@ -181,12 +196,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `laptop`
 --
 ALTER TABLE `laptop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT для таблицы `producer`
 --
 ALTER TABLE `producer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
