@@ -54,6 +54,7 @@ public class Constants {
     public static final String LIMIT = "showCount";
     public static final String PAGE = "page";
     public static final String COUNT_OF_LAPTOPS = "countOfLaptops";
+    public static final String COUNT_OF_PAGES = "countOfPages";
     public static final String SHOW_COUNT = "showCount";
 
 }

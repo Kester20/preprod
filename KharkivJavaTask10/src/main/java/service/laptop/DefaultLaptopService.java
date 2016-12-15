@@ -8,6 +8,8 @@ import repository.laptop.LaptopRepository;
 import java.util.List;
 import java.util.Map;
 
+import static db.query.LaptopQueries.GET_COUNT_OF_LAPTOPS;
+
 /**
  * @author Arsalan
  */

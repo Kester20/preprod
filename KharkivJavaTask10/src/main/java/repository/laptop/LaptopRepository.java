@@ -25,17 +25,19 @@ public class LaptopRepository {
 
     private static final Logger log = Logger.getLogger(LaptopRepository.class);
     private TransactionManager transactionManager;
+    private int countOfLaptops;
 
     public LaptopRepository(DataSource dataSource) {
         this.transactionManager = new TransactionManager(dataSource);
     }
 
     public List<Laptop> getAllLaptops(int limit) {
+        getCountOfLaptops(GET_COUNT_OF_LAPTOPS);
         String sql = GET_ALL_LAPTOPS + " LIMIT 0, " + limit;
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Laptop>>() {
             @Override
             public List<Laptop> doOperation() {
-                List<Laptop> result = new ArrayList<Laptop>();
+                List<Laptop> result = new ArrayList<>();
                 try {
                     PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
 
@@ -58,6 +60,7 @@ public class LaptopRepository {
     public List<Laptop> getByCriteria(Map<String, Object> criteria) {
         String sql = SQLDirector.buildSQL(new CatalogSQLBuilder(GET_ALL_LAPTOPS, criteria));
         log.info(sql);
+
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Laptop>>() {
             @Override
             public List<Laptop> doOperation() {
@@ -79,6 +82,8 @@ public class LaptopRepository {
                         }
                     }
 
+                    getCountOfLaptops(statement.toString());
+
                     ResultSet resultSet = statement.executeQuery();
                     while (resultSet.next()) {
                         Laptop laptop = new Laptop(resultSet.getInt(1), new Producer(resultSet.getString(2)),
@@ -93,6 +98,49 @@ public class LaptopRepository {
                 return result;
             }
         });
+    }
+
+    public void getCountOfLaptops(String sql) {
+        if(sql.contains("LIMIT")){
+            sql = replaceSelect(sql);
+            sql = deleteLimitFromQuery(sql);
+        }
+        String finalSql = sql;
+        countOfLaptops = transactionManager.doWithoutTransaction(new TransactionOperation<Integer>() {
+            @Override
+            public Integer doOperation() {
+                int result = 0;
+                try {
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(finalSql);
+
+                    ResultSet resultSet = statement.executeQuery();
+                    if (resultSet.next()) {
+                        result = resultSet.getInt(1);
+                    }
+
+                } catch (SQLException e) {
+                    log.warn("SQL error during getting count! " + e.getMessage());
+                    e.printStackTrace();
+                }
+                return result;
+            }
+        });
+    }
+
+    private String deleteLimitFromQuery(String sql){
+        StringBuilder stringBuilder = new StringBuilder(sql);
+        stringBuilder.delete(stringBuilder.indexOf("LIMIT"), stringBuilder.length());
+        return stringBuilder.toString();
+    }
+
+    private String replaceSelect(String sql){
+        StringBuilder stringBuilder = new StringBuilder(sql);
+        stringBuilder.replace(0, stringBuilder.indexOf("FROM") + 4,"SELECT COUNT(*) FROM ");
+        return stringBuilder.toString();
+    }
+
+    public int getCountOfLaptops() {
+        return countOfLaptops;
     }
 
     public List<Producer> getAllProducers() {
@@ -132,29 +180,6 @@ public class LaptopRepository {
                     while (resultSet.next()) {
                         Category category = new Category(resultSet.getString(2));
                         result.add(category);
-                    }
-
-                } catch (SQLException e) {
-                    log.warn("SQL error during getting category! " + e.getMessage());
-                    e.printStackTrace();
-                }
-                return result;
-            }
-        });
-    }
-
-    public int getCountOfLaptops() {
-        String sql = GET_COUNT_OF_LAPTOPS;
-        return transactionManager.doWithoutTransaction(new TransactionOperation<Integer>() {
-            @Override
-            public Integer doOperation() {
-                int result = 0;
-                try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
-
-                    ResultSet resultSet = statement.executeQuery();
-                    if (resultSet.next()) {
-                        result = resultSet.getInt(1);
                     }
 
                 } catch (SQLException e) {

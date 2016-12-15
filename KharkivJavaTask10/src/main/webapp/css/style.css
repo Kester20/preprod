@@ -80,6 +80,10 @@ body a {
     margin-top: 10px;
 }
 
+#subm:onfocus{
+    background: white;
+}
+
 .subm {
     outline: none;
     cursor: pointer;

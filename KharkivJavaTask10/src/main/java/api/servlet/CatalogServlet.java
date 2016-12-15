@@ -62,6 +62,7 @@ public class CatalogServlet extends HttpServlet {
             request.setAttribute(PRODUCER_LIST, laptopService.getAllProducers());
             request.setAttribute(CATEGORY_LIST, laptopService.getAllCategories());
             request.setAttribute(COUNT_OF_LAPTOPS, laptopService.getCountOfLaptops());
+            request.setAttribute(COUNT_OF_PAGES, getCountOfPages(laptopService.getCountOfLaptops(), showCount));
             request.setAttribute(SHOW_COUNT, showCount);
             RequestDispatcher dispatcher = request.getRequestDispatcher(PRODUCTS_JSP);
             dispatcher.forward(request, response);
@@ -70,6 +71,7 @@ public class CatalogServlet extends HttpServlet {
             request.setAttribute(PRODUCER_LIST, laptopService.getAllProducers());
             request.setAttribute(CATEGORY_LIST, laptopService.getAllCategories());
             request.setAttribute(COUNT_OF_LAPTOPS, laptopService.getCountOfLaptops());
+            request.setAttribute(COUNT_OF_PAGES, getCountOfPages(laptopService.getCountOfLaptops(), showCount));
             request.setAttribute(SHOW_COUNT, showCount);
             RequestDispatcher dispatcher = request.getRequestDispatcher(PRODUCTS_JSP);
             dispatcher.forward(request, response);
@@ -78,5 +80,9 @@ public class CatalogServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
+
+    private int getCountOfPages(double countOfLaptops, double showCount){
+        return (int) Math.ceil(countOfLaptops/showCount);
     }
 }

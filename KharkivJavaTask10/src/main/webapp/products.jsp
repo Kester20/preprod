@@ -45,7 +45,7 @@
                         <h2>our Products</h2>
                         <ul class="product-list">
 
-                            <input type="submit" value="Select" class="subm" form="catalogform"/>
+                            <input type="submit" value="Select" class="subm" form="catalogform" id="subm"/>
 
                             <h4 class="labelCriteria">Price</h4>
 
