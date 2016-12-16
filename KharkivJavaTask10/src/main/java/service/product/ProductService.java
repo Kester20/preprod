@@ -1,4 +1,4 @@
-package service.laptop;
+package service.product;
 
 import entity.laptop.Category;
 import entity.laptop.Laptop;
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author Arsalan
  */
-public interface LaptopService {
+public interface ProductService {
 
     List<Laptop> getByCriteria(Map<String, Object> criteria);
 

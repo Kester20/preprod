@@ -4,6 +4,7 @@ package service.user;
 import entity.user.User;
 import exceptions.BusinessException;
 import org.apache.log4j.Logger;
+import repository.factory.RepositoryFactory;
 import repository.user.UserRepository;
 
 /**
@@ -14,8 +15,8 @@ public class DefaultUserService implements UserService {
     private static final Logger log = Logger.getLogger(DefaultUserService.class);
     private UserRepository userRepository;
 
-    public DefaultUserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public DefaultUserService(RepositoryFactory factory) {
+        this.userRepository = factory.getUserRepository();
     }
 
     public void createUser(User user) throws BusinessException {

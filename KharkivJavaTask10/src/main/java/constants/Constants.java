@@ -4,7 +4,6 @@ package constants;
  * @author Arsalan
  */
 public class Constants {
-
     public static final String USER = "user";
     public static final String USER_AVATAR = "userAvatar";
     public static final String FIRST_NAME = "firstName";
@@ -54,6 +53,7 @@ public class Constants {
     public static final String ORDER_BY = "orderBy";
     public static final String LIMIT = "showCount";
     public static final String PAGE = "page";
+    public static final String CURRENT_PAGE = "currentPage";
     public static final String COUNT_OF_LAPTOPS = "countOfLaptops";
     public static final String COUNT_OF_PAGES = "countOfPages";
     public static final String SHOW_COUNT = "showCount";
@@ -62,5 +62,13 @@ public class Constants {
     public static final String CHECKBOX_CATEGORY = "checkboxCategory";
     public static final String SELECT_SORT = "selectSort";
     public static final String SELECT_SHOW = "selectShow";
-
+    public static final String WHERE_SQL = " WHERE ";
+    public static final String SIMPLE_AND_SQL = "AND (";
+    public static final String AND_SQL = ") AND (";
+    public static final String LIMIT_SQL = " LIMIT ";
+    public static final String ORDER_BY_SQL = "ORDER BY ";
+    public static final String OR_SQL = " OR ";
+    public static final String ORDER_MODE = "orderMode";
+    public static final String DESC = " DESC";
+    public static final String ASC = " ASC";
 }

@@ -22,6 +22,7 @@ public class DefaultCatalogFilterService implements CatalogFilterService {
         String orderBy = request.getParameter(SELECT_SORT) == null ? LAPTOPS_ID : request.getParameter(SELECT_SORT);
         int showCount = request.getParameter(SELECT_SHOW)  == null ? 6 : Integer.parseInt(request.getParameter(SELECT_SHOW));
         int page = request.getParameter(PAGE) == null ? 1 : Integer.parseInt(request.getParameter(PAGE));
+        String orderMode = request.getParameter(ORDER_MODE) == null ? ASC : DESC;
 
         if (producers != null) {
             criteria.put(LAPTOPS_PRODUCER, Arrays.asList(producers));
@@ -35,6 +36,7 @@ public class DefaultCatalogFilterService implements CatalogFilterService {
         criteria.put(ORDER_BY, orderBy);
         criteria.put(LIMIT,showCount);
         criteria.put(PAGE, page);
+        criteria.put(ORDER_MODE, orderMode);
         return criteria;
     }
 }

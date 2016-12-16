@@ -1,15 +1,14 @@
 package listener;
 
 import org.apache.log4j.Logger;
-import repository.laptop.LaptopRepository;
-import repository.user.UserRepository;
+import repository.factory.RepositoryFactory;
 import service.captcha.CookieCaptchaService;
 import service.captcha.HiddenCaptchaService;
 import service.captcha.SessionCaptchaService;
 import service.catalog.DefaultCatalogFilterService;
 import service.user.DefaultUserService;
 import service.formbean.DefaultFormBeanService;
-import service.laptop.DefaultLaptopService;
+import service.product.DefaultProductService;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -31,12 +30,13 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         DataSource dataSource = initDataSource();
+        RepositoryFactory factory = new RepositoryFactory(dataSource);
         ServletContext servletContext = servletContextEvent.getServletContext();
         initCaptchaService(servletContext);
-        initUserService(servletContext, dataSource);
+        initUserService(servletContext, factory);
         initFormBeanService(servletContext);
         initCatalogFilterService(servletContext);
-        initLaptopService(servletContext, dataSource);
+        initLaptopService(servletContext, factory);
     }
 
     private DataSource initDataSource() {
@@ -52,16 +52,16 @@ public class ContextListener implements ServletContextListener {
         return dataSource;
     }
 
-    private void initLaptopService(ServletContext servletContext, DataSource dataSource) {
-        servletContext.setAttribute(LAPTOP_SERVICE, new DefaultLaptopService(new LaptopRepository(dataSource)));
+    private void initLaptopService(ServletContext servletContext, RepositoryFactory factory) {
+        servletContext.setAttribute(LAPTOP_SERVICE, new DefaultProductService(factory));
     }
 
     private void initCatalogFilterService(ServletContext servletContext) {
         servletContext.setAttribute(CATALOG_FILTER_SERVICE, new DefaultCatalogFilterService());
     }
 
-    private void initUserService(ServletContext servletContext, DataSource dataSource) {
-        servletContext.setAttribute(USER_SERVICE, new DefaultUserService(new UserRepository(dataSource)));
+    private void initUserService(ServletContext servletContext, RepositoryFactory factory) {
+        servletContext.setAttribute(USER_SERVICE, new DefaultUserService(factory));
     }
 
     private void initFormBeanService(ServletContext servletContext) {

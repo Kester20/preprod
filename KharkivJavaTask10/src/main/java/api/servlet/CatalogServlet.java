@@ -2,7 +2,7 @@ package api.servlet;
 
 import org.apache.log4j.Logger;
 import service.catalog.CatalogFilterService;
-import service.laptop.LaptopService;
+import service.product.ProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,12 +22,12 @@ import static constants.Constants.*;
 public class CatalogServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(CatalogServlet.class);
-    private LaptopService laptopService;
+    private ProductService productService;
     private CatalogFilterService catalogFilterService;
 
     @Override
     public void init() throws ServletException {
-        laptopService = (LaptopService) getServletContext().getAttribute(LAPTOP_SERVICE);
+        productService = (ProductService) getServletContext().getAttribute(LAPTOP_SERVICE);
         catalogFilterService = (CatalogFilterService) getServletContext().getAttribute(CATALOG_FILTER_SERVICE);
     }
 
@@ -46,12 +46,13 @@ public class CatalogServlet extends HttpServlet {
     }
 
     private void prepareResponse(HttpServletRequest request, Map<String, Object> criteria){
-        request.setAttribute(LAPTOP_LIST, laptopService.getByCriteria(criteria));
-        request.setAttribute(PRODUCER_LIST, laptopService.getAllProducers());
-        request.setAttribute(CATEGORY_LIST, laptopService.getAllCategories());
-        request.setAttribute(COUNT_OF_LAPTOPS, laptopService.getCountOfLaptops());
-        request.setAttribute(COUNT_OF_PAGES, getCountOfPages(laptopService.getCountOfLaptops(),(int) criteria.get(LIMIT)));
+        request.setAttribute(LAPTOP_LIST, productService.getByCriteria(criteria));
+        request.setAttribute(PRODUCER_LIST, productService.getAllProducers());
+        request.setAttribute(CATEGORY_LIST, productService.getAllCategories());
+        request.setAttribute(COUNT_OF_LAPTOPS, productService.getCountOfLaptops());
+        request.setAttribute(COUNT_OF_PAGES, getCountOfPages(productService.getCountOfLaptops(),(int) criteria.get(LIMIT)));
         request.setAttribute(SHOW_COUNT, criteria.get(LIMIT));
+        request.setAttribute(CURRENT_PAGE, criteria.get(PAGE));
     }
 
     private int getCountOfPages(double countOfLaptops, double showCount) {

@@ -11,6 +11,9 @@
     <ul class="women_pagenation">
         <li>Page:</li>
 
+
+        
+
         <c:forEach var="i" begin="1" end="${requestScope.countOfPages}">
 
             <c:choose>

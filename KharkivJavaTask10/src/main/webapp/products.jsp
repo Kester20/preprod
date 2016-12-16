@@ -194,7 +194,10 @@
                                         Price
                                     </option>
                                 </select>
-                                <a href="">
+
+                                <c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}?${pageContext.request.getQueryString()}"/>
+
+                                <a href="${url}&orderMode=DESC">
                                     <img src="images/arrow2.gif" alt="" class="v-middle"></a>
                                 </div>
                             </div>
@@ -211,14 +214,19 @@
                             <div class="pages">
                                 <div class="limiter visible-desktop">
                                     <label>Show</label>
+
+                                    <c:set var="selected6" value="${param.selectShow eq '6' ? 'selected' : ''}" />
+                                    <c:set var="selected9" value="${param.selectShow eq '9' ? 'selected' : ''}" />
+                                    <c:set var="selected12" value="${param.selectShow eq '12' ? 'selected' : ''}" />
+
                                     <select form="catalogform" name="selectShow">
-                                        <option value="6" selected="selected">
+                                        <option value="6" selected="selected" ${selected6}>
                                             6
                                         </option>
-                                        <option value="9">
+                                        <option value="9" ${selected9}>
                                             9
                                         </option>
-                                        <option value="12">
+                                        <option value="12" ${selected12}>
                                             12
                                         </option>
                                     </select>

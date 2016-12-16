@@ -1,5 +1,6 @@
 package api.servlet;
 
+import entity.laptop.Producer;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
