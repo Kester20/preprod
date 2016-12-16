@@ -6,6 +6,7 @@ import repository.user.UserRepository;
 import service.captcha.CookieCaptchaService;
 import service.captcha.HiddenCaptchaService;
 import service.captcha.SessionCaptchaService;
+import service.catalog.DefaultCatalogFilterService;
 import service.user.DefaultUserService;
 import service.formbean.DefaultFormBeanService;
 import service.laptop.DefaultLaptopService;
@@ -34,6 +35,7 @@ public class ContextListener implements ServletContextListener {
         initCaptchaService(servletContext);
         initUserService(servletContext, dataSource);
         initFormBeanService(servletContext);
+        initCatalogFilterService(servletContext);
         initLaptopService(servletContext, dataSource);
     }
 
@@ -52,6 +54,10 @@ public class ContextListener implements ServletContextListener {
 
     private void initLaptopService(ServletContext servletContext, DataSource dataSource) {
         servletContext.setAttribute(LAPTOP_SERVICE, new DefaultLaptopService(new LaptopRepository(dataSource)));
+    }
+
+    private void initCatalogFilterService(ServletContext servletContext) {
+        servletContext.setAttribute(CATALOG_FILTER_SERVICE, new DefaultCatalogFilterService());
     }
 
     private void initUserService(ServletContext servletContext, DataSource dataSource) {

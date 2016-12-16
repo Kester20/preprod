@@ -48,6 +48,7 @@ public class Constants {
     public static final String LAPTOPS_PRODUCER = "laptops.producer";
     public static final String LAPTOPS_CATEGORY = "laptops.category";
     public static final String LAPTOPS_COST = "laptops.cost";
+    public static final String LAPTOPS_ID = "laptops.id";
     public static final String FIRST_PRICE = "firstPrice";
     public static final String SECOND_PRICE = "secondPrice";
     public static final String ORDER_BY = "orderBy";
@@ -56,5 +57,10 @@ public class Constants {
     public static final String COUNT_OF_LAPTOPS = "countOfLaptops";
     public static final String COUNT_OF_PAGES = "countOfPages";
     public static final String SHOW_COUNT = "showCount";
+    public static final String CATALOG_FILTER_SERVICE = "catalogFilterService";
+    public static final String CHECKBOX_PRODUCER = "checkboxProducer";
+    public static final String CHECKBOX_CATEGORY = "checkboxCategory";
+    public static final String SELECT_SORT = "selectSort";
+    public static final String SELECT_SHOW = "selectShow";
 
 }

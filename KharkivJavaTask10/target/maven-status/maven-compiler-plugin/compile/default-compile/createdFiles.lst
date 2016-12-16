@@ -6,12 +6,14 @@ util\Validator.class
 service\captcha\CaptchaService.class
 service\captcha\drawer\CaptchaDrawer.class
 api\servlet\CaptchaServlet.class
+service\catalog\CatalogFilterService.class
 api\servlet\RegistrationServlet.class
 repository\laptop\LaptopRepository$2.class
 service\captcha\CookieCaptchaService.class
 service\formbean\FormBeanService.class
 repository\user\UserRepository$4.class
 service\laptop\DefaultLaptopService.class
+service\catalog\DefaultCatalogFilterService.class
 service\laptop\LaptopService.class
 service\captcha\SessionCaptchaService$1.class
 entity\laptop\Laptop.class
@@ -26,7 +28,6 @@ db\transaction\TransactionOperation.class
 repository\laptop\LaptopRepository$1.class
 repository\CrudRepository.class
 entity\laptop\Category.class
-repository\laptop\LaptopRepository$5.class
 api\servlet\CatalogServlet.class
 repository\user\UserRepository$2.class
 repository\user\UserRepository.class

@@ -31,43 +31,15 @@ public class LaptopRepository {
         this.transactionManager = new TransactionManager(dataSource);
     }
 
-    public List<Laptop> getAllLaptops(int limit) {
-        getCountOfLaptops(GET_COUNT_OF_LAPTOPS);
-        String sql = GET_ALL_LAPTOPS + " LIMIT 0, " + limit;
-        return transactionManager.doWithoutTransaction(new TransactionOperation<List<Laptop>>() {
-            @Override
-            public List<Laptop> doOperation() {
-                List<Laptop> result = new ArrayList<>();
-                try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
-
-                    ResultSet resultSet = statement.executeQuery();
-                    while (resultSet.next()) {
-                        Laptop laptop = new Laptop(resultSet.getInt(1), new Producer(resultSet.getString(2)),
-                                resultSet.getString(3), resultSet.getInt(4), resultSet.getString(5), new Category(resultSet.getString(6)));
-                        result.add(laptop);
-                    }
-
-                } catch (SQLException e) {
-                    log.warn("SQL error during getting laptop! " + e.getMessage());
-                    e.printStackTrace();
-                }
-                return result;
-            }
-        });
-    }
-
     public List<Laptop> getByCriteria(Map<String, Object> criteria) {
         String sql = SQLDirector.buildSQL(new CatalogSQLBuilder(GET_ALL_LAPTOPS, criteria));
         log.info(sql);
-
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Laptop>>() {
             @Override
             public List<Laptop> doOperation() {
                 List<Laptop> result = new ArrayList<>();
                 try {
                     PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
-
                     int index = 1;
                     Iterator iterator = criteria.keySet().iterator();
                     while (iterator.hasNext()){
@@ -90,7 +62,6 @@ public class LaptopRepository {
                                 resultSet.getString(3), resultSet.getInt(4), resultSet.getString(5), new Category(resultSet.getString(6)));
                         result.add(laptop);
                     }
-
                 } catch (SQLException e) {
                     log.warn("SQL error during getting laptop by criteria! " + e.getMessage());
                     e.printStackTrace();
@@ -112,12 +83,10 @@ public class LaptopRepository {
                 int result = 0;
                 try {
                     PreparedStatement statement = transactionManager.getConnection().prepareStatement(finalSql);
-
                     ResultSet resultSet = statement.executeQuery();
                     if (resultSet.next()) {
                         result = resultSet.getInt(1);
                     }
-
                 } catch (SQLException e) {
                     log.warn("SQL error during getting count! " + e.getMessage());
                     e.printStackTrace();
@@ -139,10 +108,6 @@ public class LaptopRepository {
         return stringBuilder.toString();
     }
 
-    public int getCountOfLaptops() {
-        return countOfLaptops;
-    }
-
     public List<Producer> getAllProducers() {
         String sql = GET_ALL_PRODUCERS;
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Producer>>() {
@@ -151,13 +116,11 @@ public class LaptopRepository {
                 List<Producer> result = new ArrayList<Producer>();
                 try {
                     PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
-
                     ResultSet resultSet = statement.executeQuery();
                     while (resultSet.next()) {
                         Producer producer = new Producer(resultSet.getString(2));
                         result.add(producer);
                     }
-
                 } catch (SQLException e) {
                     log.warn("SQL error during getting producer! " + e.getMessage());
                     e.printStackTrace();
@@ -175,13 +138,11 @@ public class LaptopRepository {
                 List<Category> result = new ArrayList<>();
                 try {
                     PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
-
                     ResultSet resultSet = statement.executeQuery();
                     while (resultSet.next()) {
                         Category category = new Category(resultSet.getString(2));
                         result.add(category);
                     }
-
                 } catch (SQLException e) {
                     log.warn("SQL error during getting category! " + e.getMessage());
                     e.printStackTrace();
@@ -189,5 +150,9 @@ public class LaptopRepository {
                 return result;
             }
         });
+    }
+
+    public int getCountOfLaptops() {
+        return countOfLaptops;
     }
 }
