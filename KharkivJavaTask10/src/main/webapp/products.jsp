@@ -197,8 +197,22 @@
 
                                 <c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}?${pageContext.request.getQueryString()}"/>
 
-                                <a href="${url}&orderMode=DESC">
-                                    <img src="images/arrow2.gif" alt="" class="v-middle"></a>
+                                <c:choose>
+                                <c:when test="${fn:contains(url, '&orderMode')}">
+                                    <c:set var="rewriteUrl" value="${fn:substringBefore(url, '&orderMode')}"/>
+
+                                        <a href="${rewriteUrl}&orderMode=DESC"><img src="images/arrow2.gif" alt="" class="v-middle"></a>
+
+                                </c:when>
+
+                                <c:otherwise>
+
+                                      <a href="${url}&orderMode=DESC">
+                                          <img src="images/arrow2.gif" alt="" class="v-middle"></a>
+                                    
+                                </c:otherwise>
+                              </c:choose>
+
                                 </div>
                             </div>
 

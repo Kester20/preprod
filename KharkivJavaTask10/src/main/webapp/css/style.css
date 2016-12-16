@@ -80,9 +80,7 @@ body a {
     margin-top: 10px;
 }
 
-#subm:onfocus{
-    background: white;
-}
+
 
 .subm {
     outline: none;
@@ -99,6 +97,10 @@ body a {
     border: none;
     -webkit-apperance: none;
     margin-left: 10px;
+}
+
+.subm:hover{
+  background-color: black;
 }
 
 @font-face {

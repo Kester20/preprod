@@ -21,8 +21,6 @@ public class Validator {
     public Validator() {
     }
 
-    ;
-
     public Map<String, String> validate() {
         Map<String, String> result = new HashMap<>();
         Field[] fields = formBean.getClass().getDeclaredFields();
