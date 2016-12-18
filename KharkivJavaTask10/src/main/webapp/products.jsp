@@ -29,6 +29,7 @@
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
         <script src="js/slider.js"></script>
+        <script src="js/cartOperation.js"></script>
 
     </head>
     <body>
@@ -209,7 +210,7 @@
 
                                       <a href="${url}&orderMode=DESC">
                                           <img src="images/arrow2.gif" alt="" class="v-middle"></a>
-                                    
+
                                 </c:otherwise>
                               </c:choose>
 

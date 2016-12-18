@@ -32,7 +32,7 @@
                     Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut.
                 </div>
                 <div>
-                    <a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
+                    <a class="cbp-vm-icon cbp-vm-add item_add" href="" onclick="addToCart(${laptop.id})">Add to cart</a>
                 </div>
             </li>
 

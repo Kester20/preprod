@@ -45,12 +45,12 @@ public class CatalogServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
-    private void prepareResponse(HttpServletRequest request, Map<String, Object> criteria){
+    private void prepareResponse(HttpServletRequest request, Map<String, Object> criteria) {
         request.setAttribute(LAPTOP_LIST, productService.getByCriteria(criteria));
         request.setAttribute(PRODUCER_LIST, productService.getAllProducers());
         request.setAttribute(CATEGORY_LIST, productService.getAllCategories());
         request.setAttribute(COUNT_OF_LAPTOPS, productService.getCountOfLaptops());
-        request.setAttribute(COUNT_OF_PAGES, getCountOfPages(productService.getCountOfLaptops(),(int) criteria.get(LIMIT)));
+        request.setAttribute(COUNT_OF_PAGES, getCountOfPages(productService.getCountOfLaptops(), (int) criteria.get(LIMIT)));
         request.setAttribute(SHOW_COUNT, criteria.get(LIMIT));
         request.setAttribute(CURRENT_PAGE, criteria.get(PAGE));
     }

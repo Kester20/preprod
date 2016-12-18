@@ -60,6 +60,10 @@ body a {
   margin-top: 10px;
 }
 
+.labelCriteriaValues{
+  color: black;
+}
+
 #price, #price2 {
     border: 1px solid #074776;
     padding: 5px;
@@ -76,6 +80,8 @@ body a {
     margin-top: 10px;
 }
 
+
+
 .subm {
     outline: none;
     cursor: pointer;
@@ -87,9 +93,14 @@ body a {
     font-weight: 400;
     margin: 0px 0 0 -3px;
     margin-bottom: 10px;
+    margin-top: 10px;
     border: none;
     -webkit-apperance: none;
     margin-left: 10px;
+}
+
+.subm:hover{
+  background-color: black;
 }
 
 @font-face {
@@ -1008,7 +1019,7 @@ ul.f_nav li a {
 }
 
 .product-listy {
-    background: #91b900;
+    background: #bab6b6;
 }
 
 ul.product-list {
@@ -1475,7 +1486,7 @@ ul.women_pagenation li.active a, ul.women_pagenation li a:hover {
 }
 
 .product-listy {
-    background: #9E9C9C;
+    background: #c9c5c5;
 }
 
 ul.product-list {
@@ -1759,9 +1770,9 @@ p.title {
 }
 
 ul.women_pagenation {
-    float: right;
     padding: 0;
     list-style: none;
+    margin-left: 350px;
 }
 
 ul.women_pagenation li.active a, ul.women_pagenation li a:hover {

@@ -5,8 +5,8 @@ import entity.user.User;
 import exceptions.BusinessException;
 import org.apache.log4j.Logger;
 import service.captcha.CaptchaService;
-import service.user.DefaultUserService;
 import service.formbean.DefaultFormBeanService;
+import service.user.DefaultUserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

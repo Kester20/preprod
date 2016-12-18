@@ -71,4 +71,7 @@ public class Constants {
     public static final String ORDER_MODE = "orderMode";
     public static final String DESC = " DESC";
     public static final String ASC = " ASC";
+    public static final String CART = "cart";
+    public static final String ID_LAPTOP = "idLaptop";
+    public static final String VALUE = "value";
 }

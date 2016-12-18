@@ -5,8 +5,8 @@
 
 <c:choose>
     <c:when test="${initParam['captchaScope'] eq 'hidden'}">
-       <img src="${servlet}"/>
-       <input type ="hidden" name="hidden" value="${captcha}" />
+        <img src="${servlet}"/>
+        <input type="hidden" name="hidden" value="${captcha}"/>
     </c:when>
 
     <c:otherwise>

@@ -45,4 +45,9 @@ public class DefaultProductService implements ProductService {
     public int getCountOfLaptops() {
         return laptopRepository.getCountOfLaptops();
     }
+
+    @Override
+    public Laptop getLaptopById(int id) {
+        return laptopRepository.getLaptopById(id);
+    }
 }

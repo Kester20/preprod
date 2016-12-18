@@ -6,9 +6,9 @@ import service.captcha.CookieCaptchaService;
 import service.captcha.HiddenCaptchaService;
 import service.captcha.SessionCaptchaService;
 import service.catalog.DefaultCatalogFilterService;
-import service.user.DefaultUserService;
 import service.formbean.DefaultFormBeanService;
 import service.product.DefaultProductService;
+import service.user.DefaultUserService;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

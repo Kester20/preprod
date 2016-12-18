@@ -19,7 +19,9 @@
                                     <div class="cart-left">
                                         <p class="title">${laptop.producer.name}</p>
                                     </div>
-                                    <div class="pricey"><span class="item_price">$${laptop.cost}</span></div>
+                                    <div class="pricey">
+                                        <span class="item_price">$${laptop.cost}</span>
+                                    </div>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -30,9 +32,9 @@
                     Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut.
                 </div>
                 <div>
-                    <a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
+                    <a class="cbp-vm-icon cbp-vm-add item_add" href="#" onclick="addToCart(${laptop.id})">Add to cart</a>
                 </div>
-        </li>
+            </li>
 
-    </c:forEach>
-</ul>
+        </c:forEach>
+    </ul>

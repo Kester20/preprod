@@ -20,6 +20,7 @@ import java.util.Map;
 
 import static constants.Constants.*;
 import static db.query.LaptopQueries.GET_ALL_LAPTOPS;
+import static db.query.LaptopQueries.GET_LAPTOP_BY_ID;
 
 /**
  * @author Arsalan
@@ -104,5 +105,29 @@ public class LaptopRepository {
 
     public int getCountOfLaptops() {
         return countOfLaptops;
+    }
+
+    public Laptop getLaptopById(int id) {
+        String sql = GET_LAPTOP_BY_ID;
+        return transactionManager.doWithoutTransaction(new TransactionOperation<Laptop>() {
+            @Override
+            public Laptop doOperation() {
+                Laptop result = null;
+                try {
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    statement.setInt(1, id);
+                    ResultSet resultSet = statement.executeQuery();
+                    if (resultSet.next()) {
+                        result = new Laptop(resultSet.getInt(1), new Producer(resultSet.getString(2)),
+                                resultSet.getString(3), resultSet.getInt(4), resultSet.getString(5), new Category(resultSet.getString(6)));
+
+                    }
+                } catch (SQLException e) {
+                    log.warn("SQL error during getting count! " + e.getMessage());
+                    e.printStackTrace();
+                }
+                return result;
+            }
+        });
     }
 }

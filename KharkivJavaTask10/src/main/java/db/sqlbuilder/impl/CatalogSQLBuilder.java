@@ -88,15 +88,15 @@ public class CatalogSQLBuilder implements SQLBuilder {
                 break;
             }
             case LIMIT: {
-                int skip = ((int)criteria.get(PAGE) - 1)*(int)criteria.get(LIMIT);
+                int skip = ((int) criteria.get(PAGE) - 1) * (int) criteria.get(LIMIT);
                 stringBuilder.replace(stringBuilder.lastIndexOf(AND_SQL), stringBuilder.length(), LIMIT_SQL + skip + ", " + criteria.get(LIMIT));
                 break;
             }
-            case PAGE:{
+            case PAGE: {
                 stringBuilder.delete(stringBuilder.lastIndexOf(AND_SQL), stringBuilder.length());
                 break;
             }
-            case ORDER_MODE:{
+            case ORDER_MODE: {
                 stringBuilder.delete(stringBuilder.lastIndexOf(AND_SQL), stringBuilder.length());
                 break;
             }

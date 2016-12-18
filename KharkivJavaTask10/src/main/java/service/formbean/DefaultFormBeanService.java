@@ -23,7 +23,7 @@ public class DefaultFormBeanService implements FormBeanService {
                     request.getParameter(EMAIL), request.getParameter(PASS),
                     request.getParameter(MOBILE_NUMBER));
         }
-        return new RegistrationFormBean("", "", "", "","");
+        return new RegistrationFormBean("", "", "", "", "");
     }
 
     public Map<String, String> validateBean(RegistrationFormBean formBean) {
