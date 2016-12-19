@@ -53,6 +53,8 @@ public class Constants {
     public static final String ORDER_BY = "orderBy";
     public static final String LIMIT = "showCount";
     public static final String PAGE = "page";
+    public static final String PHOTO = "photo";
+    public static final String PNG = ".png";
     public static final String CURRENT_PAGE = "currentPage";
     public static final String COUNT_OF_LAPTOPS = "countOfLaptops";
     public static final String COUNT_OF_PAGES = "countOfPages";

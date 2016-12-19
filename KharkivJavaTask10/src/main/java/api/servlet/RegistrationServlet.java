@@ -112,8 +112,8 @@ public class RegistrationServlet extends HttpServlet {
             fileSaveDir.mkdir();
         }
 
-        if (request.getPart("photo") != null && request.getParameter("email") != null) {
-            request.getPart("photo").write(savePath + File.separator + request.getParameter("email") + ".png");
+        if (request.getPart(PHOTO) != null && request.getParameter(EMAIL) != null) {
+            request.getPart(PHOTO).write(savePath + File.separator + request.getParameter(EMAIL) + PNG);
         }
     }
 }

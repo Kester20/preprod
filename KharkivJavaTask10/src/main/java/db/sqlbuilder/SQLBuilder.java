@@ -13,10 +13,10 @@ public interface SQLBuilder {
     String getTable();
 
     /**
-     * Gets the command attribute of the SQLBuilder object
+     * Gets the action attribute of the SQLBuilder object
      *
-     * @return The command value or what type of Builder this is. This will return
-     * a SQL command.
+     * @return The action value or what type of Builder this is. This will return
+     * a SQL action.
      */
     String getCommand();
 

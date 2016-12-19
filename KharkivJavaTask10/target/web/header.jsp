@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tg" %>
 
-
+<script src="js/cartOperation.js"></script>
 
 <!-- header-section-starts -->
 <div class="header">
@@ -15,11 +15,15 @@
             <div class="header-right">
                 <div class="cart box_1">
                     <a href="checkout.jsp">
-                        <h3><span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity"
-                                                                                 class="simpleCart_quantity"> 0 </span>)<img
+                        <h3>$<span id="total_head">${sessionScope.cart.getAmount()} </span> (${sessionScope.cart.getNumberOfProducts()})<img
                                 src="images/bag.png" alt=""></h3>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
+
+                    <c:if test="${(not empty sessionScope.cart) || (sessionScope.cart.getNumberOfProducts() > 0)}">
+                        <p><a href="" class="emptyCart" onclick="clearCart();">Empty cart</a></p>
+                    </c:if>
+
+
                     <div class="clearfix"></div>
                 </div>
             </div>
