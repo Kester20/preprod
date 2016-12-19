@@ -25,39 +25,26 @@
 
     </head>
 
-    <body>
+    <jsp:include page="header.jsp"></jsp:include>
 
-        <jsp:include page="header.jsp"></jsp:include>
+    <div class="cart-items">
+        <div class="container">
 
-        <!-- checkout -->
-        <div class="cart-items">
-            <div class="container">
-                <div class="dreamcrub">
-                    <ul class="breadcrumbs">
-                        <li class="home">
-                            <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
-                            <span>&gt;</span>
-                        </li>
-                        <li class="women">
-                            Cart
-                        </li>
-                    </ul>
-                    <ul class="previous">
-                        <li>
-                            <a href="index.html">Back to Previous Page</a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
+            <tg:cart title="CREATE ORDER" blockUser="true" button=""/>
 
-                <tg:cart title="MY SHOPPING BAG" blockUser="" button="CREATE ORDER"/>
+            <form action="<c:url value='confirm_order_servlet' />" method="post">
+                <span>Type payment</span>
+                <input type="text" name="typePayment"/>
 
+                <span>Card</span>
+                <input type="text" name="card"/>
+                <input class="btnCreateOrder" type="submit" value="CONFIRM"/>
 
+            </form>
 
-            </div>
         </div>
 
-        <jsp:include page="footer.jsp"></jsp:include>
-    </body>
+    </div>
 
+    <jsp:include page="footer.jsp"></jsp:include>
 </html>

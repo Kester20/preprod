@@ -65,6 +65,6 @@ public class CatalogSQLBuilder implements SQLBuilder {
     }
 
     private void appendValues(String column) {
-        actionMap.getCommandMap().get(column).execute();
+        actionMap.getActionMap().get(column).execute();
     }
 }

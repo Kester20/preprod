@@ -25,39 +25,22 @@
 
     </head>
 
-    <body>
+    <jsp:include page="header.jsp"></jsp:include>
 
-        <jsp:include page="header.jsp"></jsp:include>
+    <div class="cart-items">
+        <div class="container">
 
-        <!-- checkout -->
-        <div class="cart-items">
-            <div class="container">
-                <div class="dreamcrub">
-                    <ul class="breadcrumbs">
-                        <li class="home">
-                            <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
-                            <span>&gt;</span>
-                        </li>
-                        <li class="women">
-                            Cart
-                        </li>
-                    </ul>
-                    <ul class="previous">
-                        <li>
-                            <a href="index.html">Back to Previous Page</a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
+            <tg:cart title="YOUR ORDER" blockUser="true" button=""/>
 
-                <tg:cart title="MY SHOPPING BAG" blockUser="" button="CREATE ORDER"/>
+            Type payment: ${requestScope.typePayment}
+            Card ${requestScope.card}
 
+            <a href="confirmOrder.jsp" class="btnCreateOrder">
+                <button>ACCEPT</button>
+            </a>
 
-
-            </div>
         </div>
+    </div>
 
-        <jsp:include page="footer.jsp"></jsp:include>
-    </body>
-
+    <jsp:include page="footer.jsp"></jsp:include>
 </html>

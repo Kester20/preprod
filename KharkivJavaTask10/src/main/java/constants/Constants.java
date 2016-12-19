@@ -76,4 +76,9 @@ public class Constants {
     public static final String CART = "cart";
     public static final String ID_LAPTOP = "idLaptop";
     public static final String VALUE = "value";
+    public static final String USER_HAS_ORDER = "userHasOrder";
+    public static final String CREATE_ORDER_JSP = "createOrder.jsp";
+    public static final String CONFIRM_ORDER_JSP = "confirmOrder.jsp";
+    public static final String TYPE_PAYMENT = "typePayment";
+    public static final String CARD = "card";
 }

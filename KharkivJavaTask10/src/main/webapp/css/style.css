@@ -28,6 +28,10 @@ body a {
     color: red;
 }
 
+.btnCreateOrder{
+    float: right;
+}
+
 .emptyCart{
     color: white;
 }

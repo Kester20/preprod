@@ -13,10 +13,10 @@ import static constants.Constants.*;
  */
 public class ActionMap {
 
-    private Map<String, Action> commandMap;
+    private Map<String, Action> actionMap;
 
     public ActionMap(StringBuilder appender, Map<String, Object> criteria) {
-        commandMap = new HashMap<String, Action>() {{
+        actionMap = new HashMap<String, Action>() {{
             put(LAPTOPS_PRODUCER, new DefaultAppenderAction(appender, criteria, LAPTOPS_PRODUCER));
             put(LAPTOPS_CATEGORY, new DefaultAppenderAction(appender, criteria, LAPTOPS_CATEGORY));
             put(FIRST_PRICE, new PriceAppenderAction(appender, " > "));
@@ -28,7 +28,7 @@ public class ActionMap {
         }};
     }
 
-    public Map<String, Action> getCommandMap() {
-        return commandMap;
+    public Map<String, Action> getActionMap() {
+        return actionMap;
     }
 }
