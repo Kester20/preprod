@@ -3,6 +3,7 @@ package api.servlet.cart;
 import entity.cart.Cart;
 import entity.laptop.Laptop;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import service.product.ProductService;
 
 import javax.servlet.ServletException;
@@ -17,10 +18,11 @@ import static constants.Constants.CART;
 import static constants.Constants.ID_LAPTOP;
 import static constants.Constants.LAPTOP_SERVICE;
 
+
 /**
  * @author Arsalan
  */
-@WebServlet("/add_to_cart_servlet")
+@WebServlet("/cart/add/*")
 public class AddToCartServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(AddToCartServlet.class);
@@ -39,6 +41,7 @@ public class AddToCartServlet extends HttpServlet {
         if (idLaptop != 0) {
             addToCart(session, cart, idLaptop);
         }
+        sendResponse(response, cart);
     }
 
     @Override
@@ -56,5 +59,13 @@ public class AddToCartServlet extends HttpServlet {
         cart.add(laptop, 1);
         log.info("added");
         session.setAttribute(CART, cart);
+    }
+
+    private void sendResponse(HttpServletResponse response, Cart cart) throws IOException {
+        JSONObject json = new JSONObject();
+        json.put("amount",  cart.getAmount());
+        json.put("size", cart.getCart().size());
+        response.setContentType("application/json");
+        response.getOutputStream().print(json.toString());
     }
 }

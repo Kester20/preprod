@@ -14,7 +14,7 @@ import static constants.Constants.*;
 /**
  * @author Arsalan
  */
-@WebServlet("/confirm_order_servlet")
+@WebServlet("/confirm_order")
 public class ConfirmOrderServlet extends HttpServlet {
 
     @Override
@@ -34,8 +34,7 @@ public class ConfirmOrderServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher(CONFIRM_ORDER_JSP);
             dispatcher.forward(request, response);
         }else{
-            RequestDispatcher dispatcher = request.getRequestDispatcher(CREATE_ORDER_JSP);
-            dispatcher.forward(request, response);
+            response.sendRedirect(CREATE_ORDER_JSP);
         }
     }
 }

@@ -2,7 +2,6 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tg" %>
-
 <script src="js/cartOperation.js"></script>
 
 <!-- header-section-starts -->
@@ -15,12 +14,12 @@
             <div class="header-right">
                 <div class="cart box_1">
                     <a href="checkout.jsp">
-                        <h3>$<span id="total_head">${sessionScope.cart.getAmount()} </span> (${sessionScope.cart.getNumberOfProducts()})<img
+                        <h3>$<span id="total_head">${sessionScope.cart.getAmount()} </span> (<span id="size_head">${sessionScope.cart.getNumberOfProducts()}</span>)<img
                                 src="images/bag.png" alt=""></h3>
                     </a>
 
                     <c:if test="${(not empty sessionScope.cart) || (sessionScope.cart.getNumberOfProducts() > 0)}">
-                        <p><a href="" class="emptyCart" onclick="clearCart();">Empty cart</a></p>
+                        <p><a id="emptyCart" href="" onclick="clearCart();">Empty cart</a></p>
                     </c:if>
 
 

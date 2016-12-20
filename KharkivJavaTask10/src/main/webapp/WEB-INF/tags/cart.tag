@@ -69,7 +69,7 @@
         <br>
 
         <c:if test="${button eq 'CREATE ORDER'}">
-            <a href="<c:url value='create_order_servlet' />" class="btnCreateOrder">
+            <a href="<c:url value='create_order' />" class="btnCreateOrder">
                 <button>${button}</button>
         </c:if>
 

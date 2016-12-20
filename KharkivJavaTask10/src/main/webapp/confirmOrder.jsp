@@ -35,7 +35,7 @@
             Type payment: ${requestScope.typePayment}
             Card ${requestScope.card}
 
-            <a href="confirmOrder.jsp" class="btnCreateOrder">
+            <a href="<c:url value='accept_order?typePayment=${requestScope.typePayment}&card=${requestScope.card}' />" class="btnCreateOrder">
                 <button>ACCEPT</button>
             </a>
 

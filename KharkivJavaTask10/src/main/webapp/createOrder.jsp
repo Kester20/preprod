@@ -32,7 +32,7 @@
 
             <tg:cart title="CREATE ORDER" blockUser="true" button=""/>
 
-            <form action="<c:url value='confirm_order_servlet' />" method="post">
+            <form action="<c:url value='confirm_order' />" method="post">
                 <span>Type payment</span>
                 <input type="text" name="typePayment"/>
 

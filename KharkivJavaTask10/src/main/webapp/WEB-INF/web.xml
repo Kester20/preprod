@@ -28,4 +28,13 @@
         <location>/error.jsp</location>
     </error-page>
 
+    <filter>
+        <filter-name>Filter</filter-name>
+        <filter-class>filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Filter</filter-name>
+        <url-pattern>/create_order</url-pattern>
+    </filter-mapping>
+
 </web-app>

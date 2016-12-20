@@ -41,6 +41,7 @@ db\query\LaptopQueries.class
 db\transaction\TransactionOperation.class
 repository\CrudRepository.class
 entity\laptop\Category.class
+api\servlet\order\AcceptOrderServlet.class
 api\servlet\CatalogServlet.class
 repository\user\UserRepository$2.class
 repository\user\UserRepository.class
@@ -65,6 +66,7 @@ annotation\ValidatorAnnotation$GetMethod.class
 db\sqlbuilder\action\impl\OrderByAppenderAction.class
 service\product\DefaultProductService.class
 db\query\UserQueries.class
+filter\LoginFilter.class
 db\sqlbuilder\action\map\ActionMap.class
 db\sqlbuilder\SQLDirector.class
 annotation\ValidatorAnnotation$Pattern.class
