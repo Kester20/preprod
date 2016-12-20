@@ -36,6 +36,7 @@ public class LogInServlet extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             String nextPage = session.getAttribute(USER_HAS_PAGE) == null ? INDEX_JSP : (String) session.getAttribute(USER_HAS_PAGE);
+            session.removeAttribute(USER_HAS_PAGE);
             response.sendRedirect(nextPage);
         }
     }

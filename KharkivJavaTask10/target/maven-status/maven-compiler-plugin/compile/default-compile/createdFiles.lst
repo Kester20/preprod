@@ -20,6 +20,7 @@ db\sqlbuilder\action\impl\PriceAppenderAction.class
 service\captcha\CookieCaptchaService.class
 service\formbean\FormBeanService.class
 repository\user\UserRepository$4.class
+db\query\OrderQueries.class
 api\servlet\cart\AddToCartServlet.class
 repository\product\ProducerRepository$1.class
 repository\product\LaptopRepository$1.class
@@ -33,8 +34,10 @@ service\captcha\SessionCaptchaService.class
 listener\ContextListener.class
 service\user\DefaultUserService.class
 exceptions\BusinessException.class
+entity\order\OrderHistory.class
 repository\user\UserRepository$1.class
 db\sqlbuilder\action\impl\DeleteAndAction.class
+service\order\DefaultOrderService.class
 db\transaction\TransactionManager.class
 repository\product\LaptopRepository$2.class
 db\query\LaptopQueries.class
@@ -42,6 +45,7 @@ db\transaction\TransactionOperation.class
 repository\CrudRepository.class
 entity\laptop\Category.class
 api\servlet\order\AcceptOrderServlet.class
+repository\order\OrderRepository$1.class
 api\servlet\CatalogServlet.class
 repository\user\UserRepository$2.class
 repository\user\UserRepository.class
@@ -56,11 +60,13 @@ entity\cart\CartOperation.class
 service\user\UserService.class
 entity\user\User.class
 api\servlet\order\ConfirmOrderServlet.class
+entity\order\Order.class
 repository\product\CategoryRepository.class
 api\servlet\cart\ClearCartServlet.class
 service\captcha\HiddenCaptchaService.class
 db\sqlbuilder\SQLBuilder.class
 repository\factory\RepositoryFactory.class
+service\order\OrderService.class
 entity\laptop\Producer.class
 annotation\ValidatorAnnotation$GetMethod.class
 db\sqlbuilder\action\impl\OrderByAppenderAction.class
@@ -69,5 +75,6 @@ db\query\UserQueries.class
 filter\LoginFilter.class
 db\sqlbuilder\action\map\ActionMap.class
 db\sqlbuilder\SQLDirector.class
+repository\order\OrderRepository.class
 annotation\ValidatorAnnotation$Pattern.class
 constants\Constants.class

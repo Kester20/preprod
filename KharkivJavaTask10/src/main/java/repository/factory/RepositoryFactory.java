@@ -1,5 +1,6 @@
 package repository.factory;
 
+import repository.order.OrderRepository;
 import repository.product.CategoryRepository;
 import repository.product.LaptopRepository;
 import repository.product.ProducerRepository;
@@ -16,12 +17,14 @@ public class RepositoryFactory {
     private LaptopRepository laptopRepository;
     private ProducerRepository producerRepository;
     private CategoryRepository categoryRepository;
+    private OrderRepository orderRepository;
 
     public RepositoryFactory(DataSource dataSource) {
         this.userRepository = new UserRepository(dataSource);
         this.laptopRepository = new LaptopRepository(dataSource);
         this.producerRepository = new ProducerRepository(dataSource);
         this.categoryRepository = new CategoryRepository(dataSource);
+        this.orderRepository = new OrderRepository(dataSource);
     }
 
     public UserRepository getUserRepository() {
@@ -38,5 +41,9 @@ public class RepositoryFactory {
 
     public CategoryRepository getCategoryRepository() {
         return categoryRepository;
+    }
+
+    public OrderRepository getOrderRepository() {
+        return orderRepository;
     }
 }

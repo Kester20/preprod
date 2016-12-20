@@ -132,8 +132,8 @@ public class UserRepository implements CrudRepository<User> {
 
                     ResultSet resultSet = statement.executeQuery();
                     if (resultSet.next()) {
-                        result = new User(resultSet.getString(2), resultSet.getString(2), resultSet.getString(3),
-                                resultSet.getString(4), resultSet.getString(5));
+                        result = new User(resultSet.getString(2), resultSet.getString(3), resultSet.getString(4),
+                                resultSet.getString(5), resultSet.getString(6));
                     }
                 } catch (SQLException e) {
                     log.warn("SQL error during getting user! " + e.getMessage());

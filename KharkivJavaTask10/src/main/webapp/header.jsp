@@ -19,7 +19,7 @@
                     </a>
 
                     <c:if test="${(not empty sessionScope.cart) || (sessionScope.cart.getNumberOfProducts() > 0)}">
-                        <p><a id="emptyCart" href="" onclick="clearCart();">Empty cart</a></p>
+                        <p><a href="" onclick="clearCart();">Empty cart</a></p>
                     </c:if>
 
 

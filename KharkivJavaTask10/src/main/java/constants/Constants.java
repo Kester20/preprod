@@ -35,6 +35,7 @@ public class Constants {
     public static final String USER_SERVICE = "userService";
     public static final String LAPTOP_SERVICE = "laptopService";
     public static final String FORM_BEAN_SERVICE = "formBeanService";
+    public static final String ORDER_SERVICE = "orderService";
     public static final String AVATARS_PATH = "avatars";
     public static final String WRONG_EMAIL_OR_PASSWORD = "wrongEmailOrPassword";
     public static final String SIMPLE_WRONG_EMAIL_OR_PASSWORD = "Wrong email or password";
@@ -79,6 +80,8 @@ public class Constants {
     public static final String USER_HAS_PAGE = "userHasPage";
     public static final String CREATE_ORDER_JSP = "createOrder.jsp";
     public static final String CONFIRM_ORDER_JSP = "confirmOrder.jsp";
+    public static final String DONE_ORDER_JSP = "doneOrder.jsp";
     public static final String TYPE_PAYMENT = "typePayment";
     public static final String CARD = "card";
+    public static final String LAST_ORDER_ID = "lastOrderId";
 }

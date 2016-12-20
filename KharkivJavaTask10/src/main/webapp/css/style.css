@@ -20,6 +20,11 @@ body a {
     -ms-transition: 0.5s all;
 }
 
+.doneOrder{
+    font-weight: bold;
+    text-align: center;
+}
+
 .captcha {
     margin-left: 50px;
 }
@@ -29,6 +34,7 @@ body a {
 }
 
 .btnCreateOrder{
+    color:black;
     float: right;
 }
 

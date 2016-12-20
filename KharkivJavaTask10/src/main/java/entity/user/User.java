@@ -38,4 +38,13 @@ public class User {
     public String getMobileNumber() {
         return mobileNumber;
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append("firstName: " + firstName).
+                append(", lastName: " + lastName).
+                append(", email: " + email).
+                append(", pass: " + password).
+                append(", mobile: " + mobileNumber).toString();
+    }
 }

@@ -29,7 +29,6 @@ public class CreateOrderServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.info("im in getttt");
         RequestDispatcher dispatcher = request.getRequestDispatcher(CREATE_ORDER_JSP);
         dispatcher.forward(request, response);
     }
@@ -38,6 +37,4 @@ public class CreateOrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-
 }
