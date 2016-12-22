@@ -2,13 +2,11 @@ package api.servlet.order;
 
 import entity.cart.Cart;
 import entity.order.Order;
-import entity.order.OrderHistory;
 import entity.user.User;
 import exceptions.BusinessException;
 import org.apache.log4j.Logger;
 import service.order.DefaultOrderService;
 import service.order.OrderService;
-import service.user.DefaultUserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,7 +34,7 @@ public class AcceptOrderServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        createOrder(request);
+        createOrder(request, response);
         request.getSession().removeAttribute(CART);
         request.setAttribute(LAST_ORDER_ID, orderService.getLastOrderId());
         RequestDispatcher dispatcher = request.getRequestDispatcher(DONE_ORDER_JSP);
@@ -48,22 +46,20 @@ public class AcceptOrderServlet extends HttpServlet {
 
     }
 
-    private void createOrder(HttpServletRequest request){
+    private void createOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        boolean created = false;
         String typePayment = request.getParameter(TYPE_PAYMENT);
         String card = request.getParameter(CARD);
         User user = (User) request.getSession().getAttribute(USER);
-        System.out.println(user);
         Cart cart = (Cart) request.getSession().getAttribute(CART);
-        if(typePayment != null && card != null && user != null && cart != null){
-            try {
-                log.info(user.getEmail());
-                Order order = new Order(user.getEmail(), typePayment, card, cart.getCart());
-                orderService.createOrder(order);
+        try {
 
-            } catch (BusinessException e) {
-                e.printStackTrace();
-                log.info("TRANSACTIONAL EXCEPTION! " + e.getMessage());
-            }
+            Order order = new Order(user.getEmail(), typePayment, card, cart.getCart());
+            orderService.createOrder(order);
+
+        } catch (BusinessException e) {
+            e.printStackTrace();
+            log.info("TRANSACTIONAL EXCEPTION! " + e.getMessage());
         }
     }
 }

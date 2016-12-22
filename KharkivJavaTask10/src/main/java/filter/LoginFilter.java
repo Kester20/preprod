@@ -38,10 +38,8 @@ public class LoginFilter implements Filter{
     }
 
     private void checkAccess(HttpSession session, HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-        log.info(request.getRequestURL());
-        log.info(request.getRequestURI());
         if(session.getAttribute(USER) == null){
-            session.setAttribute(USER_HAS_PAGE, request.getRequestURI().toString());
+            session.setAttribute(REDIRECT_PAGE, request.getRequestURI().toString());
             RequestDispatcher dispatcher = request.getRequestDispatcher(ACCOUNT_JSP);
             dispatcher.forward(request, response);
         }else{

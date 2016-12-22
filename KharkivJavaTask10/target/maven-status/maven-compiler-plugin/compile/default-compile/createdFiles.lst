@@ -27,6 +27,7 @@ repository\product\LaptopRepository$1.class
 service\catalog\DefaultCatalogFilterService.class
 api\servlet\cart\GetAmountServlet.class
 service\product\ProductService.class
+filter\LocaleFilter.class
 service\captcha\SessionCaptchaService$1.class
 api\servlet\order\CreateOrderServlet.class
 entity\laptop\Laptop.class
@@ -78,3 +79,4 @@ db\sqlbuilder\SQLDirector.class
 repository\order\OrderRepository.class
 annotation\ValidatorAnnotation$Pattern.class
 constants\Constants.class
+filter\LocaleFilter$1.class

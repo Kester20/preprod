@@ -35,8 +35,8 @@ public class LogInServlet extends HttpServlet {
             request.getSession().removeAttribute(WRONG_EMAIL_OR_PASSWORD);
         } else {
             HttpSession session = request.getSession();
-            String nextPage = session.getAttribute(USER_HAS_PAGE) == null ? INDEX_JSP : (String) session.getAttribute(USER_HAS_PAGE);
-            session.removeAttribute(USER_HAS_PAGE);
+            String nextPage = session.getAttribute(REDIRECT_PAGE) == null ? INDEX_JSP : (String) session.getAttribute(REDIRECT_PAGE);
+            session.removeAttribute(REDIRECT_PAGE);
             response.sendRedirect(nextPage);
         }
     }

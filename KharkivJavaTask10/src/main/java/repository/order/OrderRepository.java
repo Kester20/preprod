@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 /**
  * @author Arsalan
@@ -61,18 +62,24 @@ public class OrderRepository {
         try {
             PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
 
-            for (Laptop laptop : orderHistory.getOrder().getProducts().keySet()) {
-                statement.setInt(1, orderId);
-                statement.setInt(2, laptop.getId());
-                statement.setInt(3, orderHistory.getOrder().getProducts().get(laptop));
-                statement.addBatch();
-            }
-
-            statement.executeBatch();
+            setUpBatchStatement(statement, orderHistory, orderId);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setUpBatchStatement(PreparedStatement statement, OrderHistory orderHistory, int orderId) throws SQLException {
+        Order order = orderHistory.getOrder();
+        Map<Laptop, Integer> products = order.getProducts();
+
+        for (Laptop laptop : products.keySet()) {
+            statement.setInt(1, orderId);
+            statement.setInt(2, laptop.getId());
+            statement.setInt(3, orderHistory.getOrder().getProducts().get(laptop));
+            statement.addBatch();
+        }
+        statement.executeBatch();
     }
 
     public int getLastOrderId() {

@@ -35,6 +35,7 @@ public class AddToCartServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        log.info("in get");
         HttpSession session = request.getSession();
         Cart cart = session.getAttribute(CART) == null ? new Cart() : (Cart) session.getAttribute(CART);
         int idLaptop = request.getParameter(ID_LAPTOP) == null ? 0 : Integer.parseInt(request.getParameter(ID_LAPTOP));

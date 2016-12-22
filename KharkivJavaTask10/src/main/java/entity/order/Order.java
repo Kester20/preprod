@@ -2,16 +2,17 @@ package entity.order;
 
 import entity.laptop.Laptop;
 
+import java.util.Collections;
 import java.util.Map;
 
 /**
  * @author Arsalan
  */
-public class Order {
+public final class Order {
 
-    private String  userEmail;
-    private String typePayment;
-    private String card;
+    private final String  userEmail;
+    private final String typePayment;
+    private final String card;
     private final Map<Laptop, Integer> products;
 
     public Order(String userEmail, String typePayment, String card, Map<Laptop, Integer> products) {
@@ -34,6 +35,6 @@ public class Order {
     }
 
     public Map<Laptop, Integer> getProducts() {
-        return products;
+        return Collections.unmodifiableMap(products);
     }
 }
