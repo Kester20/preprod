@@ -42,7 +42,7 @@
         <filter-class>filter.LocaleFilter</filter-class>
         <init-param>
             <param-name>storage</param-name>
-            <param-value>session</param-value>
+            <param-value>cookie</param-value>
         </init-param>
         <init-param>
             <param-name>default_locale</param-name>

@@ -6,6 +6,7 @@ C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\ja
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\api\servlet\LogOutServlet.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\entity\cart\CartOperation.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\api\servlet\locale\ChangeLanguageServlet.java
+C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\filter\localeStorage\LocaleStorage.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\listener\ContextListener.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\api\servlet\order\CreateOrderServlet.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\db\sqlbuilder\action\impl\DeleteAndAction.java
@@ -39,12 +40,14 @@ C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\ja
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\db\sqlbuilder\action\impl\PriceAppenderAction.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\api\servlet\cart\AddToCartServlet.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\service\captcha\SessionCaptchaService.java
+C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\filter\localeStorage\LocaleStorageService.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\db\query\UserQueries.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\db\sqlbuilder\action\map\ActionMap.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\filter\LocaleFilter.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\repository\product\CategoryRepository.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\entity\cart\Cart.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\exceptions\BusinessException.java
+C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\filter\localeStorage\impl\CookieLocaleStorage.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\db\sqlbuilder\action\impl\DefaultAppenderAction.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\filter\LoginFilter.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\repository\order\OrderRepository.java
@@ -53,6 +56,7 @@ C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\ja
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\db\transaction\TransactionOperation.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\api\servlet\LogInServlet.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\util\Validator.java
+C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\filter\localeStorage\impl\SessionLocaleStorage.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\api\servlet\RegistrationServlet.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\service\captcha\CookieCaptchaService.java
 C:\Users\Said_Sulaiman_Arsala\IdeaProjects\preprod\KharkivJavaTask10\src\main\java\api\servlet\CatalogServlet.java

@@ -28,9 +28,11 @@ service\catalog\DefaultCatalogFilterService.class
 api\servlet\cart\GetAmountServlet.class
 service\product\ProductService.class
 filter\LocaleFilter.class
+filter\localeStorage\LocaleStorage.class
 service\captcha\SessionCaptchaService$1.class
 api\servlet\order\CreateOrderServlet.class
 entity\laptop\Laptop.class
+filter\localeStorage\LocaleStorageService$1.class
 service\captcha\SessionCaptchaService.class
 listener\ContextListener.class
 service\user\DefaultUserService.class
@@ -52,6 +54,7 @@ repository\user\UserRepository$2.class
 repository\user\UserRepository.class
 api\servlet\LogOutServlet.class
 db\sqlbuilder\impl\CatalogSQLBuilder.class
+filter\localeStorage\impl\SessionLocaleStorage.class
 entity\formbean\RegistrationFormBean.class
 api\servlet\LogInServlet.class
 db\sqlbuilder\action\map\ActionMap$1.class
@@ -62,6 +65,7 @@ service\user\UserService.class
 entity\user\User.class
 api\servlet\order\ConfirmOrderServlet.class
 entity\order\Order.class
+filter\localeStorage\impl\CookieLocaleStorage.class
 repository\product\CategoryRepository.class
 api\servlet\cart\ClearCartServlet.class
 service\captcha\HiddenCaptchaService.class
@@ -71,6 +75,7 @@ service\order\OrderService.class
 entity\laptop\Producer.class
 annotation\ValidatorAnnotation$GetMethod.class
 db\sqlbuilder\action\impl\OrderByAppenderAction.class
+filter\localeStorage\LocaleStorageService.class
 service\product\DefaultProductService.class
 db\query\UserQueries.class
 filter\LoginFilter.class
