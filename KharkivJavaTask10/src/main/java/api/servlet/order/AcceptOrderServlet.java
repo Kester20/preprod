@@ -47,7 +47,6 @@ public class AcceptOrderServlet extends HttpServlet {
     }
 
     private void createOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        boolean created = false;
         String typePayment = request.getParameter(TYPE_PAYMENT);
         String card = request.getParameter(CARD);
         User user = (User) request.getSession().getAttribute(USER);

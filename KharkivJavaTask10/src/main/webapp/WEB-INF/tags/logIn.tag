@@ -1,12 +1,15 @@
 <%@ tag isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<fmt:setLocale value="${locale}" />
+<fmt:setBundle var="b" basename="content" />
 
 <c:choose>
     <c:when test="${sessionScope.user == null}">
 
        <ul>
-            <li><a href="<c:url value='account.jsp' />"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
-            <li><a href="<c:url value='registration_servlet' />"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>
+            <li><a href="<c:url value='account.jsp' />"><span class="glyphicon glyphicon-user"> </span><fmt:message  key="login" bundle="${b}"></fmt:message></a></li>
+            <li><a href="<c:url value='registration_servlet' />"><span class="glyphicon glyphicon-lock"> </span><fmt:message  key="create_an_account" bundle="${b}"></fmt:message></a></li>
        </ul>
 
     </c:when>

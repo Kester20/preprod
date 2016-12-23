@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Locale;
+import java.util.*;
+
+import static constants.Constants.LOCALE;
 
 /**
  * @author Arsalan
@@ -18,7 +19,7 @@ public class LocaleFilter implements Filter {
 
     private static final Logger log = Logger.getLogger(LocaleFilter.class);
     private FilterConfig filterConfig;
-    private Locale locale;
+    private static final String  DEFAULT_LOCALE = "default_locale";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -30,54 +31,44 @@ public class LocaleFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 
-        locale = getLocaleFromCookie(request);
+        Locale locale = getLocaleFromSession(request);
         if (locale == null) {
-            Enumeration browserLocales = request.getLocales();
-
-            boolean settedLocale = false;
-            while (browserLocales.hasMoreElements()) {
-                locale = (Locale) browserLocales.nextElement();
-                if (locale.toString().equals(filterConfig.getInitParameter(locale.toString()))) {
-                    setLocaleToCookie(locale.toString(), response);
-                    settedLocale = true;
-                    break;
-                }
-            }
-            if (!settedLocale) {
-                setLocaleToCookie(filterConfig.getInitParameter("default_locale"), response);
-            }
-        } else {
-            log.info(locale.getLanguage());
+            locale = getLocalFromBrowser(request);
+        }else{
+            locale = new Locale(request.getParameter(LOCALE));
         }
 
-
-
-        ServletRequest requestModified = new HttpServletRequestWrapper((HttpServletRequest) request) {
-
-            @Override
-            public Locale getLocale() {
-                return locale;
-            }
-
-            /*@Override
-            public Enumeration<Locale> getLocales() {
-                return locale;
-            }*/
-        };
-
-        chain.doFilter(requestModified, response);
+        chain.doFilter(getWrappedRequest(request, locale), response);
     }
 
-    @Override
-    public void destroy() {
+    private Locale getLocalFromBrowser(HttpServletRequest request){
+        boolean find = false;
+        Locale result = null;
+        Enumeration browserLocales = request.getLocales();
 
+        while (browserLocales.hasMoreElements()) {
+            result = (Locale) browserLocales.nextElement();
+
+            if (result.toString().equals(filterConfig.getInitParameter(result.toString()))) {
+                find = true;
+                break;
+            }
+        }
+        if (!find) {
+            result = new Locale(filterConfig.getInitParameter(DEFAULT_LOCALE));
+        }
+        return result;
+    }
+
+    private Locale getLocaleFromSession(HttpServletRequest request){
+        return (Locale) request.getSession().getAttribute(LOCALE);
     }
 
     private Locale getLocaleFromCookie(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("locale")) {
+                if (cookie.getName().equals(LOCALE)) {
                     return new Locale(cookie.getValue());
                 }
             }
@@ -86,7 +77,30 @@ public class LocaleFilter implements Filter {
     }
 
     private void setLocaleToCookie(String locale, HttpServletResponse response) {
-        Cookie cookie = new Cookie("locale", locale);
+        Cookie cookie = new Cookie(LOCALE, locale);
         response.addCookie(cookie);
+    }
+
+    private ServletRequest getWrappedRequest(HttpServletRequest request, Locale locale){
+        ServletRequest requestModified = new HttpServletRequestWrapper(request) {
+
+            @Override
+            public Locale getLocale() {
+                return locale;
+            }
+
+            @Override
+            public Enumeration<Locale> getLocales() {
+                Set<Locale> locales = new HashSet<>();
+                locales.add(locale);
+                return Collections.enumeration(locales);
+            }
+        };
+        return requestModified;
+    }
+
+    @Override
+    public void destroy() {
+
     }
 }

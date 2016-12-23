@@ -76,6 +76,7 @@ db\query\UserQueries.class
 filter\LoginFilter.class
 db\sqlbuilder\action\map\ActionMap.class
 db\sqlbuilder\SQLDirector.class
+api\servlet\locale\ChangeLanguageServlet.class
 repository\order\OrderRepository.class
 annotation\ValidatorAnnotation$Pattern.class
 constants\Constants.class
