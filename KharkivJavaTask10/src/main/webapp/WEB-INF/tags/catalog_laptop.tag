@@ -33,7 +33,6 @@
                 </div>
                 <div>
                     <button onclick="addToCart(${laptop.id})" id="addButton">Add to cart</button>
-                    <%-- <a class="cbp-vm-icon cbp-vm-add item_add" href="" >Add to cart</a> --%>
                 </div>
             </li>
 
