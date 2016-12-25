@@ -6,7 +6,7 @@ import db.sqlbuilder.action.map.ActionMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static constants.Constants.*;
+import static constants.Constants.AND_SQL;
 
 /**
  * @author Arsalan

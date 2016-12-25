@@ -1,6 +1,5 @@
 package api.servlet.order;
 
-import filter.LoginFilter;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -9,10 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static constants.Constants.*;
+import static constants.Constants.CREATE_ORDER_JSP;
 
 /**
  * @author Arsalan

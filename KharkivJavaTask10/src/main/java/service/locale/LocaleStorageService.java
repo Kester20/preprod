@@ -1,7 +1,7 @@
-package filter.localeStorage;
+package service.locale;
 
-import filter.localeStorage.impl.CookieLocaleStorage;
-import filter.localeStorage.impl.SessionLocaleStorage;
+import service.locale.impl.CookieLocaleStorage;
+import service.locale.impl.SessionLocaleStorage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +17,7 @@ public class LocaleStorageService {
     private Map<String, LocaleStorage> storageMap;
 
     public LocaleStorageService() {
-        storageMap = new HashMap<String, LocaleStorage>(){{
+        storageMap = new HashMap<String, LocaleStorage>() {{
             put(SESSION, new SessionLocaleStorage());
             put(COOKIE, new CookieLocaleStorage());
         }};

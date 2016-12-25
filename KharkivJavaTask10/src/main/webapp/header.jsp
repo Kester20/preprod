@@ -3,8 +3,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tg" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<fmt:setLocale value="${locale}" />
-<fmt:setBundle var="b" basename="content" />
+
+<c:set scope="session" var="language" value="${locale}"/>
+
+<c:if test="${storage eq 'cookie'}">
+    <c:forEach items="${cookie}" var="currentCookie">
+        <c:if test="${currentCookie.value.name eq 'locale'}">
+            <c:set scope="session" var="language" value="${currentCookie.value.value}"/>
+        </c:if>
+    </c:forEach>
+</c:if>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle var="b" basename="content"/>
 
 <script src="js/cartOperation.js"></script>
 <script src="js/changeLanguage.js"></script>
@@ -32,11 +43,7 @@
                             </p>
                         </c:if>
 
-                        <select id="select"  onchange="changeLanguage(this.value)">
-                            <option value="ru" style="display: none;">${wordLang }</option>
-                            <option value="ru">Русский</option>
-                            <option value="en">English</option>
-                        </select>
+                        <tg:chooseLanguage/>
 
                         <div class="clearfix"></div>
                     </div>

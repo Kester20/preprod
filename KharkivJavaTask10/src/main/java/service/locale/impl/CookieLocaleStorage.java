@@ -1,12 +1,13 @@
-package filter.localeStorage.impl;
+package service.locale.impl;
 
-import filter.localeStorage.LocaleStorage;
+import service.locale.LocaleStorage;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
-import static constants.Constants.LOCALE;
+import static constants.Constants.*;
 
 /**
  * @author Arsalan
@@ -24,5 +25,12 @@ public class CookieLocaleStorage implements LocaleStorage {
             }
         }
         return null;
+    }
+
+    @Override
+    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+        request.getSession().setAttribute(STORAGE, COOKIE);
+        Cookie cookie = new Cookie(LOCALE, locale.toString());
+        response.addCookie(cookie);
     }
 }

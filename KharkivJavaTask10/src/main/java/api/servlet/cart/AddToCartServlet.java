@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static constants.Constants.CART;
-import static constants.Constants.ID_LAPTOP;
-import static constants.Constants.LAPTOP_SERVICE;
+import static constants.Constants.*;
 
 
 /**
@@ -64,7 +62,7 @@ public class AddToCartServlet extends HttpServlet {
 
     private void sendResponse(HttpServletResponse response, Cart cart) throws IOException {
         JSONObject json = new JSONObject();
-        json.put("amount",  cart.getAmount());
+        json.put("amount", cart.getAmount());
         json.put("size", cart.getCart().size());
         response.setContentType("application/json");
         response.getOutputStream().print(json.toString());

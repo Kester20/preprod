@@ -51,9 +51,9 @@ public class DeleteFromCartServlet extends HttpServlet {
                 }
             }
         }
-        if(cart.getCart().size() == 0){
+        if (cart.getCart().size() == 0) {
             session.removeAttribute(CART);
-        }else{
+        } else {
             session.setAttribute(CART, cart);
         }
     }

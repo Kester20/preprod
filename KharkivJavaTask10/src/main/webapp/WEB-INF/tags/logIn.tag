@@ -1,7 +1,8 @@
 <%@ tag isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<fmt:setLocale value="${locale}" />
+
+<fmt:setLocale value="${language}" />
 <fmt:setBundle var="b" basename="content" />
 
 <c:choose>

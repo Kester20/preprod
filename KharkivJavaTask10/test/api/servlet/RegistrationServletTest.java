@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import repository.factory.RepositoryFactory;
 import repository.user.UserRepository;
 import service.captcha.CaptchaService;
 import service.user.DefaultUserService;
@@ -47,7 +48,7 @@ public class RegistrationServletTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         servlet = new RegistrationServlet();
-        defaultUserService = new DefaultUserService(new UserRepository(null));
+        defaultUserService = new DefaultUserService(new RepositoryFactory(null));
         defaultFormBeanService = new DefaultFormBeanService();
 
         when(servletConfig.getServletContext()).thenReturn(servletContext);

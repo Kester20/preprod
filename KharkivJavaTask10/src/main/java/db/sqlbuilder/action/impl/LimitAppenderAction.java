@@ -3,7 +3,6 @@ package db.sqlbuilder.action.impl;
 import java.util.Map;
 
 import static constants.Constants.*;
-import static constants.Constants.LIMIT;
 
 /**
  * Created by Said_Sulaiman_Arsala on 12/19/2016.

@@ -15,7 +15,7 @@ import static constants.Constants.*;
  * @author Arsalan
  */
 
-public class LoginFilter implements Filter{
+public class LoginFilter implements Filter {
 
     private static final Logger log = Logger.getLogger(LoginFilter.class);
 
@@ -38,11 +38,11 @@ public class LoginFilter implements Filter{
     }
 
     private void checkAccess(HttpSession session, HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-        if(session.getAttribute(USER) == null){
+        if (session.getAttribute(USER) == null) {
             session.setAttribute(REDIRECT_PAGE, request.getRequestURI().toString());
             RequestDispatcher dispatcher = request.getRequestDispatcher(ACCOUNT_JSP);
             dispatcher.forward(request, response);
-        }else{
+        } else {
             chain.doFilter(request, response);
         }
     }

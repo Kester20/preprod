@@ -3,7 +3,7 @@ package db.sqlbuilder.action.impl;
 import static constants.Constants.LAPTOPS_COST;
 
 /**
- *@author Arsalan
+ * @author Arsalan
  */
 public class PriceAppenderAction extends AbstractAction {
 

@@ -10,6 +10,15 @@
         <param-value>hidden</param-value>
     </context-param>
 
+    <session-config>
+        <session-timeout>30</session-timeout> <!-- 30 minutes! -->
+        <cookie-config>
+            <http-only>true</http-only>
+            <max-age>1800</max-age> <!-- 1800 seconds: 30 minutes! -->
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
     <listener>
         <listener-class>
             listener.ContextListener
@@ -28,34 +37,93 @@
         <location>/error.jsp</location>
     </error-page>
 
+
+
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>filter.LoginFilter</filter-class>
     </filter>
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/create_order</url-pattern>
-    </filter-mapping>
 
     <filter>
         <filter-name>LocaleFilter</filter-name>
         <filter-class>filter.LocaleFilter</filter-class>
         <init-param>
             <param-name>storage</param-name>
-            <param-value>cookie</param-value>
+            <param-value>session</param-value>
         </init-param>
         <init-param>
             <param-name>default_locale</param-name>
-            <param-value>en</param-value>
+            <param-value>en_US</param-value>
         </init-param>
         <init-param>
-            <param-name>ru</param-name>
-            <param-value>ru</param-value>
+            <param-name>ru_RU</param-name>
+            <param-value>ru_RU</param-value>
         </init-param>
     </filter>
+
+    <filter>
+        <filter-name>GzipFilter</filter-name>
+        <filter-class>filter.gzip.GZipFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>responseHeaderFilter</filter-name>
+        <filter-class>filter.hash.ResponseHeaderFilter</filter-class>
+        <init-param>
+            <param-name>Cache-Control</param-name>
+            <param-value>no-store, max-age=0, must-revalidate</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Pragma</param-name>
+            <param-value>no-cache</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Expires</param-name>
+            <param-value>Fri, 01 Jan 1990 00:00:00 GMT</param-value>
+        </init-param>
+    </filter>
+
+
+
+
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/create_order</url-pattern>
+    </filter-mapping>
+
     <filter-mapping>
         <filter-name>LocaleFilter</filter-name>
         <url-pattern>/change_locale</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>*.css</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>responseHeaderFilter</filter-name>
+        <url-pattern>*.jpg</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>responseHeaderFilter</filter-name>
+        <url-pattern>*.swf</url-pattern>
     </filter-mapping>
 
 </web-app>

@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static constants.Constants.CART;
-import static constants.Constants.ID_LAPTOP;
-import static constants.Constants.VALUE;
+import static constants.Constants.*;
 
 /**
  * @author Arsalan

@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public final class Order {
 
-    private final String  userEmail;
+    private final String userEmail;
     private final String typePayment;
     private final String card;
     private final Map<Laptop, Integer> products;
