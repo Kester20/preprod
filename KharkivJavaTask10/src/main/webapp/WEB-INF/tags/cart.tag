@@ -4,6 +4,11 @@
 <%@ attribute name="blockUser" required="true"%>
 <%@ attribute name="button" required="true"  %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle var="b" basename="content"/>
+
 <c:choose>
     <c:when test="${(empty sessionScope.cart) || (sessionScope.cart.getNumberOfProducts() == 0)}">
         <h2>${title}(EMPTY)</h2>

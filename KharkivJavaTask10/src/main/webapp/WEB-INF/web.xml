@@ -1,7 +1,11 @@
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
     <display-name>Archetype Created Web Application</display-name>
 
@@ -38,7 +42,6 @@
     </error-page>
 
 
-
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>filter.LoginFilter</filter-class>
@@ -49,7 +52,7 @@
         <filter-class>filter.LocaleFilter</filter-class>
         <init-param>
             <param-name>storage</param-name>
-            <param-value>session</param-value>
+            <param-value>cookie</param-value>
         </init-param>
         <init-param>
             <param-name>default_locale</param-name>
@@ -84,8 +87,6 @@
     </filter>
 
 
-
-
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/create_order</url-pattern>
@@ -93,7 +94,7 @@
 
     <filter-mapping>
         <filter-name>LocaleFilter</filter-name>
-        <url-pattern>/change_locale</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
     <filter-mapping>

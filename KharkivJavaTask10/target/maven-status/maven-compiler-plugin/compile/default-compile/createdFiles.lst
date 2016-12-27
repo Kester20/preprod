@@ -86,7 +86,6 @@ db\query\UserQueries.class
 filter\LoginFilter.class
 service\locale\LocaleStorageService.class
 db\sqlbuilder\action\map\ActionMap.class
-api\servlet\locale\ChangeLanguageServlet.class
 repository\order\OrderRepository.class
 constants\Constants.class
 filter\LocaleFilter$1.class

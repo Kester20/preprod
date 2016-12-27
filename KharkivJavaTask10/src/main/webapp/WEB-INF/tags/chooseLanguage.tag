@@ -1,4 +1,5 @@
 <%@ tag isELIgnored="false" %>
+<%@tag pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
@@ -8,6 +9,6 @@
 
 <select id="select"  onchange="changeLanguage(this.value)">
     <option style="display: none;">${wordLang}</option>
-    <option value="ru_RU">Russian</option>
+    <option value="ru_RU">Русский</option>
     <option value="en_US">English</option>
 </select>

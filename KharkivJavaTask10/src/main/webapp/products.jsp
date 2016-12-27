@@ -3,6 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tg" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle var="b" basename="content"/>
 
 <!DOCTYPE html>
 <html>
@@ -43,19 +47,19 @@
             <div class="products-page">
                 <div class="products">
                     <div class="product-listy">
-                        <h2>our Products</h2>
+                        <h2><fmt:message  key="ourProducts" bundle="${b}"></fmt:message></h2>
                         <ul class="product-list">
 
                             <input type="submit" value="Select" class="subm" form="catalogform" id="subm"/>
 
-                            <h4 class="labelCriteria">Price</h4>
+                            <h4 class="labelCriteria"><fmt:message  key="price" bundle="${b}"></fmt:message></h4>
 
                             <div id="amountVal">
                                 <input type="text" name="firstPrice" id="amount" class="priceAmount" form="catalogform"/>
                                 -<input type="text" name="secondPrice" id="amount_1" class="priceAmount" form="catalogform"/></div>
                             <div id="slider-range" class="priceSlider"></div>
 
-                            <h4 class="labelCriteria">Producers</h4>
+                            <h4 class="labelCriteria"><fmt:message  key="producers" bundle="${b}"></fmt:message></h4>
                             <c:forEach var="producer" items="${requestScope.producerList}">
 
                                 <c:forEach var='value' items='${paramValues.checkboxProducer}'>
@@ -74,7 +78,7 @@
                                 <c:set var="checkedProducer" value=""/>
                             </c:forEach>
 
-                            <h4 class="labelCriteria">Category</h4>
+                            <h4 class="labelCriteria"><fmt:message  key="category" bundle="${b}"></fmt:message></h4>
 
                             <c:forEach var="category" items="${requestScope.categoryList}">
 
@@ -96,15 +100,9 @@
 
                         </ul>
 
-                        <input type="submit" value="Select" class="subm" form="catalogform"/>
+                        <input type="submit" value="<fmt:message  key="select" bundle="${b}"></fmt:message>" class="subm" form="catalogform"/>
                     </div>
-                    <!-- <div class="latest-bis">
-                    <img src="images/l4.jpg" class="img-responsive" alt=""/>
-                    <div class="offer">
-                        <p>40%</p>
-                        <small>Top Offer</small>
-                    </div>
-                </div> -->
+
                     <div class="tags">
                         <h4 class="tag_head">Tags Widget</h4>
                         <ul class="tags_links">
@@ -262,7 +260,7 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <!-- content-section-ends -->
+
             <div class="other-products">
                 <div class="container">
                     <h3 class="like text-center">Featured Collection</h3>
@@ -355,7 +353,7 @@
 
                         });
                     </script>
-                    <script type="text/javascript" src="js/jquery.flexisel.js"></script> 
+                    <script type="text/javascript" src="js/jquery.flexisel.js"></script>
                 </div>
             </div>
             <!-- content-section-ends-here -->

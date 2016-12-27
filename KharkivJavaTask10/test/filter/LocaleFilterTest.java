@@ -54,6 +54,7 @@ public class LocaleFilterTest {
 
     private LocaleFilter filter;
     private static final String EN_US = "en_US";
+    private static final String EN_us = "en_us";
     private static final String RU_RU = "ru_RU";
     private ArgumentCaptor<String> argumentCaptor;
     private ArgumentCaptor<Cookie> argumentCaptorCookie;
@@ -100,7 +101,7 @@ public class LocaleFilterTest {
         when(request.getSession()).thenReturn(session);
         doNothing().when(response).addCookie(argumentCaptorCookie.capture());
         filter.setLocaleToStorage(request, response, locale);
-        assertEquals(argumentCaptorCookie.getValue().getValue(), "en_us");
+        assertEquals(argumentCaptorCookie.getValue().getValue(), EN_us);
     }
 
     @Test
@@ -111,6 +112,6 @@ public class LocaleFilterTest {
         when(request.getSession()).thenReturn(session);
         doNothing().when(session).setAttribute(anyString(), argumentCaptor.capture());
         filter.setLocaleToStorage(request, response, locale);
-        assertEquals(argumentCaptor.getAllValues().get(1), "ru_ru");
+        assertEquals(argumentCaptor.getAllValues().get(1), locale);
     }
 }

@@ -77,10 +77,10 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="index.jsp">Home</a>
+                                <a href="index.jsp"><fmt:message  key="home" bundle="${b}"></fmt:message></a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message  key="catalog" bundle="${b}"></fmt:message>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu multi-column columns-3">

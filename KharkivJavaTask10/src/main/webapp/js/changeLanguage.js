@@ -1,10 +1,10 @@
 function changeLanguage(locale) {
 
-    location.hash = "lang="+ locale;
+    location.hash = "locale="+ locale;
 
     $.ajax({
         type: "GET",
-        url: "change_locale",
+        url: "",
         dataType: "text",
         data: "locale=" + locale,
         success: function(result) {

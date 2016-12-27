@@ -20,7 +20,8 @@ public class SessionLocaleStorage implements LocaleStorage {
 
     @Override
     public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+        System.out.println(request.getSession().getMaxInactiveInterval());
         request.getSession().setAttribute(STORAGE, SESSION);
-        request.getSession().setAttribute(LOCALE, locale.toString());
+        request.getSession().setAttribute(LOCALE, locale);
     }
 }

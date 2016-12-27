@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static constants.Constants.ACCEPT_ENCODING;
-import static constants.Constants.CONTENT_ENCODING;
-import static constants.Constants.GZIP;
+import static constants.Constants.*;
 
 /**
  * @author Arsalan
@@ -27,7 +25,7 @@ public class GZipFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 
-        if (acceptsGZipEncoding(request)) {
+        if (acceptsGZipEncoding(request) && acceptContentType(request)) {
             response.addHeader(CONTENT_ENCODING, GZIP);
             GZipServletResponseWrapper gzipResponse = new GZipServletResponseWrapper(response);
             chain.doFilter(req, gzipResponse);
@@ -39,7 +37,15 @@ public class GZipFilter implements Filter {
 
     private boolean acceptsGZipEncoding(HttpServletRequest request) {
         String acceptEncoding = request.getHeader(ACCEPT_ENCODING);
-        return acceptEncoding != null && acceptEncoding.indexOf(GZIP) != -1;
+        return acceptEncoding != null && acceptEncoding.contains(GZIP) ;
+    }
+
+    private boolean acceptContentType(HttpServletRequest request){
+        String acceptContentType = request.getContentType();
+        if(acceptContentType != null){
+            return acceptContentType.contains(TEXT);
+        }
+        return false;
     }
 
 }
