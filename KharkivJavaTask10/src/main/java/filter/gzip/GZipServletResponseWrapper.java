@@ -12,8 +12,8 @@ import java.io.PrintWriter;
  */
 public class GZipServletResponseWrapper extends HttpServletResponseWrapper {
 
-    private GZipServletOutputStream gzipOutputStream = null;
-    private PrintWriter printWriter = null;
+    private GZipServletOutputStream gzipOutputStream;
+    private PrintWriter printWriter;
 
     public GZipServletResponseWrapper(HttpServletResponse response) throws IOException {
         super(response);

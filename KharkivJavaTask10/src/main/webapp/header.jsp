@@ -15,12 +15,12 @@
 </c:if>
 
 <fmt:setLocale value="${language}"/>
-<fmt:setBundle var="b" basename="content"/>
+<fmt:setBundle var="bundle" basename="content"/>
 
 <script src="js/cartOperation.js"></script>
 <script src="js/changeLanguage.js"></script>
 
-<fmt:message var="wordLang" key="wordLang" bundle="${b }"></fmt:message>
+<fmt:message var="wordLang" key="wordLang"></fmt:message>
 
 <!-- header-section-starts -->
 <div class="header">
@@ -77,10 +77,10 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="index.jsp"><fmt:message  key="home" bundle="${b}"></fmt:message></a>
+                                <a href="index.jsp"><fmt:message  key="home" bundle="${bundle}"></fmt:message></a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message  key="catalog" bundle="${b}"></fmt:message>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message  key="catalog" bundle="${bundle}"></fmt:message>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu multi-column columns-3">

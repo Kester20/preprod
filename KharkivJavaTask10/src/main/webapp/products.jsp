@@ -6,7 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <fmt:setLocale value="${language}"/>
-<fmt:setBundle var="b" basename="content"/>
+<fmt:setBundle var="bundle" basename="content"/>
 
 <!DOCTYPE html>
 <html>
@@ -47,19 +47,19 @@
             <div class="products-page">
                 <div class="products">
                     <div class="product-listy">
-                        <h2><fmt:message  key="ourProducts" bundle="${b}"></fmt:message></h2>
+                        <h2><fmt:message  key="ourProducts" bundle="${bundle}"></fmt:message></h2>
                         <ul class="product-list">
 
                             <input type="submit" value="Select" class="subm" form="catalogform" id="subm"/>
 
-                            <h4 class="labelCriteria"><fmt:message  key="price" bundle="${b}"></fmt:message></h4>
+                            <h4 class="labelCriteria"><fmt:message  key="price" bundle="${bundle}"></fmt:message></h4>
 
                             <div id="amountVal">
                                 <input type="text" name="firstPrice" id="amount" class="priceAmount" form="catalogform"/>
                                 -<input type="text" name="secondPrice" id="amount_1" class="priceAmount" form="catalogform"/></div>
                             <div id="slider-range" class="priceSlider"></div>
 
-                            <h4 class="labelCriteria"><fmt:message  key="producers" bundle="${b}"></fmt:message></h4>
+                            <h4 class="labelCriteria"><fmt:message  key="producers" bundle="${bundle}"></fmt:message></h4>
                             <c:forEach var="producer" items="${requestScope.producerList}">
 
                                 <c:forEach var='value' items='${paramValues.checkboxProducer}'>
@@ -78,7 +78,7 @@
                                 <c:set var="checkedProducer" value=""/>
                             </c:forEach>
 
-                            <h4 class="labelCriteria"><fmt:message  key="category" bundle="${b}"></fmt:message></h4>
+                            <h4 class="labelCriteria"><fmt:message  key="category" bundle="${bundle}"></fmt:message></h4>
 
                             <c:forEach var="category" items="${requestScope.categoryList}">
 
@@ -100,7 +100,7 @@
 
                         </ul>
 
-                        <input type="submit" value="<fmt:message  key="select" bundle="${b}"></fmt:message>" class="subm" form="catalogform"/>
+                        <input type="submit" value="<fmt:message  key="select" bundle="${bundle}"></fmt:message>" class="subm" form="catalogform"/>
                     </div>
 
                     <div class="tags">

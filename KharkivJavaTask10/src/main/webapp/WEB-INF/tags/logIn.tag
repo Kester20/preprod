@@ -3,14 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <fmt:setLocale value="${language}" />
-<fmt:setBundle var="b" basename="content" />
+<fmt:setBundle var="bundle" basename="content" />
 
 <c:choose>
     <c:when test="${sessionScope.user == null}">
 
        <ul>
-            <li><a href="<c:url value='account.jsp' />"><span class="glyphicon glyphicon-user"> </span><fmt:message  key="login" bundle="${b}"></fmt:message></a></li>
-            <li><a href="<c:url value='registration_servlet' />"><span class="glyphicon glyphicon-lock"> </span><fmt:message  key="create_an_account" bundle="${b}"></fmt:message></a></li>
+            <li><a href="<c:url value='account.jsp' />"><span class="glyphicon glyphicon-user"> </span><fmt:message  key="login" bundle="${bundle}"></fmt:message></a></li>
+            <li><a href="<c:url value='registration_servlet' />"><span class="glyphicon glyphicon-lock"> </span><fmt:message  key="create_an_account" bundle="${bundle}"></fmt:message></a></li>
        </ul>
 
     </c:when>
