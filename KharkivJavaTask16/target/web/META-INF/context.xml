@@ -1,0 +1,8 @@
+<Context>
+
+    <Resource name="jdbc/web_store" auth="Container" type="javax.sql.DataSource"
+              username="root" password="" driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/web_store" connectionProperties="useUnicode=yes;characterEncoding=utf8;"
+              maxActive="100"/>
+
+</Context>
