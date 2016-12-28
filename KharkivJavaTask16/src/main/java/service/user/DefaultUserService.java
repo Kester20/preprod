@@ -50,8 +50,8 @@ public class DefaultUserService implements UserService {
     }
 
     @Override
-    public boolean checkUserHasNotBan(String email){
-        return userRepository.checkUserHasNotBan(email);
+    public boolean checkUserHasBan(String email){
+        return userRepository.checkUserHasBan(email);
     }
 
 }

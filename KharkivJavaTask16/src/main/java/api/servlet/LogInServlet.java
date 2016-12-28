@@ -45,19 +45,19 @@ public class LogInServlet extends HttpServlet {
         if (request.getParameter(EMAIL) != null && request.getParameter(PASSWORD) != null) {
             String email = request.getParameter(EMAIL);
             String password = request.getParameter(PASSWORD);
-            if (defaultUserService.logInUser(email, password)) {
-                defaultUserService.clearUserFailedLogin(email);
-                session.setAttribute(USER, defaultUserService.getUserByEmailAndPassword(email, password));
-                session.setAttribute(USER_AVATAR, AVATARS_PATH + File.separator + email + ".png");
-            } else {
-                session.setAttribute(WRONG_EMAIL_OR_PASSWORD, SIMPLE_WRONG_EMAIL_OR_PASSWORD);
-                defaultUserService.incrementUserFailedLogin(email);
+            if(defaultUserService.checkUserHasBan(email)){
+                response.sendError(403, ACCESS_DENIED);
+            }else{
+                if (defaultUserService.logInUser(email, password)) {
+                    defaultUserService.clearUserFailedLogin(email);
+                    session.setAttribute(USER, defaultUserService.getUserByEmailAndPassword(email, password));
+                    session.setAttribute(USER_AVATAR, AVATARS_PATH + File.separator + email + ".png");
+                } else {
+                    session.setAttribute(WRONG_EMAIL_OR_PASSWORD, SIMPLE_WRONG_EMAIL_OR_PASSWORD);
+                    defaultUserService.incrementUserFailedLogin(email);
+                }
+                response.sendRedirect(LOGIN_SERVLET);
             }
         }
-        response.sendRedirect(LOGIN_SERVLET);
-    }
-
-    private boolean userCanLogin(String email, String password){
-        return defaultUserService.logInUser(email, password) && defaultUserService.checkUserHasNotBan(email);
     }
 }

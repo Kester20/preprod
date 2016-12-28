@@ -20,5 +20,5 @@ public interface UserService {
 
     void clearUserFailedLogin(String email);
 
-    boolean checkUserHasNotBan(String email);
+    boolean checkUserHasBan(String email);
 }

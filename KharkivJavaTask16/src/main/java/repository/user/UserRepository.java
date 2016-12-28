@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalTime;
 
 /**
  * @author Arsalan
@@ -146,6 +147,10 @@ public class UserRepository implements CrudRepository<User> {
         });
     }
 
+    /**
+     * increment number of failed login
+     * @param email - user' email
+     */
     public void incrementUserFailedLogin(String email) {
         String sql = UserQueries.INC_USER_FAILED_LOGIN;
         transactionManager.doWithoutTransaction(new TransactionOperation<Void>() {
@@ -167,6 +172,10 @@ public class UserRepository implements CrudRepository<User> {
         });
     }
 
+    /**
+     * ban the user, if number of failed login more than 4
+     * @param email - user's email
+     */
     private void ban(String email){
         String sql = UserQueries.BAN;
         transactionManager.doWithoutTransaction(new TransactionOperation<Void>() {
@@ -178,6 +187,7 @@ public class UserRepository implements CrudRepository<User> {
                     statement.setTime(1, new Time(System.currentTimeMillis() + HALF_AN_HOUR));
                     statement.setString(2, email);
                     statement.executeUpdate();
+                    clearUserFailedLogin(email);
 
                 } catch (SQLException e) {
                     log.warn("SQL error during getting user! " + e.getMessage());
@@ -188,6 +198,10 @@ public class UserRepository implements CrudRepository<User> {
         });
     }
 
+    /**
+     * set number of failed login to 0
+     * @param email - user's email
+     */
     public void clearUserFailedLogin(String email) {
         String sql = UserQueries.CLEAR_USER_FAILED_LOGIN;
         transactionManager.doWithoutTransaction(new TransactionOperation<Void>() {
@@ -208,7 +222,12 @@ public class UserRepository implements CrudRepository<User> {
         });
     }
 
-    public boolean checkUserHasNotBan(String email) {
+    /**
+     *
+     * @param email - user's email
+     * @return true, if user banned, else - false
+     */
+    public boolean checkUserHasBan(String email) {
         String sql = UserQueries.GET_USER_BAN_WILL_BE_REMOVED;
         return transactionManager.doWithoutTransaction(new TransactionOperation<Boolean>() {
             @Override
@@ -219,8 +238,9 @@ public class UserRepository implements CrudRepository<User> {
                     statement.setString(1, email);
                     ResultSet resultSet = statement.executeQuery();
                     if (resultSet.next()) {
-                        Time time = resultSet.getTime(1);
-                        if(new Time(System.currentTimeMillis()).getTime() >= time.getTime()){
+                        LocalTime banWillBeRemoved = resultSet.getTime(1).toLocalTime();
+                        LocalTime currentTime = new Time(System.currentTimeMillis()).toLocalTime();
+                        if(banWillBeRemoved.isAfter(currentTime)){
                             return true;
                         }
                     }
