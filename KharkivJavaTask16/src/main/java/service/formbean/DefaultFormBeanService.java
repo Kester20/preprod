@@ -34,6 +34,6 @@ public class DefaultFormBeanService implements FormBeanService {
 
     public User transformBean(RegistrationFormBean formBean) {
         return new User(formBean.getFirstName(), formBean.getLastName(), formBean.getEmail(),
-                formBean.getPassword(), formBean.getMobileNumber(), 0 , new Time(0));
+                formBean.getPassword(), formBean.getMobileNumber(), 0 , new Time(0), USER);
     }
 }

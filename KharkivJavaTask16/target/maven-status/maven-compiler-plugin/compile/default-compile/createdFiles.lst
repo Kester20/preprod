@@ -1,5 +1,4 @@
 api\servlet\cart\DeleteFromCartServlet.class
-entity\user\Main.class
 service\captcha\CaptchaService$1.class
 service\locale\LocaleStorageService$1.class
 repository\user\UserRepository$3.class
@@ -48,6 +47,7 @@ db\sqlbuilder\action\impl\DefaultAppenderAction.class
 service\catalog\CatalogFilterService.class
 api\servlet\RegistrationServlet.class
 service\locale\impl\SessionLocaleStorage.class
+service\security\Security.class
 db\sqlbuilder\action\impl\AbstractAction.class
 service\formbean\FormBeanService.class
 repository\user\UserRepository$4.class

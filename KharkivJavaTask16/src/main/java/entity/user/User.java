@@ -14,8 +14,9 @@ public class User {
     private String mobileNumber;
     private int failedLogin;
     private Time removeBan;
+    private String role;
 
-    public User(String firstName, String lastName, String email, String password, String mobileNumber, int failedLogin, Time removeBan) {
+    public User(String firstName, String lastName, String email, String password, String mobileNumber, int failedLogin, Time removeBan, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -23,6 +24,7 @@ public class User {
         this.mobileNumber = mobileNumber;
         this.failedLogin = failedLogin;
         this.removeBan = removeBan;
+        this.role = role;
     }
 
     public String getFirstName() {
@@ -51,6 +53,10 @@ public class User {
 
     public Time getRemoveBan() {
         return removeBan;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     @Override
