@@ -2,7 +2,7 @@ package service.formbean;
 
 import entity.formbean.RegistrationFormBean;
 import entity.user.User;
-import util.Validator;
+import util.validator.Validator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Time;
@@ -34,6 +34,6 @@ public class DefaultFormBeanService implements FormBeanService {
 
     public User transformBean(RegistrationFormBean formBean) {
         return new User(formBean.getFirstName(), formBean.getLastName(), formBean.getEmail(),
-                formBean.getPassword(), formBean.getMobileNumber(), 0 , new Time(0), USER);
+                formBean.getPassword(), formBean.getMobileNumber(), 0, new Time(0), USER);
     }
 }

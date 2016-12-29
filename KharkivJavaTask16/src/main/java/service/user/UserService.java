@@ -21,4 +21,6 @@ public interface UserService {
     void clearUserFailedLogin(String email);
 
     boolean checkUserHasBan(String email);
+
+    void clearBanAfterHalfAnHour(String email);
 }

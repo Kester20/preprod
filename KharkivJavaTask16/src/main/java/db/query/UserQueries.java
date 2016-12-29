@@ -14,5 +14,6 @@ public class UserQueries {
     public static final String CLEAR_USER_FAILED_LOGIN = "UPDATE users SET users.failedLogin = 0 WHERE users.email = ? AND users.failedLogin > 4";
     public static final String GET_USER_BAN_WILL_BE_REMOVED = "SELECT banWillBeRemoved FROM users WHERE email = ?";
     public static final String BAN = "UPDATE users SET users.banWillBeRemoved = ? WHERE users.failedLogin > 4 and users.email = ?";
+    public static final String CLEAR_BAN = "UPDATE `users` SET `banWillBeRemoved` = '00:00:00', failedLogin = 0  WHERE  users.email = ?";
 
 }

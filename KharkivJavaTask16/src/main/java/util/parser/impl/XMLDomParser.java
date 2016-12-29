@@ -20,13 +20,12 @@ import java.util.Map;
 public class XMLDomParser implements Parser<String, List> {
 
     private String path;
+    private static final String CONSTRAINT = "constraint";
+    private static final String URL_PATTERN = "url-pattern";
+    private static final String ROLE = "role";
 
     public XMLDomParser(String path) {
         this.path = path;
-    }
-
-    public static void main(String[] args) throws Exception {
-        System.out.println(new XMLDomParser("security.xml").parse());
     }
 
     @Override
@@ -37,19 +36,19 @@ public class XMLDomParser implements Parser<String, List> {
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(inputFile);
 
-        NodeList nodeList1 = document.getElementsByTagName("constraint");
-        for (int i = 0; i < nodeList1.getLength(); i++) {
+        NodeList nodeList = document.getElementsByTagName(CONSTRAINT);
+        for (int i = 0; i < nodeList.getLength(); i++) {
 
-            Node node = nodeList1.item(i);
+            Node node = nodeList.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
 
                 Element eElement = (Element) node;
-                String url =  eElement.getElementsByTagName("url-pattern").item(0).getTextContent();
-                NodeList nodeList = eElement.getElementsByTagName("role");
+                String url = eElement.getElementsByTagName(URL_PATTERN).item(0).getTextContent();
+                NodeList innerNodeList = eElement.getElementsByTagName(ROLE);
 
                 List<String> list = new ArrayList<>();
-                for (int j = 0; j < nodeList.getLength(); j++) {
-                    Node innerNode = nodeList.item(j);
+                for (int j = 0; j < innerNodeList.getLength(); j++) {
+                    Node innerNode = innerNodeList.item(j);
                     list.add(innerNode.getTextContent());
                 }
                 result.put(url, list);

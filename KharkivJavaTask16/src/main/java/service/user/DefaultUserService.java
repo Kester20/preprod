@@ -40,18 +40,23 @@ public class DefaultUserService implements UserService {
     }
 
     @Override
-    public void incrementUserFailedLogin(String email){
+    public void incrementUserFailedLogin(String email) {
         userRepository.incrementUserFailedLogin(email);
     }
 
     @Override
-    public void clearUserFailedLogin(String email){
+    public void clearUserFailedLogin(String email) {
         userRepository.clearUserFailedLogin(email);
     }
 
     @Override
-    public boolean checkUserHasBan(String email){
+    public boolean checkUserHasBan(String email) {
         return userRepository.checkUserHasBan(email);
+    }
+
+    @Override
+    public void clearBanAfterHalfAnHour(String email) {
+        userRepository.clearBanAfterHalfAnHour(email);
     }
 
 }

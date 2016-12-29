@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author Arsalan
@@ -22,7 +24,7 @@ public class UserRepository implements CrudRepository<User> {
 
     private static final Logger log = Logger.getLogger(UserRepository.class);
     private TransactionManager transactionManager;
-    private static final long HALF_AN_HOUR = 1000*30*60;
+    private static final long HALF_AN_HOUR = 1000 * 30 * 60;
 
     public UserRepository(DataSource dataSource) {
         this.transactionManager = new TransactionManager(dataSource);
@@ -149,6 +151,7 @@ public class UserRepository implements CrudRepository<User> {
 
     /**
      * increment number of failed login
+     *
      * @param email - user' email
      */
     public void incrementUserFailedLogin(String email) {
@@ -164,7 +167,7 @@ public class UserRepository implements CrudRepository<User> {
                     ban(email);
 
                 } catch (SQLException e) {
-                    log.warn("SQL error during getting user! " + e.getMessage());
+                    log.warn("SQL error during inc user failed login! " + e.getMessage());
                     e.printStackTrace();
                 }
                 return null;
@@ -174,9 +177,10 @@ public class UserRepository implements CrudRepository<User> {
 
     /**
      * ban the user, if number of failed login more than 4
+     *
      * @param email - user's email
      */
-    private void ban(String email){
+    private void ban(String email) {
         String sql = UserQueries.BAN;
         transactionManager.doWithoutTransaction(new TransactionOperation<Void>() {
             @Override
@@ -190,7 +194,7 @@ public class UserRepository implements CrudRepository<User> {
                     clearUserFailedLogin(email);
 
                 } catch (SQLException e) {
-                    log.warn("SQL error during getting user! " + e.getMessage());
+                    log.warn("SQL error during ban the user! " + e.getMessage());
                     e.printStackTrace();
                 }
                 return null;
@@ -200,6 +204,7 @@ public class UserRepository implements CrudRepository<User> {
 
     /**
      * set number of failed login to 0
+     *
      * @param email - user's email
      */
     public void clearUserFailedLogin(String email) {
@@ -214,7 +219,7 @@ public class UserRepository implements CrudRepository<User> {
                     statement.executeUpdate();
 
                 } catch (SQLException e) {
-                    log.warn("SQL error during getting user! " + e.getMessage());
+                    log.warn("SQL error during clear number of failed login! " + e.getMessage());
                     e.printStackTrace();
                 }
                 return null;
@@ -223,7 +228,6 @@ public class UserRepository implements CrudRepository<User> {
     }
 
     /**
-     *
      * @param email - user's email
      * @return true, if user banned, else - false
      */
@@ -240,17 +244,48 @@ public class UserRepository implements CrudRepository<User> {
                     if (resultSet.next()) {
                         LocalTime banWillBeRemoved = resultSet.getTime(1).toLocalTime();
                         LocalTime currentTime = new Time(System.currentTimeMillis()).toLocalTime();
-                        if(banWillBeRemoved.isAfter(currentTime)){
+                        if (banWillBeRemoved.isAfter(currentTime)) {
                             return true;
                         }
                     }
 
                 } catch (SQLException e) {
-                    log.warn("SQL error during getting user! " + e.getMessage());
+                    log.warn("SQL error during checking user ban! " + e.getMessage());
                     e.printStackTrace();
                 }
                 return false;
             }
         });
+    }
+
+    /**
+     * clears ban and numbers of failed login after half an hour
+     * @param email
+     */
+    public void clearBanAfterHalfAnHour(String email) {
+        String sql = UserQueries.CLEAR_BAN;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                transactionManager.doWithoutTransaction(new TransactionOperation<Void>() {
+                    @Override
+                    public Void doOperation() {
+                        try {
+                            PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+
+                            statement.setString(1, email);
+                            statement.executeUpdate();
+
+                        } catch (SQLException e) {
+                            log.warn("SQL error during clear user ban! " + e.getMessage());
+                            e.printStackTrace();
+                        }
+                        return null;
+                    }
+                });
+                timer.cancel();
+            }
+        }, HALF_AN_HOUR);
     }
 }

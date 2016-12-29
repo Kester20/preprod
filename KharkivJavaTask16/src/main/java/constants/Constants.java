@@ -91,4 +91,6 @@ public class Constants {
     public static final String GZIP = "gzip";
     public static final String TEXT = "text";
     public static final String ACCESS_DENIED = "ACCESS DENIED";
+    public static final String PATH = "path";
+    public static final int CODE_ERROR_403 = 403;
 }

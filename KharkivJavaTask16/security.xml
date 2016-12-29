@@ -1,9 +1,9 @@
 
 <security >
     <constraint>
-        <url-pattern>_order</url-pattern>
+        <url-pattern>(.*)_order</url-pattern>
         <role>admin</role >
-
+        <role>user</role>
     </constraint>
 </security>
 

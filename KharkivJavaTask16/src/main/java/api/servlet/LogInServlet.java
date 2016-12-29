@@ -45,9 +45,9 @@ public class LogInServlet extends HttpServlet {
         if (request.getParameter(EMAIL) != null && request.getParameter(PASSWORD) != null) {
             String email = request.getParameter(EMAIL);
             String password = request.getParameter(PASSWORD);
-            if(defaultUserService.checkUserHasBan(email)){
-                response.sendError(403, ACCESS_DENIED);
-            }else{
+            if (defaultUserService.checkUserHasBan(email)) {
+                response.sendError(CODE_ERROR_403, ACCESS_DENIED);
+            } else {
                 if (defaultUserService.logInUser(email, password)) {
                     defaultUserService.clearUserFailedLogin(email);
                     session.setAttribute(USER, defaultUserService.getUserByEmailAndPassword(email, password));
@@ -55,6 +55,7 @@ public class LogInServlet extends HttpServlet {
                 } else {
                     session.setAttribute(WRONG_EMAIL_OR_PASSWORD, SIMPLE_WRONG_EMAIL_OR_PASSWORD);
                     defaultUserService.incrementUserFailedLogin(email);
+                    defaultUserService.clearBanAfterHalfAnHour(email);
                 }
                 response.sendRedirect(LOGIN_SERVLET);
             }
