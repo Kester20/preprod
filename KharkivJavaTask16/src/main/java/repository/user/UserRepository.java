@@ -32,12 +32,11 @@ public class UserRepository implements CrudRepository<User> {
 
     @Override
     public void create(User user) throws BusinessException {
-        String sql = UserQueries.CREATE_USER;
         transactionManager.doInTransaction(new TransactionOperation<Void>() {
             @Override
             public Void doOperation() {
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.CREATE_USER);
 
                     statement.setString(1, user.getFirstName());
                     statement.setString(2, user.getLastName());
@@ -61,13 +60,12 @@ public class UserRepository implements CrudRepository<User> {
      * @return true if user with this email exist, else - false
      */
     public boolean checkIfExistUser(String email) {
-        String sql = UserQueries.CHECK_IF_EXIST_USER;
         return transactionManager.doWithoutTransaction(new TransactionOperation<Boolean>() {
             @Override
             public Boolean doOperation() {
                 boolean result = true;
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.CHECK_IF_EXIST_USER);
 
                     statement.setString(1, email);
 
@@ -92,13 +90,12 @@ public class UserRepository implements CrudRepository<User> {
      * @return true if user with this email and password exist, else - false
      */
     public boolean logInUser(String email, String password) {
-        String sql = UserQueries.LOG_IN_USER;
         return transactionManager.doWithoutTransaction(new TransactionOperation<Boolean>() {
             @Override
             public Boolean doOperation() {
                 boolean result = true;
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.LOG_IN_USER);
 
                     statement.setString(1, email);
                     statement.setString(2, password);
@@ -124,13 +121,12 @@ public class UserRepository implements CrudRepository<User> {
      * @return user
      */
     public User getUserByEmailAndPassword(String email, String password) {
-        String sql = UserQueries.GET_USER_BY_EMAIL_AND_PASSWORD;
         return transactionManager.doWithoutTransaction(new TransactionOperation<User>() {
             @Override
             public User doOperation() {
                 User result = null;
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.GET_USER_BY_EMAIL_AND_PASSWORD);
 
                     statement.setString(1, email);
                     statement.setString(2, password);
@@ -154,13 +150,12 @@ public class UserRepository implements CrudRepository<User> {
      *
      * @param email - user' email
      */
-    public void incrementUserFailedLogin(String email) {
-        String sql = UserQueries.INC_USER_FAILED_LOGIN;
+    public void incrementLoginCounter(String email) {
         transactionManager.doWithoutTransaction(new TransactionOperation<Void>() {
             @Override
             public Void doOperation() {
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.INC_USER_FAILED_LOGIN);
 
                     statement.setString(1, email);
                     statement.executeUpdate();
@@ -181,17 +176,16 @@ public class UserRepository implements CrudRepository<User> {
      * @param email - user's email
      */
     private void ban(String email) {
-        String sql = UserQueries.BAN;
         transactionManager.doWithoutTransaction(new TransactionOperation<Void>() {
             @Override
             public Void doOperation() {
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.BAN);
 
                     statement.setTime(1, new Time(System.currentTimeMillis() + HALF_AN_HOUR));
                     statement.setString(2, email);
                     statement.executeUpdate();
-                    clearUserFailedLogin(email);
+                    clearLoginCounter(email);
 
                 } catch (SQLException e) {
                     log.warn("SQL error during ban the user! " + e.getMessage());
@@ -207,13 +201,12 @@ public class UserRepository implements CrudRepository<User> {
      *
      * @param email - user's email
      */
-    public void clearUserFailedLogin(String email) {
-        String sql = UserQueries.CLEAR_USER_FAILED_LOGIN;
+    public void clearLoginCounter(String email) {
         transactionManager.doWithoutTransaction(new TransactionOperation<Void>() {
             @Override
             public Void doOperation() {
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.CLEAR_USER_FAILED_LOGIN);
 
                     statement.setString(1, email);
                     statement.executeUpdate();
@@ -232,12 +225,11 @@ public class UserRepository implements CrudRepository<User> {
      * @return true, if user banned, else - false
      */
     public boolean checkUserHasBan(String email) {
-        String sql = UserQueries.GET_USER_BAN_WILL_BE_REMOVED;
         return transactionManager.doWithoutTransaction(new TransactionOperation<Boolean>() {
             @Override
             public Boolean doOperation() {
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.GET_USER_BAN_WILL_BE_REMOVED);
 
                     statement.setString(1, email);
                     ResultSet resultSet = statement.executeQuery();
@@ -262,8 +254,7 @@ public class UserRepository implements CrudRepository<User> {
      * clears ban and numbers of failed login after half an hour
      * @param email
      */
-    public void clearBanAfterHalfAnHour(String email) {
-        String sql = UserQueries.CLEAR_BAN;
+    public void resetLoginCounter(String email) {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -272,7 +263,7 @@ public class UserRepository implements CrudRepository<User> {
                     @Override
                     public Void doOperation() {
                         try {
-                            PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                            PreparedStatement statement = transactionManager.getConnection().prepareStatement(UserQueries.CLEAR_BAN);
 
                             statement.setString(1, email);
                             statement.executeUpdate();

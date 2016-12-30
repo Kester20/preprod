@@ -32,8 +32,8 @@ public class TransactionManager {
         } catch (SQLException e) {
             try {
                 connection.rollback();
-            } catch (SQLException e1) {
-                e1.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
             log.info("SQL exceptipn during transaction operation");
             e.printStackTrace();

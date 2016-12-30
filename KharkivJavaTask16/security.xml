@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<security xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="security.xsd">
 
-<security >
     <constraint>
         <url-pattern>(.*)_order</url-pattern>
         <role>admin</role >
         <role>user</role>
     </constraint>
-</security>
 
+</security>

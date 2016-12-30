@@ -49,13 +49,13 @@ public class LogInServlet extends HttpServlet {
                 response.sendError(CODE_ERROR_403, ACCESS_DENIED);
             } else {
                 if (defaultUserService.logInUser(email, password)) {
-                    defaultUserService.clearUserFailedLogin(email);
+                    defaultUserService.clearLoginCounter(email);
                     session.setAttribute(USER, defaultUserService.getUserByEmailAndPassword(email, password));
                     session.setAttribute(USER_AVATAR, AVATARS_PATH + File.separator + email + ".png");
                 } else {
                     session.setAttribute(WRONG_EMAIL_OR_PASSWORD, SIMPLE_WRONG_EMAIL_OR_PASSWORD);
-                    defaultUserService.incrementUserFailedLogin(email);
-                    defaultUserService.clearBanAfterHalfAnHour(email);
+                    defaultUserService.incrementLoginCounter(email);
+                    defaultUserService.resetLoginCounter(email);
                 }
                 response.sendRedirect(LOGIN_SERVLET);
             }

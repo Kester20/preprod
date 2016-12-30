@@ -93,4 +93,7 @@ public class Constants {
     public static final String ACCESS_DENIED = "ACCESS DENIED";
     public static final String PATH = "path";
     public static final int CODE_ERROR_403 = 403;
+    public static final String PATH_TO_XML_FILE_SECURITY = "security.xml";
+    public static final String SECURE_PAGE = "confirm_order";
+    public static final String NOT_SECURE_PAGE = "confirm.jsp";
 }

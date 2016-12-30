@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.MockitoAnnotations;
 
+import static constants.Constants.PATH_TO_XML_FILE_SECURITY;
+import static constants.Constants.SECURE_PAGE;
 import static constants.Constants.USER;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -17,7 +19,7 @@ public class RoleCheckerTest extends CheckerTest{
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        checker = new RoleChecker(PATH);
+        checker = new RoleChecker(PATH_TO_XML_FILE_SECURITY);
     }
 
     @Test

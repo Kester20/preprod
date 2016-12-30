@@ -43,7 +43,7 @@ public class AcceptOrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     private void createOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {

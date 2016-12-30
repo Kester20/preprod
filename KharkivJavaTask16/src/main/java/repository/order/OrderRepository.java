@@ -31,12 +31,11 @@ public class OrderRepository {
 
     public void createOrder(Order order) throws BusinessException {
         OrderHistory orderHistory = new OrderHistory(order);
-        String sql = OrderQueries.CREATE_ORDER;
         transactionManager.doInTransaction(new TransactionOperation<Void>() {
             @Override
             public Void doOperation() {
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(OrderQueries.CREATE_ORDER, Statement.RETURN_GENERATED_KEYS);
 
                     statement.setString(1, order.getUserEmail());
                     statement.setString(2, order.getTypePayment());
@@ -58,9 +57,8 @@ public class OrderRepository {
     }
 
     private void createOrderHistory(int orderId, OrderHistory orderHistory) throws BusinessException {
-        String sql = OrderQueries.CREATE_ORDER_HISTORY;
         try {
-            PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+            PreparedStatement statement = transactionManager.getConnection().prepareStatement(OrderQueries.CREATE_ORDER_HISTORY);
 
             setUpBatchStatement(statement, orderHistory, orderId);
 

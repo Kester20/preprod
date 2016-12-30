@@ -8,6 +8,8 @@ import org.mockito.MockitoAnnotations;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
+import static constants.Constants.PATH_TO_XML_FILE_SECURITY;
+import static constants.Constants.SECURE_PAGE;
 import static constants.Constants.USER;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
@@ -20,7 +22,7 @@ public class UserIsInSystemCheckerTest extends CheckerTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        checker = new UserIsInSystemChecker(PATH);
+        checker = new UserIsInSystemChecker(PATH_TO_XML_FILE_SECURITY);
         doNothing().when(nextChecker).check(any(), any(), any(), any());
         checker.setNextChecker(nextChecker);
     }

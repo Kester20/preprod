@@ -16,11 +16,11 @@ public interface UserService {
 
     User getUserByEmailAndPassword(String email, String password);
 
-    void incrementUserFailedLogin(String email);
+    void incrementLoginCounter(String email);
 
-    void clearUserFailedLogin(String email);
+    void clearLoginCounter(String email);
 
     boolean checkUserHasBan(String email);
 
-    void clearBanAfterHalfAnHour(String email);
+    void resetLoginCounter(String email);
 }

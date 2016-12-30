@@ -27,13 +27,12 @@ public class CategoryRepository {
     }
 
     public List<Category> getAllCategories() {
-        String sql = GET_ALL_CATEGORIES;
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Category>>() {
             @Override
             public List<Category> doOperation() {
                 List<Category> result = new ArrayList<>();
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(GET_ALL_CATEGORIES);
                     ResultSet resultSet = statement.executeQuery();
                     while (resultSet.next()) {
                         Category category = new Category(resultSet.getString(2));

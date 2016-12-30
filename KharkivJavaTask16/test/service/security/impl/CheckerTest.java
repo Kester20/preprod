@@ -28,7 +28,4 @@ public abstract class CheckerTest {
     @Mock
     protected AbstractChecker nextChecker;
     protected AbstractChecker checker;
-    protected static final String PATH = "security.xml";
-    protected static final String SECURE_PAGE = "confirm_order";
-    protected static final String NOT_SECURE_PAGE = "confirm.jsp";
 }

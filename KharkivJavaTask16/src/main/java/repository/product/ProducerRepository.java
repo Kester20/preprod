@@ -27,13 +27,12 @@ public class ProducerRepository {
     }
 
     public List<Producer> getAllProducers() {
-        String sql = GET_ALL_PRODUCERS;
         return transactionManager.doWithoutTransaction(new TransactionOperation<List<Producer>>() {
             @Override
             public List<Producer> doOperation() {
                 List<Producer> result = new ArrayList<Producer>();
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(GET_ALL_PRODUCERS);
                     ResultSet resultSet = statement.executeQuery();
                     while (resultSet.next()) {
                         Producer producer = new Producer(resultSet.getString(2));

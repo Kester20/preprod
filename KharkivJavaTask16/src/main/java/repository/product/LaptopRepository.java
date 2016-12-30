@@ -108,13 +108,12 @@ public class LaptopRepository {
     }
 
     public Laptop getLaptopById(int id) {
-        String sql = GET_LAPTOP_BY_ID;
         return transactionManager.doWithoutTransaction(new TransactionOperation<Laptop>() {
             @Override
             public Laptop doOperation() {
                 Laptop result = null;
                 try {
-                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(sql);
+                    PreparedStatement statement = transactionManager.getConnection().prepareStatement(GET_LAPTOP_BY_ID);
                     statement.setInt(1, id);
                     ResultSet resultSet = statement.executeQuery();
                     if (resultSet.next()) {
